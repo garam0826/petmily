@@ -4,7 +4,7 @@
 
     <typeAliases>
         <!-- Member -->
-        <!--<typeAlias alias="MemberDTO" type="com.example.test.dto.MemberDTO" />-->
+        <typeAlias alias="MemberDTO" type="com.petmily.dto.MemberDTO" />
 
 
     </typeAliases>
