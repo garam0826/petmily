@@ -1,6 +1,7 @@
 package com.petmily.controller;
 
 import com.petmily.dto.AnimalInfo;
+import com.petmily.dto.ImageAnalysisResult;
 import com.petmily.service.AnimalInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,28 @@ public class AnimalInfoController {
 
         List<AnimalInfo> animalInfos = animalInfoService.getAnimalInfo(startDate, endDate, kind, uprCd, orgCd);
         return ResponseEntity.ok(animalInfos);
+    }
+
+    @GetMapping("/analyze")
+    public ResponseEntity<ImageAnalysisResult> analyzeImage(
+            @RequestParam("desertionNo") String desertionNo,
+            @RequestParam("popfile") String imageUrl) {
+
+        // 데이터베이스에서 분석 결과 조회
+        ImageAnalysisResult analysisResult = animalInfoService.getAnalysisResult(desertionNo);
+
+        // 결과가 없으면 이미지 분석 수행
+        if (analysisResult == null) {
+            try {
+                // 이미지 분석 및 결과 저장
+                analysisResult = animalInfoService.analyzeAndSaveImage(desertionNo, imageUrl);
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+            }
+        }
+
+        // 클라이언트에 결과 반환
+        return ResponseEntity.ok(analysisResult);
     }
 
 
