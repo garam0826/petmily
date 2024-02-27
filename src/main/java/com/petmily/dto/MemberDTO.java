@@ -3,7 +3,17 @@ package com.petmily.dto;
 import java.util.Date;
 
 public class MemberDTO {
+    // member변수
+    private String mem_id;
+    private String mem_pw;
+    private String nickname;
+    private String email;
+    private String region;
+    private String county_district;
+    private Date reg_date;
+    private Date edit_date;
 
+    // getter/setter
     public String getMem_id() {
         return mem_id;
     }
@@ -68,6 +78,7 @@ public class MemberDTO {
         this.edit_date = edit_date;
     }
 
+    // toString()
     @Override
     public String toString() {
         return "MemberDTO{" +
@@ -82,12 +93,5 @@ public class MemberDTO {
                 '}';
     }
 
-    private String mem_id;
-    private String mem_pw;
-    private String nickname;
-    private String email;
-    private String region;
-    private String county_district;
-    private Date reg_date;
-    private Date edit_date;
+
 }
