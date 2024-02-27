@@ -44,12 +44,12 @@ public class MemberDTO {
         this.region = region;
     }
 
-    public String getCountry_district() {
-        return country_district;
+    public String getCounty_district() {
+        return county_district;
     }
 
     public void setCountry_district(String country_district) {
-        this.country_district = country_district;
+        this.county_district = county_district;
     }
 
     public Date getReg_date() {
@@ -76,7 +76,7 @@ public class MemberDTO {
                 ", nickname='" + nickname + '\'' +
                 ", email='" + email + '\'' +
                 ", region='" + region + '\'' +
-                ", country_district='" + country_district + '\'' +
+                ", county_district='" + county_district + '\'' +
                 ", reg_date=" + reg_date +
                 ", edit_date=" + edit_date +
                 '}';
@@ -87,7 +87,7 @@ public class MemberDTO {
     private String nickname;
     private String email;
     private String region;
-    private String country_district;
+    private String county_district;
     private Date reg_date;
     private Date edit_date;
 }
