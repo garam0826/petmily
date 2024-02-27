@@ -3,8 +3,8 @@
 <mapper namespace="com.petmily.mappers.MemberMapper">
     <!--회원가입-->
     <insert id="insertMember" parameterType="MemberDTO">
-        INSERT INTO member (mem_id, mem_pw, nickname, email, region, country_district)
-        VALUES (#{mem_id}, #{mem_pw}, #{nickname}, #{email}, #{region}, #{country_district})
+        INSERT INTO member (mem_id, mem_pw, nickname, email, region, county_district)
+        VALUES (#{mem_id}, #{mem_pw}, #{nickname}, #{email}, #{region}, #{county_district})
     </insert>
 
 

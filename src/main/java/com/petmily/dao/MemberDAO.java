@@ -3,7 +3,15 @@ package com.petmily.dao;
 import com.petmily.dto.MemberDTO;
 
 public interface MemberDAO {
-
-    //회원가입
+    // 회원가입
     public int insertMember(MemberDTO memberDTO) throws Exception;
+
+    // 회원 ID 중복 확인
+    // 회원 비밀번호 조회
+    // 회원정보 조회
+    // 회원정보 수정
+    // 회원탈퇴
+
+    // test
+    public String getTime() throws Exception;
 }
