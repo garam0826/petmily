@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.petmily.mappers.FavoriteMapper">
+
+    <insert id="addFavorite" parameterType="com.petmily.dto.Favorite">
+        INSERT INTO favorites (mem_id, desertionNo)
+        VALUES (#{memId}, #{desertionNo})
+    </insert>
+
+    <select id="getMemberFavorites" parameterType="String" resultType="String">
+        SELECT desertionNo FROM favorites WHERE mem_id = #{memId}
+    </select>
+
+    <!-- 찜 목록에서 삭제하는 메서드 구현 예정 -->
+
+</mapper>
