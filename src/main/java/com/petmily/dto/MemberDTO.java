@@ -1,6 +1,6 @@
 package com.petmily.dto;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class MemberDTO {
     // member변수
@@ -10,8 +10,8 @@ public class MemberDTO {
     private String email;
     private String region;
     private String county_district;
-    private Date reg_date;
-    private Date edit_date;
+    private LocalDateTime reg_date;
+    private LocalDateTime edit_date;
 
     // getter/setter
     public String getMem_id() {
@@ -62,19 +62,19 @@ public class MemberDTO {
         this.county_district = county_district;
     }
 
-    public Date getReg_date() {
+    public LocalDateTime getReg_date() {
         return reg_date;
     }
 
-    public void setReg_date(Date reg_date) {
+    public void setReg_date(LocalDateTime reg_date) {
         this.reg_date = reg_date;
     }
 
-    public Date getEdit_date() {
+    public LocalDateTime getEdit_date() {
         return edit_date;
     }
 
-    public void setEdit_date(Date edit_date) {
+    public void setEdit_date(LocalDateTime edit_date) {
         this.edit_date = edit_date;
     }
 
@@ -92,6 +92,5 @@ public class MemberDTO {
                 ", edit_date=" + edit_date +
                 '}';
     }
-
 
 }

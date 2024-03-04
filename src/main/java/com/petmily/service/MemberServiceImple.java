@@ -77,7 +77,6 @@ public class MemberServiceImple implements MemberService{
             return result = false;
         }
 
-
     }
 
 

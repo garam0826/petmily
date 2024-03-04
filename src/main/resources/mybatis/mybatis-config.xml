@@ -3,8 +3,10 @@
 <configuration>
 
     <typeAliases>
-        <!-- Member -->
+        <!-- DTO Alias -->
         <typeAlias alias="MemberDTO" type="com.petmily.dto.MemberDTO" />
+        <typeAlias alias="BoardDTO" type="com.petmily.dto.BoardDTO" />
+        <typeAlias alias="ReplyDTO" type="com.petmily.dto.ReplyDTO" />
 
 
     </typeAliases>

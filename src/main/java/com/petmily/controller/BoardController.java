@@ -1,8 +1,9 @@
 package com.petmily.controller;
 
-import com.petmily.dto.MemberDTO;
+import com.petmily.dto.BoardDTO;
+import com.petmily.dto.ReplyDTO;
 
-import com.petmily.service.MemberService;
+import com.petmily.service.BoardService;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,33 +23,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/member")
-public class MemberController {
+@RequestMapping("/board")
+public class BoardController {
     // Service Autowired
     @Autowired
-    private MemberService memberService;
+    private BoardService boardService;
 
     // Logging
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
-    // 회원가입
-    @PostMapping("/SignUp")
-    public ResponseEntity<Integer> insertMember(@RequestBody MemberDTO memberDTO){
-        logger.info("/SignUp PostMapping");
+    // 글 쓰기
+    @PostMapping("/WriteBoard")
+    public ResponseEntity<Integer> writeBoard(@RequestBody BoardDTO boardDTO){
+        logger.info("/WriteBoard PostMapping");
 
         try{
-            int result = memberService.insertMember(memberDTO);
+            int result = boardService.writeBoard(boardDTO);
 
             if(result > 0){
-                logger.info("회원가입 성공");
-
-                // 회원 ID folder 추가
+                logger.info("글 쓰기 성공");
 
                 return new ResponseEntity<>(result, HttpStatus.OK);
             }else{
-                logger.info("회원가입 실패");
+                logger.info("글 쓰기 실패");
 
                 return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
             }
@@ -59,22 +60,60 @@ public class MemberController {
         }
     }
 
-    // 회원 ID 중복 확인
-    @GetMapping("/CheckID")
-    public ResponseEntity<Boolean> checkMem_ID(@RequestParam String mem_id){
-        logger.info("/checkID GetMapping");
+    // 글 목록 조회
+    @GetMapping("/List")
+    public ResponseEntity<List<BoardDTO>> listBoard(){
+        logger.info("/List GetMapping");
+        // paging 글 갯수 추가
 
         try{
-            boolean result = memberService.checkMem_ID(mem_id);
+            List<BoardDTO> b_List = boardService.listBoard();
+            int count = boardService.countBoard();
 
-            if(result){
-                logger.info("ID 사용가능");
+            return new ResponseEntity<>(b_List, HttpStatus.OK);
+        }catch(Exception e){
+            e.printStackTrace();
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // 글 내용 조회
+    @GetMapping("/Content")
+    public ResponseEntity<BoardDTO> readBoard(int idx) throws Exception{
+        logger.info("/Content GetMapping");
+        // 조회수 증가
+
+        try{
+            BoardDTO boardDTO = boardService.readBoard(idx);
+
+            return new ResponseEntity<>(boardDTO, HttpStatus.OK);
+        }catch(Exception e){
+            e.printStackTrace();
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // 글 수정
+    // 글 삭제
+
+    // 댓글 쓰기
+    @PostMapping("/WriteReply")
+    public ResponseEntity<Integer> writeReply(@RequestBody ReplyDTO replyDTO){
+        logger.info("/WriteReply PostMapping");
+
+        try{
+            int result = boardService.writeReply(replyDTO);
+
+            if(result > 0){
+                logger.info("댓글 쓰기 성공");
 
                 return new ResponseEntity<>(result, HttpStatus.OK);
             }else{
-                logger.info("이미 가입된 ID");
+                logger.info("댓글 쓰기 실패");
 
-                return new ResponseEntity<>(result, HttpStatus.OK);
+                return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -83,33 +122,10 @@ public class MemberController {
         }
     }
 
-    // Session에 필요한 정보 ID nickname
-    // Login
-    /*@PostMapping("/Login")
-    public ResponseEntity<MemberDTO> login(@RequestBody MemberDTO memberDTO){
-        return
-        // 내가 쓴 글, 댓글 찾는 SQL하고 service 작성
-    }*/
-
-    // 회원탈퇴
-    @DeleteMapping("/Mypage/Resign")
-    public ResponseEntity<Boolean> deleteMember(@RequestBody MemberDTO memberDTO){
-        logger.info("/resign DeleteMapping");
-
-        try{
-            boolean result = memberService.deleteMember(memberDTO.getMem_id());
-
-            if(result){
-                return new ResponseEntity<>(result, HttpStatus.OK);
-            }else{
-                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+    // 댓글 조회
+    // 댓글 수정
+    // 댓글 삭제
+    // 댓글 갯수 조회
 
     // test
     @GetMapping("/test")
@@ -117,7 +133,7 @@ public class MemberController {
         logger.info("/test GetMapping");
 
         try{
-            String time = memberService.getTime();
+            String time = boardService.getTime();
             logger.info(time);
 
             return new ResponseEntity<>(time, HttpStatus.OK);
