@@ -15,14 +15,17 @@ public interface BoardDAO {
     // 글 내용 조회
     public BoardDTO readBoard(int idx) throws Exception;
 
+    // 글 조회수 증가
+    public int hitUpBoard(int idx) throws Exception;
+
     // 글 수정
+    public int updateBoard(BoardDTO boardDTO) throws Exception;
+
     // 글 삭제
     public int deleteBoard(int idx) throws Exception;
 
     // 글 갯수 조회
     public int countBoard() throws Exception;
-
-    // 글 조회수 증가
 
     // 댓글 쓰기
     public int writeReply(ReplyDTO replyDTO) throws Exception;

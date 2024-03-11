@@ -49,6 +49,14 @@ public class MemberDAOImple implements MemberDAO {
         return memberDTO;
     }
 
+    // 회원정보 수정
+    @Override
+    public int updateMyInfo(MemberDTO memberDTO) throws Exception{
+        int result = sqlSession.update(namespace+ ".updateMyInfo", memberDTO);
+
+        return result;
+    }
+
     // 회원탈퇴
     @Override
     public int deleteMember(String mem_id) throws Exception{

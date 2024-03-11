@@ -11,6 +11,16 @@
         SELECT desertionNo FROM favorites WHERE mem_id = #{memId}
     </select>
 
-    <!-- 찜 목록에서 삭제하는 메서드 구현 예정 -->
+
+
+    <select id="findFavoritesByMemberId" parameterType="String" resultType="com.petmily.dto.Favorite">
+        SELECT * FROM favorites WHERE mem_id = #{memId}
+    </select>
+
+    <delete id="deleteFavoriteByMemIdAndDesertionNo" parameterType="map">
+        DELETE FROM favorites
+        WHERE mem_id = #{memId}
+          AND desertionNo = #{desertionNo}
+    </delete>
 
 </mapper>

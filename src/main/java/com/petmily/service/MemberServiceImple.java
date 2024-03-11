@@ -22,11 +22,20 @@ public class MemberServiceImple implements MemberService{
 
     // 회원가입
     @Override
-    public int insertMember(MemberDTO memberDTO) throws Exception{
-        int result = memberDAO.insertMember(memberDTO);
-        logger.info("회원가입 Service 완료");
+    public boolean insertMember(MemberDTO memberDTO) throws Exception{
+        boolean result = false;
+        int value = memberDAO.insertMember(memberDTO);
 
-        return result;
+        if(value > 0){
+            result = true;
+            logger.info(memberDTO.getMem_id()+ " 회원가입 Service 완료");
+
+            return result;
+        }else{
+            logger.info(memberDTO.getMem_id()+ " 회원가입 Service 실패");
+
+            return result;
+        }
     }
 
     // 회원 ID 중복 확인
@@ -36,13 +45,14 @@ public class MemberServiceImple implements MemberService{
         int value = memberDAO.checkMem_ID(mem_id);
 
         if(value == 0){
+            result = true;
             logger.info(mem_id+ " ID 중복 확인 Service 완료");
 
-            return result = true;
+            return result;
         }else{
-            logger.info(mem_id+ " ID 중복 확인 Service 완료");
+            logger.info(mem_id+ " ID 중복 확인 Service 실패");
 
-            return result = false;
+            return result;
         }
     }
 
@@ -60,6 +70,22 @@ public class MemberServiceImple implements MemberService{
     }
 
     // 회원정보 수정
+    @Override
+    public boolean updateMyInfo(MemberDTO memberDTO) throws Exception{
+        boolean result = false;
+        int value = memberDAO.updateMyInfo(memberDTO);
+
+        if(value > 0){
+            result = true;
+            logger.info(memberDTO.getMem_id()+" 정보 수정 Service 완료");
+
+            return result;
+        }else{
+            logger.info(memberDTO.getMem_id()+" 정보 수정 Service 실패");
+
+            return result;
+        }
+    }
 
     // 회원탈퇴
     @Override
@@ -68,15 +94,15 @@ public class MemberServiceImple implements MemberService{
         int value = memberDAO.deleteMember(mem_id);
 
         if(value > 0){
+            result = true;
             logger.info(mem_id+ " 회원탈퇴 Service 완료");
 
-            return result = true;
+            return result;
         }else{
-            logger.info(mem_id+ " 회원탈퇴 Service 완료");
+            logger.info(mem_id+ " 회원탈퇴 Service 실패");
 
-            return result = false;
+            return result;
         }
-
     }
 
 
