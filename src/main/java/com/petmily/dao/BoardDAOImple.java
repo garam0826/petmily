@@ -44,6 +44,22 @@ public class BoardDAOImple implements BoardDAO{
         return boardDTO;
     }
 
+    // 글 조회수 증가
+    @Override
+    public int hitUpBoard(int idx) throws Exception{
+        int result = sqlSession.update(namespace+ ".hitUpBoard", idx);
+
+        return result;
+    }
+
+    // 글 수정
+    @Override
+    public int updateBoard(BoardDTO boardDTO) throws Exception{
+        int result = sqlSession.update(namespace+ ".updateBoard", boardDTO);
+
+        return result;
+    }
+
     // 글 삭제
     public int deleteBoard(int idx) throws Exception{
         int result = sqlSession.delete(namespace+ ".deleteBoard", idx);

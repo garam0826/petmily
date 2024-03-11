@@ -16,9 +16,13 @@ public interface MemberDAO {
     public MemberDTO slctMyInfo(String mem_id) throws Exception;
 
     // 회원정보 수정
+    public int updateMyInfo(MemberDTO memberDTO) throws Exception;
 
     // 회원탈퇴
     public int deleteMember(String mem_id) throws Exception;
+
+    // 회원 ID 찾기
+    // 회원 비밀번호 찾기
 
     // test
     public String getTime() throws Exception;

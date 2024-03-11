@@ -34,7 +34,7 @@ public class BoardController {
     private BoardService boardService;
 
     // Logging
-    private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+    private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
     // 글 쓰기
     @PostMapping("/WriteBoard")
@@ -96,6 +96,30 @@ public class BoardController {
     }
 
     // 글 수정
+    @PutMapping("/Update")
+    public ResponseEntity<Boolean> updateBoard(@RequestBody BoardDTO boardDTO){
+        logger.info("/Update PutMapping");
+
+        try{
+            int value = boardService.updateBoard(boardDTO);
+            boolean result = false;
+
+            if(result){
+                logger.info("");
+
+                return new ResponseEntity<>(result, HttpStatus.OK);
+            }else{
+                logger.info("");
+
+                return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     // 글 삭제
 
     // 댓글 쓰기

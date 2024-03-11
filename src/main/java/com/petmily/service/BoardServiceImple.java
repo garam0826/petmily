@@ -44,6 +44,9 @@ public class BoardServiceImple implements BoardService{
     // 글 내용 조회
     @Override
     public BoardDTO readBoard(int idx) throws Exception{
+        // 조회수 증가
+        boardDAO.hitUpBoard(idx);
+        // 내용 조회
         BoardDTO boardDTO = boardDAO.readBoard(idx);
         logger.info("글 내용 조회 Service 완료");
 
@@ -51,6 +54,13 @@ public class BoardServiceImple implements BoardService{
     }
 
     // 글 수정
+    @Override
+    public int updateBoard(BoardDTO boardDTO) throws Exception{
+        int result = boardDAO.updateBoard(boardDTO);
+
+        return result;
+    }
+
     // 글 삭제
     @Override
     public int deleteBoard(int idx) throws Exception{
