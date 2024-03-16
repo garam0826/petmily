@@ -1,3 +1,4 @@
+/*
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
@@ -18,3 +19,14 @@ function App() {
 }
 
 export default App;
+*/
+import {RouterProvider} from "react-router-dom";
+import root from './root';
+
+function App(){
+    return(
+        <RouterProvider router={root}/>
+    );
+}
+
+export  default App;

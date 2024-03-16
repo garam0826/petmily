@@ -36,3 +36,67 @@
     transform: rotate(360deg);
   }
 }
+
+.menubar {
+  background-color: lightblue;
+  color: black;
+  overflow: hidden;
+  font-size: 20px;
+  height:100px;
+}
+
+.menubar ul {
+  list-style-type: none;
+  margin-bottom: 10px;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.menubar li {
+  float: left;
+  margin-right: 60px;
+}
+
+.login {
+  float: right;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  background-color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.login:hover {
+  background-color: white;
+  color: black;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: lightgrey;
+}
