@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
+
 @Service
 public class MemberServiceImple implements MemberService{
     // DAO Autowired
@@ -105,9 +107,32 @@ public class MemberServiceImple implements MemberService{
         }
     }
 
+    // 회원 ID 찾기
+    // ID 찾기 입력된 email과 nickname 둘 다 일치 확인
+    // 입력된 email, nickname과 DAO에서 가져온 정보를 여기서 일치여부 확인
+    @Override
+    public String searchMem_ID(HashMap<String, String> hashMap) throws Exception{
+
+
+        logger.info("사용자가 입력한 nickname : " +hashMap.get("nickname"));
+        logger.info("사용자가 입력한 email : " +hashMap.get("email"));
+
+        MemberDTO memberDTO = memberDAO.searchMem_ID(hashMap);
+        String db_nickname = memberDTO.getNickname();
+        String db_email = memberDTO.getEmail();
+        logger.info("DB에서 검색된 nickname : " +db_nickname);
+        logger.info("DB에서 검색된 email : " +db_email);
+
+        //
+
+        String resultID = memberDTO.getMem_id();
+
+        //
+        return resultID;
+    }
 
     // test
-    public String getTime() throws Exception{
+    public String getTime() throws Exception{;
         String time = memberDAO.getTime();
         System.out.println("Service 완료!");
 

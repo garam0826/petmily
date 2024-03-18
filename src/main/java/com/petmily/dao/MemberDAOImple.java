@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.HashMap;
+
 @Repository
 public class MemberDAOImple implements MemberDAO {
     // SQL Session Autowired
@@ -65,6 +67,13 @@ public class MemberDAOImple implements MemberDAO {
         return result;
     }
 
+    // 회원 ID 찾기
+    @Override
+    public MemberDTO searchMem_ID(HashMap<String, String> hashMap) throws Exception{
+        MemberDTO memberDTO = sqlSession.selectOne(namespace+ ".searchMem_ID", hashMap);
+
+        return memberDTO;
+    }
 
     // test
     @Override

@@ -11,10 +11,10 @@ public interface ImageUploadService {
     // 개인 폴더에 imgae 업로드, 수정(기존 삭제 새로 추가), 삭제
 
     // 회원 ID folder 생성
-    //public boolean createMem_Dir(MemberDTO memberDTO) throws Exception;
+    public boolean createMem_Dir(String mem_id) throws Exception;
 
     // 회원 ID folder 삭제
-    //public boolean deleteMem_Dir() throws Exception;
+    public boolean deleteMem_Dir(String mem_id) throws Exception;
 
     // Image Upload
     // Upload Image정보 조회

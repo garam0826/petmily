@@ -33,6 +33,9 @@
     </delete>
 
     <!-- 회원 ID 찾기 -->
+    <select id="searchMem_ID" parameterType="HashMap" resultType="MemberDTO">
+        select mem_id, nickname, email from member where nickname = #{nickname} and email = #{email}
+    </select>
 
     <!-- 회원 비밀번호 찾기 -->
 

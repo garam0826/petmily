@@ -8,7 +8,7 @@
 
     <!-- 글 목록 조회 -->
     <select id="listBoard" resultType="BoardDTO">
-        select idx, title, reg_name, hit, w_date from board order by idx desc
+        select idx, title, reg_name, hit, w_date from board where idx > 0 order by idx desc
     </select>
 
     <!-- 글 내용 조회 -->
