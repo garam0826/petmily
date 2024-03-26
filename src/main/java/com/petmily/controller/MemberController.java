@@ -2,8 +2,8 @@ package com.petmily.controller;
 
 import com.petmily.dto.MemberDTO;
 
-import com.petmily.service.ImageUploadService;
 import com.petmily.service.MemberService;
+import com.petmily.service.ImageUploadService;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,8 +20,15 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
 
 
 @RestController
@@ -48,7 +55,7 @@ public class MemberController {
                 logger.info("회원가입 성공");
 
                 // 회원 ID 개인 folder 추가
-                //imageUploadService.createMem_Dir(memberDTO.getMem_id());
+                imageUploadService.createMem_Dir(memberDTO.getMem_id());
 
                 return new ResponseEntity<>(result, HttpStatus.OK);
             }else{
@@ -95,6 +102,7 @@ public class MemberController {
         // 내가 쓴 글, 댓글 찾는 SQL하고 service 작성
     }*/
 
+
     // 회원정보 수정
     @PutMapping("/MyPage/Update")
     public ResponseEntity<Boolean> updateMyInfo(@RequestBody MemberDTO memberDTO){
@@ -127,7 +135,7 @@ public class MemberController {
 
             if(result){
                 // 회원 ID 개인 folder 삭제
-                //imageUploadService.deleteMem_Dir();
+                imageUploadService.deleteMem_Dir(memberDTO.getMem_id());
 
                 return new ResponseEntity<>(result, HttpStatus.OK);
             }else{
@@ -138,6 +146,45 @@ public class MemberController {
 
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    // 회원 ID 찾기
+    // ID 찾기 입력된 email과 nickname 둘 다 일치 확인
+    // 입력된 email, nickname과 DAO에서 가져온 정보를 여기서 일치여부 확인
+    @PostMapping("/SearchID")
+    public ResponseEntity<String> searchMem_ID(@RequestBody MemberDTO memberDTO){
+        logger.info("/SearchID PostMapping");
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("nickname", memberDTO.getNickname());
+        hashMap.put("email", memberDTO.getEmail());
+
+        try{
+            String resultID = memberService.searchMem_ID(hashMap);
+            logger.info("검색된 ID : " +resultID);
+
+            return new ResponseEntity<>(resultID, HttpStatus.OK);
+        }catch(Exception e){
+            e.printStackTrace();
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
+
+
+    // image upload test
+    @PostMapping("/imagetest")
+    public ResponseEntity<Boolean> testUpload(@RequestParam("images") MultipartFile images){
+        logger.info("/imagetest PostMapping");
+
+        boolean result = false;
+
+        logger.info("image name : " +images.getOriginalFilename());
+        logger.info("image size : " +images.getSize());
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     // test

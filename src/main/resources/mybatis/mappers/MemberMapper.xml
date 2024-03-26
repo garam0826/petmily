@@ -33,8 +33,14 @@
     </delete>
 
     <!-- 회원 ID 찾기 -->
+    <select id="searchMem_ID" parameterType="HashMap" resultType="MemberDTO">
+        select mem_id, nickname, email from member where nickname = #{nickname} and email = #{email}
+    </select>
 
     <!-- 회원 비밀번호 찾기 -->
+    <select id="searchMem_PW" parameterType="HashMap" resultType="MemberDTO">
+        select mem_id, mem_pw, email from member where mem_id = #{mem_id} and email = #{email}
+    </select>
 
     <!-- test -->
     <select id="getTime" resultType="String">
