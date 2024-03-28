@@ -32,7 +32,7 @@ public class AnimalInfoService {
                 .queryParam("kind", kind)
                 .queryParam("upr_cd", uprCd)
                 .queryParam("org_cd", orgCd)
-                .queryParam("care_reg_no", "") //311322200900001 아무 보호소 코드
+                //.queryParam("care_reg_no", "311322200900001") //311322200900001 아무 보호소 코드
                 .queryParam("pageNo", "1")
                 .queryParam("numOfRows", "10")
                 .queryParam("_type", "json");

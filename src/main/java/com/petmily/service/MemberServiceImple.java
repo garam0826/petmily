@@ -112,8 +112,6 @@ public class MemberServiceImple implements MemberService{
     // 입력된 email, nickname과 DAO에서 가져온 정보를 여기서 일치여부 확인
     @Override
     public String searchMem_ID(HashMap<String, String> hashMap) throws Exception{
-
-
         logger.info("사용자가 입력한 nickname : " +hashMap.get("nickname"));
         logger.info("사용자가 입력한 email : " +hashMap.get("email"));
 
@@ -122,13 +120,30 @@ public class MemberServiceImple implements MemberService{
         String db_email = memberDTO.getEmail();
         logger.info("DB에서 검색된 nickname : " +db_nickname);
         logger.info("DB에서 검색된 email : " +db_email);
-
-        //
+        // SQL 결과값이 null ->
+        // 불일치 ->
+        // 일치
+        if((db_nickname.equals(hashMap.get("nickname")))){
+            logger.info("일치");
+        }else{
+            logger.info("불일치");
+        }
 
         String resultID = memberDTO.getMem_id();
 
         //
         return resultID;
+    }
+
+    // 회원 비밀번호 찾기
+    // PW 찾기 입력된 email, mem_id과 회원정보 2개 일치 확인
+    public String searchMem_PW(HashMap<String, String> hashMap) throws Exception{
+        logger.info("사용자가 입력한 ID : " +hashMap.get("mem_id"));
+        logger.info("사용자가 입력한 email : " +hashMap.get("email"));
+
+        String resultPW = null;
+
+        return resultPW;
     }
 
     // test

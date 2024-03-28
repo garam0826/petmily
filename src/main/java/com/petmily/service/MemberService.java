@@ -30,10 +30,9 @@ public interface MemberService {
     // 입력된 email, nickname과 DAO에서 가져온 정보를 여기서 일치여부 확인
     public String searchMem_ID(HashMap<String, String> hashMap) throws Exception;
 
-
     // 회원 비밀번호 찾기
     // PW 찾기 입력된 email, mem_id과 회원정보 2개 일치 확인
-    // 입력된 email, mem_id와 DAO에서 가져온 정보를 여기서 일치여부 확인
+    public String searchMem_PW(HashMap<String, String> hashMap) throws Exception;
 
     // test
     public String getTime() throws Exception;

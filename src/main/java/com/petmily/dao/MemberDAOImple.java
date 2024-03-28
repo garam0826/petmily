@@ -75,6 +75,14 @@ public class MemberDAOImple implements MemberDAO {
         return memberDTO;
     }
 
+    // 회원 비밀번호 찾기
+    @Override
+    public MemberDTO searchMem_PW(HashMap<String, String> hashMap) throws Exception{
+        MemberDTO memberDTO = sqlSession.selectOne(namespace+ ".searchMem_PW", hashMap);
+
+        return memberDTO;
+    }
+
     // test
     @Override
     public String getTime() throws Exception{

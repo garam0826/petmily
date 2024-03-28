@@ -30,7 +30,7 @@ public interface MemberDAO {
 
     // 회원 비밀번호 찾기
     // PW 찾기 입력된 email, mem_id과 회원정보 2개 일치 확인
-    //public Map<String,>
+    public MemberDTO searchMem_PW(HashMap<String, String> hashMap) throws Exception;
 
     // test
     public String getTime() throws Exception;
