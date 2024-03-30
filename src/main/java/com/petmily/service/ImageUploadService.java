@@ -17,6 +17,7 @@ public interface ImageUploadService {
     public boolean deleteMem_Dir(String mem_id) throws Exception;
 
     // Image Upload
+    // image 1개씩
     // Upload Image정보 조회
     // Upload Image 수정(기존 Image 중복 확인 후 추가)
     // Upload Image 삭제

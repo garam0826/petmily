@@ -62,6 +62,30 @@ public class MemberServiceImple implements MemberService{
 
     //public String checkMem_PW(String mem_id) throws Exception;
 
+    // Login
+    @Override
+    public MemberDTO loginMember(HashMap<String, String> hashMap) throws Exception{
+        logger.info("사용자가 입력한 ID : " +hashMap.get("mem_id"));
+        logger.info("사용자가 입력한 비밀번호 : " +hashMap.get("mem_pw"));
+        MemberDTO memberDTO = null;
+
+        String db_pw = memberDAO.checkMem_PW(hashMap.get("mem_id"));
+        logger.info("DB에서 검색된 비밀번호 : " +db_pw);
+        // SQL 결과값과 비교
+        // 불일치 -> null값 return
+        // 일치 -> ID값 return
+        if(db_pw.equals(hashMap.get("mem_pw"))){
+            logger.info("일치");
+            memberDTO = memberDAO.slctMyInfo(hashMap.get("mem_id"));
+
+            return memberDTO;
+        }else{
+            logger.info("불일치");
+
+            return memberDTO;
+        }
+    }
+
     // 회원정보 조회
     @Override
     public MemberDTO slctMyInfo(String mem_id) throws Exception{
@@ -120,9 +144,9 @@ public class MemberServiceImple implements MemberService{
         String db_email = memberDTO.getEmail();
         logger.info("DB에서 검색된 nickname : " +db_nickname);
         logger.info("DB에서 검색된 email : " +db_email);
-        // SQL 결과값이 null ->
-        // 불일치 ->
-        // 일치
+        // SQL 결과값과 비교
+        // 불일치 -> null값 return
+        // 일치 -> ID값 return
         if((db_nickname.equals(hashMap.get("nickname")))){
             logger.info("일치");
         }else{
@@ -140,6 +164,11 @@ public class MemberServiceImple implements MemberService{
     public String searchMem_PW(HashMap<String, String> hashMap) throws Exception{
         logger.info("사용자가 입력한 ID : " +hashMap.get("mem_id"));
         logger.info("사용자가 입력한 email : " +hashMap.get("email"));
+
+        // SQL 결과값과 비교
+        // 불일치 -> null값 return
+        // 일치 -> ID값 return
+
 
         String resultPW = null;
 

@@ -76,6 +76,8 @@ public class ImageUploadServiceImple implements ImageUploadService{
         return result;
     }
 
+    //
+
     // test
     public String getTime() throws Exception{
         String time = imageUploadDAO.getTime();
