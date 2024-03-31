@@ -39,6 +39,8 @@ public interface BoardDAO {
     // 댓글 갯수 조회
     public int countReplyBoard(int board_idx) throws Exception;
 
+    // 회원 ID 기준 작성 글 검색
+
     // test
     public String getTime() throws Exception;
 }

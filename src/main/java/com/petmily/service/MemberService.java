@@ -15,6 +15,7 @@ public interface MemberService {
     //public String checkMem_PW(String mem_id) throws Exception;
 
     // Login
+    public MemberDTO loginMember(HashMap<String, String> hashMap) throws Exception;
 
     // 회원정보 조회
     public MemberDTO slctMyInfo(String mem_id) throws Exception;

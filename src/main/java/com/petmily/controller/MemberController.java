@@ -73,7 +73,7 @@ public class MemberController {
     // 회원 ID 중복 확인
     @GetMapping("/CheckID")
     public ResponseEntity<Boolean> checkMem_ID(@RequestParam String mem_id){
-        logger.info("/checkID GetMapping");
+        logger.info("/CheckID GetMapping");
 
         try{
             boolean result = memberService.checkMem_ID(mem_id);
@@ -96,12 +96,27 @@ public class MemberController {
 
     // Session에 필요한 정보 ID nickname
     // Login
-    /*@PostMapping("/Login")
+    @PostMapping("/Login")
     public ResponseEntity<MemberDTO> login(@RequestBody MemberDTO memberDTO){
-        return
-        // 내가 쓴 글, 댓글 찾는 SQL하고 service 작성
-    }*/
+        logger.info("/Login PostMapping");
 
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("mem_id", memberDTO.getMem_id());
+        hashMap.put("mem_pw", memberDTO.getMem_pw());
+
+        try{
+            MemberDTO loginInfo = memberService.loginMember(hashMap);
+            logger.info("Login 완료 : " +loginInfo.getMem_id());
+
+            // Login정보 축소 여부, 추가 내가 쓴 글, 댓글 찾는 SQL service 작성
+
+            return new ResponseEntity<>(loginInfo, HttpStatus.OK);
+        }catch(Exception e){
+            e.printStackTrace();
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     // 회원정보 수정
     @PutMapping("/MyPage/Update")
@@ -112,7 +127,7 @@ public class MemberController {
             boolean result = memberService.updateMyInfo(memberDTO);
 
             if(result){
-
+                //
 
                 return new ResponseEntity<>(result, HttpStatus.OK);
             }else{
