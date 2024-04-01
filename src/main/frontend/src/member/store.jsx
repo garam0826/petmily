@@ -35,13 +35,13 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import sessionReducer from './Reducer';
 import { persistStore, persistReducer } from "redux-persist";
 import storage from 'redux-persist/lib/storage';
-import {thunk} from "redux-thunk";
+import thunk from 'redux-thunk';
 
 // 초기 상태
-const initialState = {
+/*const initialState = {
     isLoggedIn: false,
     userData: null,
-};
+};*/
 
 // 리듀서
 const rootReducer = combineReducers({
@@ -65,3 +65,4 @@ export const store = createStore(
 export const persistor = persistStore(store);
 
 export default store;
+

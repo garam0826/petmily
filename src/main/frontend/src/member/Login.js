@@ -72,7 +72,7 @@ function Login() {
             mem_pw: password
         };
 
-        axios.post('/member/login', memberInfo)
+        axios.post('/member/Login', memberInfo)
             .then(response => {
                 console.log(response.data);
                 // Dispatching actual user data received from the server

@@ -4,20 +4,22 @@ import { createBrowserRouter } from "react-router-dom";
 import Mainpage from "./Mainpage";
 
 //import Login from "./member/Login";
+/*
 import WriteContent from "./board/WriteContent";
 import EditContent from "./board/EditContent";
 import ReadContent from "./board/ReadContent";
+*/
 
 const Loading = <div>Loading...</div>
 const Login1 = lazy(() => import("../src/member/Login"))
 const SignUp = lazy(() => import("../src/member/Signup"))
-const Memberinfo  = lazy(() => import("../src/member/no_redux/MemberInfo"))
-const Memberresign= lazy(() => import("../src/member/no_redux/MemberResign"))
-const Findid = lazy(() => import("../src/member/no_redux/FindId"))
+const Memberinfo  = lazy(() => import("./member/MemberInfo"))
+const Memberresign= lazy(() => import("./member/MemberResign"))
+const Findid = lazy(() => import("./member/FindId"))
 //const Animalinfo= lazy(() => import("../src/animal/animalInfo"))
 
 const Mypage= lazy(() => import("../src/member/MyPage"))
-const Board = lazy(() => import("../src/board/BoardList"))
+//const Board = lazy(() => import("../src/board/BoardList"))
 
 const root = createBrowserRouter([
     {
@@ -31,11 +33,11 @@ const root = createBrowserRouter([
     {
         path: "/member/signup",
         element: <Suspense fallback ={Loading}><SignUp/></Suspense>
-    },
+    },/*
     {
         path: "/board/list",
         element: <Suspense fallback ={Loading}><Board/></Suspense>
-    },
+    },*/
     {
         path: "/member/mypage/myinfo",
         element: <Suspense fallback ={Loading}><Memberinfo/></Suspense>
@@ -55,7 +57,7 @@ const root = createBrowserRouter([
     {
         path: "/member/mypage",
         element: <Suspense fallback ={Loading}><Mypage/></Suspense>
-    },
+    }/*,
     {
         path: "/board/list/read",
         element: <Suspense fallback ={Loading}><ReadContent/></Suspense>
@@ -67,7 +69,7 @@ const root = createBrowserRouter([
     {
         path: "/board/list/edit",
         element: <Suspense fallback ={Loading}><EditContent/></Suspense>
-    }
+    }*/
 ])
 
 export default root;
