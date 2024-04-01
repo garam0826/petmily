@@ -75,6 +75,14 @@ public class BoardDAOImple implements BoardDAO{
         return result;
     }
 
+    // 회원 ID 기준 글 목록 조회
+    @Override
+    public List<BoardDTO> listMyBoard(String mem_id) throws Exception{
+        List<BoardDTO> myb_List = sqlSession.selectList(namespace+ ".listBoard", mem_id);
+
+        return myb_List;
+    }
+
     // 댓글 쓰기
     @Override
     public int writeReply(ReplyDTO replyDTO) throws Exception{
@@ -90,6 +98,15 @@ public class BoardDAOImple implements BoardDAO{
 
         return r_List;
     }
+
+    // 댓글 삭제
+    @Override
+    public int deleteReply(int reply_idx) throws Exception{
+        int result = 0;
+
+        return result;
+    }
+
 
     // 댓글 갯수 조회
     @Override

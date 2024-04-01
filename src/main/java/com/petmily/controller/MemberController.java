@@ -118,6 +118,22 @@ public class MemberController {
         }
     }
 
+    // 회원정보 조회
+    @GetMapping("/MyPage")
+    public ResponseEntity<MemberDTO> slctMyInfo(@RequestParam String mem_id){
+        logger.info("/MyPage GetMapping");
+
+        try{
+            MemberDTO memberDTO = memberService.slctMyInfo(mem_id);
+
+            return new ResponseEntity<>(memberDTO, HttpStatus.OK);
+        }catch(Exception e){
+            e.printStackTrace();
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     // 회원정보 수정
     @PutMapping("/MyPage/Update")
     public ResponseEntity<Boolean> updateMyInfo(@RequestBody MemberDTO memberDTO){
@@ -184,10 +200,28 @@ public class MemberController {
 
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
+    // 회원 비밀번호 찾기
+    @PostMapping("/SearchPW")
+    public ResponseEntity<String> searchMem_PW(@RequestBody MemberDTO memberDTO){
+        logger.info("/SearchPW PostMapping");
 
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("mem_id", memberDTO.getNickname());
+        hashMap.put("email", memberDTO.getEmail());
+
+        try{
+            String resultPW = memberService.searchMem_ID(hashMap);
+            logger.info("검색된 PW : " +resultPW);
+
+            return new ResponseEntity<>(resultPW, HttpStatus.OK);
+        }catch(Exception e){
+            e.printStackTrace();
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     // image upload test
     @PostMapping("/imagetest")
