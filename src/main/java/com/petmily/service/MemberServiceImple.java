@@ -142,21 +142,22 @@ public class MemberServiceImple implements MemberService{
         MemberDTO memberDTO = memberDAO.searchMem_ID(hashMap);
         String db_nickname = memberDTO.getNickname();
         String db_email = memberDTO.getEmail();
+        String resultID = null;
         logger.info("DB에서 검색된 nickname : " +db_nickname);
         logger.info("DB에서 검색된 email : " +db_email);
         // SQL 결과값과 비교
         // 불일치 -> null값 return
         // 일치 -> ID값 return
-        if((db_nickname.equals(hashMap.get("nickname")))){
+        if(db_nickname.equals(hashMap.get("nickname")) && db_email.equals(hashMap.get("email"))){
             logger.info("일치");
+            resultID = memberDTO.getMem_id();
+
+            return resultID;
         }else{
             logger.info("불일치");
+
+            return resultID;
         }
-
-        String resultID = memberDTO.getMem_id();
-
-        //
-        return resultID;
     }
 
     // 회원 비밀번호 찾기
@@ -165,14 +166,25 @@ public class MemberServiceImple implements MemberService{
         logger.info("사용자가 입력한 ID : " +hashMap.get("mem_id"));
         logger.info("사용자가 입력한 email : " +hashMap.get("email"));
 
+        MemberDTO memberDTO = memberDAO.searchMem_PW(hashMap);
+        String db_ID = memberDTO.getMem_id();
+        String db_email = memberDTO.getEmail();
+        String resultPW = null;
+        logger.info("DB에서 검색된 ID : " +db_ID);
+        logger.info("DB에서 검색된 email : " +db_email);
         // SQL 결과값과 비교
         // 불일치 -> null값 return
         // 일치 -> ID값 return
+        if(db_ID.equals(hashMap.get("mem_id")) && db_email.equals(hashMap.get("email"))){
+            logger.info("일치");
+            resultPW = memberDTO.getMem_id();
 
+            return resultPW;
+        }else{
+            logger.info("불일치");
 
-        String resultPW = null;
-
-        return resultPW;
+            return resultPW;
+        }
     }
 
     // test

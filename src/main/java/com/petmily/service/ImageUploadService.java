@@ -18,6 +18,8 @@ public interface ImageUploadService {
 
     // Image Upload
     // image 1개씩
+    //public String uploadImage(String uploadPath, String originalName, byte[] fileData) throws Exception;
+
     // Upload Image정보 조회
     // Upload Image 수정(기존 Image 중복 확인 후 추가)
     // Upload Image 삭제
