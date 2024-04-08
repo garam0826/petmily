@@ -27,6 +27,9 @@ public interface BoardDAO {
     // 글 갯수 조회
     public int countBoard() throws Exception;
 
+    // 회원 ID 기준 글 목록 조회
+    public List<BoardDTO> listMyBoard(String mem_id) throws Exception;
+
     // 댓글 쓰기
     public int writeReply(ReplyDTO replyDTO) throws Exception;
 
@@ -36,8 +39,12 @@ public interface BoardDAO {
     // 댓글 수정
 
     // 댓글 삭제
+    public int deleteReply(int reply_idx) throws Exception;
+
     // 댓글 갯수 조회
     public int countReplyBoard(int board_idx) throws Exception;
+
+
 
     // test
     public String getTime() throws Exception;

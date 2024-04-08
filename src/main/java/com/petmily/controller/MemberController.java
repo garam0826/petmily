@@ -2,8 +2,8 @@ package com.petmily.controller;
 
 import com.petmily.dto.MemberDTO;
 
-import com.petmily.service.ImageUploadService;
 import com.petmily.service.MemberService;
+import com.petmily.service.ImageUploadService;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,8 +20,15 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
 
 
 @RestController
@@ -48,7 +55,7 @@ public class MemberController {
                 logger.info("회원가입 성공");
 
                 // 회원 ID 개인 folder 추가
-                //imageUploadService.createMem_Dir(memberDTO.getMem_id());
+                imageUploadService.createMem_Dir(memberDTO.getMem_id());
 
                 return new ResponseEntity<>(result, HttpStatus.OK);
             }else{
@@ -66,7 +73,7 @@ public class MemberController {
     // 회원 ID 중복 확인
     @GetMapping("/CheckID")
     public ResponseEntity<Boolean> checkMem_ID(@RequestParam String mem_id){
-        logger.info("/checkID GetMapping");
+        logger.info("/CheckID GetMapping");
 
         try{
             boolean result = memberService.checkMem_ID(mem_id);
@@ -89,11 +96,43 @@ public class MemberController {
 
     // Session에 필요한 정보 ID nickname
     // Login
-    /*@PostMapping("/Login")
+    @PostMapping("/Login")
     public ResponseEntity<MemberDTO> login(@RequestBody MemberDTO memberDTO){
-        return
-        // 내가 쓴 글, 댓글 찾는 SQL하고 service 작성
-    }*/
+        logger.info("/Login PostMapping");
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("mem_id", memberDTO.getMem_id());
+        hashMap.put("mem_pw", memberDTO.getMem_pw());
+
+        try{
+            MemberDTO loginInfo = memberService.loginMember(hashMap);
+            logger.info("Login 완료 : " +loginInfo.getMem_id());
+
+            // Login정보 축소 여부, 추가 내가 쓴 글, 댓글 찾는 SQL service 작성
+
+            return new ResponseEntity<>(loginInfo, HttpStatus.OK);
+        }catch(Exception e){
+            e.printStackTrace();
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // 회원정보 조회
+    @GetMapping("/MyPage")
+    public ResponseEntity<MemberDTO> slctMyInfo(@RequestParam String mem_id){
+        logger.info("/MyPage GetMapping");
+
+        try{
+            MemberDTO memberDTO = memberService.slctMyInfo(mem_id);
+
+            return new ResponseEntity<>(memberDTO, HttpStatus.OK);
+        }catch(Exception e){
+            e.printStackTrace();
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     // 회원정보 수정
     @PutMapping("/MyPage/Update")
@@ -104,7 +143,7 @@ public class MemberController {
             boolean result = memberService.updateMyInfo(memberDTO);
 
             if(result){
-
+                //
 
                 return new ResponseEntity<>(result, HttpStatus.OK);
             }else{
@@ -127,7 +166,7 @@ public class MemberController {
 
             if(result){
                 // 회원 ID 개인 folder 삭제
-                //imageUploadService.deleteMem_Dir();
+                imageUploadService.deleteMem_Dir(memberDTO.getMem_id());
 
                 return new ResponseEntity<>(result, HttpStatus.OK);
             }else{
@@ -138,6 +177,63 @@ public class MemberController {
 
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    // 회원 ID 찾기
+    // ID 찾기 입력된 email과 nickname 둘 다 일치 확인
+    // 입력된 email, nickname과 DAO에서 가져온 정보를 여기서 일치여부 확인
+    @PostMapping("/SearchID")
+    public ResponseEntity<String> searchMem_ID(@RequestBody MemberDTO memberDTO){
+        logger.info("/SearchID PostMapping");
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("nickname", memberDTO.getNickname());
+        hashMap.put("email", memberDTO.getEmail());
+
+        try{
+            String resultID = memberService.searchMem_ID(hashMap);
+            logger.info("검색된 ID : " +resultID);
+
+            return new ResponseEntity<>(resultID, HttpStatus.OK);
+        }catch(Exception e){
+            e.printStackTrace();
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // 회원 비밀번호 찾기
+    @PostMapping("/SearchPW")
+    public ResponseEntity<String> searchMem_PW(@RequestBody MemberDTO memberDTO){
+        logger.info("/SearchPW PostMapping");
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("mem_id", memberDTO.getNickname());
+        hashMap.put("email", memberDTO.getEmail());
+
+        try{
+            String resultPW = memberService.searchMem_ID(hashMap);
+            logger.info("검색된 PW : " +resultPW);
+
+            return new ResponseEntity<>(resultPW, HttpStatus.OK);
+        }catch(Exception e){
+            e.printStackTrace();
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // image upload test
+    @PostMapping("/imagetest")
+    public ResponseEntity<Boolean> testUpload(@RequestParam("images") MultipartFile images){
+        logger.info("/imagetest PostMapping");
+
+        boolean result = false;
+
+        logger.info("image name : " +images.getOriginalFilename());
+        logger.info("image size : " +images.getSize());
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     // test
