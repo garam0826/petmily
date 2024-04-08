@@ -114,16 +114,20 @@ const AnimalInfo = () => {
                         <p>Charge Name: {animalInfo.chargeNm}</p>
                         <p>Office Tel: {animalInfo.officetel}</p>
                         <hr/>
-                        {analysisResults.length > index && (
+                        {analysisResults.map((analysisresult, index) => (
                             <div>
-                                <p>[1] ClassName: {analysisResults[index].className1} /
-                                    Probability: {analysisResults[index].probability1}</p>
-                                <p>[2] ClassName: {analysisResults[index].className2} /
-                                    Probability: {analysisResults[index].probability2}</p>
-                                <p>[3] ClassName: {analysisResults[index].className3} /
-                                    Probability: {analysisResults[index].probability3}</p>
+                                {analysisresult.desertionNo === animalInfo.desertionNo && (
+                                    <div>
+                                        <p>[1] ClassName: {analysisresult.className1} /
+                                            Probability: {analysisresult.probability1}</p>
+                                        <p>[2] ClassName: {analysisresult.className2} /
+                                            Probability: {analysisresult.probability2}</p>
+                                        <p>[3] ClassName: {analysisresult.className3} /
+                                            Probability: {analysisresult.probability3}</p>
+                                    </div>
+                                )}
                             </div>
-                        )}
+                        ))}
                     </li>
                 ))}
             </ul>
