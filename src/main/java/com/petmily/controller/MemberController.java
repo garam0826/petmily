@@ -56,6 +56,7 @@ public class MemberController {
 
                 // 회원 ID 개인 folder 추가
                 imageUploadService.createMem_Dir(memberDTO.getMem_id());
+                // 강아지 특성값 저장할 table 회원 ID 추가 -> 0으로 초기화, 수정 날짜 column 포함
 
                 return new ResponseEntity<>(result, HttpStatus.OK);
             }else{
