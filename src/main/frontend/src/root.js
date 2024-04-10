@@ -16,8 +16,9 @@ const SignUp = lazy(() => import("../src/member/Signup"))
 const Memberinfo  = lazy(() => import("../src/member/no_redux/MemberInfo"))
 const Memberresign= lazy(() => import("../src/member/no_redux/MemberResign"))
 const Findid = lazy(() => import("../src/member/no_redux/FindId"))
-const Animalinfo= lazy(() => import("../src/animal/animalInfo"))
-
+*/
+const Animalinfo= lazy(() => import("../src/animal/AnimalInfo"))
+/*
 const Mypage= lazy(() => import("../src/member/MyPage"))
 const Board = lazy(() => import("../src/board/BoardList"))
 */
@@ -25,7 +26,7 @@ const root = createBrowserRouter([
     {
         path: "/main",
         element: <Suspense fallback ={Loading}><Mainpage/></Suspense>
-    }/*,
+    },/*,
     {
         path: "/member/login",
         element: <Suspense fallback ={Loading}><Login1/></Suspense>
@@ -49,11 +50,11 @@ const root = createBrowserRouter([
     {
         path: "/member/searchid",
         element: <Suspense fallback ={Loading}><Findid/></Suspense>
-    },
+    },*/
     {
         path: "/animal",
         element: <Suspense fallback ={Loading}><Animalinfo/></Suspense>
-    },
+    }/* ,
     {
         path: "/member/mypage",
         element: <Suspense fallback ={Loading}><Mypage/></Suspense>
