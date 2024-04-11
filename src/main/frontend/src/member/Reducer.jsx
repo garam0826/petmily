@@ -1,3 +1,4 @@
+/*
 // 세션 관리를 위한 액션 타입 정의
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
@@ -36,14 +37,15 @@ const Reducer = (state = initialState, action) => {
     }
 };
 
-/*export const ADDMYCART = 'ADDMYCART';
+export const ADDMYCART = 'ADDMYCART';
 export const REMOVEMYCART = 'REMOVEMYCART';
 
 export const addmycart = (item) => ({
     type: ADDMYCART,
     payload: item,
-});*/
+});
 
 
 
 export default Reducer;
+*/

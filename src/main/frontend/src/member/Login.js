@@ -56,12 +56,14 @@ export default Login;
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { login } from './Reducer'; // Assuming the path to your sessionReducer file
+//import { login } from './Reducer'; // Assuming the path to your sessionReducer file
+import {login} from "./store";
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -69,7 +71,8 @@ function Login() {
         e.preventDefault();
         const memberInfo = {
             mem_id: username,
-            mem_pw: password
+            mem_pw: password,
+            nickname: name
         };
 
         axios.post('/member/Login', memberInfo)
@@ -100,10 +103,14 @@ function Login() {
                     Password:
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </label>
+                <label>
+                    Name:
+                    <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
+                </label>
                 <button type="submit">Login</button>
             </form>
             <hr/>
-            <button onClick={() => navigate("/member/searchid")}> 아이디 찾기 >> </button>
+            <button onClick={() => navigate("/member/searchid")}> 아이디 찾기 >></button>
         </div>
     );
 }

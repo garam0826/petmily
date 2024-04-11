@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from './Reducer'; // Assuming the path to your sessionReducer file
+//import { logout } from './Reducer'; // Assuming the path to your sessionReducer file
+import {logout} from "./store";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
@@ -13,10 +14,12 @@ function MyPage() {
     const [newMemberInfo, setNewMemberInfo] = useState({
         mem_id: '',
         mem_pw: '',
-        mem_name: '',
-        birth: '',
-        phone: '',
-        email: ''
+        nickname: '',
+        //birth: '',
+        //phone: '',
+        email: '',
+        region: '',
+        county_district: ''
     });
     const [updateMessage, setUpdateMessage] = useState('');
     const [message, setMessage] = useState('');
@@ -42,7 +45,7 @@ function MyPage() {
         event.preventDefault();
 
         try {
-            const response = await axios.get(`/member/mypage/myinfo/${userid}`);
+            const response = await axios.get(`/member/MyPage/${userid}`);
             setMemberInfo(response.data);
             setNewMemberInfo(response.data);
             setError(null);
@@ -55,7 +58,7 @@ function MyPage() {
     // api - 회원 정보 수정
     const handleUpdateMember = async () => {
         try {
-            const response = await axios.put('/member/mypage/myedit', newMemberInfo);
+            const response = await axios.put('/member/MyPage/Update', newMemberInfo);
             setUpdateMessage(response.data);
             alert('회원정보 수정 성공!');
             setMemberInfo(newMemberInfo);
@@ -69,17 +72,19 @@ function MyPage() {
     // api - 회원 탈퇴
     const handleResign = async () => {
         try {
-            const response = await axios.post('/member/mypage/resign', { mem_id: userid });
+            const response = await axios.post('/member/MyPage/Resign', { mem_id: userid });
             if (response.status === 200) {
                 alert('회원 탈퇴 성공!');
                 setMemberInfo(null);
                 setNewMemberInfo({
                     mem_id: '',
                     mem_pw: '',
-                    mem_name: '',
-                    birth: '',
-                    phone: '',
-                    email: ''
+                    nickname: '',
+                    //birth: '',
+                    //phone: '',
+                    email: '',
+                    region: '',
+                    county_district: ''
                 });
                 navigate(("/main"));
             } else {
@@ -115,10 +120,10 @@ function MyPage() {
                         <h2>사용자 정보</h2>
                         <p>ID: {memberInfo.mem_id}</p>
                         <p>PW: {memberInfo.mem_pw}</p>
-                        <p>Name: {memberInfo.mem_name}</p>
-                        <p>Birth: {memberInfo.birth}</p>
-                        <p>Phone: {memberInfo.phone}</p>
+                        <p>Name: {memberInfo.name}</p>
                         <p>Email: {memberInfo.email}</p>
+                        <p>Region: {memberInfo.region}</p>
+                        <p>County_district: {memberInfo.county_district}</p>
 
                         <form>
                             <h2>회원 정보 수정</h2>
@@ -129,22 +134,23 @@ function MyPage() {
                             </label>
                             <label>
                                 Name:
-                                <input type="text" placeholder="새 이름" name="mem_name" value={newMemberInfo.mem_name}
-                                       onChange={handleInputChange}/>
-                            </label>
-                            <label>
-                                Birth:
-                                <input type="text" placeholder="새 생일" name="birth" value={newMemberInfo.birth}
-                                       onChange={handleInputChange}/>
-                            </label>
-                            <label>
-                                Phone:
-                                <input type="text" placeholder="새 핸드폰 번호" name="phone" value={newMemberInfo.phone}
+                                <input type="text" placeholder="새 이름" name="nickname" value={newMemberInfo.name}
                                        onChange={handleInputChange}/>
                             </label>
                             <label>
                                 Email:
                                 <input type="text" placeholder="새 이메일" name="email" value={newMemberInfo.email}
+                                       onChange={handleInputChange}/>
+                            </label>
+                            <label>
+                                Region:
+                                <input type="text" placeholder="새 주소(시/군)" name="region" value={newMemberInfo.region}
+                                       onChange={handleInputChange}/>
+                            </label>
+                            <label>
+                                County District:
+                                <input type="text" placeholder="새 주소(구)" name="countyDistrict"
+                                       value={newMemberInfo.county_district}
                                        onChange={handleInputChange}/>
                             </label>
                             <button onClick={handleUpdateMember}>수정</button>

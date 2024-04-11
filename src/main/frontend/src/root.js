@@ -13,8 +13,6 @@ import ReadContent from "./board/ReadContent";
 const Loading = <div>Loading...</div>
 const Login1 = lazy(() => import("../src/member/Login"))
 const SignUp = lazy(() => import("../src/member/Signup"))
-const Memberinfo  = lazy(() => import("./member/MemberInfo"))
-const Memberresign= lazy(() => import("./member/MemberResign"))
 const Findid = lazy(() => import("./member/FindId"))
 //const Animalinfo= lazy(() => import("../src/animal/animalInfo"))
 
@@ -38,14 +36,6 @@ const root = createBrowserRouter([
         path: "/board/list",
         element: <Suspense fallback ={Loading}><Board/></Suspense>
     },*/
-    {
-        path: "/member/mypage/myinfo",
-        element: <Suspense fallback ={Loading}><Memberinfo/></Suspense>
-    },
-    {
-        path: "/member/mypage/resign",
-        element: <Suspense fallback ={Loading}><Memberresign/></Suspense>
-    },
     {
         path: "/member/searchid",
         element: <Suspense fallback ={Loading}><Findid/></Suspense>
