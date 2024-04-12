@@ -28,8 +28,8 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/member")
@@ -226,13 +226,26 @@ public class MemberController {
 
     // image upload test
     @PostMapping("/imagetest")
-    public ResponseEntity<Boolean> testUpload(@RequestParam("images") MultipartFile images){
+    public ResponseEntity<Boolean> testUpload(@RequestParam("images") MultipartFile images, @RequestParam String mem_id){
         logger.info("/imagetest PostMapping");
 
         boolean result = false;
 
+        logger.info("upload ID : " +mem_id);
         logger.info("image name : " +images.getOriginalFilename());
         logger.info("image size : " +images.getSize());
+
+        try{
+            String path = imageUploadService.findMem_Dir(mem_id);
+            String name = imageUploadService.uploadImage(path, images.getOriginalFilename(), images.getBytes());
+            result = true;
+
+            logger.info("image upload 이름 : " +name);
+        }catch(IOException e){
+            e.printStackTrace();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
