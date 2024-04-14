@@ -12,6 +12,9 @@ public interface MemberDAO {
     // 회원 ID 중복 확인
     public int checkMem_ID(String mem_id) throws Exception;
 
+    // 시/군/구 주소 검색 -> region table(지역, 코드), district table(컬럼 4개) 구분
+    // 14개 특성 입력 table (정수로만 입력)
+
     // 회원 비밀번호 조회
     public String checkMem_PW(String mem_id) throws Exception;
 

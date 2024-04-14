@@ -12,6 +12,9 @@
         select count(mem_id) from member where mem_id = #{mem_id}
     </select>
 
+    <!-- 시/군/구 주소 검색 -->
+
+
     <!-- 회원 비밀번호 조회 -->
     <select id="checkMem_PW" parameterType="String" resultType="String">
         select mem_pw from member where mem_id = #{mem_id}

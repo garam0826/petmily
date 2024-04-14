@@ -3,6 +3,8 @@ package com.petmily.service;
 import com.petmily.dto.MemberDTO;
 import com.petmily.dto.ImageDTO;
 
+import java.nio.file.Path;
+
 import java.util.List;
 
 public interface ImageUploadService {
@@ -16,9 +18,12 @@ public interface ImageUploadService {
     // 회원 ID folder 삭제
     public boolean deleteMem_Dir(String mem_id) throws Exception;
 
+    // 회원 ID folder 경로 찾기
+    public String findMem_Dir(String mem_id) throws Exception;
+
     // Image Upload
     // image 1개씩
-    //public String uploadImage(String uploadPath, String originalName, byte[] fileData) throws Exception;
+    public String uploadImage(String uploadPath, String originalName, byte[] fileData) throws Exception;
 
     // Upload Image정보 조회
     // Upload Image 수정(기존 Image 중복 확인 후 추가)
