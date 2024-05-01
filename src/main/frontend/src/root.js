@@ -11,7 +11,7 @@ import ReadContent from "./board/ReadContent";*/
 
 const Loading = <div>Loading...</div>
 //const Login1 = lazy(() => import("../src/member/Login"))
-const SignUp = lazy(() => import("../src/member/Signup"))
+//const SignUp = lazy(() => import("../src/member/Signup"))
 /*
 const Memberinfo  = lazy(() => import("../src/member/no_redux/MemberInfo"))
 const Memberresign= lazy(() => import("../src/member/no_redux/MemberResign"))
@@ -19,7 +19,7 @@ const Findid = lazy(() => import("../src/member/no_redux/FindId"))
 */
 const AnimalInfo= lazy(() => import("../src/animal/AnimalInfo"))
 
-const MyPage= lazy(() => import("../src/member/MyPage"))
+//const MyPage= lazy(() => import("../src/member/MyPage"))
 const Board = lazy(() => import("../src/board/BoardList"))
 const WriteContent = lazy(() => import("../src/board/WriteContent"))
 const EditContent = lazy(() => import("../src/board/EditContent"))
@@ -31,14 +31,14 @@ const root = createBrowserRouter([
         path: "/main",
         element: <Suspense fallback ={Loading}><MainPage/></Suspense>
     },
-    {
+    /*{
         path: "/member/login",
         element: <Suspense fallback ={Loading}><Login1/></Suspense>
     },
     {
         path: "/member/signup",
         element: <Suspense fallback ={Loading}><SignUp/></Suspense>
-    },
+    },*/
     {
         path: "/board/list",
         element: <Suspense fallback ={Loading}><Board/></Suspense>
@@ -59,10 +59,10 @@ const root = createBrowserRouter([
         path: "/animal",
         element: <Suspense fallback ={Loading}><AnimalInfo/></Suspense>
     },
-    {
+    /*{
         path: "/member/mypage",
         element: <Suspense fallback ={Loading}><MyPage/></Suspense>
-    },
+    },*/
     {
         path: "/board/list/read",
         element: <Suspense fallback ={Loading}><ReadContent/></Suspense>
