@@ -53,7 +53,7 @@ function WriteContent() {
                     <input
                         name="reg_name"
                         type="text"
-                        value={userData ? userData.name : ''}
+                        value={userData ? userData.mem_id : ''}
                         readOnly
                     />
                 </div>

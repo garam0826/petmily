@@ -1,31 +1,36 @@
 import { Suspense, lazy } from "react";
 
 import { createBrowserRouter } from "react-router-dom";
-import Mainpage from "./Mainpage";
-const Loading = <div>Loading...</div>
+import MainPage from "./Mainpage";
+//const Loading = <div>Loading...</div>
 
-/*
-import Login from "./member/Login";
-import WriteContent from "./board/WriteContent";
+//import Login from "./member/Login";
+/*import WriteContent from "./board/WriteContent";
 import EditContent from "./board/EditContent";
-import ReadContent from "./board/ReadContent";
+import ReadContent from "./board/ReadContent";*/
 
 const Loading = <div>Loading...</div>
-const Login1 = lazy(() => import("../src/member/Login"))
+//const Login1 = lazy(() => import("../src/member/Login"))
 const SignUp = lazy(() => import("../src/member/Signup"))
+/*
 const Memberinfo  = lazy(() => import("../src/member/no_redux/MemberInfo"))
 const Memberresign= lazy(() => import("../src/member/no_redux/MemberResign"))
 const Findid = lazy(() => import("../src/member/no_redux/FindId"))
-const Animalinfo= lazy(() => import("../src/animal/animalInfo"))
-
-const Mypage= lazy(() => import("../src/member/MyPage"))
-const Board = lazy(() => import("../src/board/BoardList"))
 */
+const AnimalInfo= lazy(() => import("../src/animal/AnimalInfo"))
+
+const MyPage= lazy(() => import("../src/member/MyPage"))
+const Board = lazy(() => import("../src/board/BoardList"))
+const WriteContent = lazy(() => import("../src/board/WriteContent"))
+const EditContent = lazy(() => import("../src/board/EditContent"))
+const ReadContent = lazy(() => import("../src/board/ReadContent"))
+
+
 const root = createBrowserRouter([
     {
         path: "/main",
-        element: <Suspense fallback ={Loading}><Mainpage/></Suspense>
-    }/*,
+        element: <Suspense fallback ={Loading}><MainPage/></Suspense>
+    },
     {
         path: "/member/login",
         element: <Suspense fallback ={Loading}><Login1/></Suspense>
@@ -38,7 +43,7 @@ const root = createBrowserRouter([
         path: "/board/list",
         element: <Suspense fallback ={Loading}><Board/></Suspense>
     },
-    {
+    /*{
         path: "/member/mypage/myinfo",
         element: <Suspense fallback ={Loading}><Memberinfo/></Suspense>
     },
@@ -49,14 +54,14 @@ const root = createBrowserRouter([
     {
         path: "/member/searchid",
         element: <Suspense fallback ={Loading}><Findid/></Suspense>
-    },
+    },*/
     {
         path: "/animal",
-        element: <Suspense fallback ={Loading}><Animalinfo/></Suspense>
+        element: <Suspense fallback ={Loading}><AnimalInfo/></Suspense>
     },
     {
         path: "/member/mypage",
-        element: <Suspense fallback ={Loading}><Mypage/></Suspense>
+        element: <Suspense fallback ={Loading}><MyPage/></Suspense>
     },
     {
         path: "/board/list/read",
@@ -69,7 +74,7 @@ const root = createBrowserRouter([
     {
         path: "/board/list/edit",
         element: <Suspense fallback ={Loading}><EditContent/></Suspense>
-    }*/
+    }
 ])
 
 export default root;
