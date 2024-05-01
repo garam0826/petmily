@@ -35,6 +35,8 @@ public interface MemberService {
     // PW 찾기 입력된 email, mem_id과 회원정보 2개 일치 확인
     public String searchMem_PW(HashMap<String, String> hashMap) throws Exception;
 
+    // 기초자치단체 기준 주소 검색 경기도 부터 다시 저장
+
     // test
     public String getTime() throws Exception;
 }

@@ -9,6 +9,7 @@ public interface ImageUploadDAO {
     // Upload Image정보 수정(기존 Image 중복 확인 후 추가)
     // Upload Image정보 삭제
 
+
     // test
     public String getTime() throws Exception;
 }

@@ -28,8 +28,8 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/member")
@@ -56,6 +56,7 @@ public class MemberController {
 
                 // 회원 ID 개인 folder 추가
                 imageUploadService.createMem_Dir(memberDTO.getMem_id());
+                // 강아지 특성값 저장할 table 회원 ID 추가 -> 0으로 초기화, 수정 날짜 column 포함
 
                 return new ResponseEntity<>(result, HttpStatus.OK);
             }else{
@@ -225,13 +226,26 @@ public class MemberController {
 
     // image upload test
     @PostMapping("/imagetest")
-    public ResponseEntity<Boolean> testUpload(@RequestParam("images") MultipartFile images){
+    public ResponseEntity<Boolean> testUpload(@RequestParam("images") MultipartFile images, @RequestParam String mem_id){
         logger.info("/imagetest PostMapping");
 
         boolean result = false;
 
+        logger.info("upload ID : " +mem_id);
         logger.info("image name : " +images.getOriginalFilename());
         logger.info("image size : " +images.getSize());
+
+        try{
+            String path = imageUploadService.findMem_Dir(mem_id);
+            String name = imageUploadService.uploadImage(path, images.getOriginalFilename(), images.getBytes());
+            result = true;
+
+            logger.info("image upload 이름 : " +name);
+        }catch(IOException e){
+            e.printStackTrace();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }

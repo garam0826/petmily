@@ -53,6 +53,4 @@ public class AnimalInfoController {
         // 클라이언트에 결과 반환
         return ResponseEntity.ok(analysisResult);
     }
-
-
 }
