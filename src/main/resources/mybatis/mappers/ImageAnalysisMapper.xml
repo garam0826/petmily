@@ -10,6 +10,10 @@
         VALUES (#{desertionNo}, #{className1}, #{probability1}, #{className2}, #{probability2}, #{className3}, #{probability3}, #{popfile})
     </insert>
 
+    <select id="findAllUnprocessed" resultType="com.petmily.dto.ImageAnalysisResult">
+        SELECT * FROM ImageAnalysisResult WHERE desertionNo NOT IN (SELECT desertionNo FROM DogCharacteristics)
+    </select>
+
 
 
 
