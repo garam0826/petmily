@@ -11,9 +11,9 @@ American Eskimo Dog,Loyal / Smart / Versatile,9-12 inches (toy) / 12-15 inches (
 American Foxhound,independent / easy-going / sweet-tempered,22-25 inches (male) / 21-24 inches (female),65-70 pounds (male) / 60-65 pounds (female),11-13 years,3,5,5,3,1,1,3,3,3,3,3,5,4,3
 American Hairless Terrier,alert / curious / energetic,12-16 inches,12-28 pounds,14-16 years,5,5,3,1,1,1,3,3,3,5,5,3,3,3
 American Leopard Hound,intelligent / sociable / energetic,22 - 27 males / 21 - 25 females,45 - 75 lbs males / 35 - 65 lbs females,12-15 years,3,5,5,3,1,1,1,5,3,5,3,5,4,5
-American Staffordshire Terrier,good-natured / confident / smart,18-19 inches (male) / 17-18 inches (female),55-70 pounds (male) / 40-55 pounds (female),12-16 years,5,3,3,2,1,1,4,5,3,3,3,3,3,3
+American_staffordshire_terrier,good-natured / confident / smart,18-19 inches (male) / 17-18 inches (female),55-70 pounds (male) / 40-55 pounds (female),12-16 years,5,3,3,2,1,1,4,5,3,3,3,3,3,3
 American Water Spaniel,charming / eager / happy,15-18 inches,30-45 pounds (male) / 25-40 pounds (female),10-14 years,3,3,3,1,3,1,3,3,3,3,5,3,3,3
-Anatolian Shepherd Dog,reserved / independent / loyal,29 inches (male) / 27 inches (female),110-150 pounds (male) / 80-120 pounds (female),11-13 years,1,3,3,3,2,1,1,5,3,3,2,3,3,3
+Anatolian_shepherd_dog,reserved / independent / loyal,29 inches (male) / 27 inches (female),110-150 pounds (male) / 80-120 pounds (female),11-13 years,1,3,3,3,2,1,1,5,3,3,2,3,3,3
 Appenzeller Sennenhund,versatile / agile / lively,20 -22 inches,48-70 pounds,13-15 years,5,3,5,3,3,3,1,5,3,5,5,5,5,5
 Australian Cattle Dog,Loyal / Intelligent / Tenacious,18-20 inches (male) / 17-19 inches (female),35-50 pounds,12-16 years,3,3,3,3,1,1,3,4,3,3,4,1,5,4
 Australian Kelpie,alert / loyal / intelligent,17-20 inches,35-50 lbs,10-13 years,3,3,3,3,1,1,3,4,3,3,4,1,5,4
@@ -28,17 +28,17 @@ Basset Fauve de Bretagne,sociable / lively / smart,12.5-15.5 inches,23-39 pounds
 Basset Hound,charming / patient / low-key,up to 15 inches,40-65 pounds,12-13 years,3,5,5,2,3,4,3,3,3,3,3,4,2,3
 Bavarian Mountain Scent Hound,loyal / reserved with strangers / versatile,17-20.5 inches,37-66 pounds,12-15 years,3,3,3,3,2,2,3,3,3,3,4,2,4,4
 Beagle,curious / friendly / merry,13 inches & under / 13-15 inches,under 20 pounds (13 inches & under) / 20-30 pounds (13-15 inches),10-15 years,3,5,5,3,2,1,3,2,4,4,3,4,4,4
-Bearded Collie,smart / bouncy / charismatic,21-22 inches (male) / 20-21 inches (female),45-55 pounds,12-14 years,4,5,5,3,4,1,4,3,4,4,3,5,4,3
+Bearded_collie,smart / bouncy / charismatic,21-22 inches (male) / 20-21 inches (female),45-55 pounds,12-14 years,4,5,5,3,4,1,4,3,4,4,3,5,4,3
 Beauceron,faithful / gentle / obedient,25.5-27.5 inches (male) / 24-26.5 inches (female),70-110 pounds,10-12 years,3,3,3,4,3,1,2,4,3,3,3,3,5,3
 Bedlington Terrier,loyal / charming / frollicking,15-17.5 inches,17-23 pounds,11-16 years,3,3,3,1,3,1,3,4,3,3,3,3,4,3
 Belgian Laekenois,alert / intelligent / affectionate,24-26 inches (male) / 22-24 inches (female),55-65 pounds,10-12 years,3,3,3,3,2,1,3,4,3,3,5,3,4,4
-Belgian Malinois,confident / smart / hardworking,24-26 inches (male) / 22-24 inches (female),60-80 pounds (male) / 40-60 pounds (female),14-16 years,3,3,3,3,2,1,3,4,3,3,5,3,4,4
+Belgian_malinois,confident / smart / hardworking,24-26 inches (male) / 22-24 inches (female),60-80 pounds (male) / 40-60 pounds (female),14-16 years,3,3,3,3,2,1,3,4,3,3,5,3,4,4
 Belgian Sheepdog,bright / watchful / serious-minded,24-26 inches (male) / 22-24 inches (female),55-75 pounds (male) / 45-60 pounds (female),12-14 years,3,3,3,3,2,1,3,4,3,3,5,3,4,4
 Belgian Tervuren,alert / intelligent / courageous,24-26 inches (male) / 22-24 inches (female),55-75 pounds (male) / 45-60 pounds (female),12-14 years,3,3,3,3,2,1,3,4,3,3,5,3,4,4
 Bergamasco Sheepdog,independent / intelligent / sociable,23.5 inches (male) / 22 inches (female),70-84 pounds (male) / 57-71 pounds (female),13-15 years,3,3,3,1,1,2,3,4,3,3,3,1,3,3
 Berger Picard,loyal / good-natured / observant,23.5-25.5 inches (male) / 21.5-23.5 inches (female),50-70 pounds,12-13 years,3,3,3,3,1,1,3,4,3,3,4,2,4,4
 Bernese Mountain Dog,good-natured / calm / strong,25-27.5 inches (male) / 23-26 inches (female),80-115 pounds (male) / 70-95 pounds (female),7-10 years,5,5,5,5,3,3,4,3,4,4,4,3,4,3
-Bichon Frise,curious / playful / peppy,9.5-11.5 inches,12-18 pounds,14-15 years,5,5,5,1,5,1,5,2,4,4,4,3,4,3
+Bichon_frise,curious / playful / peppy,9.5-11.5 inches,12-18 pounds,14-15 years,5,5,5,1,5,1,5,2,4,4,4,3,4,3
 Biewer Terrier,intelligent / devoted / amusing,7-11 inches,4-8 pounds,16 years,5,3,5,1,3,1,3,2,4,3,3,3,3,3
 Black and Tan Coonhound,easy-going / bright / brave,25-27 inches (male) / 23-25 inches (female),65-110 pounds,10-12 years,4,5,5,3,2,3,3,2,3,4,3,4,3,3
 Black Russian Terrier,intelligent / calm / powerful,27-30 inches (male) / 26-29 inches (female),80-130 pounds,10-12 years,3,3,3,3,4,3,2,5,3,4,4,3,4,4
@@ -65,7 +65,7 @@ Bull Terrier,playful / charming / mischievous,21-22 inches,50-70 pounds,12-13 ye
 Bulldog,friendly / courageous / calm,14-15 inches,50 pounds (male) / 40 pounds (female),8-10 years,4,3,3,3,3,3,4,3,4,3,4,2,3,3
 Bullmastiff,loyal / affectionate / brave,25-27 inches (male) / 24-26 inches (female),110-130 pounds (male) / 100-120 pounds (female),7-9 years,4,3,3,3,1,3,3,5,3,3,4,1,4,4
 Cairn Terrier,alert / cheerful / busy,10 inches (male) / 9.5 inches (female),14 pounds (male) / 13 pounds (female),13-15 years,4,3,3,2,2,1,3,4,4,3,3,4,3,3
-Canaan Dog,alert / vigilant / confident,20-24 inches (male) / 19-23 inches (female),45-55 pounds (male) / 35-45 pounds (female),12-15 years,3,3,3,4,2,1,3,4,3,3,4,5,3,3
+Canaan_dog,alert / vigilant / confident,20-24 inches (male) / 19-23 inches (female),45-55 pounds (male) / 35-45 pounds (female),12-15 years,3,3,3,4,2,1,3,4,3,3,4,5,3,3
 Cane Corso,intelligent / affectionate / majestic,25-27.5 inches (male) / 23.5-26 inches (female),Proportionate to height,9-12 years,4,3,3,2,1,3,3,5,3,3,4,3,4,3
 Cardigan Welsh Corgi,loyal / affectionate / smart,10.5-12.5 inches,30-38 pounds (male) / 25-34 pounds (female),12-15 years,4,4,3,3,2,1,4,3,4,3,4,5,4,4
 Carolina Dog,independent / loyal / reserved with strangers,17.75-19.5 inches,30-55 pounds,12-15 years,3,3,3,3,1,2,3,3,3,3,3,3,3,3
@@ -76,10 +76,10 @@ Central Asian Shepherd Dog,independent / courageous / self-confident,Minimum: 25
 Cesky Terrier,clever / adventurous / family-oriented,10-13 inches,14-24 pounds,12-15 years,4,5,3,2,2,1,4,3,3,4,3,3,3,3
 Chesapeake Bay Retriever,bright / affectionate / sensitive,23-26 inches (male) / 21-24 inches (female),65-80 pounds (male) / 55-70 pounds (female),10-13 years,4,3,3,3,3,2,3,4,3,4,5,3,4,4
 Chihuahua,charming / graceful / sassy,5-8 inches,not exceeding 6 pounds,14-16 years,4,1,3,2,1,1,2,4,4,4,3,5,4,3
-Chinese Crested,alert / lively / affectionate,11-13 inches,8-12 pounds,13-18 years,4,3,3,1,2,1,4,3,3,4,4,3,3,3
+Chinese_crested,alert / lively / affectionate,11-13 inches,8-12 pounds,13-18 years,4,3,3,1,2,1,4,3,3,4,4,3,3,3
 Chinese Shar-Pei,independent / loyal / calm,18-20 inches,45-60 pounds,8-12 years,4,3,3,3,1,3,3,4,3,4,3,3,3,3
 Chinook,devoted / smart / patient,24-26 inches (male) / 22-24 inches (female),55-90 pounds (male) / 50-65 pounds (female),12-15 years,4,5,5,3,3,1,3,4,3,4,4,5,3,3
-Chow Chow,dignified / bright / serious-minded,17-20 inches,45-70 pounds,8-12 years,4,3,2,3,3,3,2,5,3,3,3,1,3,3
+Chow_chow,dignified / bright / serious-minded,17-20 inches,45-70 pounds,8-12 years,4,3,2,3,3,3,2,5,3,3,3,1,3,3
 cirneco-delletna,independent / friendly / affectionate,18-20 inches (male) / 17-19 inches (female),20-28 pounds (male) / 19-25 pounds (female),15-16 years,4,4,4,1,1,0,4,3,4,4,4,2,3,4
 Clumber Spaniel,mellow / amusing / gentlemanly,18-20 inches (male) / 17-19 inches (female),70-85 pounds (male) / 55-70 pounds (female),10-12 years,4,3,3,3,2,4,4,3,3,4,4,1,3,3
 Cocker Spaniel,smart / happy / gentle,14.5-15.5 inches (male) / 13.5-14.5 inches (female),25-30 pounds (male) / 20-25 pounds (female),10-14 years,4,5,5,3,4,2,4,3,3,4,4,3,4,3
@@ -121,7 +121,7 @@ German Spitz,active / devoted / smart,Toy 8 - 12 / Med 12-16 / Large 16 -20,Toy 
 German Wirehaired Pointer,affectionate / eager / enthusiastic,24-26 inches (male) / minimum 22 inches (female),50-70 pounds,14-16 years,5,3,3,2,2,2,4,3,4,4,5,3,5,4
 Giant Schnauzer,alert / loyal / trainable,25.5-27.5 inches (male) / 23.5-25.5 inches (female),60-85 pounds (male) / 55-75 pounds (female),12-15 years,5,3,3,3,4,2,3,5,4,4,5,3,5,4
 Glen of Imaal Terrier,spirited / gentle / bold,12.5-14 inches,32-40 pounds,10-15 years,5,3,3,2,3,2,3,3,3,4,3,2,3,3
-Golden Retriever,intelligent / friendly / devoted,23-24 inches (male) / 21.5-22.5 inches (female),65-75 pounds (male) / 55-65 pounds (female),10-12 years,5,5,5,4,2,2,5,3,4,5,5,1,3,4
+Golden_retriever,intelligent / friendly / devoted,23-24 inches (male) / 21.5-22.5 inches (female),65-75 pounds (male) / 55-65 pounds (female),10-12 years,5,5,5,4,2,2,5,3,4,5,5,1,3,4
 Gordon Setter,confident / affectionate / bold,24-27 inches (male) / 23-26 inches (female),55-80 pounds (male) / 45-70 pounds (female),12-13 years,5,3,3,3,2,4,3,4,3,4,5,3,5,4
 grand-basset-griffon-vendeen,independent / outgoing / happy,15.5-18 inches,40-45 pounds,13-15 years,5,3,4,3,2,2,5,3,4,4,3,4,5,4
 Great Dane,friendly / patient / dependable,30-32 inches (male) / 28-30 inches (female),140-175 pounds (male) / 110-140 pounds (female),7-10 years,5,3,3,3,1,4,3,5,4,4,3,3,4,4
@@ -135,7 +135,7 @@ Havanese,intelligent / outgoing / funny,8.5-11.5 inches,7-13 pounds,14-16 years,
 Hokkaido,dignified / alert / devoted,18-20 inches,44-66 pounds,12-15 years,5,3,3,3,2,2,3,5,3,3,4,3,4,4
 Hovawart,alert / intelligent / faithful,23-28 inches,65-90 pounds,10-14 years,5,4,4,3,2,2,4,5,4,4,4,1,3,4
 Ibizan Hound,family-oriented / even-tempered / polite,23.5-27.5 inches (male) / 22.5-26 inches (female),50 pounds (male) / 45 pounds (female),11-14 years,5,3,5,2,1,1,3,3,4,4,3,3,5,5
-Icelandic Sheepdog,friendly / playful / inquisitive,18 inches (male) / 16.5 inches (female),30 pounds (male) / 25 pounds (female),12-14 years,5,5,4,3,2,2,3,4,3,4,5,4,4,5
+Icelandic_sheepdog,friendly / playful / inquisitive,18 inches (male) / 16.5 inches (female),30 pounds (male) / 25 pounds (female),12-14 years,5,5,4,3,2,2,3,4,3,4,5,4,4,5
 Irish Red and White Setter,courageous / spirited / determined,24.5-26 inches (male) / 22.5-24 inches (female),42-60 pounds (male) / 35-50 pounds (female),11-15 years,5,5,5,2,2,2,5,3,3,5,5,3,5,3
 Irish Setter,active / sweet-natured / outgoing,27 inches (male) / 25 inches (female),70 pounds (male) / 60 pounds (female),12-15 years,5,5,5,3,3,2,5,3,5,4,4,3,5,4
 Irish Terrier,bold / dashing / tenderhearted,18 inches,27 pounds (male) / 25 pounds (female),13-15 years,5,5,1,2,1,1,3,5,3,4,3,3,3,4
@@ -144,7 +144,7 @@ Irish Wolfhound,dignified / courageous / calm,32 inches minimum (male) / 30 inch
 Italian Greyhound,alert / playful / sensitive,13-15 inches,7-14 pounds,14-15 years,5,3,5,3,1,1,5,3,4,4,4,3,3,3
 Jagdterrier,intelligent / courageous / hardworking,13-16 inches,17-22 pounds,10-12 years,5,3,3,2,1,1,3,4,4,3,3,1,3,4
 Japanese Akitainu,dignified / alert / aloof,25-27.5 inches (male) / 22.5-25 inches (female),65-75 pounds (male) / 55-65 pounds (female),10-12 years,1,3,1,5,3,1,1,5,3,3,1,3,3,3
-Japanese Chin,charming / loving / noble,8-11 inches,7-11 pounds,10-12 years,5,3,5,3,2,1,3,3,3,4,3,2,3,3
+Japanese_chin,charming / loving / noble,8-11 inches,7-11 pounds,10-12 years,5,3,5,3,2,1,3,3,3,4,3,2,3,3
 Japanese Spitz,"loyal, playful, smart",12-15 inches,10-25 pounds,10-14 years,3,5,5,3,3,1,5,3,3,5,5,3,3,3
 Japanese Terrier,reserved / independent / curious,10-13 inches,10-12 lbs,13-15 years,3,3,3,3,2,1,3,5,3,5,1,1,3,3
 Jindo,alert / loyal / intelligent,19-22 (males) / 17-20 (females),40 -50 (males) / 30-40 (females),14-15 years,3,3,1,3,3,1,1,3,3,1,3,3,3,3
@@ -162,8 +162,8 @@ Lakeland Terrier,friendly / confident / bold,14.5-15 inches (male) / slightly sm
 Lancashire Heeler,intelligent / versatile / affectionate,10-12 inches,9-17 pounds,12-15 years,5,5,5,3,1,1,4,3,4,4,4,4,4,4
 Lapponian Herder,intelligent / friendly / energetic,18-20 inches,70 pounds,10-14 years,5,3,3,3,2,2,3,4,3,4,4,4,4,4
 Leonberger,friendly / playful / gentle,28-31.5 inches (male) / 25.5-29.5 inches (female),110-170 pounds (male) / 90-140 pounds (female),7 years,5,5,3,4,4,3,5,4,3,4,5,3,3,4
-Lhasa Apso,confident / smart / comical,10-11 inches (male) / slightly smaller (female),12-18 pounds,12-15 years,5,3,3,1,3,1,3,5,3,5,3,3,3,3
-lowchen,affectionate / outgoing / positive,12-14 inches,15 pounds,13-15 years,5,5,3,2,2,1,3,4,4,4,4,3,3,3
+Lhasa_apso,confident / smart / comical,10-11 inches (male) / slightly smaller (female),12-18 pounds,12-15 years,5,3,3,1,3,1,3,5,3,5,3,3,3,3
+Lowchen,affectionate / outgoing / positive,12-14 inches,15 pounds,13-15 years,5,5,3,2,2,1,3,4,4,4,4,3,3,3
 Maltese,playful / charming / gentle,7-9 inches,under 7 pounds,12-15 years,5,3,3,1,4,1,3,4,3,4,3,3,3,3
 Manchester Terrier (Standard),bright / spirited / keenly observant,15-16 inches,12-22 pounds,15-17 years,5,4,3,2,2,1,3,4,4,4,4,4,4,3
 Manchester Terrier (Toy),intelligent / agile / spirited,10-12 inches,under 12 pounds,15-17 years,5,4,3,2,2,1,3,4,4,4,4,4,4,3
@@ -179,9 +179,9 @@ Nederlandse Kooikerhondje,alert / friendly / quick,"Dogs 16"" / Females 15""",20
 Newfoundland,devoted / sweet / patient,28 inches (average male) / 26 inches (average female),130-150 pounds (male) / 100-120 pounds (female),9-10 years,5,5,5,3,2,5,5,5,3,4,3,1,3,3
 Norfolk Terrier,alert / fearless / fun-loving,9-10 inches,11-12 pounds,12-16 years,5,5,3,3,2,1,5,4,4,4,3,4,4,4
 Norrbottenspets,fearless / agile / attentive,16.5-18 inches,20-30 pounds,14-17 years,5,3,3,3,2,1,3,3,3,4,4,3,4,3
-Norwegian Buhund,confident / smart / perceptive,17-18.5 inches (male) / 16-17.5 inches (female),31-40 pounds (male) / 26-35 pounds (female),12-15 years,5,3,3,3,2,1,3,4,3,4,3,4,4,4
+Norwegian_buhund,confident / smart / perceptive,17-18.5 inches (male) / 16-17.5 inches (female),31-40 pounds (male) / 26-35 pounds (female),12-15 years,5,3,3,3,2,1,3,4,3,4,3,4,4,4
 Norwegian Elkhound,friendly / confident / dependable,20.5 inches (male) / 19.5 inches (female),55 pounds (male) / 48 pounds (female),12-15 years,5,3,3,3,2,2,4,5,4,4,4,4,4,4
-Norwegian Lundehund,alert / loyal / energetic,13-15 inches (male) / 12-14 inches (female),15-18 lbs (male) / 12-15 lbs (female),12-15 years,3,3,3,3,2,1,3,3,3,3,3,3,3,3
+Norwegian_lundehund,alert / loyal / energetic,13-15 inches (male) / 12-14 inches (female),15-18 lbs (male) / 12-15 lbs (female),12-15 years,3,3,3,3,2,1,3,3,3,3,3,3,3,3
 Norwich Terrier,alert / curious / loyal / affectionate / gregarious,10 inches,12 pounds,12-15 years,5,5,3,3,2,1,5,4,4,4,3,4,4,4
 Nova Scotia Duck Tolling Retriever,intelligent / affectionate / outgoing,18-21 inches (male) / 17-20 inches (female),35-50 pounds,12-14 years,5,5,4,3,2,2,3,3,5,4,5,2,5,4
 Old English Sheepdog,smart / gentle / adaptable,22 inches & up (male) / 21 inches & up (female),60-100 pounds,10-12 years,5,5,3,3,4,3,3,4,4,4,4,3,3,4
@@ -206,7 +206,7 @@ Portuguese Podengo,alert / independent / intelligent,22-28 inches (large) 16-22 
 Portuguese Podengo Pequeno,playful / charming / lively,8-12 inches,9-13 pounds,12-15 years,5,5,5,3,2,1,3,3,4,4,3,3,4,4
 Portuguese Pointer,energetic / affectionate / smart,20.5-22 inches,35-59 pounds,14 years,5,5,3,3,1,2,4,3,4,4,5,3,5,5
 Portuguese Sheepdog,intelligent / devoted / lively,16.5-21.5 inches,37.5-59 pounds,12-13 years,5,3,3,2,2,2,3,5,3,4,5,3,4,4
-Portuguese Water Dog,affectionate / adventurous / athletic,20-23 inches (male) / 17-21 inches (female),42-60 pounds (male) / 35-50 pounds (female),11-13 years,5,5,4,2,4,2,4,4,5,5,5,3,5,5
+Portuguese_water_dog,affectionate / adventurous / athletic,20-23 inches (male) / 17-21 inches (female),42-60 pounds (male) / 35-50 pounds (female),11-13 years,5,5,4,2,4,2,4,4,5,5,5,3,5,5
 Pudelpointer,friendly / smart / willing to please,22-26 inches,45-70 pounds,14 years,5,3,3,3,1,3,3,3,3,5,5,3,4,4
 Pug,charming / loving / mischievous,10-13 inches,14-18 pounds,13-15 years,5,5,4,4,2,1,5,3,5,5,4,1,3,3
 Puli,loyal / smart / home-loving,17 inches (male) / 16 inches (female),25-35 pounds,10-15 years,5,3,3,1,5,2,3,5,3,4,5,3,3,5
