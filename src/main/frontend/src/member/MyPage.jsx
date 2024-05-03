@@ -4,6 +4,7 @@ import { logout } from './Reducer'; // Assuming the path to your sessionReducer 
 import {useNavigate} from "react-router-dom";
 import store from './Store';
 import axios from "axios";
+import Menu from "../Menu";
 
 function MyPage() {
     const dispatch = useDispatch();
@@ -38,6 +39,7 @@ function MyPage() {
 
     return (
         <div>
+            <Menu />
             <h1>My Page</h1>
             <p>Welcome, {userId}님!</p>
             <hr/>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Menu from "../Menu";
 
 const AnimalInfo = () => {
     const [animalInfos, setAnimalInfos] = useState([]);
@@ -62,6 +63,7 @@ const AnimalInfo = () => {
 
     return (
         <div>
+            <Menu />
             {loading && <div>Loading...</div>}
             {error && <div>Error: {error.message}</div>}
             <div>
