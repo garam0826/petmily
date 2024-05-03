@@ -5,6 +5,8 @@
     <typeAliases>
         <!-- DTO Alias -->
         <typeAlias alias="MemberDTO" type="com.petmily.dto.MemberDTO" />
+        <typeAlias alias="RegionDTO" type="com.petmily.dto.RegionDTO" />
+        <typeAlias alias="DistrictDTO" type="com.petmily.dto.DistrictDTO" />
         <typeAlias alias="BoardDTO" type="com.petmily.dto.BoardDTO" />
         <typeAlias alias="ReplyDTO" type="com.petmily.dto.ReplyDTO" />
 
