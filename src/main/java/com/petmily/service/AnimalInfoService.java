@@ -1,5 +1,6 @@
 package com.petmily.service;
 
+import com.petmily.dao.AnimalInfoDAO;
 import com.petmily.dao.ImageAnalysisDAO;
 import com.petmily.dto.AnimalInfo;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -34,7 +35,7 @@ public class AnimalInfoService {
                 .queryParam("org_cd", orgCd)
                 .queryParam("care_reg_no", "") //311322200900001 아무 보호소 코드
                 .queryParam("pageNo", "1")
-                .queryParam("numOfRows", "10")
+                .queryParam("numOfRows", "1000")
                 .queryParam("_type", "json");
 
         RestTemplate restTemplate = new RestTemplate();
@@ -123,6 +124,15 @@ public class AnimalInfoService {
     public ImageAnalysisResult getAnalysisResult(String desertionNo) {
 
         return imageAnalysisDAO.findByDesertionNo(desertionNo);
+    }
+
+
+
+    @Autowired
+    private AnimalInfoDAO animalInfoDAO;
+
+    public void saveAnimalInfoList(List<AnimalInfo> animalInfoList) {
+        animalInfoDAO.insertAnimalInfoList(animalInfoList);
     }
 
 }
