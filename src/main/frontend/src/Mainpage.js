@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import { Link } from "react-router-dom"
 import {useNavigate} from "react-router-dom";
-
+import store from "./member/Store";
 import './App.css';
+import {logout} from "./member/Reducer";
+import { useDispatch } from 'react-redux';
 /*
 
 const Mainpage = () => {
@@ -61,10 +63,22 @@ const Mainpage = () => {
 
 const Mainpage = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const state = store.getState();
+    const handleLogout = () => {
+        dispatch(logout());
+        navigate("/main");
+    };
+
     return (
         <div className="menubar">
-            <button className="login" onClick={() => navigate("/member/login")}>로그인</button>
-            <button className="signup" onClick={() => navigate("/member/SignUp")}>회원가입</button>
+            {state.isLoggedIn ? (
+                <button className="login" onClick={handleLogout}>로그아웃</button>
+            ) : (
+                <button className="login" onClick={() => navigate("/member/login")}>로그인</button>
+            )}
+
             <ul>
                 <li onClick={() => navigate("/main")}>홈</li>
                 <li onClick={() => navigate("/animal")}>보호 중인 동물</li>

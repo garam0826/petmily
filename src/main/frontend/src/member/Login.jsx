@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from './Reducer'; // Assuming the path to your sessionReducer file
 import { useNavigate } from 'react-router-dom';
+import Menu from "../Menu";
 
 function Login() {
     const [username, setUsername] = useState('');
@@ -32,6 +33,7 @@ function Login() {
 
     return (
         <div>
+            <Menu />
             <h2>Login</h2>
             <form onSubmit={handleSubmit}>
                 <label>

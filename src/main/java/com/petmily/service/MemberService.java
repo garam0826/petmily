@@ -1,8 +1,11 @@
 package com.petmily.service;
 
+import com.petmily.dto.DistrictDTO;
 import com.petmily.dto.MemberDTO;
+import com.petmily.dto.RegionDTO;
 
 import java.util.HashMap;
+import java.util.List;
 
 public interface MemberService {
     // 회원가입
@@ -10,6 +13,12 @@ public interface MemberService {
 
     // 회원 ID 중복 확인
     public boolean checkMem_ID(String mem_id) throws Exception;
+
+    // 광역 주소 목록 조회
+    public List<RegionDTO> listRegion() throws Exception;
+
+    // 시/군/구 주소 검색(광역 주소 기준)
+    public List<DistrictDTO> searchDistrict(String reg_name) throws Exception;
 
     // 회원 비밀번호 조회
     //public String checkMem_PW(String mem_id) throws Exception;
