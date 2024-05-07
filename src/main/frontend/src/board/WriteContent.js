@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector } from "react-redux";
+import store from "../member/Store";
 
 function WriteContent() {
     const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     //const [idx, setIdx] = useState(null);
-    const userData = useSelector((state) => state.user.userData);
+    //const userData = useSelector((state) => state.user.userData);
+
+    const userData = useSelector((state) => state.userData);
+
+/*    const state = store.getState();
+    const id = state.isLoggedIn ? state.userData.mem_id : null;*/
 
     const handleSubmit = (event) => {
         event.preventDefault();

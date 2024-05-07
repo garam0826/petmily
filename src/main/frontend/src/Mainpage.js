@@ -64,6 +64,7 @@ const Mainpage = () => {
     return (
         <div className="menubar">
             <button className="login" onClick={() => navigate("/member/login")}>로그인</button>
+            <button className="signup" onClick={() => navigate("/member/SignUp")}>회원가입</button>
             <ul>
                 <li onClick={() => navigate("/main")}>홈</li>
                 <li onClick={() => navigate("/animal")}>보호 중인 동물</li>
