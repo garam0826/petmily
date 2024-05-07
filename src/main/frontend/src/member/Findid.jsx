@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
+import Menu from "../Menu";
 
 function FindId() {
     const [memName, setMemName] = useState('');
@@ -28,6 +29,7 @@ function FindId() {
 
     return (
         <div>
+            <Menu />
             <h2>아이디 찾기</h2>
             <input type="text" placeholder="이름" value={memName} onChange={(e) => setMemName(e.target.value)}/>
             <input type="text" placeholder="생년월일" value={birth} onChange={(e) => setBirth(e.target.value)}/>

@@ -1,9 +1,11 @@
 package com.petmily.service;
 
+import com.petmily.dto.DistrictDTO;
 import com.petmily.dto.MemberDTO;
 
 import com.petmily.dao.MemberDAO;
 
+import com.petmily.dto.RegionDTO;
 import org.springframework.stereotype.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
+import java.util.List;
 
 @Service
 public class MemberServiceImple implements MemberService{
@@ -56,6 +59,22 @@ public class MemberServiceImple implements MemberService{
 
             return result;
         }
+    }
+
+    // 광역 주소 목록 조회
+    @Override
+    public List<RegionDTO> listRegion() throws Exception{
+        List<RegionDTO> r_List = memberDAO.listRegion();
+
+        return r_List;
+    }
+
+    // 시/군/구 주소 검색(광역 주소 기준)
+    @Override
+    public List<DistrictDTO> searchDistrict(String reg_name) throws Exception{
+        List<DistrictDTO> d_List = memberDAO.searchDistrict(reg_name);
+
+        return d_List;
     }
 
     // 회원 비밀번호 조회

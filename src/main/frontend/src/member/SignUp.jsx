@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
+import Menu from "../Menu";
 
 function Signup() {
     const [id, setId] = useState('');
@@ -56,6 +57,7 @@ function Signup() {
 
     return (
         <div>
+            <Menu />
             <h2>Signup</h2>
             <form>
                 <div style={styles.wrapper}>

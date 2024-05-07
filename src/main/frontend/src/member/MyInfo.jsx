@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import store from './Store';
+import Menu from "../Menu";
 
 function MyInfo() {
     const [memberInfo, setMemberInfo] = useState(null);
@@ -44,6 +45,7 @@ function MyInfo() {
 
     return (
         <div>
+            <Menu />
             {memberInfo ? (
                 <div>
                     <h2>사용자 정보</h2>

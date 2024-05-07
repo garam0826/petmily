@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import store from "./Store";
+import Menu from "../Menu";
 
 function MyEdit() {
     const [error, setError] = useState(null);
@@ -85,6 +86,7 @@ function MyEdit() {
 
     return (
         <div>
+            <Menu />
             <form>
                 <h2>회원 정보 수정</h2>
                 <div style={styles.wrapper}>

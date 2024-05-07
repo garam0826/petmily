@@ -1,6 +1,8 @@
 package com.petmily.controller;
 
 import com.petmily.dto.MemberDTO;
+import com.petmily.dto.RegionDTO;
+import com.petmily.dto.DistrictDTO;
 
 import com.petmily.service.MemberService;
 import com.petmily.service.ImageUploadService;
@@ -24,7 +26,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 
 import java.util.HashMap;
 import java.util.List;
@@ -56,6 +57,8 @@ public class MemberController {
 
                 // 회원 ID 개인 folder 추가
                 imageUploadService.createMem_Dir(memberDTO.getMem_id());
+                // 설문조사 프로필 table 회원 ID추가 ->
+
                 // 강아지 특성값 저장할 table 회원 ID 추가 -> 0으로 초기화, 수정 날짜 column 포함
 
                 return new ResponseEntity<>(result, HttpStatus.OK);
@@ -70,6 +73,40 @@ public class MemberController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    // 광역 주소 목록 조회
+    @GetMapping("/signup")
+    public ResponseEntity<List<RegionDTO>> listRegion(){
+        logger.info("/signup GetMapping");
+
+        try{
+            List<RegionDTO> r_List = memberService.listRegion();
+
+            return new ResponseEntity<>(r_List, HttpStatus.OK);
+        }catch(Exception e){
+            e.printStackTrace();
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // 시/군/구 주소 검색(광역 주소 기준)
+    @GetMapping("/searchDistrict")
+    public ResponseEntity<List<DistrictDTO>> searchDistrict(@RequestParam("reg_name") String reg_name){
+        logger.info("/searchDistrict GetMapping");
+
+        try{
+            List<DistrictDTO> d_List = memberService.searchDistrict(reg_name);
+
+            return new ResponseEntity<>(d_List, HttpStatus.OK);
+        }catch(Exception e){
+            e.printStackTrace();
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
 
     // 회원 ID 중복 확인
     @GetMapping("/CheckID")
@@ -267,4 +304,35 @@ public class MemberController {
         }
     }
 
+    // 주소 test1
+    @GetMapping("/test2")
+    public ResponseEntity<List<RegionDTO>> getRegion(){
+        logger.info("/test2 GetMapping");
+
+        try{
+            List<RegionDTO> r_List = memberService.listRegion();
+
+            return new ResponseEntity<>(r_List, HttpStatus.OK);
+        }catch(Exception e){
+            e.printStackTrace();
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // 주소 test2
+    @PostMapping("/test3")
+    public ResponseEntity<List<DistrictDTO>> getDistrict(@RequestParam("reg_name") String reg_name){
+        logger.info("/test3 PostMapping");
+
+        try{
+            List<DistrictDTO> d_List = memberService.searchDistrict(reg_name);
+
+            return new ResponseEntity<>(d_List, HttpStatus.OK);
+        }catch(Exception e){
+            e.printStackTrace();
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

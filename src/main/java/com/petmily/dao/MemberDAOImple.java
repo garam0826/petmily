@@ -1,6 +1,8 @@
 package com.petmily.dao;
 
 import com.petmily.dto.MemberDTO;
+import com.petmily.dto.RegionDTO;
+import com.petmily.dto.DistrictDTO;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashMap;
+import java.util.List;
 
 @Repository
 public class MemberDAOImple implements MemberDAO {
@@ -33,6 +36,21 @@ public class MemberDAOImple implements MemberDAO {
         int result = sqlSession.selectOne(namespace+ ".checkMem_ID", mem_id);
 
         return result;
+    }
+
+    // 광역 주소 목록 조회
+    @Override
+    public List<RegionDTO> listRegion() throws Exception{
+        List<RegionDTO> r_List = sqlSession.selectList(namespace+ ".listRegion");
+
+        return r_List;
+    }
+
+    // 시/군/구 주소 검색(광역 주소 기준)
+    public List<DistrictDTO> searchDistrict(String reg_name) throws Exception{
+        List<DistrictDTO> d_List = sqlSession.selectList(namespace+ ".searchDistrict", reg_name);
+
+        return d_List;
     }
 
     // 회원 비밀번호 조회

@@ -1,8 +1,10 @@
 package com.petmily.dao;
 
 import com.petmily.dto.MemberDTO;
+import com.petmily.dto.RegionDTO;
+import com.petmily.dto.DistrictDTO;
 
-import java.util.Map;
+import java.util.List;
 import java.util.HashMap;
 
 public interface MemberDAO {
@@ -12,8 +14,17 @@ public interface MemberDAO {
     // 회원 ID 중복 확인
     public int checkMem_ID(String mem_id) throws Exception;
 
-    // 시/군/구 주소 검색 -> region table(지역, 코드), district table(컬럼 4개) 구분
-    // 14개 특성 입력 table (정수로만 입력)
+    // 설문조사(특성값) table에 ID column추가
+    //public int insertCharacteristics(String mem_id) throws Exception;
+
+    // 강아지 키워드 table에 ID 추가 (정수로만 입력)
+    //public int insertProfile(String mem_id) throws Exception;
+
+    // 광역 주소 목록 조회
+    public List<RegionDTO> listRegion() throws Exception;
+
+    // 시/군/구 주소 검색(광역 주소 기준)
+    public List<DistrictDTO> searchDistrict(String reg_name) throws Exception;
 
     // 회원 비밀번호 조회
     public String checkMem_PW(String mem_id) throws Exception;
