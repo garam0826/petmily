@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.petmily.mappers.AnimalInfoMapper">
+    <insert id="insertAnimalInfo" parameterType="com.petmily.dto.AnimalInfo">
+        INSERT IGNORE INTO AnimalInfo (desertionNo, filename, happenDt, happenPlace, kindCd, colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile, processState, sexCd, neuterYn, specialMark, careNm, careTel, careAddr, orgNm, chargeNm, officetel)
+        VALUES (#{desertionNo}, #{filename}, #{happenDt}, #{happenPlace}, #{kindCd}, #{colorCd}, #{age}, #{weight}, #{noticeNo}, #{noticeSdt}, #{noticeEdt}, #{popfile}, #{processState}, #{sexCd}, #{neuterYn}, #{specialMark}, #{careNm}, #{careTel}, #{careAddr}, #{orgNm}, #{chargeNm}, #{officetel})
+    </insert>
+
+    <select id="findUnprocessedDesertionNos" resultType="String">
+        SELECT desertionNo FROM AnimalInfo
+        WHERE desertionNo NOT IN (SELECT desertionNo FROM ImageAnalysisResult)
+    </select>
+
+    <select id="findImageUrlByDesertionNo" parameterType="String" resultType="String">
+        SELECT popfile FROM AnimalInfo WHERE desertionNo = #{desertionNo}
+    </select>
+
+
+
+</mapper>

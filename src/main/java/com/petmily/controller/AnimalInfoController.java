@@ -29,6 +29,7 @@ public class AnimalInfoController {
             @RequestParam String orgCd) {
 
         List<AnimalInfo> animalInfos = animalInfoService.getAnimalInfo(startDate, endDate, kind, uprCd, orgCd);
+        animalInfoService.saveAnimalInfoList(animalInfos);
         return ResponseEntity.ok(animalInfos);
     }
 

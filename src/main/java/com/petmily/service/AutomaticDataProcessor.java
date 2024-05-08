@@ -1,5 +1,6 @@
 package com.petmily.service;
 
+import com.petmily.dao.AnimalInfoDAO;
 import com.petmily.dao.ImageAnalysisDAO;
 import com.petmily.dto.ImageAnalysisResult;
 import com.petmily.dto.DogCharacteristics;
@@ -20,11 +21,15 @@ public class AutomaticDataProcessor {
     @Autowired
     private BreedCharacteristicService breedCharacteristicService;
 
-    // 매일 새벽 2시에 실행되게하려면 스케줄링 메서드
-    //@Scheduled(cron = "0 0 2 * * ?")
+    @Autowired
+    private AnimalInfoDAO animalInfoDAO;
 
-    //지금 시간으로 테스트
-    @Scheduled(cron = "0 37 17 * * ?")
+    @Autowired
+    private AnimalInfoService animalInfoService;
+
+
+    //매일 23시 12분에 실행되게 하는 스케쥴링 메서드 (테스트/수정예정)
+    @Scheduled(cron = "0 12 23 * * ?")
     public void processImageAnalysisResults() {
         // 이미지 분석 결과를 조회하여 아직 특성이 계산되지 않은 결과를 가져오기
         List<ImageAnalysisResult> unprocessedResults = imageAnalysisDAO.findAllUnprocessed();
@@ -35,4 +40,25 @@ public class AutomaticDataProcessor {
             System.out.println("Processed characteristics for desertionNo: " + result.getDesertionNo());
         }
     }
+
+
+
+    @Scheduled(cron = "0 15 23 * * ?")
+    public void updateImageAnalysisTable() {
+        // AnimalInfo 테이블에서 ImageAnalysisResult 테이블에 없는 desertionNo 찾기
+        List<String> unprocessedDesertionNos = animalInfoDAO.findUnprocessedDesertionNos();
+
+        for (String desertionNo : unprocessedDesertionNos) {
+            // 각 desertionNo에 해당하는 정보를 가져오고 이미지 분석을 진행
+            // 이미지 URL 가져오기, 분석 수행 등
+            String imageUrl = animalInfoDAO.findImageUrlByDesertionNo(desertionNo);
+            try {
+                ImageAnalysisResult analysisResult = animalInfoService.analyzeAndSaveImage(desertionNo, imageUrl);
+                System.out.println("New Image Analysis added for desertionNo: " + desertionNo);
+            } catch (Exception e) {
+                System.err.println("Failed to analyze image for desertionNo: " + desertionNo);
+            }
+        }
+    }
+
 }
