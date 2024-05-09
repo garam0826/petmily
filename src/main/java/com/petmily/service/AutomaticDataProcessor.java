@@ -28,8 +28,8 @@ public class AutomaticDataProcessor {
     private AnimalInfoService animalInfoService;
 
 
-    //매일 23시 12분에 실행되게 하는 스케쥴링 메서드 (테스트/수정예정)
-    @Scheduled(cron = "0 12 23 * * ?")
+    //매일 14시 50분에 실행되게 하는 스케쥴링 메서드 (테스트/수정예정)
+    @Scheduled(cron = "0 53 14 * * ?")
     public void processImageAnalysisResults() {
         // 이미지 분석 결과를 조회하여 아직 특성이 계산되지 않은 결과를 가져오기
         List<ImageAnalysisResult> unprocessedResults = imageAnalysisDAO.findAllUnprocessed();

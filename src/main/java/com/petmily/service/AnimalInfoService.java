@@ -135,4 +135,9 @@ public class AnimalInfoService {
         animalInfoDAO.insertAnimalInfoList(animalInfoList);
     }
 
+    // desertionNo를 이용하여 동물 정보를 조회하는 메서드
+    public AnimalInfo getAnimalInfoByDesertionNo(String desertionNo) {
+        return animalInfoDAO.findByDesertionNo(desertionNo);
+    }
+
 }

@@ -1,49 +1,12 @@
 package com.petmily.dto;
 
-public class DogCharacteristics {
-    private String desertionNo;
-    private int affectionateWithFamily;
-    private int goodWithYoungChildren;
-    private int goodWithOtherDogs;
-    private int sheddingLevel;
-    private int coatGroomingFrequency;
-    private int droolingLevel;
-    private int opennessToStrangers;
-    private int watchdogProtectiveNature;
-    private int playfulnessLevel;
-    private int adaptabilityLevel;
-    private int trainabilityLevel;
-    private int barkingLevel;
-    private int energyLevel;
-    private int mentalStimulationNeeds;
-
-    @Override
-    public String toString() {
-        return "DogCharacteristics{" +
-                "desertionNo='" + desertionNo + '\'' +
-                ", affectionateWithFamily=" + affectionateWithFamily +
-                ", goodWithYoungChildren=" + goodWithYoungChildren +
-                ", goodWithOtherDogs=" + goodWithOtherDogs +
-                ", sheddingLevel=" + sheddingLevel +
-                ", coatGroomingFrequency=" + coatGroomingFrequency +
-                ", droolingLevel=" + droolingLevel +
-                ", opennessToStrangers=" + opennessToStrangers +
-                ", watchdogProtectiveNature=" + watchdogProtectiveNature +
-                ", playfulnessLevel=" + playfulnessLevel +
-                ", adaptabilityLevel=" + adaptabilityLevel +
-                ", trainabilityLevel=" + trainabilityLevel +
-                ", barkingLevel=" + barkingLevel +
-                ", energyLevel=" + energyLevel +
-                ", mentalStimulationNeeds=" + mentalStimulationNeeds +
-                '}';
+public class UserCharacteristics {
+    public String getMemId() {
+        return memId;
     }
 
-    public String getDesertionNo() {
-        return desertionNo;
-    }
-
-    public void setDesertionNo(String desertionNo) {
-        this.desertionNo = desertionNo;
+    public void setMemId(String memId) {
+        this.memId = memId;
     }
 
     public int getAffectionateWithFamily() {
@@ -158,17 +121,49 @@ public class DogCharacteristics {
         this.mentalStimulationNeeds = mentalStimulationNeeds;
     }
 
-    // 기본 생성자
-    public DogCharacteristics() {
+    @Override
+    public String toString() {
+        return "UserCharacteristics{" +
+                "memId='" + memId + '\'' +
+                ", affectionateWithFamily=" + affectionateWithFamily +
+                ", goodWithYoungChildren=" + goodWithYoungChildren +
+                ", goodWithOtherDogs=" + goodWithOtherDogs +
+                ", sheddingLevel=" + sheddingLevel +
+                ", coatGroomingFrequency=" + coatGroomingFrequency +
+                ", droolingLevel=" + droolingLevel +
+                ", opennessToStrangers=" + opennessToStrangers +
+                ", watchdogProtectiveNature=" + watchdogProtectiveNature +
+                ", playfulnessLevel=" + playfulnessLevel +
+                ", adaptabilityLevel=" + adaptabilityLevel +
+                ", trainabilityLevel=" + trainabilityLevel +
+                ", barkingLevel=" + barkingLevel +
+                ", energyLevel=" + energyLevel +
+                ", mentalStimulationNeeds=" + mentalStimulationNeeds +
+                '}';
     }
 
-    // 모든 필드를 매개변수로 받는 생성자
-    public DogCharacteristics(String desertionNo, int affectionateWithFamily, int goodWithYoungChildren,
-                              int goodWithOtherDogs, int sheddingLevel, int coatGroomingFrequency,
-                              int droolingLevel, int opennessToStrangers, int watchdogProtectiveNature,
-                              int playfulnessLevel, int adaptabilityLevel, int trainabilityLevel,
-                              int barkingLevel, int energyLevel, int mentalStimulationNeeds) {
-        this.desertionNo = desertionNo;
+    private String memId;
+    private int affectionateWithFamily;
+    private int goodWithYoungChildren;
+    private int goodWithOtherDogs;
+    private int sheddingLevel;
+    private int coatGroomingFrequency;
+    private int droolingLevel;
+    private int opennessToStrangers;
+    private int watchdogProtectiveNature;
+    private int playfulnessLevel;
+    private int adaptabilityLevel;
+    private int trainabilityLevel;
+    private int barkingLevel;
+    private int energyLevel;
+    private int mentalStimulationNeeds;
+
+    // 생성자
+    public UserCharacteristics(int affectionateWithFamily, int goodWithYoungChildren, int goodWithOtherDogs,
+                               int sheddingLevel, int coatGroomingFrequency, int droolingLevel,
+                               int opennessToStrangers, int watchdogProtectiveNature, int playfulnessLevel,
+                               int adaptabilityLevel, int trainabilityLevel, int barkingLevel,
+                               int energyLevel, int mentalStimulationNeeds) {
         this.affectionateWithFamily = affectionateWithFamily;
         this.goodWithYoungChildren = goodWithYoungChildren;
         this.goodWithOtherDogs = goodWithOtherDogs;
@@ -183,10 +178,5 @@ public class DogCharacteristics {
         this.barkingLevel = barkingLevel;
         this.energyLevel = energyLevel;
         this.mentalStimulationNeeds = mentalStimulationNeeds;
-    }
-
-    // 생성자
-    public DogCharacteristics(String desertionNo) {
-        this.desertionNo = desertionNo;
     }
 }
