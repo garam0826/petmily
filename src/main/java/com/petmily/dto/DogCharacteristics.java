@@ -185,4 +185,8 @@ public class DogCharacteristics {
         this.mentalStimulationNeeds = mentalStimulationNeeds;
     }
 
+    // 생성자
+    public DogCharacteristics(String desertionNo) {
+        this.desertionNo = desertionNo;
+    }
 }

@@ -157,4 +157,26 @@ public class UserCharacteristics {
     private int barkingLevel;
     private int energyLevel;
     private int mentalStimulationNeeds;
+
+    // 생성자
+    public UserCharacteristics(int affectionateWithFamily, int goodWithYoungChildren, int goodWithOtherDogs,
+                               int sheddingLevel, int coatGroomingFrequency, int droolingLevel,
+                               int opennessToStrangers, int watchdogProtectiveNature, int playfulnessLevel,
+                               int adaptabilityLevel, int trainabilityLevel, int barkingLevel,
+                               int energyLevel, int mentalStimulationNeeds) {
+        this.affectionateWithFamily = affectionateWithFamily;
+        this.goodWithYoungChildren = goodWithYoungChildren;
+        this.goodWithOtherDogs = goodWithOtherDogs;
+        this.sheddingLevel = sheddingLevel;
+        this.coatGroomingFrequency = coatGroomingFrequency;
+        this.droolingLevel = droolingLevel;
+        this.opennessToStrangers = opennessToStrangers;
+        this.watchdogProtectiveNature = watchdogProtectiveNature;
+        this.playfulnessLevel = playfulnessLevel;
+        this.adaptabilityLevel = adaptabilityLevel;
+        this.trainabilityLevel = trainabilityLevel;
+        this.barkingLevel = barkingLevel;
+        this.energyLevel = energyLevel;
+        this.mentalStimulationNeeds = mentalStimulationNeeds;
+    }
 }
