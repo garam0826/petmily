@@ -10,4 +10,7 @@ public interface AnimalInfoDAO {
 
     List<String> findUnprocessedDesertionNos();
     String findImageUrlByDesertionNo(String desertionNo);
+
+    // desertionNo를 이용하여 동물 정보 조회
+    AnimalInfo findByDesertionNo(String desertionNo);
 }
