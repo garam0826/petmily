@@ -32,7 +32,7 @@ dependencies {
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
-    testImplementation 'org.mariadb.jdbc:mariadb-java-client' //새로 추가
+    //testImplementation 'org.mariadb.jdbc:mariadb-java-client' //새로 추가
 
 }
 
