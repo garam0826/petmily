@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.petmily.mappers.UserCharacteristicsMapper">
+    <insert id="save" parameterType="com.petmily.dto.UserCharacteristics">
+        INSERT INTO UserCharacteristics (
+            mem_id, affectionateWithFamily, goodWithYoungChildren, goodWithOtherDogs,
+            sheddingLevel, coatGroomingFrequency, droolingLevel, opennessToStrangers,
+            watchdogProtectiveNature, playfulnessLevel, adaptabilityLevel,
+            trainabilityLevel, barkingLevel, energyLevel, mentalStimulationNeeds
+        ) VALUES (
+                     #{memId}, #{affectionateWithFamily}, #{goodWithYoungChildren}, #{goodWithOtherDogs},
+                     #{sheddingLevel}, #{coatGroomingFrequency}, #{droolingLevel}, #{opennessToStrangers},
+                     #{watchdogProtectiveNature}, #{playfulnessLevel}, #{adaptabilityLevel},
+                     #{trainabilityLevel}, #{barkingLevel}, #{energyLevel}, #{mentalStimulationNeeds}
+                 )
+    </insert>
+</mapper>

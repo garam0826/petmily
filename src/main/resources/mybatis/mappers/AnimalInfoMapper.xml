@@ -15,6 +15,11 @@
         SELECT popfile FROM AnimalInfo WHERE desertionNo = #{desertionNo}
     </select>
 
+    <select id="findByDesertionNo" parameterType="String" resultType="com.petmily.dto.AnimalInfo">
+        SELECT * FROM animalinfo WHERE desertionNo = #{desertionNo}
+    </select>
+
+
 
 
 </mapper>
