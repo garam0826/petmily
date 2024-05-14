@@ -29,4 +29,9 @@ public class ImageAnalysisDAOImple implements ImageAnalysisDAO {
     public List<ImageAnalysisResult> findAllUnprocessed() {
         return sqlSession.selectList(namespace + ".findAllUnprocessed");
     }
+
+    @Override
+    public List<ImageAnalysisResult> findAll() {
+        return sqlSession.selectList(namespace + ".findAll");
+    }
 }

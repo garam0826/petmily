@@ -3,7 +3,10 @@ package com.petmily.service;
 import com.petmily.dao.DogCharacteristicsDAO;
 import com.petmily.dto.DogCharacteristics;
 import com.petmily.dto.ImageAnalysisResult;
+import com.petmily.dto.UserCharacteristics;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import org.springframework.util.ResourceUtils;
@@ -14,7 +17,10 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -122,5 +128,111 @@ public class BreedCharacteristicService {
         return dogCharacteristics;
     }
 
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    public List<DogCharacteristics> findBestMatchesForUser(String userId) throws Exception {
+        // 먼저 사용자 특성 가져오기
+        UserCharacteristics userChar = jdbcTemplate.queryForObject(
+                "SELECT * FROM UserCharacteristics WHERE mem_id = ?",
+                new Object[]{userId},
+                new RowMapper<UserCharacteristics>() {
+                    @Override
+                    public UserCharacteristics mapRow(ResultSet rs, int rowNum) throws SQLException {
+                        return new UserCharacteristics(
+                                rs.getInt("affectionateWithFamily"),
+                                rs.getInt("goodWithYoungChildren"),
+                                rs.getInt("goodWithOtherDogs"),
+                                rs.getInt("sheddingLevel"),
+                                rs.getInt("coatGroomingFrequency"),
+                                rs.getInt("droolingLevel"),
+                                rs.getInt("opennessToStrangers"),
+                                rs.getInt("watchdogProtectiveNature"),
+                                rs.getInt("playfulnessLevel"),
+                                rs.getInt("adaptabilityLevel"),
+                                rs.getInt("trainabilityLevel"),
+                                rs.getInt("barkingLevel"),
+                                rs.getInt("energyLevel"),
+                                rs.getInt("mentalStimulationNeeds")
+                        );
+                    }
+                }
+        );
+
+        // DogCharacteristics과 비교해서 MSE 계산
+        String sql = "SELECT desertionNo, " +
+                "(" +
+                "POWER(? - affectionateWithFamily, 2) + " +
+                "POWER(? - goodWithYoungChildren, 2) + " +
+                "POWER(? - goodWithOtherDogs, 2) + " +
+                "POWER(? - sheddingLevel, 2) + " +
+                "POWER(? - coatGroomingFrequency, 2) + " +
+                "POWER(? - droolingLevel, 2) + " +
+                "POWER(? - opennessToStrangers, 2) + " +
+                "POWER(? - watchdogProtectiveNature, 2) + " +
+                "POWER(? - playfulnessLevel, 2) + " +
+                "POWER(? - adaptabilityLevel, 2) + " +
+                "POWER(? - trainabilityLevel, 2) + " +
+                "POWER(? - barkingLevel, 2) + " +
+                "POWER(? - energyLevel, 2) + " +
+                "POWER(? - mentalStimulationNeeds, 2) " +
+                ") AS mse " +
+                "FROM DogCharacteristics " +
+                "ORDER BY mse ASC " +
+                "LIMIT 5";
+
+        return jdbcTemplate.query(
+                sql,
+                new Object[]{
+                        userChar.getAffectionateWithFamily(),
+                        userChar.getGoodWithYoungChildren(),
+                        userChar.getGoodWithOtherDogs(),
+                        userChar.getSheddingLevel(),
+                        userChar.getCoatGroomingFrequency(),
+                        userChar.getDroolingLevel(),
+                        userChar.getOpennessToStrangers(),
+                        userChar.getWatchdogProtectiveNature(),
+                        userChar.getPlayfulnessLevel(),
+                        userChar.getAdaptabilityLevel(),
+                        userChar.getTrainabilityLevel(),
+                        userChar.getBarkingLevel(),
+                        userChar.getEnergyLevel(),
+                        userChar.getMentalStimulationNeeds()
+                },
+                (rs, rowNum) -> {
+                    DogCharacteristics dog = new DogCharacteristics(rs.getString("desertionNo"));
+                    System.out.println("DesertionNo: " + dog.getDesertionNo() + ", MSE: " + rs.getDouble("mse")); // 로그 추가
+                    return dog;
+                }
+        );
+
+    }
+
+    // 키워드 점수화 로직 추가
+    public Map<String, Integer> scoreBreedsByKeywords(List<String> keywords) {
+        String sql = "SELECT Breed, Characteristic1, Characteristic2, Characteristic3, Characteristic4, Characteristic5 FROM animals";
+
+        List<Map<String, Object>> breeds = jdbcTemplate.queryForList(sql);
+
+        Map<String, Integer> breedScores = new HashMap<>();
+
+        for (Map<String, Object> breed : breeds) {
+            String breedName = (String) breed.get("Breed");
+            int score = 0;
+            for (String keyword : keywords) {
+                if (keyword.equalsIgnoreCase((String) breed.get("Characteristic1")) ||
+                        keyword.equalsIgnoreCase((String) breed.get("Characteristic2")) ||
+                        keyword.equalsIgnoreCase((String) breed.get("Characteristic3")) ||
+                        keyword.equalsIgnoreCase((String) breed.get("Characteristic4")) ||
+                        keyword.equalsIgnoreCase((String) breed.get("Characteristic5"))) {
+                    score++;
+                }
+            }
+            breedScores.put(breedName, score);
+        }
+
+        return breedScores;
+    }
 }
 

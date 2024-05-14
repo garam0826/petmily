@@ -33,4 +33,9 @@ public class AnimalInfoDAOImple implements AnimalInfoDAO {
     public String findImageUrlByDesertionNo(String desertionNo) {
         return sqlSession.selectOne("com.petmily.mappers.AnimalInfoMapper.findImageUrlByDesertionNo", desertionNo);
     }
+
+    @Override
+    public AnimalInfo findByDesertionNo(String desertionNo) {
+        return sqlSession.selectOne("com.petmily.mappers.AnimalInfoMapper.findByDesertionNo", desertionNo);
+    }
 }

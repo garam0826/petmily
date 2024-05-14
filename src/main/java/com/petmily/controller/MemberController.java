@@ -7,6 +7,7 @@ import com.petmily.dto.DistrictDTO;
 import com.petmily.service.MemberService;
 import com.petmily.service.ImageUploadService;
 
+import com.petmily.service.RecommendService;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,8 @@ public class MemberController {
     private MemberService memberService;
     @Autowired
     private ImageUploadService imageUploadService;
+    @Autowired
+    private RecommendService recommendService;
 
     // Logging
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
@@ -57,8 +60,8 @@ public class MemberController {
 
                 // 회원 ID 개인 folder 추가
                 imageUploadService.createMem_Dir(memberDTO.getMem_id());
-                // 설문조사 프로필 table 회원 ID추가 ->
-
+                // Characteristics에 회원 ID 추가
+                recommendService.insertChar(memberDTO.getMem_id());
                 // 강아지 특성값 저장할 table 회원 ID 추가 -> 0으로 초기화, 수정 날짜 column 포함
 
                 return new ResponseEntity<>(result, HttpStatus.OK);
@@ -75,7 +78,7 @@ public class MemberController {
     }
 
     // 광역 주소 목록 조회
-    @GetMapping("/signup")
+    @GetMapping("/SignUp")
     public ResponseEntity<List<RegionDTO>> listRegion(){
         logger.info("/signup GetMapping");
 
@@ -91,9 +94,9 @@ public class MemberController {
     }
 
     // 시/군/구 주소 검색(광역 주소 기준)
-    @GetMapping("/searchDistrict")
+    @PostMapping("/SearchDistrict")
     public ResponseEntity<List<DistrictDTO>> searchDistrict(@RequestParam("reg_name") String reg_name){
-        logger.info("/searchDistrict GetMapping");
+        logger.info("/SearchDistrict PostMapping");
 
         try{
             List<DistrictDTO> d_List = memberService.searchDistrict(reg_name);
@@ -205,6 +208,8 @@ public class MemberController {
             if(result){
                 // 회원 ID 개인 folder 삭제
                 imageUploadService.deleteMem_Dir(memberDTO.getMem_id());
+                // Characteristics에서 회원 ID 삭제
+                recommendService.deleteChar(memberDTO.getMem_id());
 
                 return new ResponseEntity<>(result, HttpStatus.OK);
             }else{

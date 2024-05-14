@@ -1,0 +1,77 @@
+package com.petmily.service;
+
+import com.petmily.dto.MemberDTO;
+import com.petmily.dto.RegionDTO;
+import com.petmily.dto.DistrictDTO;
+
+import com.petmily.dao.RecommendDAO;
+
+import org.springframework.stereotype.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
+import java.util.List;
+
+@Service
+public class RecommendServiceImple implements RecommendService{
+    // DAO Autowired
+    @Autowired
+    private RecommendDAO recommendDAO;
+
+    // Logging
+    private static final Logger logger = LoggerFactory.getLogger(RecommendServiceImple.class);
+
+    // 추천기능 1 : 강아지 품종 특성값 & 사용자 Profile 조합
+    // Characteristics에 회원 ID 추가
+    @Override
+    public boolean insertChar(String mem_id) throws Exception{
+        boolean result = false;
+        int value = recommendDAO.insertChar(mem_id);
+
+        if(value > 0){
+            result = true;
+            logger.info(mem_id+ " : Characteristics 추가 완료");
+
+            return result;
+        }else{
+            logger.info(mem_id+ " : Characteristics 추가 실패");
+
+            return result;
+        }
+    }
+
+    // 회원 ID별 Characteristics 조회
+
+
+    // Characteristics에서 회원 ID 삭제
+    @Override
+    public boolean deleteChar(String mem_id) throws Exception{
+        boolean result = false;
+        int value = recommendDAO.deleteChar(mem_id);
+
+        if(value > 0){
+            result = true;
+            logger.info(mem_id+ " : Characteristics 삭제 완료");
+
+            return result;
+        }else{
+            logger.info(mem_id+ " : Characteristics 삭제 실패");
+
+            return result;
+        }
+    }
+
+    //
+
+    // test
+    public String getTime() throws Exception{;
+        String time = recommendDAO.getTime();
+        System.out.println("Service 완료!");
+
+        return time;
+    }
+}
