@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Menu from "../Menu";
+import {useSelector} from "react-redux";
+import {useParams} from "react-router-dom";
 
 const AnimalInfo = () => {
     const [animalInfos, setAnimalInfos] = useState([]);
@@ -22,7 +24,6 @@ const AnimalInfo = () => {
     const addAnalysisResult = (newResult) => {
         setAnalysisResults(prevAnalysisResults => [...prevAnalysisResults, newResult]);
     }
-
 
     const fetchData = async () => {
         try {
@@ -59,6 +60,27 @@ const AnimalInfo = () => {
         }
         setAnalysisloading(false);
         console.log(desertionNo, false);
+    };
+
+    const userData = useSelector(state => state.userData); // 사용자 데이터를 스토어에서 가져옵니다.
+    const userId = userData.mem_id; // 사용자 아이디를 추출합니다.
+    const currentTime = new Date().toISOString();
+    const { idx } = useParams();
+
+    const addFavorite = (desertionNo) => {
+        axios.post(`/favorites/add?memId=${userId}&desertionNo=${desertionNo}`, {
+            mem_id: userId,
+            desertionNo: desertionNo,
+            created_at: currentTime,
+        })
+            .then(response => {
+                console.log("Favorite added successfully");
+                // 찜 추가 후 찜 목록 다시 불러오기
+                //getFavorites(userId);
+            })
+            .catch(error => {
+                console.error("Error adding favorite: ", error);
+            });
     };
 
     return (
@@ -115,6 +137,7 @@ const AnimalInfo = () => {
                         <p>Org Name: {animalInfo.orgNm}</p>
                         <p>Charge Name: {animalInfo.chargeNm}</p>
                         <p>Office Tel: {animalInfo.officetel}</p>
+                        <button onClick={() => addFavorite(animalInfo.desertionNo)}>찜 추가</button>
                         <hr/>
                         {analysisResults.map((analysisresult, index) => (
                             <div>
@@ -138,3 +161,11 @@ const AnimalInfo = () => {
 };
 
 export default AnimalInfo;
+
+/*
+
+                        <div>
+                            <button onClick={() => addFavorite(desertionNo)}>찜 추가</button>
+                        </div>
+
+ */

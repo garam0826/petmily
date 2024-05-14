@@ -95,6 +95,7 @@ public class BoardController {
         }
     }
 
+
     // 글 수정
     @PutMapping("/Update")
     public ResponseEntity<Boolean> updateBoard(@RequestBody BoardDTO boardDTO){

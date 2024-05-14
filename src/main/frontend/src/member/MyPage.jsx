@@ -56,6 +56,10 @@ function MyPage() {
             </div>
             <hr/>
             <div>
+                <h2>찜 목록</h2>
+                <button onClick={() => navigate("/member/mypage/mycart")}>찜 목록</button>
+            </div>
+            <div>
                 <h2>회원정보 탈퇴하기</h2>
                 <button onClick={handleResign}>resign</button>
             </div>

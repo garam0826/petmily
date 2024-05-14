@@ -30,11 +30,17 @@ const EditContent = lazy(() => import("../src/board/EditContent"))
 const ReadContent = lazy(() => import("../src/board/ReadContent"))
 const WriteContent = lazy(() => import("../src/board/WriteContent"))
 
+const Favorite = lazy(() => import("../src/member/Favorite"))
+
 const root = createBrowserRouter([
+    {
+        path: "",
+        element: <Suspense fallback ={Loading}><MainPage/></Suspense>
+    },
     {
         path: "/main",
         element: <Suspense fallback ={Loading}><MainPage/></Suspense>
-    },,
+    },
     {
         path: "/member/login",
         element: <Suspense fallback ={Loading}><Login/></Suspense>
@@ -68,7 +74,7 @@ const root = createBrowserRouter([
         element: <Suspense fallback ={Loading}><MyPage/></Suspense>
     },
     {
-        path: "/board/list/read",
+        path: "/board/list/read/:idx",
         element: <Suspense fallback ={Loading}><ReadContent/></Suspense>
     },
     {
@@ -76,12 +82,16 @@ const root = createBrowserRouter([
         element: <Suspense fallback ={Loading}><WriteContent/></Suspense>
     },
     {
-        path: "/board/list/edit",
+        path: "/board/list/edit/:idx",
         element: <Suspense fallback ={Loading}><EditContent/></Suspense>
     },
     {
         path: "/member/mypage/myedit",
         element: <Suspense fallback={Loading}><MyEdit/></Suspense>
+    },
+    {
+        path: "/member/mypage/mycart",
+        element: <Suspense fallback={Loading}><Favorite/></Suspense>
     }
 ])
 
