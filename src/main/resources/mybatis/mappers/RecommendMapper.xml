@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.petmily.mappers.RecommendMapper">
+    <!-- 추천기능 1 : 강아지 품종 특성값 & 사용자 Profile 조합 -->
+    <!-- Characteristics에 회원 ID 추가 -->
+    <insert id="insertChar" parameterType="String">
+        insert into usercharacteristics(mem_id) VALUES(#{mem_id})
+    </insert>
+
+    <!-- 회원 ID별 Characteristics 조회 -->
+    <select id="slctMyChar" parameterType="String" resultType="MemberDTO">
+        select * from usercharacteristics where mem_id = #{mem_id}
+    </select>
+
+    <!-- Characteristics에서 회원 ID 삭제 -->
+    <delete id="deleteChar" parameterType="String">
+        delete from usercharacteristics where mem_id = #{mem_id}
+    </delete>
+
+
+
+    <!-- test -->
+    <select id="getTime" resultType="String">
+        select now()
+    </select>
+</mapper>

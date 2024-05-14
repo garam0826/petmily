@@ -1,8 +1,8 @@
 package com.petmily.service;
 
-import com.petmily.dto.DistrictDTO;
 import com.petmily.dto.MemberDTO;
 import com.petmily.dto.RegionDTO;
+import com.petmily.dto.DistrictDTO;
 
 import java.util.HashMap;
 import java.util.List;

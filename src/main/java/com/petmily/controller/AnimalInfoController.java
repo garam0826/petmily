@@ -62,4 +62,10 @@ public class AnimalInfoController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PostMapping("/keyword")
+    public ResponseEntity<List<String>> getTop5DesertionNos(@RequestBody List<String> keywords) {
+        List<String> top5DesertionNos = animalInfoService.getTop5DesertionNosByKeywords(keywords);
+        return ResponseEntity.ok(top5DesertionNos);
+    }
 }

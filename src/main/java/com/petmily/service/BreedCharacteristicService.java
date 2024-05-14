@@ -208,5 +208,31 @@ public class BreedCharacteristicService {
         );
 
     }
+
+    // 키워드 점수화 로직 추가
+    public Map<String, Integer> scoreBreedsByKeywords(List<String> keywords) {
+        String sql = "SELECT Breed, Characteristic1, Characteristic2, Characteristic3, Characteristic4, Characteristic5 FROM animals";
+
+        List<Map<String, Object>> breeds = jdbcTemplate.queryForList(sql);
+
+        Map<String, Integer> breedScores = new HashMap<>();
+
+        for (Map<String, Object> breed : breeds) {
+            String breedName = (String) breed.get("Breed");
+            int score = 0;
+            for (String keyword : keywords) {
+                if (keyword.equalsIgnoreCase((String) breed.get("Characteristic1")) ||
+                        keyword.equalsIgnoreCase((String) breed.get("Characteristic2")) ||
+                        keyword.equalsIgnoreCase((String) breed.get("Characteristic3")) ||
+                        keyword.equalsIgnoreCase((String) breed.get("Characteristic4")) ||
+                        keyword.equalsIgnoreCase((String) breed.get("Characteristic5"))) {
+                    score++;
+                }
+            }
+            breedScores.put(breedName, score);
+        }
+
+        return breedScores;
+    }
 }
 

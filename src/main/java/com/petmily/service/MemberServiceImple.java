@@ -1,11 +1,11 @@
 package com.petmily.service;
 
-import com.petmily.dto.DistrictDTO;
 import com.petmily.dto.MemberDTO;
+import com.petmily.dto.RegionDTO;
+import com.petmily.dto.DistrictDTO;
 
 import com.petmily.dao.MemberDAO;
 
-import com.petmily.dto.RegionDTO;
 import org.springframework.stereotype.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
