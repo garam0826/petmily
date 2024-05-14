@@ -13,8 +13,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class AnimalInfoService {
@@ -139,5 +142,39 @@ public class AnimalInfoService {
     public AnimalInfo getAnimalInfoByDesertionNo(String desertionNo) {
         return animalInfoDAO.findByDesertionNo(desertionNo);
     }
+
+
+    @Autowired
+    private BreedCharacteristicService breedCharacteristicService;
+
+    public List<String> getTop5DesertionNosByKeywords(List<String> keywords) {
+        // 키워드 점수화
+        Map<String, Integer> breedScores = breedCharacteristicService.scoreBreedsByKeywords(keywords);
+
+        //확인용 로그
+        //System.out.println("Breed Scores: " + breedScores);
+
+        // 이미지 분석 결과 점수화
+        List<ImageAnalysisResult> analysisResults = imageAnalysisDAO.findAll();
+
+        return analysisResults.stream()
+                .map(result -> {
+                    double score = 0;
+                    score += breedScores.getOrDefault(result.getClassName1(), 0) * result.getProbability1();
+                    score += breedScores.getOrDefault(result.getClassName2(), 0) * result.getProbability2();
+                    score += breedScores.getOrDefault(result.getClassName3(), 0) * result.getProbability3();
+
+                    // 확인용 로그
+                    //System.out.println("DesertionNo: " + result.getDesertionNo() + ", Score: " + score);
+
+                    return new AbstractMap.SimpleEntry<>(result.getDesertionNo(), score);
+                })
+                .sorted((e1, e2) -> Double.compare(e2.getValue(), e1.getValue())) //내림차순 정렬
+                .limit(5)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+    }
+
+
 
 }

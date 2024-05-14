@@ -14,6 +14,11 @@
         SELECT * FROM ImageAnalysisResult WHERE desertionNo NOT IN (SELECT desertionNo FROM DogCharacteristics)
     </select>
 
+    <select id="findAll" resultType="com.petmily.dto.ImageAnalysisResult">
+        SELECT desertionNo, className1, probability1, className2, probability2, className3, probability3, popfile
+        FROM ImageAnalysisResult
+    </select>
+
 
 
 
