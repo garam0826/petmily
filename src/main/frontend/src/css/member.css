@@ -1,0 +1,35 @@
+.custom-button {
+    background-color: #ff9a9e;
+    display: block;
+    width: 300px;
+    height: 40px;
+    margin: 0 auto;
+    padding: 5px 0;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #FFFFFF;
+    font-weight: bold;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.custom-button:hover {
+    background-color: #f17a8d;
+}
+h1 {
+    font-size: 25px;
+    border: 3px solid #00a0fe;
+    border-radius: 20px;
+    padding: 6px 0;
+    margin: 20px auto;
+    width: 300px;
+    text-align: center;
+}
+h2 {
+    font-size: 20px;
+    border-radius: 20px;
+    padding: 6px 0;
+    margin: 20px auto;
+    text-align: center;
+}

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import store from "./Store";
 import Menu from "../Menu";
+import styles from "../css/base.css"
 
 function MyEdit() {
     const [error, setError] = useState(null);
@@ -24,22 +25,11 @@ function MyEdit() {
     const state = store.getState();
     const userId = state.isLoggedIn ? state.userData.mem_id : null;
 
-    const styles = {
-        wrapper: {
-            margin: 8,
-            padding: 8,
-            display: "flex",
-            flexDirection: "row",
-            border: "1px solid grey",
-            borderRadius: 16,
-        },
-        contentContainer: {
-            marginLeft: 8,
-            display: "flex",
-            flexDirection: "colum",
-            justifyContent: "center",
-        }
-    };
+    const [select_region, setRegion] = useState('');
+    const [country_district, setCountry_district] = useState('');
+    const [regionList, setRegionList] = useState([]);
+    const [districtList, setDistrictList] = useState([]);
+    const [selectedRegion, setSelectedRegion] = useState('');
 
     // 입력받은 수정 정보 처리
     const handleInputChange = (e) => {
@@ -68,7 +58,34 @@ function MyEdit() {
     // 컴포넌트가 마운트될 때 회원 정보 가져오기
     useEffect(() => {
         fetchMemberInfo();
-    }, []); // 빈 배열을 전달하여 컴포넌트가 마운트될 때 한 번만 실행되도록 함
+        // 페이지가 처음 로드될 때 지역 목록을 가져오는 함수
+        const fetchRegionList = async () => {
+            try {
+                const response = await axios.get('/member/SignUp'); // 백엔드 SignUp 엔드포인트 호출
+                setRegionList(response.data); // 가져온 데이터를 상태에 설정
+            } catch (error) {
+                console.error('Error fetching region list:', error);
+            }
+        };
+
+        fetchRegionList(); // 함수 호출
+    }, []); // 빈 배열을 전달하여 페이지가 처음 로드될 때만 실행되도록 설정
+
+    const handleRegionChange = async (event) => {
+        const selectedRegion = event.target.value; // 선택된 지역 이름 가져오기
+        setSelectedRegion(selectedRegion); // 선택된 지역을 상태에 설정
+        setRegion(selectedRegion);
+        try {
+            const response = await axios.get(`/member/searchDistrict?reg_name=${selectedRegion}`); // 백엔드 searchDistrict 엔드포인트 호출
+            setDistrictList(response.data); // 가져온 데이터를 상태에 설정
+        } catch (error) {
+            console.error('Error fetching district list:', error);
+        }
+    };
+    const handleDistrictChange = async (event) => {
+        const selectedDistrict = event.target.value; // 선택된 지역 이름 가져오기
+        setCountry_district(selectedDistrict);
+    };
 
     // 회원 정보 수정
     const handleUpdateMember = async () => {
@@ -85,8 +102,9 @@ function MyEdit() {
     };
 
     return (
-        <div>
+        <React.Fragment>
             <Menu />
+            <h1>정보 수정</h1>
             <form>
                 <h2>회원 정보 수정</h2>
                 <div style={styles.wrapper}>
@@ -111,30 +129,40 @@ function MyEdit() {
                     </label>
                 </div>
                 <div style={styles.wrapper}>
-                    <label style={styles.contentContainer}>
-                        Region:
-                        <input type="text" placeholder="새 주소(도)" name="region" value={newMemberInfo.region}
-                               onChange={handleInputChange}/>
-                    </label>
+                    <label htmlFor="region">Region:</label>
+                    <select id="region" onChange={handleRegionChange}>
+                        <option value="">{newMemberInfo.region}</option>
+                        {regionList.map((region) => (
+                            <option key={select_region} value={region}>{region}</option>
+                        ))}
+                    </select>
                 </div>
                 <div style={styles.wrapper}>
-                    <label style={styles.contentContainer}>
-                        county_district:
-                        <input type="text" placeholder="새 주소(도)" name="county_district" value={newMemberInfo.county_district}
-                               onChange={handleInputChange}/>
-                    </label>
+                    <label htmlFor="district">District:</label>
+                    <select id="district" onChange={handleDistrictChange}>
+                        <option value="">{newMemberInfo.county_district}</option>
+                        {districtList.map((district) => (
+                            <option key={country_district}
+                                    value={district.dist_name}>{district.dist_name}</option>
+                        ))}
+                    </select>
                 </div>
-                <button onClick={handleUpdateMember}>수정</button>
-                {updateMessage && <p>{updateMessage}</p>}
-
             </form>
             <form>
+                <h2> 이미지 올리는 부분 - 버튼 누르면 파일 탐색기 </h2>
+                <button>파일 탐색기 열기</button>
                 {message && <p>{message}</p>}
                 {error && <p>{error}</p>}
             </form>
+            <form>
+                <h2> 질문 점수 수정하기</h2>
+                <button>점수 수정</button>
+            </form>
+            <button onClick={handleUpdateMember}>수정 완료하기</button>
+            {updateMessage && <p>{updateMessage}</p>}
             <hr/>
             <button type="button" onClick={() => navigate("/member/mypage")}>mypage로</button>
-        </div>
+        </React.Fragment>
     );
 }
 

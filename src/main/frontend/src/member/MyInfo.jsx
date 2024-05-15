@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import store from './Store';
 import Menu from "../Menu";
+import styles from '../css/base.css'
 
 function MyInfo() {
     const [memberInfo, setMemberInfo] = useState(null);
@@ -27,6 +28,7 @@ function MyInfo() {
 
     // 회원 정보 가져오기
     const fetchMemberInfo = async () => {
+        console.log(state);
         try {
             const response = await axios.get(`/member/MyPage?mem_id=${id}`);
             setMemberInfo(response.data);
@@ -44,21 +46,27 @@ function MyInfo() {
     }, []); // 빈 배열을 전달하여 컴포넌트가 마운트될 때 한 번만 실행되도록 함
 
     return (
-        <div>
-            <Menu />
-            {memberInfo ? (
-                <div>
-                    <h2>사용자 정보</h2>
-                    <p>ID: {memberInfo.mem_id}</p>
-                    <p>PW: {memberInfo.mem_pw}</p>
-                    <p>Name: {memberInfo.nickname}</p>
-                </div>
-            ) : (
-                <p>Please log in to view your information</p>
-            )}
-            <hr/>
-            <button type="button" onClick={() => navigate("/member/mypage")}>마이페이지 화면으로</button>
-        </div>
+        <React.Fragment>
+            <header>
+                <Menu />
+            </header>
+            <main>
+                <h1>사용자 정보</h1>
+                {memberInfo ? (
+                    <form>
+                        <p style={styles.contentContainer}>ID: {memberInfo.mem_id}</p>
+                        <p style={styles.contentContainer}>PW: {memberInfo.mem_pw}</p>
+                        <p style={styles.contentContainer}>Name: {memberInfo.nickname}</p>
+                        <p style={styles.contentContainer}>도/특별시: {memberInfo.region}</p>
+                        <p style={styles.contentContainer}>시/군: {memberInfo.county_district}</p>
+                    </form>
+                ) : (
+                    <p>Please log in to view your information</p>
+                )}
+                <hr/>
+                <button type="button" onClick={() => navigate("/member/mypage")}>마이페이지 화면으로</button>
+            </main>
+        </React.Fragment>
     );
 }
 

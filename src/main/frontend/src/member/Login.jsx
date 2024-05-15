@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from './Reducer'; // Assuming the path to your sessionReducer file
 import { useNavigate } from 'react-router-dom';
+import styles from "../css/base.css"
 import Menu from "../Menu";
 
 function Login() {
@@ -32,23 +33,29 @@ function Login() {
     };
 
     return (
-        <div>
-            <Menu />
-            <h2>Login</h2>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Username:
-                    <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
-                </label>
-                <label>
-                    Password:
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                </label>
-                <button type="submit">Login</button>
-            </form>
-            <hr/>
-            <button onClick={() => navigate("/member/searchid")}> 아이디 찾기 >> </button>
-        </div>
+        <React.Fragment>
+            <header>
+                <Menu />
+            </header>
+            <main>
+                <h1>Login</h1>
+                <form onSubmit={handleSubmit}>
+                    <label>
+                        Username:
+                        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
+                    </label>
+                    <br/>
+                    <label>
+                        Password:
+                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    </label>
+                    <button type="submit">Login</button>
+                </form>
+                <hr/>
+                <button onClick={() => navigate("/member/searchid")}> 아이디 찾기 >></button>
+                <button onClick={() => navigate("/member/signup")}> 회원 가입 >></button>
+            </main>
+        </React.Fragment>
     );
 }
 
