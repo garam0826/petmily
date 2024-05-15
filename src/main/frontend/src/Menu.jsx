@@ -3,8 +3,8 @@ import {Link, useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import store from "./member/Store";
 import {logout} from "./member/Reducer";
-
-function Menu() {
+import menustyle from "./css/menu.css"
+function Memu() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -31,7 +31,7 @@ function Menu() {
                     <span>회원 정보</span>
                     <div className="dropdown-content">
                         <Link to="/member/mypage">정보 확인 및 수정</Link>
-                        <Link to="/member/mypage">찜 목록</Link>
+                        <Link to="/member/mypage/mycart">찜 목록</Link>
                         <Link to="/member/mypage">내가 작성한 글과 댓글</Link>
                     </div>
                 </li>
@@ -40,4 +40,4 @@ function Menu() {
     );
 }
 
-export default Menu;
+export default Memu;

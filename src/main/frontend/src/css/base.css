@@ -1,0 +1,75 @@
+h1 {
+    font-size: 25px;
+    border: 3px solid #00a0fe;
+    border-radius: 20px;
+    padding: 6px 0;
+    margin: 20px auto;
+    width: 300px;
+    text-align: center;
+}
+button {
+    background-color: #ff9a9e;
+    display: block;
+    width: 300px;
+    height: 40px;
+    margin: 0 auto;
+    padding: 5px 0;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #FFFFFF;
+    font-weight: bold;
+    align-items: center;
+    margin-top: 20px;
+}
+button:hover{
+    background-color: #f17a8d;
+}
+form {
+    background-color: #bbf1ef;
+    border: 3px dashed #493e2c;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    margin: 50px auto;
+    width: 800px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /*가운데 정렬*/
+    display: flex;
+    flex-direction: column; /*세로 정렬*/
+    align-items: center;
+}
+
+wrapper {
+    margin: 30px auto;
+    padding: 8px;
+    display: flex;
+    flexDirection: row;
+    border: 1px solid grey;
+    borderRadius: 16px;
+    text-align: center;
+    width: 1300px;
+    align-items:center;
+}
+
+contentContainer {
+    marginLeft: 8px;
+    display: flex;
+    flexDirection: colum;
+    justifyContent: center;
+    text-align: center;
+}
+div {
+    margin-bottom: 10px; /* 각 div 사이의 간격 조절 */
+    margin-top: 10px;
+}
+label {
+    margin-left: 20px; /* label과 input의 왼쪽 간격 */
+    margin-right: 20px; /* label과 input의 오른쪽 간격 */
+}
+input {
+    margin-left: 20px; /* label과 input의 오른쪽 간격 */
+}
+main {
+    padding-top: 20px;
+}

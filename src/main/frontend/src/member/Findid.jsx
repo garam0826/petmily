@@ -2,47 +2,64 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
 import Menu from "../Menu";
+import styles from "../css/base.css";
 
 function FindId() {
-    const [memName, setMemName] = useState('');
-    const [birth, setBirth] = useState('');
-    const [foundId, setFoundId] = useState('');
+    const [nickname, setNickname] = useState('');
+    const [email, setEmail] = useState('');
+    const [searchResult, setSearchResult] = useState('');
     const [error, setError] = useState('');
 
     const navigate = useNavigate();
-    const handleFindId = async () => {
+
+    const handleFindId = async (event) => {
+        event.preventDefault();
         try {
-            const response = await axios.get(`/member/searchid?mem_name=${memName}&birth=${birth}`);
-            if (response.status === 200) {
-                setFoundId(response.data);
-                setError('');
-            } else {
-                setFoundId('');
-                setError('이름과 생년월일을 다시 확인해보세요');
-            }
+            const response = await axios.post('/member/SearchID', {
+                nickname: nickname,
+                email: email
+            });
+            setSearchResult(response.data);
         } catch (error) {
-            console.error('Error finding member id:', error);
-            setFoundId('');
-            setError('서버에 연결할 수 없습니다.');
+            setError('이름과 생년월일을 다시 확인해보세요');
+            console.error(error);
         }
     };
 
     return (
-        <div>
-            <Menu />
-            <h2>아이디 찾기</h2>
-            <input type="text" placeholder="이름" value={memName} onChange={(e) => setMemName(e.target.value)}/>
-            <input type="text" placeholder="생년월일" value={birth} onChange={(e) => setBirth(e.target.value)}/>
-            <button onClick={handleFindId}>조회</button>
-            {foundId && (
-                <div>
-                    <p>찾은 아이디: {foundId}</p>
-                    <hr/>
-                    <button onClick={() => navigate("/member/login")}> 로그인 화면 >></button>
-                </div>
-            )}
-            {error && <p>{error}</p>}
-        </div>
+        <React.Fragment>
+            <header>
+                <Menu/>
+            </header>
+            <main>
+                <h1>아이디 찾기</h1>
+                <form>
+                    <label style={styles.contentContainer}>
+                        닉네임:
+                        <input type="text" placeholder="Nickname" value={nickname}
+                               onChange={(e) => setNickname(e.target.value)}/>
+                    </label>
+                    <label style={styles.contentContainer}>
+                        이메일:
+                        <input type="text" placeholder="e-mail" value={email}
+                               onChange={(e) => setEmail(e.target.value)}/>
+                    </label>
+                    <button onClick={handleFindId}>조회</button>
+                    {searchResult ? (
+                        <div>
+                            <hr/>
+                            <p>찾은 아이디: {searchResult}</p>
+                            <button onClick={() => navigate("/member/login")}> 로그인 화면 >></button>
+                        </div>
+                    ) : (
+                        <div>
+                            {error && <p>{error}</p>}
+                        </div>
+                    )}
+
+                </form>
+            </main>
+        </React.Fragment>
     );
 }
 
