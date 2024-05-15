@@ -12,6 +12,9 @@ public interface RecommendDAO {
     // 회원 ID별 Characteristics 조회
 
 
+    // 회원 ID별 Characteristics 수정
+
+
     // Characteristics에서 회원 ID 삭제
     public int deleteChar(String mem_id) throws Exception;
 
