@@ -83,24 +83,19 @@ const AnimalInfo = () => {
     
     // 로그인 유무에 따라 다르게 나오도록 만들어야함.
     const addFavorite = (desertionNo) => {
-        if(state.isLoggedIn){
-            axios.post(`/favorites/add?memId=${userId}&desertionNo=${desertionNo}`, {
-                mem_id: userId,
-                desertionNo: desertionNo,
-                created_at: currentTime,
+        axios.post(`/favorites/add?memId=${userId}&desertionNo=${desertionNo}`, {
+            mem_id: userId,
+            desertionNo: desertionNo,
+            created_at: currentTime,
+        })
+            .then(response => {
+                console.log("Favorite added successfully");
+                // 찜 추가 후 찜 목록 다시 불러오기
+                //getFavorites(userId);
             })
-                .then(response => {
-                    console.log("Favorite added successfully");
-                    // 찜 추가 후 찜 목록 다시 불러오기
-                    //getFavorites(userId);
-                })
-                .catch(error => {
-                    console.error("Error adding favorite: ", error);
-                });
-        }else{
-            alert('찜기능은 로그인을 해야 이용가능합니다.');
-        }
-
+            .catch(error => {
+                console.error("Error adding favorite: ", error);
+            });
     };
 
     return (
