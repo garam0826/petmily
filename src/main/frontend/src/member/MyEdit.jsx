@@ -76,7 +76,7 @@ function MyEdit() {
         setSelectedRegion(selectedRegion); // 선택된 지역을 상태에 설정
         setRegion(selectedRegion);
         try {
-            const response = await axios.get(`/member/searchDistrict?reg_name=${selectedRegion}`); // 백엔드 searchDistrict 엔드포인트 호출
+            const response = await axios.get(`/member/SearchDistrict?reg_name=${selectedRegion}`); // 백엔드 searchDistrict 엔드포인트 호출
             setDistrictList(response.data); // 가져온 데이터를 상태에 설정
         } catch (error) {
             console.error('Error fetching district list:', error);
