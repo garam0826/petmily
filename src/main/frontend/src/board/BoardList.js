@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {Link, useNavigate} from "react-router-dom";
 import './board.css';
+import Menu from "../Menu";
 
 function BoardList() {
     const [boards, setBoards] = useState([]);
@@ -21,6 +22,7 @@ function BoardList() {
 
     return (
         <div className="board-container">
+            <Menu/>
             <h2 className="board-title">게시판</h2>
             <div className={"board-write"}>
                 <button onClick={() => navigate("/board/list/write")}>

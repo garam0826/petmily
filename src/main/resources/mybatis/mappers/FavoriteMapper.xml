@@ -23,4 +23,9 @@
           AND desertionNo = #{desertionNo}
     </delete>
 
+    <select id="findMembersByDesertionNo" parameterType="String" resultType="String">
+        SELECT mem_id FROM favorites WHERE desertionNo = #{desertionNo}
+    </select>
+
+
 </mapper>

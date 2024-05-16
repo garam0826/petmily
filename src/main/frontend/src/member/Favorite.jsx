@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import Menu from "../Menu";
 
 function Favorite() {
     const userData = useSelector(state => state.userData); // 사용자 데이터를 스토어에서 가져옴.
@@ -39,6 +40,7 @@ function Favorite() {
 
     return (
         <div>
+            <Menu />
             <h2>찜 목록</h2>
             <ul>
                 {favorites.map(favorite => (

@@ -13,4 +13,7 @@ public interface FavoriteDAO {
     List<Favorite> findFavoritesByMemberId(String memId);
     void deleteFavoriteByMemIdAndDesertionNo(String memId, String desertionNo);
 
+
+    List<String> findMembersByDesertionNo(String desertionNo);
+
 }

@@ -17,13 +17,15 @@ const MainPage = lazy(() => import("../src/Mainpage"))
 
 const Login = lazy(() => import("../src/member/Login"))
 const SignUp = lazy(() => import("../src/member/SignUp"))
-const MyInfo  = lazy(() => import("../src/member/MyInfo"))
-//const Memberresign= lazy(() => import("../src/member/no_redux/MemberResign"))
 const Findid = lazy(() => import("../src/member/Findid"))
+
+const MyInfo  = lazy(() => import("../src/member/MyInfo"))
+const MyPage= lazy(() => import("../src/member/MyPage"))
 const MyEdit = lazy(() => import("../src/member/MyEdit"))
 
 const Animalinfo= lazy(() => import("../src/animal/AnimalInfo"))
-const MyPage= lazy(() => import("../src/member/MyPage"))
+
+const Recommend  = lazy(() => import("../src/recommend/Recommend"))
 
 const BoardList = lazy(() => import("../src/board/BoardList"))
 const EditContent = lazy(() => import("../src/board/EditContent"))
@@ -92,6 +94,10 @@ const root = createBrowserRouter([
     {
         path: "/member/mypage/mycart",
         element: <Suspense fallback={Loading}><Favorite/></Suspense>
+    },
+    {
+        path: "/recommend",
+        element: <Suspense fallback ={Loading}><Recommend/></Suspense>
     }
 ])
 

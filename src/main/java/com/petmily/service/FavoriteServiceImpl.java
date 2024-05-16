@@ -33,4 +33,10 @@ public class FavoriteServiceImpl implements FavoriteService {
     public void removeFavoriteByMemIdAndDesertionNo(String memId, String desertionNo) {
         favoriteDAO.deleteFavoriteByMemIdAndDesertionNo(memId, desertionNo);
     }
+
+    @Override
+    public List<String> getMembersByDesertionNo(String desertionNo) {
+        return favoriteDAO.findMembersByDesertionNo(desertionNo);
+    }
+
 }
