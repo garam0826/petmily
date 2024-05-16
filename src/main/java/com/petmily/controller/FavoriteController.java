@@ -38,7 +38,14 @@ public class FavoriteController {
         favoriteService.removeFavoriteByMemIdAndDesertionNo(memId, desertionNo);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    
+
+    @GetMapping("/members/{desertionNo}")
+    public ResponseEntity<List<String>> getMembersByDesertionNo(@PathVariable String desertionNo) {
+        List<String> memberIds = favoriteService.getMembersByDesertionNo(desertionNo);
+        return ResponseEntity.ok(memberIds);
+    }
+
+
 
 }
 

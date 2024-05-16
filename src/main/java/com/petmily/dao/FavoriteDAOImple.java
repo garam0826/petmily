@@ -43,5 +43,11 @@ public class FavoriteDAOImple implements FavoriteDAO {
         params.put("desertionNo", desertionNo);
         sqlSession.delete(namespace + ".deleteFavoriteByMemIdAndDesertionNo", params);
     }
+
+    @Override
+    public List<String> findMembersByDesertionNo(String desertionNo) {
+        return sqlSession.selectList(namespace + ".findMembersByDesertionNo", desertionNo);
+    }
+
 }
 
