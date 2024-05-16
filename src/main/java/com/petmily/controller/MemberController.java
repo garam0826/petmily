@@ -96,7 +96,7 @@ public class MemberController {
     // 시/군/구 주소 검색(광역 주소 기준)
     @GetMapping("/SearchDistrict")
     public ResponseEntity<List<DistrictDTO>> searchDistrict(@RequestParam("reg_name") String reg_name){
-        logger.info("/SearchDistrict GetMapping");
+        logger.info("/SearchDistrict PostMapping");
 
         try{
             List<DistrictDTO> d_List = memberService.searchDistrict(reg_name);
