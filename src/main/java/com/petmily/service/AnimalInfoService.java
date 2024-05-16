@@ -47,6 +47,14 @@ public class AnimalInfoService {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode root = objectMapper.readTree(response);
+
+            // 응답이 XML 형식의 오류 메시지일 경우 처리
+            if (root.has("OpenAPI_ServiceResponse")) {
+                String errorMsg = root.path("OpenAPI_ServiceResponse").path("cmmMsgHeader").path("errMsg").asText();
+                String returnAuthMsg = root.path("OpenAPI_ServiceResponse").path("cmmMsgHeader").path("returnAuthMsg").asText();
+                String returnReasonCode = root.path("OpenAPI_ServiceResponse").path("cmmMsgHeader").path("returnReasonCode").asText();
+                throw new RuntimeException("API 호출 실패: " + returnAuthMsg + " (" + returnReasonCode + ") - " + errorMsg);
+            }
             JsonNode items = root.path("response").path("body").path("items").path("item");
 
             if (items.isArray()) {
