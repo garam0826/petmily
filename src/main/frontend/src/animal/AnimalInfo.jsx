@@ -4,7 +4,7 @@ import Menu from "../Menu";
 import {useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
-import styles from "../css/base.css";
+import styles from "../css/search.css";
 import buttonsytle from "../css/member.css"
 import store from "../member/Store";
 
@@ -80,7 +80,7 @@ const AnimalInfo = () => {
     
     const currentTime = new Date().toISOString();
     const { idx } = useParams();
-    
+
     // 로그인 유무에 따라 다르게 나오도록 만들어야함.
     const addFavorite = (desertionNo) => {
         axios.post(`/favorites/add?memId=${userId}&desertionNo=${desertionNo}`, {
@@ -109,29 +109,29 @@ const AnimalInfo = () => {
                     <div>
                         {loading && <div>Loading...</div>}
                         {error && <div>Error: {error.message}</div>}
-                        <form>
-                            <div style={styles.contentContainer}>
+                        <div className="container">
+                            <div className="contentContainer">
                                 <label>Start Date:</label>
                                 <input type="text" value={startDate} onChange={(e) => setStartDate(e.target.value)}/>
                             </div>
-                            <div>
+                            <div className="contentContainer">
                                 <label>End Date:</label>
                                 <input type="text" value={endDate} onChange={(e) => setEndDate(e.target.value)}/>
                             </div>
-                            <div>
+                            <div className="contentContainer">
                                 <label>Kind:</label>
                                 <input type="text" value={kind} onChange={(e) => setKind(e.target.value)}/>
                             </div>
-                            <div>
+                            <div className="contentContainer">
                                 <label>UprCd:</label>
                                 <input type="text" value={uprCd} onChange={(e) => setUprCd(e.target.value)}/>
                             </div>
-                            <div>
+                            <div className="contentContainer">
                                 <label>OrgCd:</label>
                                 <input type="text" value={orgCd} onChange={(e) => setOrgCd(e.target.value)}/>
                             </div>
                             <button onClick={fetchData}>Fetch Animal Info</button>
-                        </form>
+                        </div>
                         {animalInfos.length === 0 && !loading && !error && <div>No data available</div>}
                         <ul>
                             {animalInfos.map((animalInfo, index) => (
