@@ -1,7 +1,10 @@
 import React from 'react';
 import Menu from "../Menu";
+import {useNavigate} from "react-router-dom";
 import styles from "../css/recommend.css";
 function Recommend() {
+    const navigate = useNavigate();
+
     return (
         <React.Fragment>
             <Menu />
@@ -25,7 +28,7 @@ function Recommend() {
                                         fontFamily: "'Nanum Barun Gothic'"
                                     }}>​</span></span><br/></div>
                                     <div><span className="fsize13"><span
-                                        style={{color: 'rgb(138, 139, 142)', fontFamily: "'Nanum Barun Gothic'"}}>추천 방식에는 질문 / 이미지 / 찜 기능 / 키워드 추천 4 종류가 있습니다.</span></span>
+                                        style={{color: 'rgb(138, 139, 142)', fontFamily: "'Nanum Barun Gothic'"}}>추천 방식에는 질문 / 키워드 추천 2 종류가 있습니다.</span></span>
                                     </div>
                                     <div><span className="fsize13"><span
                                         style={{color: 'rgb(138, 139, 142)', fontFamily: "'Nanum Barun Gothic'"}}><br/></span></span>
@@ -49,7 +52,7 @@ function Recommend() {
                                 <div className="con multi-columns-row clearfix" data-clone-loop="true"
                                      data-clone-min="3" data-clone-max="4">
 
-                                    <div className="content-block">
+                                    <div className="content-block" >
                                         <div className="outer-div">
                                             <div className="col-xs-12 col-sm-6 col-md-6 clearfix item">
                                                 <div className="text-box">
@@ -80,113 +83,9 @@ function Recommend() {
                                                             style={{color: 'rgb(219, 219, 219)'}}>(기존에 이미 질문에 답하신 분들은 그 결과와 관련된 결과도 보실 수 있습니다.)</span></span></span>
                                                         </div>
                                                         <div><br/></div>
-                                                        <div><span className="fsize13"><span
-                                                            style={{fontFamily: "'Nanum Barun Gothic'"}}><span
-                                                            style={{color: 'rgb(219, 219, 219)'}}><a
-                                                            data-user-link="/반려견 없을 경우"
-                                                            href="/반려견-없을-경우"><br/></a></span></span></span>
-                                                        </div>
                                                         <div><span style={{color: 'rgb(255, 255, 255)'}}><span
                                                             style={{fontFamily: "'Nanum Barun Gothic'"}}><span
-                                                            className="fsize13"><a data-user-link="/main"
-                                                                                   href="/main"><u>더보기</u></a></span></span></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="outer-div">
-                                            <div className="col-xs-12 col-sm-6 col-md-6 clearfix item">
-                                                <div className="text-box">
-                                                    <div data-edit="true" data-selector="div.text" className="text">
-                                                        <div><span style={{
-                                                            fontSize: '23px',
-                                                            color: 'rgb(255, 255, 255)'
-                                                        }}><span
-                                                            className="fsize24"><span
-                                                            style={{fontFamily: "'Noto Sans KR'"}}>이미지 추천</span></span></span>
-                                                        </div>
-                                                        <div style={{lineHeight: '1'}}><span className="fsize13"><span
-                                                            style={{fontFamily: "'Nanum Barun Gothic'"}}><span
-                                                            style={{color: 'rgb(219, 219, 219)'}}><br/></span></span></span>
-                                                        </div>
-                                                        <div><span className="fsize13"><span
-                                                            style={{fontFamily: "'Nanum Barun Gothic'"}}><span
-                                                            style={{color: 'rgb(219, 219, 219)'}}>현재 반려견을 키우고 계신 분이라면, 회원정보에 사진을 올려주세요.</span></span></span>
-                                                        </div>
-                                                        <div><span className="fsize13"><span
-                                                            style={{fontFamily: "'Nanum Barun Gothic'"}}><span
-                                                            style={{color: 'rgb(219, 219, 219)'}}>회원정보에 등록된 반려견 사진을&nbsp;</span></span></span><span
-                                                            className="fsize13"><span
-                                                            style={{fontFamily: "'Nanum Barun Gothic'"}}><span
-                                                            style={{color: 'rgb(219, 219, 219)'}}>이용하여 추천합니다.</span></span></span>
-                                                        </div>
-                                                        <div><span className="fsize13"><span
-                                                            style={{fontFamily: "'Nanum Barun Gothic'"}}><span
-                                                            style={{color: 'rgb(219, 219, 219)'}}><br/></span></span></span>
-                                                        </div>
-                                                        <div><span className="fsize13"><span
-                                                            style={{fontFamily: "'Nanum Barun Gothic'"}}><span
-                                                            style={{color: 'rgb(219, 219, 219)'}}><br/></span></span></span>
-                                                        </div>
-                                                        <div><span style={{color: 'rgb(255, 255, 255)'}}><span
-                                                            style={{fontFamily: "'Nanum Barun Gothic'"}}><span
-                                                            className="fsize13"><a data-user-link="/이미지 추천"
-                                                                                   href="/이미지-추천"><u>더보기</u></a></span></span></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="content-block">
-                                        <div className="outer-div">
-                                            <div className="col-xs-12 col-sm-6 col-md-6 clearfix item">
-                                                <div className="text-box">
-                                                    <div data-edit="true" data-selector="div.text" className="text">
-                                                        <div><span style={{
-                                                            fontSize: '23px',
-                                                            color: 'rgb(255, 255, 255)'
-                                                        }}><span
-                                                            className="fsize24"><span
-                                                            style={{fontFamily: "'Noto Sans KR'"}}>찜 기능 추천</span></span></span>
-                                                        </div>
-                                                        <div style={{lineHeight: '1'}}>
-                                                                        <span className="fsize13" style={{
-                                                                            fontFamily: 'Nanum Barun Gothic',
-                                                                            color: 'rgb(219, 219, 219)'
-                                                                        }}><br/></span>
-                                                        </div>
-                                                        <div>
-                                                            <span style={{color: 'rgb(219, 219, 219)'}}>보호 중인 동물 중 사용자가 찜한 유기견들과</span>
-                                                        </div>
-                                                        <div>
-                                                            <span style={{color: 'rgb(219, 219, 219)'}}>비슷한 특성을 가진 강아지를 추천합니다.</span>
-                                                        </div>
-                                                        <div>
-                                                                        <span className="fsize13"
-                                                                              style={{fontFamily: 'Nanum Barun Gothic'}}>
-                                                                            <span style={{color: 'rgb(219, 219, 219)'}}><br/></span>
-                                                                        </span>
-                                                        </div>
-                                                        <div>
-                                                                        <span className="fsize13"
-                                                                              style={{fontFamily: 'Nanum Barun Gothic'}}>
-                                                                            <span style={{color: 'rgb(219, 219, 219)'}}>
-                                                                                <a data-user-link="/반려견 없을 경우"
-                                                                                   href="/반려견-없을-경우"><br/></a>
-                                                                            </span>
-                                                                        </span>
-                                                        </div>
-                                                        <div>
-                                                                        <span style={{color: 'rgb(255, 255, 255)'}}>
-                                                                            <span
-                                                                                style={{fontFamily: 'Nanum Barun Gothic'}}
-                                                                                className="fsize13">
-                                                                                <a data-user-link="/찜 기능 추천"
-                                                                                   href="/찜-기능-추천"><u>더보기</u></a>
-                                                                            </span>
-                                                                        </span>
+                                                            className="fsize13"><a onClick={()=>navigate("/recommend/question")}><u>더보기</u></a></span></span></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -233,8 +132,7 @@ function Recommend() {
                                                                 <span
                                                                     style={{fontFamily: 'Nanum Barun Gothic'}}
                                                                     className="fsize13">
-                                                                    <a data-user-link="/키워드 추천"
-                                                                       href="/키워드-추천"><u>더보기</u></a>
+                                                                    <a onClick={()=>navigate("/recommend/keyword")}><u>더보기</u></a>
                                                                 </span>
                                                             </span>
                                                         </div>
@@ -260,7 +158,8 @@ function Recommend() {
                 </div>
             </main>
         </React.Fragment>
-    );
+    )
+        ;
 }
 
 export default Recommend;
