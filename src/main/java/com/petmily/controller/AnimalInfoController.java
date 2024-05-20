@@ -110,4 +110,10 @@ public class AnimalInfoController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @PostMapping("/translateKeywords")
+    public ResponseEntity<List<String>> translateKeywords(@RequestBody List<String> koreanKeywords) {
+        List<String> englishKeywords = animalInfoService.getEnglishKeywordsFromKorean(koreanKeywords);
+        return ResponseEntity.ok(englishKeywords);
+    }
 }
