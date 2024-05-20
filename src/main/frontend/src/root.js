@@ -33,7 +33,6 @@ const ReadContent = lazy(() => import("../src/board/ReadContent"))
 const WriteContent = lazy(() => import("../src/board/WriteContent"))
 
 const Favorite = lazy(() => import("../src/member/Favorite"))
-const Keyword = lazy(() => import("../src/recommend/Keyword"))
 
 const root = createBrowserRouter([
     {
@@ -99,10 +98,6 @@ const root = createBrowserRouter([
     {
         path: "/recommend",
         element: <Suspense fallback ={Loading}><Recommend/></Suspense>
-    },
-    {
-        path: "/키워드-추천",
-        element: <Suspense fallback ={Loading}><Keyword/></Suspense>
     }
 ])
 
