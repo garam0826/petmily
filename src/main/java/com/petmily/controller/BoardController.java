@@ -61,9 +61,9 @@ public class BoardController {
     }
 
     // 글 목록 조회
-    @GetMapping("/ListBoard")
+    @GetMapping("/List")
     public ResponseEntity<List<BoardDTO>> listBoard(){
-        logger.info("/ListBoard GetMapping");
+        logger.info("/List GetMapping");
         // paging 글 갯수 추가
 
         try{
