@@ -1,0 +1,61 @@
+.container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid-container {
+    display: grid;
+    gap: 10px;
+    justify-content: center;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto auto;
+}
+
+.grid-container > .card {
+    background-color: lightyellow;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    width: 250px;
+    height: 600px;
+}
+
+.grid-container > .card img {
+    width: 100%;
+    height: 350px;
+    border-radius: 10px;
+}
+
+.grid-container > .card:nth-child(4),
+.grid-container > .card:nth-child(5) {
+    grid-column: span 1;
+    justify-self: center;
+    align-self: center;
+}
+
+.analysis-results {
+    display: none;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-70%);
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    width: 255px;
+    height: 355px;
+}
+
+.grid-container > .card:hover .analysis-results {
+    display: block;
+}
+
+.analysis-results p {
+    margin: 5px 0;
+    font-weight: bold;
+}
