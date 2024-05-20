@@ -12,5 +12,7 @@ public interface FavoriteService {
 
     List<Favorite> getFavoritesByMemberId(String memId);
     void removeFavoriteByMemIdAndDesertionNo(String memId, String desertionNo);
+
+    List<String> getMembersByDesertionNo(String desertionNo);
 }
 
