@@ -25,11 +25,20 @@ public class BoardServiceImple implements BoardService{
 
     // 글 쓰기
     @Override
-    public int writeBoard(BoardDTO boardDTO) throws Exception{
-        int result = boardDAO.writeBoard(boardDTO);
-        logger.info("글 쓰기 Service 완료");
+    public boolean writeBoard(BoardDTO boardDTO) throws Exception{
+        boolean result = false;
+        int value = boardDAO.writeBoard(boardDTO);
 
-        return result;
+        if(value > 0){
+            result = true;
+            logger.info(boardDTO.getReg_name()+ " : " +boardDTO.getTitle()+ " 글 쓰기 Service 완료");
+
+            return result;
+        }else{
+            logger.info(boardDTO.getReg_name()+ " : " +boardDTO.getTitle()+ " 글 쓰기 Service 실패");
+
+            return result;
+        }
     }
 
     // 글 목록 조회
@@ -48,26 +57,45 @@ public class BoardServiceImple implements BoardService{
         boardDAO.hitUpBoard(idx);
         // 내용 조회
         BoardDTO boardDTO = boardDAO.readBoard(idx);
-        logger.info("글 내용 조회 Service 완료");
+        logger.info(boardDTO.getIdx()+ "번째 글의 내용 조회 Service 완료");
 
         return boardDTO;
     }
 
     // 글 수정
     @Override
-    public int updateBoard(BoardDTO boardDTO) throws Exception{
-        int result = boardDAO.updateBoard(boardDTO);
+    public boolean updateBoard(BoardDTO boardDTO) throws Exception{
+        boolean result = false;
+        int value = boardDAO.updateBoard(boardDTO);
 
-        return result;
+        if(value > 0){
+            result = true;
+            logger.info(boardDTO.getIdx()+ "번째 글의 내용 수정 Service 완료");
+
+            return result;
+        }else{
+            logger.info(boardDTO.getIdx()+ "번째 글의 내용 수정 Service 실패");
+
+            return result;
+        }
     }
 
     // 글 삭제
     @Override
-    public int deleteBoard(int idx) throws Exception{
-        int result = boardDAO.deleteBoard(idx);
-        logger.info(idx+"번 글 삭제 Service 완료");
+    public boolean deleteBoard(int idx) throws Exception{
+        boolean result = false;
+        int value = boardDAO.deleteBoard(idx);
 
-        return result;
+        if(value > 0){
+            result = true;
+            logger.info(idx+ "번 글 삭제 Service 완료");
+
+            return result;
+        }else{
+            logger.info(idx+ "번 글 삭제 Service 실패");
+
+            return result;
+        }
     }
 
 
@@ -82,11 +110,20 @@ public class BoardServiceImple implements BoardService{
 
     // 댓글 쓰기
     @Override
-    public int writeReply(ReplyDTO replyDTO) throws Exception{
-        int result = boardDAO.writeReply(replyDTO);
-        logger.info("댓글 쓰기 Service 완료");
+    public boolean writeReply(ReplyDTO replyDTO) throws Exception{
+        boolean result = false;
+        int value = boardDAO.writeReply(replyDTO);
 
-        return result;
+        if(value > 0){
+            result = true;
+            logger.info(replyDTO.getReg_name()+ " : " +replyDTO.getBoard_idx()+ "번 글의 " +replyDTO.getStep()+ "번째 댓글의 " +replyDTO.getDepth()+ " 쓰기 Service 완료");
+
+            return result;
+        }else{
+            logger.info(replyDTO.getReg_name()+ " : " +replyDTO.getBoard_idx()+ "번 글의 " +replyDTO.getStep()+ "번째 댓글의 " +replyDTO.getDepth()+ " 쓰기 Service 완료");
+
+            return result;
+        }
     }
 
     // 댓글 조회
