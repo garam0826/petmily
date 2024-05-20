@@ -69,7 +69,7 @@ public class MemberServiceImple implements MemberService{
         return r_List;
     }
 
-    // 시/군/구 주소 검색(광역 주소 기준)
+    // 시/군/구 주소 목록 검색(광역 주소 기준)
     @Override
     public List<DistrictDTO> searchDistrict(String reg_name) throws Exception{
         List<DistrictDTO> d_List = memberDAO.searchDistrict(reg_name);
@@ -204,6 +204,21 @@ public class MemberServiceImple implements MemberService{
 
             return resultPW;
         }
+    }
+
+    // 광역 주소 code 목록 조회
+    @Override
+    public List<RegionDTO> slctReg_code() throws Exception{
+        List<RegionDTO> r_List = memberDAO.slctReg_code();
+
+        return r_List;
+    }
+
+    // 시/군/구 주소 code 목록 검색(광역 주소 기준)
+    public List<DistrictDTO> slctDist_code(String reg_name) throws Exception{
+        List<DistrictDTO> d_List = memberDAO.slctDist_code(reg_name);
+
+        return d_List;
     }
 
     // test

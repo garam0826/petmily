@@ -17,7 +17,7 @@ public interface MemberService {
     // 광역 주소 목록 조회
     public List<RegionDTO> listRegion() throws Exception;
 
-    // 시/군/구 주소 검색(광역 주소 기준)
+    // 시/군/구 주소 목록 검색(광역 주소 기준)
     public List<DistrictDTO> searchDistrict(String reg_name) throws Exception;
 
     // 회원 비밀번호 조회
@@ -44,7 +44,11 @@ public interface MemberService {
     // PW 찾기 입력된 email, mem_id과 회원정보 2개 일치 확인
     public String searchMem_PW(HashMap<String, String> hashMap) throws Exception;
 
-    // 기초자치단체 기준 주소 검색 경기도 부터 다시 저장
+    // 광역 주소 code 목록 조회
+    public List<RegionDTO> slctReg_code() throws Exception;
+
+    // 시/군/구 주소 code 목록 검색(광역 주소 기준)
+    public List<DistrictDTO> slctDist_code(String reg_name) throws Exception;
 
     // test
     public String getTime() throws Exception;
