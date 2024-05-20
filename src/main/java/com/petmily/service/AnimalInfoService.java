@@ -13,10 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -183,6 +180,22 @@ public class AnimalInfoService {
                 .collect(Collectors.toList());
     }
 
+    public List<String> getEnglishKeywordsFromKorean(List<String> koreanKeywords) {
+        List<String> englishKeywords = new ArrayList<>();
+        for (String korean : koreanKeywords) {
+            Map<String, Object> keywords = animalInfoDAO.findEnglishKeywordsByKorean(korean);
+            if (keywords != null) {
+                keywords.values().stream()
+                        .filter(Objects::nonNull) // null 값 제거
+                        .map(Object::toString) // Object를 String으로 변환
+                        .map(String::trim) // 문자열 앞뒤 공백 제거
+                        .filter(keyword -> !keyword.isEmpty() && !keyword.matches("\\s+")) // 공백만 있는 문자열 제거
+                        .forEach(englishKeywords::add); // 결과 리스트에 추가
+            }
+        }
+        return englishKeywords.stream()
+                .collect(Collectors.toList()); // List로 변환하여 반환
+    }
 
 
 }

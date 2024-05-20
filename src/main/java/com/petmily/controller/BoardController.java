@@ -38,14 +38,14 @@ public class BoardController {
 
     // 글 쓰기
     @PostMapping("/WriteBoard")
-    public ResponseEntity<Integer> writeBoard(@RequestBody BoardDTO boardDTO){
+    public ResponseEntity<Boolean> writeBoard(@RequestBody BoardDTO boardDTO){
         logger.info("/WriteBoard PostMapping");
 
         try{
-            int result = boardService.writeBoard(boardDTO);
+            boolean result = boardService.writeBoard(boardDTO);
 
-            if(result > 0){
-                logger.info("글 쓰기 성공");
+            if(result){
+                logger.info("글 쓰기 완료");
 
                 return new ResponseEntity<>(result, HttpStatus.OK);
             }else{
@@ -80,7 +80,7 @@ public class BoardController {
 
     // 글 내용 조회
     @GetMapping("/Content")
-    public ResponseEntity<BoardDTO> readBoard(int idx) throws Exception{
+    public ResponseEntity<BoardDTO> readBoard(@RequestParam int idx) throws Exception{
         logger.info("/Content GetMapping");
         // 조회수 증가
 
@@ -97,20 +97,19 @@ public class BoardController {
 
 
     // 글 수정
-    @PutMapping("/Update")
+    @PutMapping("/UpdateBoard")
     public ResponseEntity<Boolean> updateBoard(@RequestBody BoardDTO boardDTO){
-        logger.info("/Update PutMapping");
+        logger.info("/UpdateBoard PutMapping");
 
         try{
-            int value = boardService.updateBoard(boardDTO);
-            boolean result = false;
+            boolean result = boardService.updateBoard(boardDTO);
 
             if(result){
-                logger.info("");
+                logger.info(boardDTO.getIdx()+ "번 : " +boardDTO.getTitle()+ " 글 수정 완료");
 
                 return new ResponseEntity<>(result, HttpStatus.OK);
             }else{
-                logger.info("");
+                logger.info(boardDTO.getIdx()+ "번 : " +boardDTO.getTitle()+ " 글 수정 실패");
 
                 return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
             }
@@ -122,16 +121,38 @@ public class BoardController {
     }
 
     // 글 삭제
+    @DeleteMapping("/DeleteBoard")
+    public ResponseEntity<Boolean> deleteBoard(@RequestParam int idx) throws Exception{
+        logger.info("/DeleteBoard DeleteMapping");
+
+        try{
+            boolean result = boardService.deleteBoard(idx);
+
+            if(result){
+                logger.info(idx+ "번 글 : 삭제 성공");
+
+                return new ResponseEntity<>(result, HttpStatus.OK);
+            }else{
+                logger.info(idx+ "번 글 : 삭제 실패");
+
+                return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     // 댓글 쓰기
     @PostMapping("/WriteReply")
-    public ResponseEntity<Integer> writeReply(@RequestBody ReplyDTO replyDTO){
+    public ResponseEntity<Boolean> writeReply(@RequestBody ReplyDTO replyDTO){
         logger.info("/WriteReply PostMapping");
 
         try{
-            int result = boardService.writeReply(replyDTO);
+            boolean result = boardService.writeReply(replyDTO);
 
-            if(result > 0){
+            if(result){
                 logger.info("댓글 쓰기 성공");
 
                 return new ResponseEntity<>(result, HttpStatus.OK);
@@ -148,8 +169,11 @@ public class BoardController {
     }
 
     // 댓글 조회
+
     // 댓글 수정
-    // 댓글 삭제
+
+    // 댓글 삭제(게시판 원글 지울 때 삭제)
+
     // 댓글 갯수 조회
 
     // test

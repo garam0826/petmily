@@ -80,7 +80,7 @@ public class MemberController {
     // 광역 주소 목록 조회
     @GetMapping("/SignUp")
     public ResponseEntity<List<RegionDTO>> listRegion(){
-        logger.info("/signup GetMapping");
+        logger.info("/SignUp GetMapping");
 
         try{
             List<RegionDTO> r_List = memberService.listRegion();
@@ -93,7 +93,7 @@ public class MemberController {
         }
     }
 
-    // 시/군/구 주소 검색(광역 주소 기준)
+    // 시/군/구 주소 목록 검색(광역 주소 기준)
     @GetMapping("/SearchDistrict")
     public ResponseEntity<List<DistrictDTO>> searchDistrict(@RequestParam("reg_name") String reg_name){
         logger.info("/SearchDistrict GetMapping");
@@ -213,7 +213,9 @@ public class MemberController {
 
                 return new ResponseEntity<>(result, HttpStatus.OK);
             }else{
-                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+                logger.info(memberDTO.getMem_id()+ " : 회원 탈퇴 실패");
+
+                return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -266,6 +268,31 @@ public class MemberController {
         }
     }
 
+    // 회원별 강아지 Image Upload
+    @PostMapping("/PetImg")
+    public ResponseEntity<Boolean> uploadPetImg(@RequestParam("") MultipartFile images, @RequestParam String mem_id){
+        logger.info("/PetImg PostMapping");
+        boolean result = false;
+
+        logger.info("upload 요청 회원 ID : " +mem_id);
+        logger.info("image file name : " +images.getOriginalFilename());
+        logger.info("image file size : " +images.getSize());
+
+        try{
+            String path = imageUploadService.findMem_Dir(mem_id);
+            String name = imageUploadService.uploadImage(path, images.getOriginalFilename(), images.getBytes());
+            result = true;
+        }catch(IOException e){
+            e.printStackTrace();
+        }catch(Exception e){
+            e.printStackTrace();
+
+            return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
     // image upload test
     @PostMapping("/imagetest")
     public ResponseEntity<Boolean> testUpload(@RequestParam("images") MultipartFile images, @RequestParam String mem_id){
@@ -273,23 +300,26 @@ public class MemberController {
 
         boolean result = false;
 
-        logger.info("upload ID : " +mem_id);
-        logger.info("image name : " +images.getOriginalFilename());
-        logger.info("image size : " +images.getSize());
-
         try{
             String path = imageUploadService.findMem_Dir(mem_id);
             String name = imageUploadService.uploadImage(path, images.getOriginalFilename(), images.getBytes());
             result = true;
 
-            logger.info("image upload 이름 : " +name);
+            logger.info("upload ID : " +mem_id);
+            logger.info("image name : " +images.getOriginalFilename());
+            logger.info("image size : " +images.getSize());
+
+            return new ResponseEntity<>(result, HttpStatus.OK);
         }catch(IOException e){
             e.printStackTrace();
+
+            return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
         }catch(Exception e){
             e.printStackTrace();
+
+            return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     // test
@@ -309,13 +339,13 @@ public class MemberController {
         }
     }
 
-    // 주소 test1
+    // 광역 주소 test1
     @GetMapping("/test2")
-    public ResponseEntity<List<RegionDTO>> getRegion(){
+    public ResponseEntity<List<RegionDTO>> slctReg_code(){
         logger.info("/test2 GetMapping");
 
         try{
-            List<RegionDTO> r_List = memberService.listRegion();
+            List<RegionDTO> r_List = memberService.slctReg_code();
 
             return new ResponseEntity<>(r_List, HttpStatus.OK);
         }catch(Exception e){
@@ -325,13 +355,13 @@ public class MemberController {
         }
     }
 
-    // 주소 test2
-    @PostMapping("/test3")
-    public ResponseEntity<List<DistrictDTO>> getDistrict(@RequestParam("reg_name") String reg_name){
-        logger.info("/test3 PostMapping");
+    // 시/군/구 주소 test2
+    @GetMapping("/test3")
+    public ResponseEntity<List<DistrictDTO>> slctDist_code(@RequestParam("reg_name") String reg_name){
+        logger.info("/test3 GetMapping");
 
         try{
-            List<DistrictDTO> d_List = memberService.searchDistrict(reg_name);
+            List<DistrictDTO> d_List = memberService.slctDist_code(reg_name);
 
             return new ResponseEntity<>(d_List, HttpStatus.OK);
         }catch(Exception e){
