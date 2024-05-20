@@ -1,0 +1,101 @@
+/*.keyword-selector {
+    position: relative;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.background-image {
+    width: 100%;
+    height: auto;
+    opacity: 0.5;
+}
+
+.keywords-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.keyword {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: white;
+    border: 2px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.keyword.selected {
+    background-color: #000;
+    color: white;
+}
+
+.submit-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+*/
+/* ImageGrid.css */
+.image-grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* or space-evenly */
+    padding: 10px;
+    gap: 20px;
+}
+
+.image-item {
+    flex: 1 1 calc(100% / 7 - 20px); /* 7개 이미지를 한 줄에 배치, gap을 고려 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+    border-bottom: 5px solid #d3d3d3;
+}
+
+.image-item.selected {
+    border-color: #007BFF;
+}
+
+.image-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.label {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.submit-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
