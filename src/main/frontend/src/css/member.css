@@ -1,5 +1,5 @@
 .custom-button {
-    background-color: #ff9a9e;
+    background-color: #ECACB5;
     display: block;
     width: 300px;
     height: 40px;
@@ -16,6 +16,8 @@
 
 .custom-button:hover {
     background-color: #f17a8d;
+    color: #E3E3E3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 h1 {
     font-size: 25px;
