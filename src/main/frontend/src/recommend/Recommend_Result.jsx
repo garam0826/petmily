@@ -15,6 +15,8 @@ const Recommend_Result = ({ matches, loading, error }) => {
     //const [loading, setLoading] = useState(true);
     //const [error, setError] = useState(null);
 
+    console.log(matches);
+
     const [animalInfos, setAnimalInfos] = useState({});
     const [analysisResults, setAnalysisResults] = useState({});
     const [fetchDataError, setFetchDataError] = useState(null);

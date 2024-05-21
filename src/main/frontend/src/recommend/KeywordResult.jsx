@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {useLocation} from "react-router-dom";
 import axios from 'axios';
 import store from "../member/Store";
 import Menu from "../Menu";
@@ -8,20 +9,32 @@ import '../css/result.css';
 import Recommend_Result from "./Recommend_Result";
 
 const KeywordResult = () => {
+    const location = useLocation();
     const state = store.getState();
     const userId = state.isLoggedIn ? state.userData.mem_id : null;
+    const {desertionNos} = location.state || { desertionNos: [] };
 
     const [matches, setMatches] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    //const [keywords, setKeywords] = useState("");
 
-    // 추천 매치 데이터를 가져오는 useEffect
+    // 키워드 매치 데이터를 가져오는 useEffect
     useEffect(() => {
         const fetchMatches = async () => {
             try {
                 // keyword 추천 결과로 api 바꿔야함
-                const response = await axios.get(`/member/profile/recommend/${userId}`);
+                setLoading(true);
+                setError(null);
+                console.log('Sending desertionNos:', desertionNos);
+                const response = await axios.post(`/api/animal/keyword`, desertionNos, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                console.log('Result:', response.data);
                 setMatches(response.data);
+                console.log(setMatches(response.data));
             } catch (err) {
                 setError('Failed to fetch matches');
                 console.error(err);
@@ -30,10 +43,10 @@ const KeywordResult = () => {
             }
         };
 
-        if (userId) {
+        if (userId && desertionNos.length > 0) {
             fetchMatches();
         }
-    }, [userId]);
+    }, [userId, desertionNos]);
 
     return (
         <div>

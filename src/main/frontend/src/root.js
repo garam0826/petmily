@@ -26,10 +26,6 @@ const MyEdit = lazy(() => import("../src/member/MyEdit"))
 const Animalinfo= lazy(() => import("../src/animal/AnimalInfo"))
 
 const Recommend  = lazy(() => import("../src/recommend/Recommend"))
-const Questionrecommend = lazy(() => import("../src/recommend/QuestionRecommend"))
-/*const Keywordrecommend= lazy(() => import("../src/recommend/KeywordRecommend"))*/
-const Qusetionresult= lazy(() => import("../src/recommend/QuestionResult"))
-const Keywordresult= lazy(() => import("../src/recommend/KeywordResult"))
 
 const BoardList = lazy(() => import("../src/board/BoardList"))
 const EditContent = lazy(() => import("../src/board/EditContent"))
@@ -37,6 +33,8 @@ const ReadContent = lazy(() => import("../src/board/ReadContent"))
 const WriteContent = lazy(() => import("../src/board/WriteContent"))
 
 const Favorite = lazy(() => import("../src/member/Favorite"))
+const Keyword = lazy(() => import("../src/recommend/Keyword"))
+const KeywordResult = lazy(() => import("../src/recommend/KeywordResult"))
 
 const root = createBrowserRouter([
     {
@@ -104,21 +102,13 @@ const root = createBrowserRouter([
         element: <Suspense fallback ={Loading}><Recommend/></Suspense>
     },
     {
-        path: "/recommend/question",
-        element: <Suspense fallback ={Loading}><Questionrecommend/></Suspense>
-    },
-    {
-        path: "/recommend/question/result",
-        element: <Suspense fallback ={Loading}><Qusetionresult/></Suspense>
+        path: "/recommend/keyword",
+        element: <Suspense fallback ={Loading}><Keyword/></Suspense>
     },
     {
         path: "/recommend/keyword/result",
-        element: <Suspense fallback ={Loading}><Keywordresult/></Suspense>
-    }/*,
-    {
-        path: "/recommend/keyword",
-        element: <Suspense fallback ={Loading}><Keywordrecommend/></Suspense>
-    }*/
+        element: <Suspense fallback ={Loading}><KeywordResult/></Suspense>
+    }
 ])
 
 export default root;

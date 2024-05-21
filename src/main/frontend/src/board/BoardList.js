@@ -21,7 +21,7 @@ function BoardList() {
     }, []);
 
     return (
-        <div className="board-container">
+        <div>
             <Menu/>
             <h2 className="board-title">게시판</h2>
             <div className={"board-write"}>
