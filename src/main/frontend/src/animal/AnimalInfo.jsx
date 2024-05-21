@@ -29,6 +29,11 @@ const AnimalInfo = () => {
     const [orgCd, setOrgCd] = useState('');
     const [analysisResults, setAnalysisResults] = useState([]);
 
+
+    const [regionList, setRegionList] = useState([]);
+    const [districtList, setDistrictList] = useState([]);
+    const [selectedRegion, setSelectedRegion] = useState('');
+
     const addAnalysisResult = (newResult) => {
         setAnalysisResults(prevAnalysisResults => [...prevAnalysisResults, newResult]);
     };
@@ -49,6 +54,18 @@ const AnimalInfo = () => {
         setLoading(false);
     };
 
+    useEffect(() => {
+        const fetchRegionList = async () => {
+            try {
+                const response = await axios.get('/api/animal/SlctReg_code');
+                setRegionList(response.data);
+            } catch (error) {
+                console.error('Error fetching region list:', error);
+            }
+        };
+
+        fetchRegionList();
+    }, []);
     const handleAnalysis = async (desertionNo, imageUrl) => {
         try {
             setAnalysisloading(true);
@@ -61,6 +78,24 @@ const AnimalInfo = () => {
             addAnalysisResult('error');
         }
         setAnalysisloading(false);
+    };
+
+    const handleRegionChange = async (event) => {
+        const selectedRegion = event.target.value;
+        setSelectedRegion(selectedRegion);
+        setUprCd(selectedRegion);
+        console.log(uprCd);
+        try {
+            const response = await axios.get(`/api/animal/SlctDist_code?reg_name=${selectedRegion}`);
+            setDistrictList(response.data);
+        } catch (error) {
+            console.error('Error fetching district list:', error);
+        }
+    };
+
+    const handleDistrictChange = (event) => {
+        const selectedDistrict = event.target.value;
+        setOrgCd(selectedDistrict);
     };
 
     const state = store.getState();
@@ -138,12 +173,23 @@ const AnimalInfo = () => {
                                 <input type="text" value={kind} onChange={(e) => setKind(e.target.value)}/>
                             </div>
                             <div className="contentContainer">
-                                <label>지역(도/특별시): </label>
-                                <input type="text" value={uprCd} onChange={(e) => setUprCd(e.target.value)}/>
+                                <label htmlFor="region">지역(도/특별시):</label>
+                                <select id="region" onChange={handleRegionChange}>
+                                    <option value="">지역(도/특별시)</option>
+                                    {regionList.map((region) => (
+                                        <option key={region.reg_code} value={region.reg_name}>{region.reg_name}</option>
+                                    ))}
+                                </select>
                             </div>
                             <div className="contentContainer">
-                                <label>지역(시/군): </label>
-                                <input type="text" value={orgCd} onChange={(e) => setOrgCd(e.target.value)}/>
+                                <label htmlFor="district">지역(시/군):</label>
+                                <select id="district" onChange={handleDistrictChange}>
+                                    <option value="">지역(시/군)</option>
+                                    {districtList.map((district) => (
+                                        <option key={district.dist_code}
+                                                value={district.dist_name}>{district.dist_name}</option>
+                                    ))}
+                                </select>
                             </div>
                             <button onClick={fetchData} style={{width: '350px'}}>Fetch Animal Info</button>
                         </div>
@@ -199,9 +245,9 @@ const AnimalInfo = () => {
                     <div>
                         <h2>(현재 찜 기능으로 인해) 해당 화면은 로그인이 필요한 화면입니다.</h2>
                         <div style={{display: 'flex', justifyContent: 'center'}}>
-                            <button className="custom-button" onClick={() => navigate("/member/SignUp")}>회원가입 >
+                            <button className="signup custom-button" onClick={() => navigate("/member/SignUp")}>회원가입 >
                             </button>
-                            <button className="custom-button" onClick={() => navigate("/member/login")}>로그인 >
+                            <button className="login custom-button" onClick={() => navigate("/member/login")}>로그인 >
                             </button>
                         </div>
                     </div>
