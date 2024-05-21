@@ -26,6 +26,8 @@ const MyEdit = lazy(() => import("../src/member/MyEdit"))
 const Animalinfo= lazy(() => import("../src/animal/AnimalInfo"))
 
 const Recommend  = lazy(() => import("../src/recommend/Recommend"))
+const Qustion = lazy(() => import("../src/recommend/QuestionRecommend"))
+const QustionResult = lazy(() => import("../src/recommend/QuestionResult"))
 
 const BoardList = lazy(() => import("../src/board/BoardList"))
 const EditContent = lazy(() => import("../src/board/EditContent"))
@@ -100,6 +102,14 @@ const root = createBrowserRouter([
     {
         path: "/recommend",
         element: <Suspense fallback ={Loading}><Recommend/></Suspense>
+    },
+    {
+        path: "/recommend/question",
+        element: <Suspense fallback ={Loading}><Qustion/></Suspense>
+    },
+    {
+        path: "/recommend/question/result",
+        element: <Suspense fallback ={Loading}><QustionResult/></Suspense>
     },
     {
         path: "/recommend/keyword",
