@@ -1,21 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import store from "../member/Store";
-import Menu from "../Menu";
 import "../css/recommend.css"
 
 import '../css/menu.css';
 import '../css/result.css';
 
-const Recommend_Result = ({ matches, loading, error }) => {
+const Favorite_Result = ({ matches, loading, error, removeFavorite, getMembersByDesertionNo }) => {
     const state = store.getState();
     const userId = state.isLoggedIn ? state.userData.mem_id : null;
 
     //const [matches, setMatches] = useState([]);
     //const [loading, setLoading] = useState(true);
     //const [error, setError] = useState(null);
-
-    console.log(matches);
 
     const [animalInfos, setAnimalInfos] = useState({});
     const [analysisResults, setAnalysisResults] = useState({});
@@ -91,15 +88,12 @@ const Recommend_Result = ({ matches, loading, error }) => {
                                         style={{color: 'rgb(138, 139, 142)', fontFamily: "'Nanum Barun Gothic'"}}><br/></span></span>
                                     </div>
                                     <div><span
-                                        style={{fontFamily: "'Seoul Namsan'", fontSize: '30px'}}>유기견 추천 결과</span>
+                                        style={{fontFamily: "'Seoul Namsan'", fontSize: '30px'}}>찜 목록</span>
                                     </div>
                                     <div><span className="fsize13"><span style={{
                                         color: 'rgb(138, 139, 142)',
                                         fontFamily: "'Nanum Barun Gothic'"
                                     }}>​</span></span></div>
-                                    <div><span className="fsize13"><span
-                                        style={{color: 'rgb(138, 139, 142)', fontFamily: "'Nanum Barun Gothic'"}}>사용자의 취향에 맞는 유기견 5마리입니다.</span></span>
-                                    </div>
                                     <div><span className="fsize13"><span
                                         style={{color: 'rgb(138, 139, 142)', fontFamily: "'Nanum Barun Gothic'"}}>(사진 위에 마우스를 올리면, 더 자세한 정보를 보실 수 있습니다.)<br/><br/></span></span>
                                     </div>
@@ -121,14 +115,6 @@ const Recommend_Result = ({ matches, loading, error }) => {
                                 {animalInfos[match.desertionNo] && (
                                     <div>
                                         <img src={animalInfos[match.desertionNo].popfile} alt="Animal"/>
-                                        {analysisResults[match.desertionNo] && (
-                                            <div>
-                                                <hr/>
-                                                <p>[ 품종 비율 1순위 ]<br/>{analysisResults[match.desertionNo].className1}<br/>({analysisResults[match.desertionNo].probability1}%)</p>
-                                                <p>[ 품종 비율 2순위 ]<br/>{analysisResults[match.desertionNo].className2}<br/>({analysisResults[match.desertionNo].probability2}%)</p>
-                                                <p>[ 품종 비율 3순위 ]<br/>{analysisResults[match.desertionNo].className3}<br/>({analysisResults[match.desertionNo].probability3}%)</p>
-                                            </div>
-                                        )}
                                         <div className="analysis-results">
                                             <br/>
                                             {/* 확인용 <p>유기 번호: {animalInfos[match.desertionNo].desertionNo}</p>*/}
@@ -140,6 +126,8 @@ const Recommend_Result = ({ matches, loading, error }) => {
                                             <p>중성화 여부: {animalInfos[match.desertionNo].neuterYn}</p>
                                             <p>특징: {animalInfos[match.desertionNo].specialMark}</p>
                                             <p>보호소 이름: {animalInfos[match.desertionNo].careNm}</p>
+                                            <button onClick={() => removeFavorite(match.desertionNo)}>찜 제거</button>
+                                            <button onClick={() => getMembersByDesertionNo(match.desertionNo)}>찜한 사용자 보기</button>
                                         </div>
                                     </div>
                                 )}
@@ -152,4 +140,4 @@ const Recommend_Result = ({ matches, loading, error }) => {
     );
 };
 
-export default Recommend_Result;
+export default Favorite_Result;
