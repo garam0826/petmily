@@ -52,6 +52,8 @@
     </select>
 
     <!-- 댓글 수정 -->
+
+
     <!-- 댓글 삭제 -->
     <delete id="deleteReplyBoard" parameterType="Integer">
         delete from replyboard where reply_idx = #{reply_idx}
@@ -61,6 +63,7 @@
     <select id="countReplyBoard" parameterType="Integer" resultType="Integer">
         select count(step) from replyboard where board_idx = #{board_idx}
     </select>
+
 
     <!-- test -->
     <select id="getTime" resultType="String">

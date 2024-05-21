@@ -1,7 +1,10 @@
 package com.petmily.controller;
 
+import com.petmily.dto.MemberDTO;
+import com.petmily.dto.RegionDTO;
+import com.petmily.dto.DistrictDTO;
 
-
+import com.petmily.service.MemberService;
 import com.petmily.service.RecommendService;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +44,11 @@ public class RecommendController {
 
     // 추천기능 1 : 강아지 품종 특성값 & 사용자 Profile 조합
 
+    // 광역 주소 목록
+    // get방식, 경로 /api/animal/
+
+    // 시군구 주소 코드 띄우기
+    // get, code반환 /api/animal/district/
 
     // 추천기능 2 : 강아지 성격 Keyword 활용 -> 사용자 선택값과 강아지 품종의 일치 갯수
     // 알고리즘 : UI에서 사용자가 선택 -> 선택한  csv파일 품종에서 keyword로 저장 ->
