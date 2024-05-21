@@ -7,14 +7,13 @@ import "../css/recommend.css"
 import '../css/menu.css';
 import '../css/result.css';
 
-const Recommend_Result = ({ matches, loading, error }) => {
+const Recommend_Result = ({ matches, loading, error, title }) => {
     const state = store.getState();
     const userId = state.isLoggedIn ? state.userData.mem_id : null;
 
     //const [matches, setMatches] = useState([]);
     //const [loading, setLoading] = useState(true);
     //const [error, setError] = useState(null);
-
     console.log(matches);
 
     const [animalInfos, setAnimalInfos] = useState({});
@@ -37,9 +36,9 @@ const Recommend_Result = ({ matches, loading, error }) => {
             }
         };
 
-        matches.forEach(match => {
-            if (!animalInfos[match.desertionNo]) {
-                fetchData(match.desertionNo);
+        matches.forEach(desertionNo => {
+            if (!animalInfos[desertionNo]) {
+                fetchData(desertionNo);
             }
         });
     }, [matches]);
@@ -91,7 +90,7 @@ const Recommend_Result = ({ matches, loading, error }) => {
                                         style={{color: 'rgb(138, 139, 142)', fontFamily: "'Nanum Barun Gothic'"}}><br/></span></span>
                                     </div>
                                     <div><span
-                                        style={{fontFamily: "'Seoul Namsan'", fontSize: '30px'}}>유기견 추천 결과</span>
+                                        style={{fontFamily: "'Seoul Namsan'", fontSize: '30px'}}>유기견 {title} 추천 결과</span>
                                     </div>
                                     <div><span className="fsize13"><span style={{
                                         color: 'rgb(138, 139, 142)',
@@ -116,30 +115,30 @@ const Recommend_Result = ({ matches, loading, error }) => {
                     <div>No matches found</div>
                 ) : (
                     <div className="grid-container">
-                        {matches.map((match, index) => (
-                            <div className="card" key={match.desertionNo}>
-                                {animalInfos[match.desertionNo] && (
+                        {matches.map((desertionNo) => (
+                            <div className="card" key={desertionNo}>
+                                {animalInfos && (
                                     <div>
-                                        <img src={animalInfos[match.desertionNo].popfile} alt="Animal"/>
-                                        {analysisResults[match.desertionNo] && (
+                                        <img src={animalInfos[desertionNo]?.popfile} alt="Animal"/>
+                                        {analysisResults[desertionNo] && (
                                             <div>
                                                 <hr/>
-                                                <p>[ 품종 비율 1순위 ]<br/>{analysisResults[match.desertionNo].className1}<br/>({analysisResults[match.desertionNo].probability1}%)</p>
-                                                <p>[ 품종 비율 2순위 ]<br/>{analysisResults[match.desertionNo].className2}<br/>({analysisResults[match.desertionNo].probability2}%)</p>
-                                                <p>[ 품종 비율 3순위 ]<br/>{analysisResults[match.desertionNo].className3}<br/>({analysisResults[match.desertionNo].probability3}%)</p>
+                                                <p>[ 품종 비율 1순위 ]<br/>{analysisResults[desertionNo].className1}<br/>({analysisResults[desertionNo].probability1}%)</p>
+                                                <p>[ 품종 비율 2순위 ]<br/>{analysisResults[desertionNo].className2}<br/>({analysisResults[desertionNo].probability2}%)</p>
+                                                <p>[ 품종 비율 3순위 ]<br/>{analysisResults[desertionNo].className3}<br/>({analysisResults[desertionNo].probability3}%)</p>
                                             </div>
                                         )}
                                         <div className="analysis-results">
                                             <br/>
                                             {/* 확인용 <p>유기 번호: {animalInfos[match.desertionNo].desertionNo}</p>*/}
-                                            <p>나이: {animalInfos[match.desertionNo].age}</p>
-                                            <p>무게: {animalInfos[match.desertionNo].weight}</p>
-                                            <p>공고 시작 날짜: {formatDate(animalInfos[match.desertionNo].noticeSdt)}</p>
-                                            <p>공고 종료 날짜: {formatDate(animalInfos[match.desertionNo].noticeEdt)}</p>
-                                            <p>성별: {animalInfos[match.desertionNo].sexCd}</p>
-                                            <p>중성화 여부: {animalInfos[match.desertionNo].neuterYn}</p>
-                                            <p>특징: {animalInfos[match.desertionNo].specialMark}</p>
-                                            <p>보호소 이름: {animalInfos[match.desertionNo].careNm}</p>
+                                            <p>발견 날짜: {animalInfos[desertionNo]?.happenDt}</p>
+                                            <p>발견 장소: {animalInfos[desertionNo]?.happenPlace}</p>
+                                            <p>나이: {animalInfos[desertionNo]?.age}</p>
+                                            <p>무게: {animalInfos[desertionNo]?.weight}</p>
+                                            <p>공고 시작 날짜: {animalInfos[desertionNo]?.noticeSdt}</p>
+                                            <p>공고 종료 날짜: {animalInfos[desertionNo]?.noticeEdt}</p>
+                                            <p>성별: {animalInfos[desertionNo]?.sexCd}</p>
+                                            <p>중성화 여부: {animalInfos[desertionNo]?.neuterYn}</p>
                                         </div>
                                     </div>
                                 )}

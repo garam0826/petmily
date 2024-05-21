@@ -54,8 +54,7 @@ const KeywordResult = () => {
                 <Menu />
             </header>
             <main>
-                keyword 연결은 아직이므로 현재 화면은 질문 추천 결과를 대신 띄웠습니다.
-                <Recommend_Result matches={matches} loading={loading} error={error}/>
+                <Recommend_Result matches={matches} loading={loading} error={error} title={"키워드"}/>
             </main>
         </div>
     );
