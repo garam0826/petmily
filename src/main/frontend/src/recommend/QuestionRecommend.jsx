@@ -68,11 +68,11 @@ const QuestionRecommend = () => {
         switch (name) {
             case "affectionateWithFamily":
                 options = [
-                    { value: 1, text: '관심을 별로 필요로 하지 않음' },
-                    { value: 2, text: '독립적인 성향을 선호함' },
-                    { value: 3, text: '가끔 애정을 표현해도 괜찮음' },
-                    { value: 4, text: '적당한 애정을 표현해도 괜찮음' },
-                    { value: 5, text: '매우 다정하며 자주 애정을 표현해야 함' }
+                    { value: 1, text: '거의' },
+                    { value: 2, text: '가끔' },
+                    { value: 3, text: '보통' },
+                    { value: 4, text: '때때로' },
+                    { value: 5, text: '대부분' }
                 ];
                 break;
             case "goodWithYoungChildren":
@@ -106,7 +106,7 @@ const QuestionRecommend = () => {
                 options = [
                     { value: 1, text: '전혀 관리할 필요 없음' },
                     { value: 2, text: '거의 관리할 필요 없음' },
-                    { value: 3, text: '한 달에 몇 번' },
+                    { value: 3, text: '보통' },
                     { value: 4, text: '일주일에 몇 번' },
                     { value: 5, text: '매일' }
                 ];
@@ -263,7 +263,7 @@ const QuestionRecommend = () => {
                 </div>
                 <form>
                     <div className="container">
-                        <label>Q1. 당신의 이상적인 반려견은 가족에게 얼마나 애정을 보여줘야 한다고 생각하십니까?</label>
+                        <label>Q1. 반려견의 가족에게 어느 정도의 애정을 보여주면 좋을 것 같다고 생각하시나요?</label>
                         {renderButtons("affectionateWithFamily")}
                     </div>
                     <div className="container">
