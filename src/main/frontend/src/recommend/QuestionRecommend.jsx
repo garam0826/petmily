@@ -44,7 +44,7 @@ const QuestionRecommend = () => {
         });
     };
 
-    const handleSubmit = async (e) => {
+    const handleSave = async (e) => {
         e.preventDefault();
         try {
             console.log(formData); // 요청 데이터 확인
@@ -68,20 +68,20 @@ const QuestionRecommend = () => {
         switch (name) {
             case "affectionateWithFamily":
                 options = [
-                    { value: 5, text: '매우 다정하며 자주 애정을 표현해야 함' },
-                    { value: 4, text: '보통' },
-                    { value: 3, text: '가끔 애정을 표현해도 괜찮음' },
+                    { value: 1, text: '관심을 별로 필요로 하지 않음' },
                     { value: 2, text: '독립적인 성향을 선호함' },
-                    { value: 1, text: '관심을 별로 필요로 하지 않음' }
+                    { value: 3, text: '가끔 애정을 표현해도 괜찮음' },
+                    { value: 4, text: '적당한 애정을 표현해도 괜찮음' },
+                    { value: 5, text: '매우 다정하며 자주 애정을 표현해야 함' }
                 ];
                 break;
             case "goodWithYoungChildren":
                 options = [
-                    { value: 5, text: '매우 친절하고 인내심이 있어야 함' },
-                    { value: 4, text: '보통' },
-                    { value: 3, text: '조금은 조심스러워도 됨' },
+                    { value: 1, text: '아이들과의 상호작용을 선호하지 않음' },
                     { value: 2, text: '아이들과는 거의 상호작용하지 않음' },
-                    { value: 1, text: '아이들과의 상호작용을 선호하지 않음' }
+                    { value: 3, text: '조금은 조심스러워도 됨' },
+                    { value: 4, text: '최소한의 상호작용이 있어야 함' },
+                    { value: 5, text: '매우 친절하고 인내심이 있어야 함' },
                 ];
                 break;
             case "goodWithOtherDogs":
@@ -104,11 +104,11 @@ const QuestionRecommend = () => {
                 break;
             case "coatGroomingFrequency":
                 options = [
-                    { value: 5, text: '매일' },
-                    { value: 4, text: '일주일에 몇 번' },
-                    { value: 3, text: '한 달에 몇 번' },
+                    { value: 1, text: '전혀 관리할 필요 없음' },
                     { value: 2, text: '거의 관리할 필요 없음' },
-                    { value: 1, text: '전혀 관리할 필요 없음' }
+                    { value: 3, text: '한 달에 몇 번' },
+                    { value: 4, text: '일주일에 몇 번' },
+                    { value: 5, text: '매일' }
                 ];
                 break;
             case "droolingLevel":
@@ -122,38 +122,38 @@ const QuestionRecommend = () => {
                 break;
             case "opennessToStrangers":
                 options = [
-                    { value: 5, text: '매우 친절하고 모든 이에게 개방적' },
-                    { value: 4, text: '보통' },
-                    { value: 3, text: '조금은 조심스러워도 됨' },
+                    { value: 1, text: '낯선 사람에게 매우 경계함' },
                     { value: 2, text: '대부분 사람을 경계함' },
-                    { value: 1, text: '낯선 사람에게 매우 경계함' }
+                    { value: 3, text: '조금은 조심스러워도 됨' },
+                    { value: 4, text: '적당히 개방적' },
+                    { value: 5, text: '매우 친절하고 모든 이에게 개방적' }
                 ];
                 break;
             case "watchdogProtectiveNature":
                 options = [
-                    { value: 5, text: '매우 강함' },
-                    { value: 4, text: '상당함' },
-                    { value: 3, text: '보통' },
+                    { value: 1, text: '전혀 필요 없음' },
                     { value: 2, text: '약함' },
-                    { value: 1, text: '전혀 필요 없음' }
+                    { value: 3, text: '보통' },
+                    { value: 4, text: '상당함' },
+                    { value: 5, text: '매우 강함' }
                 ];
                 break;
             case "playfulnessLevel":
                 options = [
-                    { value: 5, text: '매우 높음' },
-                    { value: 4, text: '높음' },
-                    { value: 3, text: '보통' },
+                    { value: 1, text: '매우 낮음' },
                     { value: 2, text: '낮음' },
-                    { value: 1, text: '매우 낮음' }
+                    { value: 3, text: '보통' },
+                    { value: 4, text: '높음' },
+                    { value: 5, text: '매우 높음' }
                 ];
                 break;
             case "adaptabilityLevel":
                 options = [
-                    { value: 5, text: '매우 높음' },
-                    { value: 4, text: '높음' },
-                    { value: 3, text: '보통' },
+                    { value: 1, text: '매우 낮음' },
                     { value: 2, text: '낮음' },
-                    { value: 1, text: '매우 낮음' }
+                    { value: 3, text: '보통' },
+                    { value: 4, text: '높음' },
+                    { value: 5, text: '매우 높음' }
                 ];
                 break;
             case "trainabilityLevel":
@@ -261,7 +261,7 @@ const QuestionRecommend = () => {
                         </div>
                     </div>
                 </div>
-                <form onSubmit={handleSubmit}>
+                <form>
                     <div className="container">
                         <label>Q1. 당신의 이상적인 반려견은 가족에게 얼마나 애정을 보여줘야 한다고 생각하십니까?</label>
                         {renderButtons("affectionateWithFamily")}
@@ -318,7 +318,7 @@ const QuestionRecommend = () => {
                         <label>Q14. 만약 반려견이 있다면, 얼마나 많은 주기로 새로운 경험을 시켜줄 수 있습니까?</label>
                         {renderButtons("mentalStimulationNeeds")}
                     </div>
-                    <button type="submit">Save</button>
+                    <button onClick={handleSave}>Save</button>
                 </form>
             </main>
         </div>
