@@ -82,6 +82,9 @@ function Favorite() {
             });
     };
 
+    const handleViewFavorites = (memId) => {
+        getMemberFavorites(memId);
+    };
     // 찜 제거 함수
     const removeFavorite = (desertionNo) => {
         axios.delete(`/favorites/remove?memId=${userId}&desertionNo=${desertionNo}`)
@@ -101,13 +104,22 @@ function Favorite() {
                 <Menu/>
             </header>
             <div>
+                <Favorite_Result
+                    matches={matches}
+                    loading={loading}
+                    error={error}
+                    removeFavorite={removeFavorite}
+                    getMembersDesertionNo={getMembersDesertionNo}
+                />
+            </div>
+            {/*            <div>
                 {favorites.map(favorite => (
                     <div key={favorite.id}>
                         <Favorite_Result matches={matches} loading={loading} error={error}
                                          removeFavorite={removeFavorite} getMembersDesertionNo={getMembersDesertionNo}/>
                     </div>
                 ))}
-            </div>
+            </div>*/}
             {selectedDesertionNo && (
                 <div>
                     <h3>찜한 다른 사용자 목록</h3>
@@ -116,17 +128,19 @@ function Favorite() {
                             <div key={member}>
                                 <div>
                                     <span>{member}</span>
-                                    <button className="signup custom-button" onClick={() => getMemberFavorites(member)}>
+                                    <button className="signup custom-button" onClick={() => handleViewFavorites(member)}>
                                         이 사용자의 찜 목록 보기
                                     </button>
                                 </div>
-                                {userFavorites[member] && (
-                                    <div>
-                                        {userFavorites[member].map(fav => (
-                                            <div key={fav.id}><Favorite_Result matches={matches} loading={loading} error={error}/></div>
-                                        ))}
-                                    </div>
-                                )}
+                                {userFavorites[member] && userFavorites[member].map(fav => (
+                                    <Favorite_Result
+                                        key={fav.id}
+                                        matches={matches}
+                                        loading={loading}
+                                        error={error}
+                                    />
+                                ))}
+
                                 {userFavorites[member] && userFavorites[member].length === 0 && (
                                     <div>찜 목록이 없습니다.</div>
                                 )}
