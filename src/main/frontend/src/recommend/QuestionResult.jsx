@@ -15,6 +15,9 @@ const QuestionResult = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+
+    const [animals, setAnimals] = useState([]);
+
     // 추천 매치 데이터를 가져오는 useEffect
     useEffect(() => {
         const fetchMatches = async () => {
@@ -34,13 +37,19 @@ const QuestionResult = () => {
         }
     }, [userId]);
 
+    useEffect(() => {
+        // Extract desertionNo from matches and set to animals state
+        const desertionNos = matches.map(match => match.desertionNo);
+        setAnimals(desertionNos);
+    }, [matches]);
+
     return (
         <div>
             <header>
                 <Menu />
             </header>
             <main>
-                <Recommend_Result matches={matches} loading={loading} error={error}/>
+                <Recommend_Result matches={animals} loading={loading} error={error} title={"질문"}/>
             </main>
         </div>
     );

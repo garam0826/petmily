@@ -5,6 +5,7 @@ import org.mybatis.spring.SqlSessionTemplate;
         import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class AnimalInfoDAOImple implements AnimalInfoDAO {
@@ -37,5 +38,11 @@ public class AnimalInfoDAOImple implements AnimalInfoDAO {
     @Override
     public AnimalInfo findByDesertionNo(String desertionNo) {
         return sqlSession.selectOne("com.petmily.mappers.AnimalInfoMapper.findByDesertionNo", desertionNo);
+    }
+
+    // 한국어 키워드에 해당하는 영어 키워드 목록을 조회
+    @Override
+    public Map<String, Object> findEnglishKeywordsByKorean(String korean) {
+        return sqlSession.selectOne("com.petmily.mappers.AnimalInfoMapper.findEnglishKeywordsByKorean", korean);
     }
 }

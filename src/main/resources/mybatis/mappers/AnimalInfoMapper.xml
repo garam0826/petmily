@@ -19,6 +19,13 @@
         SELECT * FROM animalinfo WHERE desertionNo = #{desertionNo}
     </select>
 
+    <select id="findEnglishKeywordsByKorean" resultType="map">
+        SELECT Keyword1, Keyword2, Keyword3, Keyword4, Keyword5, Keyword6, Keyword7, Keyword8, Keyword9, Keyword10, Keyword11
+        FROM synonyms
+        WHERE Korean = #{korean}
+    </select>
+
+
 
 
 

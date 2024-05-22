@@ -72,9 +72,9 @@ function MyPage() {
                     <div>
                         <h2>해당 화면은 로그인이 필요한 화면입니다.</h2>
                         <div style={{display: 'flex', justifyContent: 'center'}}>
-                            <button className="signup custom-button" onClick={() => navigate("/member/SignUp")}>회원가입 >
+                            <button className="custom-button" onClick={() => navigate("/member/SignUp")}>회원가입 >
                             </button>
-                            <button className="login custom-button" onClick={() => navigate("/member/login")}>로그인 >
+                            <button className="custom-button" onClick={() => navigate("/member/login")}>로그인 >
                             </button>
 
                         </div>
