@@ -4,6 +4,8 @@ import com.petmily.dto.MemberDTO;
 import com.petmily.dto.RegionDTO;
 import com.petmily.dto.DistrictDTO;
 
+import java.util.Locale;
+
 public interface RecommendService {
     // 추천기능 1 : 강아지 품종 특성값 & 사용자 Profile 조합
     // Characteristics에 회원 ID 추가
@@ -26,6 +28,8 @@ public interface RecommendService {
 
 
 
+    // 번역 test
+    public String getBreedTranslation(String code, Locale locale);
 
     // 추천기능 3 : 협업 Filtering
     //
