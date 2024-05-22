@@ -29,6 +29,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import java.io.IOException;
 
@@ -61,6 +62,17 @@ public class RecommendController {
     //
 
 
+    // 번역 test
+    @GetMapping("/Trans_test")
+    public ResponseEntity<String> getTranslation(@RequestParam String code, @RequestParam Locale locale){
+        logger.info("/Trans_test GetMapping");
+
+        String word = "";
+
+        word = recommendService.getBreedTranslation(code, locale);
+
+        return new ResponseEntity<>(word, HttpStatus.OK);
+    }
 
     // test
     @GetMapping("/test")

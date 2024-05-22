@@ -31,15 +31,16 @@ public interface BoardDAO {
     public List<BoardDTO> listMyBoard(String mem_id) throws Exception;
 
     // 댓글 쓰기
-    public int writeReply(ReplyDTO replyDTO) throws Exception;
+    public int writeReplyBoard(ReplyDTO replyDTO) throws Exception;
 
     // 댓글 조회
-    public List<ReplyDTO> listReply(int board_idx) throws Exception;
+    public List<ReplyDTO> listReplyBoard(int board_idx) throws Exception;
 
     // 댓글 수정
+    public int updateReplyBoard(ReplyDTO replyDTO) throws Exception;
 
     // 댓글 삭제
-    public int deleteReply(int reply_idx) throws Exception;
+    public int deleteReplyBoard(int reply_idx) throws Exception;
 
     // 댓글 갯수 조회
     public int countReplyBoard(int board_idx) throws Exception;
