@@ -196,7 +196,7 @@ public class MemberServiceImple implements MemberService{
         // 일치 -> ID값 return
         if(db_ID.equals(hashMap.get("mem_id")) && db_email.equals(hashMap.get("email"))){
             logger.info("일치");
-            resultPW = memberDTO.getMem_id();
+            resultPW = memberDTO.getMem_pw();
 
             return resultPW;
         }else{
