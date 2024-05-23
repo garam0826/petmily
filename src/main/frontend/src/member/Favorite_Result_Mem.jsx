@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import store from "../member/Store";
-import Menu from "../Menu";
 import "../css/recommend.css";
 import '../css/menu.css';
 import '../css/result.css';

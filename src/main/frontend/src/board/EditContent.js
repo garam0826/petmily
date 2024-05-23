@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import './board.css';
+import {useSelector} from "react-redux";
 
 function EditContent() {
     const navigate = useNavigate();
     const { idx } = useParams();
     const [board, setBoard] = useState({});
+    const userData = useSelector(state => state.userData);
 
     useEffect(() => {
         axios.get(`/board/Content?idx=${idx}`)
@@ -20,7 +22,11 @@ function EditContent() {
 
     const handleEdit = async () => {
         try {
-            await axios.put(`/board/Update`, board)
+            if (board.reg_name !== userData.mem_id) {
+                alert("본인의 글만 수정할 수 있습니다.");
+                return;
+            }
+            await axios.put(`/board/UpdateBoard`, board)
                 .then(response => {
                     console.log('게시글 수정 성공:', response.data);
                     navigate('/board/list');
@@ -32,7 +38,7 @@ function EditContent() {
     };
 
     return (
-        <div className="container">
+        <div>
             <div className="form-container">
                 <h2>게시글 수정</h2>
                 <div>
