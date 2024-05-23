@@ -42,7 +42,7 @@
     </select>
 
     <!-- 댓글 쓰기 -->
-    <insert id="writeReply" parameterType="ReplyDTO">
+    <insert id="writeReplyBoard" parameterType="ReplyDTO">
         insert into replyboard(board_idx, step, depth, reg_name, content) values(#{board_idx}, #{step}, #{depth}, #{reg_name}, #{content})
     </insert>
 
@@ -52,7 +52,9 @@
     </select>
 
     <!-- 댓글 수정 -->
-
+    <update id="updateReplyBoard" parameterType="ReplyDTO">
+        update replyboard set content = #{content}, u_date = now() where reply_idx = #{reply_idx}
+    </update>
 
     <!-- 댓글 삭제 -->
     <delete id="deleteReplyBoard" parameterType="Integer">
