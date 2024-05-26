@@ -21,14 +21,10 @@ function ReadContent() {
         // 게시글 조회 API 호출
         axios.get(`/board/Content?idx=${idx}`)
             .then(response => {
-                setBoard(response.data);
-            })
-            .catch(error => {
-                console.error("There was an error retrieving the board: ", error);
-            });
-        axios.get(`/board/Reply?boardIdx=${idx}`)
-            .then(response => {
-                setComments(response.data);
+                const data = response.data;
+                setBoard(data.boardDTO);
+                setComments(data.r_List);
+                //setBoard(response.data);
             })
             .catch(error => {
                 console.error("There was an error retrieving the board: ", error);
@@ -47,7 +43,7 @@ function ReadContent() {
         })
             .then(response => {
                 console.log('댓글 작성 성공:', response.data);
-                setComments(prevComments => [...prevComments, response.data]);
+                /*setComments(prevComments => [...prevComments, response.data]);*/
                 setNewComment('');
             })
             .catch(error => {
