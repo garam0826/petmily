@@ -9,7 +9,6 @@ function EditContent() {
     const { idx } = useParams();
     const [board, setBoard] = useState({});
     const userData = useSelector(state => state.userData);
-    const reg_name = userData ? userData.mem_id : '';
 
     useEffect(() => {
         axios.get(`/board/Content?idx=${idx}`)
