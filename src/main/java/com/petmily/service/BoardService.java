@@ -25,13 +25,17 @@ public interface BoardService {
     public int countBoard() throws Exception;
 
     // 댓글 쓰기
-    public boolean writeReply(ReplyDTO replyDTO) throws Exception;
+    public boolean writeReplyBoard(ReplyDTO replyDTO) throws Exception;
 
     // 댓글 조회
-    public List<ReplyDTO> listReply(int board_idx) throws Exception;
+    public List<ReplyDTO> listReplyBoard(int board_idx) throws Exception;
 
     // 댓글 수정
+    public boolean updateReplyBoard(ReplyDTO replyDTO) throws Exception;
+
     // 댓글 삭제
+    public boolean deleteReplyBoard(int reply_idx) throws Exception;
+
     // 댓글 갯수 조회
     public int countReplyBoard(int board_idx) throws Exception;
 

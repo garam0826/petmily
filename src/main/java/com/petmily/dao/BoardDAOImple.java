@@ -78,31 +78,39 @@ public class BoardDAOImple implements BoardDAO{
     // 회원 ID 기준 글 목록 조회
     @Override
     public List<BoardDTO> listMyBoard(String mem_id) throws Exception{
-        List<BoardDTO> myb_List = sqlSession.selectList(namespace+ ".listBoard", mem_id);
+        List<BoardDTO> myb_List = sqlSession.selectList(namespace+ ".listMyBoard", mem_id);
 
         return myb_List;
     }
 
     // 댓글 쓰기
     @Override
-    public int writeReply(ReplyDTO replyDTO) throws Exception{
-        int result = sqlSession.insert(namespace+ ".writeReply", replyDTO);
+    public int writeReplyBoard(ReplyDTO replyDTO) throws Exception{
+        int result = sqlSession.insert(namespace+ ".writeReplyBoard", replyDTO);
 
         return result;
     }
 
     // 댓글 조회
     @Override
-    public List<ReplyDTO> listReply(int board_idx) throws Exception{
+    public List<ReplyDTO> listReplyBoard(int board_idx) throws Exception{
         List<ReplyDTO> r_List = sqlSession.selectList(namespace+ ".readReplyBoard", board_idx);
 
         return r_List;
     }
 
+    // 댓글 수정
+    @Override
+    public int updateReplyBoard(ReplyDTO replyDTO) throws Exception{
+        int result = sqlSession.update(namespace+ ".updateReplyBoard",replyDTO);
+
+        return result;
+    }
+
     // 댓글 삭제
     @Override
-    public int deleteReply(int reply_idx) throws Exception{
-        int result = 0;
+    public int deleteReplyBoard(int reply_idx) throws Exception{
+        int result = sqlSession.delete(namespace+ ".deleteReplyBoard", reply_idx);
 
         return result;
     }

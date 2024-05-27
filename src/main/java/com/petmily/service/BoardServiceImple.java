@@ -110,17 +110,17 @@ public class BoardServiceImple implements BoardService{
 
     // 댓글 쓰기
     @Override
-    public boolean writeReply(ReplyDTO replyDTO) throws Exception{
+    public boolean writeReplyBoard(ReplyDTO replyDTO) throws Exception{
         boolean result = false;
-        int value = boardDAO.writeReply(replyDTO);
+        int value = boardDAO.writeReplyBoard(replyDTO);
 
         if(value > 0){
             result = true;
-            logger.info(replyDTO.getReg_name()+ " : " +replyDTO.getBoard_idx()+ "번 글의 " +replyDTO.getStep()+ "번째 댓글의 " +replyDTO.getDepth()+ " 쓰기 Service 완료");
+            logger.info(replyDTO.getBoard_idx()+ "번 글 : " +replyDTO.getStep()+ " - " +replyDTO.getDepth()+ " 댓글 쓰기 Service 완료");
 
             return result;
         }else{
-            logger.info(replyDTO.getReg_name()+ " : " +replyDTO.getBoard_idx()+ "번 글의 " +replyDTO.getStep()+ "번째 댓글의 " +replyDTO.getDepth()+ " 쓰기 Service 완료");
+            logger.info(replyDTO.getBoard_idx()+ "번 글 : " +replyDTO.getStep()+ " - " +replyDTO.getDepth()+ " 댓글 쓰기 Service 실패");
 
             return result;
         }
@@ -128,15 +128,49 @@ public class BoardServiceImple implements BoardService{
 
     // 댓글 조회
     @Override
-    public List<ReplyDTO> listReply(int board_idx) throws Exception{
-        List<ReplyDTO> r_list = boardDAO.listReply(board_idx);
-        logger.info(board_idx+"번 글의 댓글 조회 Service 완료");
+    public List<ReplyDTO> listReplyBoard(int board_idx) throws Exception{
+        List<ReplyDTO> r_List = boardDAO.listReplyBoard(board_idx);
+        logger.info(board_idx+ "번 글 : " +r_List.size()+ "개의 댓글 조회 Service 완료");
 
-        return r_list;
+        return r_List;
     }
 
     // 댓글 수정
+    @Override
+    public boolean updateReplyBoard(ReplyDTO replyDTO) throws Exception{
+        boolean result = false;
+        int value = boardDAO.updateReplyBoard(replyDTO);
+
+        if(value > 0){
+            result = true;
+            logger.info(replyDTO.getBoard_idx()+ "번 글 : " +replyDTO.getStep()+ " - " +replyDTO.getDepth()+ " 댓글 수정 Service 완료");
+
+            return result;
+        }else{
+            logger.info(replyDTO.getBoard_idx()+ "번 글 : " +replyDTO.getStep()+ " - " +replyDTO.getDepth()+ " 댓글 수정 Service 실패");
+
+            return result;
+        }
+    }
+
     // 댓글 삭제
+    @Override
+    public boolean deleteReplyBoard(int reply_idx) throws Exception{
+        boolean result = false;
+        int value = boardDAO.deleteReplyBoard(reply_idx);
+
+        if(value > 0){
+            result = true;
+            logger.info(reply_idx+ "번 댓글 삭제 Service 완료");
+
+            return result;
+        }else{
+            logger.info(reply_idx+ "번 댓글 삭제 Service 실패");
+
+            return result;
+        }
+    }
+
     // 댓글 갯수 조회
     @Override
     public int countReplyBoard(int board_idx) throws Exception{

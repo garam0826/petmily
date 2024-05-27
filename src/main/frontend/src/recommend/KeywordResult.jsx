@@ -27,14 +27,9 @@ const KeywordResult = () => {
                 setLoading(true);
                 setError(null);
                 console.log('Sending desertionNos:', desertionNos);
-                const response = await axios.post(`/api/animal/keyword`, desertionNos, {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-                console.log('Result:', response.data);
-                setMatches(response.data);
-                console.log(setMatches(response.data));
+                //console.log('Result:', desertionNos);
+                setMatches(desertionNos);
+                console.log(setMatches(desertionNos));
             } catch (err) {
                 setError('Failed to fetch matches');
                 console.error(err);

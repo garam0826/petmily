@@ -35,46 +35,53 @@ function WriteContent() {
             });
     };
 
-    return (
-        <div className="container">
-            <div className="form-container">
-                <h2>게시글 작성</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label>제목</label>
-                        <input
-                            name="title"
-                            type="text"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>작성자</label>
-                        <input
-                            name="reg_name"
-                            type="text"
-                            value={userData ? userData.mem_id : ''}
-                            readOnly
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>내용</label>
-                        <textarea
-                            name="content"
-                            cols="30"
-                            rows="10"
-                            value={content}
-                            onChange={(e) => setContent(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className="button-container">
-                        <button type="submit">저장</button>
-                    </div>
-                </form>
+    if (!userData) {
+        return (
+            <div>
+                <h2>로그인이 필요합니다.</h2>
+                <button onClick={() => navigate('/member/login')}>로그인</button>
             </div>
+        );
+    }
+
+    return (
+        <div className="form-container">
+            <h2>게시글 작성</h2>
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label>제목</label>
+                    <input
+                        name="title"
+                        type="text"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>작성자</label>
+                    <input
+                        name="reg_name"
+                        type="text"
+                        value={userData ? userData.mem_id : ''}
+                        readOnly
+                    />
+                </div>
+                <div className="form-group">
+                    <label>내용</label>
+                    <textarea
+                        name="content"
+                        cols="30"
+                        rows="10"
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="button-container">
+                    <button type="submit">저장</button>
+                </div>
+            </form>
         </div>
     );
 }

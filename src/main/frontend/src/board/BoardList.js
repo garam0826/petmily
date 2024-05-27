@@ -3,10 +3,12 @@ import axios from 'axios';
 import {Link, useNavigate} from "react-router-dom";
 import './board.css';
 import Menu from "../Menu";
+import {useSelector} from "react-redux";
 
 function BoardList() {
     const [boards, setBoards] = useState([]);
     const navigate = useNavigate();
+    const userData = useSelector(state => state.userData); // 현재 로그인한 사용자 정보
 
     useEffect(() => {
         // API 호출
@@ -20,12 +22,21 @@ function BoardList() {
             });
     }, []);
 
+    const handleWrite = () => {
+        if (userData) {
+            navigate("/board/list/write");
+        } else {
+            alert("로그인이 필요합니다.");
+            navigate("/member/login");
+        }
+    };
+
     return (
         <div>
             <Menu/>
             <h2 className="board-title">게시판</h2>
             <div className={"board-write"}>
-                <button onClick={() => navigate("/board/list/write")}>
+                <button onClick={handleWrite}>
                     글 작성하기
                 </button>
             </div>
