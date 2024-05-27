@@ -64,12 +64,12 @@ public class RecommendController {
 
     // 번역 test
     @GetMapping("/Trans_test")
-    public ResponseEntity<String> getTranslation(@RequestParam String code, @RequestParam Locale locale){
+    public ResponseEntity<String> getTranslation(@RequestParam String code){
         logger.info("/Trans_test GetMapping");
 
         String word = "";
 
-        word = recommendService.getBreedTranslation(code, locale);
+        word = recommendService.getKoreanTranslation(code);
 
         return new ResponseEntity<>(word, HttpStatus.OK);
     }

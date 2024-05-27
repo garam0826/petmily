@@ -7,11 +7,10 @@ import com.petmily.dto.DistrictDTO;
 import com.petmily.dao.RecommendDAO;
 
 import com.petmily.util.TranslationConfig;
+
 import org.springframework.stereotype.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.context.MessageSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,12 +24,10 @@ public class RecommendServiceImple implements RecommendService{
     // DAO Autowired
     @Autowired
     private RecommendDAO recommendDAO;
-    private final MessageSource messageSource;
 
+    //
     @Autowired
-    public RecommendServiceImple(MessageSource messageSource){
-        this.messageSource = messageSource;
-    }
+    private TranslationConfig translationConfig;
 
     // Logging
     private static final Logger logger = LoggerFactory.getLogger(RecommendServiceImple.class);
@@ -90,15 +87,13 @@ public class RecommendServiceImple implements RecommendService{
 
     // 번역 test
     @Override
-    public String getBreedTranslation(String code, Locale locale){
-        logger.info("service 호출");
-        logger.info(code+ " : " +locale);
-        String word = messageSource.getMessage(code, null, locale);
-        logger.info(word);
+    public String getKoreanTranslation(String code){
+        logger.info("시작 : " +code);
+        String word = translationConfig.getTranslation(code);
+        logger.info("완료 : " +word);
 
         return word;
     }
-
 
     // test
     public String getTime() throws Exception{;
