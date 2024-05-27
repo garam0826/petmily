@@ -253,11 +253,12 @@ public class MemberController {
         logger.info("/SearchPW PostMapping");
 
         HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("mem_id", memberDTO.getNickname());
+        hashMap.put("mem_id", memberDTO.getMem_id());
         hashMap.put("email", memberDTO.getEmail());
 
         try{
-            String resultPW = memberService.searchMem_ID(hashMap);
+            String resultPW = memberService.searchMem_PW(hashMap);
+            logger.info("검색된 ID : " +memberDTO.getMem_id());
             logger.info("검색된 PW : " +resultPW);
 
             return new ResponseEntity<>(resultPW, HttpStatus.OK);

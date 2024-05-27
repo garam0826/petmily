@@ -52,7 +52,10 @@ function Login() {
                     <button type="submit">Login</button>
                 </form>
                 <hr/>
-                <button onClick={() => navigate("/member/searchid")}> 아이디 찾기 >></button>
+                <div style={{display: 'flex', justifyContent: 'center', gap: '0.1px' }}>
+                    <button style={{ marginRight: '15px' }} onClick={() => navigate("/member/searchid")}> 아이디 찾기 >></button>
+                    <button style={{ marginLeft: '15px' }} onClick={() => navigate("/member/searchpw")}> 비밀번호 찾기 >></button>
+                </div>
                 <button onClick={() => navigate("/member/signup")}> 회원 가입 >></button>
             </main>
         </React.Fragment>

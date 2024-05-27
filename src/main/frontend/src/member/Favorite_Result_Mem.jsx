@@ -5,7 +5,7 @@ import "../css/recommend.css";
 import '../css/menu.css';
 import '../css/result.css';
 
-const Favorite_Result = ({ matches, loading, error, removeFavorite, getMemberDesertionNo }) => {
+const Favorite_Result_Mem = ({ matches, loading, error }) => {
     const state = store.getState();
     const userId = state.isLoggedIn ? state.userData.mem_id : null;
 
@@ -128,8 +128,6 @@ const Favorite_Result = ({ matches, loading, error, removeFavorite, getMemberDes
                                                 <p>공고 종료 날짜: {formatDate(animalInfos[desertionNo]?.noticeEdt)}</p>
                                                 <p>성별: {animalInfos[desertionNo]?.sexCd}</p>
                                                 <p>중성화 여부: {animalInfos[desertionNo]?.neuterYn}</p>
-                                                <button onClick={() => removeFavorite(desertionNo)}>찜 제거</button>
-                                                <button onClick={() => getMemberDesertionNo(desertionNo)}>찜한 사용자 보기</button>
                                             </div>
                                         </div>
                                     )}
@@ -143,4 +141,4 @@ const Favorite_Result = ({ matches, loading, error, removeFavorite, getMemberDes
     );
 };
 
-export default Favorite_Result;
+export default Favorite_Result_Mem;
