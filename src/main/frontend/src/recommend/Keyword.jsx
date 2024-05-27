@@ -41,18 +41,11 @@ function Keyword() {
         }
 
         // 첫 번째 요청: 한국어 키워드를 영단어로 변환
-        axios.post('/api/animal/translateKeywords', selectedKeywords, {
-            headers: {
-                'Content-Type': 'application/json'
-            }})
+        axios.post('/api/animal/translateKeywords', selectedKeywords)
             .then(response => {
                 const engKeywords = response.data;
                 // 두 번째 요청: 영단어 키워드로 desertionNo 5개 가져오기
-                return axios.post('/api/animal/keyword', engKeywords, {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
+                return axios.post('/api/animal/keyword', engKeywords);
             })
             .then(response => {
                 const desertionNos = response.data;
