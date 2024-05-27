@@ -29,7 +29,7 @@ public interface RecommendService {
 
 
     // 번역 test
-    public String getBreedTranslation(String code, Locale locale);
+    public String getKoreanTranslation(String code);
 
     // 추천기능 3 : 협업 Filtering
     //
