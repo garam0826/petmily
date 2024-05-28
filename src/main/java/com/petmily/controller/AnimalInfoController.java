@@ -1,9 +1,7 @@
 package com.petmily.controller;
 
-import com.petmily.dto.AnimalInfo;
-import com.petmily.dto.DistrictDTO;
-import com.petmily.dto.ImageAnalysisResult;
-import com.petmily.dto.RegionDTO;
+import com.petmily.dto.*;
+import com.petmily.service.DogSpecService;
 import com.petmily.service.MemberService;
 import com.petmily.service.AnimalInfoService;
 import org.slf4j.Logger;
@@ -115,5 +113,17 @@ public class AnimalInfoController {
     public ResponseEntity<List<String>> translateKeywords(@RequestBody List<String> koreanKeywords) {
         List<String> englishKeywords = animalInfoService.getEnglishKeywordsFromKorean(koreanKeywords);
         return ResponseEntity.ok(englishKeywords);
+    }
+    private final DogSpecService dogSpecService;
+
+    @Autowired
+    public AnimalInfoController(DogSpecService dogSpecService) {
+        this.dogSpecService = dogSpecService;
+    }
+
+    @GetMapping("/calculateSpec")
+    public ResponseEntity<DogSpec> calculateDogSpec(@RequestParam("desertionNo") String desertionNo) {
+        DogSpec dogSpec = dogSpecService.calculateWeightedCharacteristics(desertionNo);
+        return ResponseEntity.ok(dogSpec);
     }
 }
