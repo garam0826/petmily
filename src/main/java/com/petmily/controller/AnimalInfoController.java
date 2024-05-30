@@ -150,4 +150,10 @@ public class AnimalInfoController {
         DogSpec dogSpec = dogSpecService.calculateWeightedCharacteristics(desertionNo);
         return ResponseEntity.ok(dogSpec);
     }
+
+    @GetMapping("/random-desertionNos")
+    public ResponseEntity<List<String>> getRandomDesertionNos() {
+        List<String> desertionNos = animalInfoService.getRandomDesertionNos(20);
+        return ResponseEntity.ok(desertionNos);
+    }
 }

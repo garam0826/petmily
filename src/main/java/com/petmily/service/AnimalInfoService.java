@@ -197,5 +197,9 @@ public class AnimalInfoService {
                 .collect(Collectors.toList()); // List로 변환하여 반환
     }
 
+    public List<String> getRandomDesertionNos(int limit) {
+        return imageAnalysisDAO.findRandomDesertionNos(limit);
+    }
+
 
 }
