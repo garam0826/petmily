@@ -1,19 +1,19 @@
 package com.petmily.controller;
 
-import com.petmily.dto.AnimalInfo;
-import com.petmily.dto.DistrictDTO;
-import com.petmily.dto.ImageAnalysisResult;
-import com.petmily.dto.RegionDTO;
+import com.petmily.dto.*;
+import com.petmily.service.DogSpecService;
 import com.petmily.service.MemberService;
 import com.petmily.service.AnimalInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import com.petmily.util.TranslationConfig;
 
 @RestController
 @RequestMapping("/api/animal")
@@ -23,6 +23,9 @@ public class AnimalInfoController {
     private MemberService memberService;
     @Autowired
     private AnimalInfoService animalInfoService;
+
+    @Autowired
+    private MessageSource messageSource;
 
     // Logging
     private static final Logger logger = LoggerFactory.getLogger(AnimalInfoController.class);
@@ -58,8 +61,27 @@ public class AnimalInfoController {
             }
         }
 
+        // 분석 결과를 한국어로 변환
+        ImageAnalysisResult translatedResult = translateImageAnalysisResult(analysisResult);
+
         // 클라이언트에 결과 반환
         return ResponseEntity.ok(analysisResult);
+    }
+
+    // Helper method to translate ImageAnalysisResult
+    private ImageAnalysisResult translateImageAnalysisResult(ImageAnalysisResult result) {
+        String translatedClassName1 = TranslationConfig.getTranslation(messageSource, result.getClassName1());
+        String translatedClassName2 = TranslationConfig.getTranslation(messageSource, result.getClassName2());
+        String translatedClassName3 = TranslationConfig.getTranslation(messageSource, result.getClassName3());
+
+        logger.info("Translation Result - ClassName1: " + translatedClassName1);
+        logger.info("Translation Result - ClassName2: " + translatedClassName2);
+        logger.info("Translation Result - ClassName3: " + translatedClassName3);
+
+        result.setClassName1(translatedClassName1);
+        result.setClassName2(translatedClassName2);
+        result.setClassName3(translatedClassName3);
+        return result;
     }
 
     //desertionNo에 따른 상세정보 반환
@@ -115,5 +137,23 @@ public class AnimalInfoController {
     public ResponseEntity<List<String>> translateKeywords(@RequestBody List<String> koreanKeywords) {
         List<String> englishKeywords = animalInfoService.getEnglishKeywordsFromKorean(koreanKeywords);
         return ResponseEntity.ok(englishKeywords);
+    }
+    private final DogSpecService dogSpecService;
+
+    @Autowired
+    public AnimalInfoController(DogSpecService dogSpecService) {
+        this.dogSpecService = dogSpecService;
+    }
+
+    @GetMapping("/calculateSpec")
+    public ResponseEntity<DogSpec> calculateDogSpec(@RequestParam("desertionNo") String desertionNo) {
+        DogSpec dogSpec = dogSpecService.calculateWeightedCharacteristics(desertionNo);
+        return ResponseEntity.ok(dogSpec);
+    }
+
+    @GetMapping("/random-desertionNos")
+    public ResponseEntity<List<String>> getRandomDesertionNos() {
+        List<String> desertionNos = animalInfoService.getRandomDesertionNos(20);
+        return ResponseEntity.ok(desertionNos);
     }
 }

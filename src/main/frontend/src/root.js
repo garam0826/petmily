@@ -18,6 +18,7 @@ const MainPage = lazy(() => import("../src/Mainpage"))
 const Login = lazy(() => import("../src/member/Login"))
 const SignUp = lazy(() => import("../src/member/SignUp"))
 const Findid = lazy(() => import("../src/member/Findid"))
+const Findpw = lazy(() => import("../src/member/FindPW"))
 
 const MyInfo  = lazy(() => import("../src/member/MyInfo"))
 const MyPage= lazy(() => import("../src/member/MyPage"))
@@ -70,6 +71,10 @@ const root = createBrowserRouter([
     {
         path: "/member/searchid",
         element: <Suspense fallback ={Loading}><Findid/></Suspense>
+    },
+    {
+        path: "/member/searchpw",
+        element: <Suspense fallback ={Loading}><Findpw/></Suspense>
     },
     {
         path: "/animal",
