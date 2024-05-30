@@ -7,6 +7,7 @@ import './readBoard.css';
 function ReadContent() {
     const navigate = useNavigate();
     const { idx } = useParams();
+    const {reply_idx} = useParams();
     const [board, setBoard] = useState({});
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
@@ -33,6 +34,7 @@ function ReadContent() {
 
     const handleComment = async () => {
         await axios.post(`/board/WriteReply`, {
+            reply_idx: reply_idx,
             boardIdx: idx,
             content: newComment,
             reg_name: reg_name,
@@ -152,6 +154,7 @@ function ReadContent() {
                                 {comment.reg_name === reg_name && (
                                     <>
                                         <button onClick={() => {
+                                            setEditCommentId(comment.reply_idx);
                                             setEditCommentId(comment.idx);
                                             setEditCommentCont(comment.content);
                                         }}>수정
@@ -170,6 +173,7 @@ function ReadContent() {
                         onChange={(e) => setNewComment(e.target.value)}
                         placeholder={"댓글을 작성하세요"}
                     ></textarea>
+                <input type="hidden" name={reply_idx}></input>
                 <button onClick={handleComment}>댓글 작성</button>
             </div>
         </div>

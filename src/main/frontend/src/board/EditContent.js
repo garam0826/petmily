@@ -13,7 +13,8 @@ function EditContent() {
     useEffect(() => {
         axios.get(`/board/Content?idx=${idx}`)
             .then(response => {
-                setBoard(response.data);
+                const data = response.data;
+                setBoard(data.boardDTO);
             })
             .catch(error => {
                 console.error("There was an error retrieving the board: ", error);

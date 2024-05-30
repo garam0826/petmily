@@ -41,6 +41,7 @@ function BoardList() {
                 </button>
             </div>
             <div className="board-cont">
+                <span>글 번호</span>
                 <span>제목</span>
                 <span>글쓴이</span>
                 <span>작성시간</span>
@@ -48,6 +49,7 @@ function BoardList() {
             <ul className="board-list">
                 {boards.map(board => (
                     <li className="board-item" key={board.idx}>
+                        <span>{board.idx}</span>
                         <Link to={`/board/list/read/${board.idx}`}>{board.title}</Link>
                         <span>{board && board.reg_name}</span>
                         <span>{board && board.w_date}</span>
