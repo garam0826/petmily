@@ -13,5 +13,20 @@
                      #{watchdogProtectiveNature}, #{playfulnessLevel}, #{adaptabilityLevel},
                      #{trainabilityLevel}, #{barkingLevel}, #{energyLevel}, #{mentalStimulationNeeds}
                  )
+            ON DUPLICATE KEY UPDATE
+                                 affectionateWithFamily = VALUES(affectionateWithFamily),
+                                 goodWithYoungChildren = VALUES(goodWithYoungChildren),
+                                 goodWithOtherDogs = VALUES(goodWithOtherDogs),
+                                 sheddingLevel = VALUES(sheddingLevel),
+                                 coatGroomingFrequency = VALUES(coatGroomingFrequency),
+                                 droolingLevel = VALUES(droolingLevel),
+                                 opennessToStrangers = VALUES(opennessToStrangers),
+                                 watchdogProtectiveNature = VALUES(watchdogProtectiveNature),
+                                 playfulnessLevel = VALUES(playfulnessLevel),
+                                 adaptabilityLevel = VALUES(adaptabilityLevel),
+                                 trainabilityLevel = VALUES(trainabilityLevel),
+                                 barkingLevel = VALUES(barkingLevel),
+                                 energyLevel = VALUES(energyLevel),
+                                 mentalStimulationNeeds = VALUES(mentalStimulationNeeds);
     </insert>
 </mapper>
