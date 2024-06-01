@@ -29,6 +29,8 @@ const AnimalInfo = () => {
     const [orgCd, setOrgCd] = useState('');
     const [analysisResults, setAnalysisResults] = useState([]);
 
+    const url = "/animal/info";
+
 
     const [regionList, setRegionList] = useState([]);
     const [districtList, setDistrictList] = useState([]);
@@ -119,6 +121,42 @@ const AnimalInfo = () => {
             });
     };
 
+
+    const handleDetailAnimal = (animalInfo) => {
+        const state = {
+            url: '/animal/info',
+            desertionNo: animalInfo.desertionNo,
+            test: animalInfo.desertionNo,
+        };
+        navigate('/animal/detail', { state });
+    };
+
+    const getNeuterYnText = (neuterYn) => {
+        switch (neuterYn) {
+            case 'Y':
+                return 'O';
+            case 'N':
+                return 'X';
+            case 'U':
+                return '모름';
+            default:
+                return '';
+        }
+    };
+
+    const getSexCdText = (sexCd) => {
+        switch (sexCd) {
+            case 'M':
+                return '수컷';
+            case 'F':
+                return '암컷';
+            case 'Q':
+                return '미상';
+            default:
+                return '';
+        }
+    };
+
     return (
         <div>
             <header>
@@ -196,7 +234,7 @@ const AnimalInfo = () => {
                         {animalInfos.length === 0 && !loading && !error && <div>No data available</div>}
                         <div className="grid-container">
                             {animalInfos.map((animalInfo, index) => (
-                                <div className="card" key={index}>
+                                <div className="card" key={index} onClick={() => handleDetailAnimal(animalInfo)}>
                                     <div className="card-image">
                                         <img src={animalInfo.popfile} alt="Animal"/>
                                     </div>
@@ -232,8 +270,8 @@ const AnimalInfo = () => {
                                         <p>무게: {animalInfo.weight}</p>
                                         <p>공고 시작 날짜: {formatDate(animalInfo.noticeSdt)}</p>
                                         <p>공고 종료 날짜: {formatDate(animalInfo.noticeEdt)}</p>
-                                        <p>성별: {animalInfo.sexCd}</p>
-                                        <p>중성화 여부: {animalInfo.neuterYn}</p>
+                                        <p>성별: {getSexCdText(animalInfo.sexCd)}</p>
+                                        <p>중성화 여부: {getNeuterYnText(animalInfo.neuterYn)}</p>
                                     </div>
                                 </div>
                             ))}
