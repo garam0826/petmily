@@ -34,4 +34,9 @@ public class ImageAnalysisDAOImple implements ImageAnalysisDAO {
     public List<ImageAnalysisResult> findAll() {
         return sqlSession.selectList(namespace + ".findAll");
     }
+
+    @Override
+    public List<String> findRandomDesertionNos(int limit) {
+        return sqlSession.selectList(namespace + ".findRandomDesertionNos", limit);
+    }
 }

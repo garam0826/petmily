@@ -175,7 +175,7 @@ public class AnimalInfoService {
                     return new AbstractMap.SimpleEntry<>(result.getDesertionNo(), score);
                 })
                 .sorted((e1, e2) -> Double.compare(e2.getValue(), e1.getValue())) //내림차순 정렬
-                .limit(5)
+                .limit(15)
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
@@ -195,6 +195,10 @@ public class AnimalInfoService {
         }
         return englishKeywords.stream()
                 .collect(Collectors.toList()); // List로 변환하여 반환
+    }
+
+    public List<String> getRandomDesertionNos(int limit) {
+        return imageAnalysisDAO.findRandomDesertionNos(limit);
     }
 
 

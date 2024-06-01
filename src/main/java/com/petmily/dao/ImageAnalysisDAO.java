@@ -13,4 +13,6 @@ public interface ImageAnalysisDAO {
 
     // 모든 이미지 분석 결과를 가져오는 메서드
     List<ImageAnalysisResult> findAll();
+
+    List<String> findRandomDesertionNos(int limit);
 }
