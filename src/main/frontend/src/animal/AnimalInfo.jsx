@@ -7,8 +7,9 @@ import { useNavigate } from "react-router-dom";
 import "../css/search.css";
 import buttonsytle from "../css/member.css";
 import "../css/menu.css"
-import styles from "../css/recommend.css"
+import styles from "../css/recommend.css" //멘트
 import store from "../member/Store";
+import Pagination from "../animal/Pagination"
 
 const formatDate = (dateString) => {
     if (!dateString) return '';
@@ -32,6 +33,10 @@ const AnimalInfo = () => {
     const [regionList, setRegionList] = useState([]);
     const [districtList, setDistrictList] = useState([]);
     const [selectedRegion, setSelectedRegion] = useState('');
+
+    const [limit, setLimit] = useState(20);
+    const [page, setPage] = useState(1);
+    const offset = (page - 1) * limit;
 
     const addAnalysisResult = (newResult) => {
         setAnalysisResults(prevAnalysisResults => [...prevAnalysisResults, newResult]);
@@ -134,6 +139,7 @@ const AnimalInfo = () => {
         })
             .then(response => {
                 console.log("Favorite added successfully");
+                alert("찜 목록에 담겼습니다!");
             })
             .catch(error => {
                 console.error("Error adding favorite: ", error);
@@ -178,7 +184,7 @@ const AnimalInfo = () => {
     return (
         <div>
             <header>
-                <Menu />
+                <Menu/>
             </header>
             <main>
                 <div data-case="text79" className="userEL15637124">
@@ -253,7 +259,7 @@ const AnimalInfo = () => {
                         </div>
                         {animalInfos.length === 0 && !loading && !error && <div>No data available</div>}
                         <div className="grid-container">
-                            {animalInfos.map((animalInfo, index) => (
+                            {animalInfos.slice(offset, offset + limit).map((animalInfo, index) => (
                                 <div className="card" key={index}>
                                     <div className="card-image">
                                         <img src={animalInfo.popfile} alt="Animal"/>
@@ -268,9 +274,15 @@ const AnimalInfo = () => {
                                                  className={analysisresult.desertionNo === animalInfo.desertionNo ? "analysis-info" : ""}>
                                                 {analysisresult.desertionNo === animalInfo.desertionNo && (
                                                     <div>
-                                                        <p>[ 품종 비율 1순위 ]<br/>{analysisresult.className1} ({analysisresult.probability1.toFixed(2)}%)</p>
-                                                        <p>[ 품종 비율 2순위 ]<br/>{analysisresult.className2} ({analysisresult.probability2.toFixed(2)}%)</p>
-                                                        <p>[ 품종 비율 3순위 ]<br/>{analysisresult.className3} ({analysisresult.probability3.toFixed(2)}%)</p>
+                                                        <p>[ 품종 비율 1순위
+                                                            ]<br/>{analysisresult.className1} ({analysisresult.probability1.toFixed(2)}%)
+                                                        </p>
+                                                        <p>[ 품종 비율 2순위
+                                                            ]<br/>{analysisresult.className2} ({analysisresult.probability2.toFixed(2)}%)
+                                                        </p>
+                                                        <p>[ 품종 비율 3순위
+                                                            ]<br/>{analysisresult.className3} ({analysisresult.probability3.toFixed(2)}%)
+                                                        </p>
                                                     </div>
                                                 )}
                                             </div>
@@ -295,6 +307,14 @@ const AnimalInfo = () => {
                         </div>
                         {loading && <div>Loading...</div>}
                         {error && <div>Error: {error.message}</div>}
+                        <footer>
+                            <Pagination
+                                total={animalInfos.length}
+                                limit={limit}
+                                page={page}
+                                setPage={setPage}
+                            />
+                        </footer>
                     </div>
                 ) : (
                     <div>
@@ -308,6 +328,7 @@ const AnimalInfo = () => {
                     </div>
                 )}
             </main>
+
         </div>
     );
 };
