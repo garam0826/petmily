@@ -11,6 +11,7 @@ import styles from "../css/recommend.css"
 import store from "../member/Store";
 
 const formatDate = (dateString) => {
+    if (!dateString) return '';
     const year = dateString.substring(0, 4);
     const month = dateString.substring(4, 6);
     const day = dateString.substring(6, 8);
@@ -28,10 +29,6 @@ const AnimalInfo = () => {
     const [uprCd, setUprCd] = useState('');
     const [orgCd, setOrgCd] = useState('');
     const [analysisResults, setAnalysisResults] = useState([]);
-
-    const url = "/animal/info";
-
-
     const [regionList, setRegionList] = useState([]);
     const [districtList, setDistrictList] = useState([]);
     const [selectedRegion, setSelectedRegion] = useState('');
@@ -56,7 +53,29 @@ const AnimalInfo = () => {
         setLoading(false);
     };
 
+    const fetchRandomAnimals = async () => {
+        try {
+            setLoading(true);
+            setError(null);
+            const response = await axios.get('/api/animal/random-desertionNos');
+            const desertionNos = response.data;
+            const animalInfoPromises = desertionNos.map(desertionNo => axios.get(`/api/animal/${desertionNo}`));
+            const animalInfoResponses = await Promise.all(animalInfoPromises);
+            const animalInfos = animalInfoResponses.map(res => res.data);
+            setAnimalInfos(animalInfos);
+            for (const animalInfo of animalInfos) {
+                await handleAnalysis(animalInfo.desertionNo, animalInfo.popfile);
+            }
+        } catch (error) {
+            console.error('Error fetching random animals:', error);
+            setError(error);
+        }
+        setLoading(false);
+    };
+
     useEffect(() => {
+        fetchRandomAnimals();
+
         const fetchRegionList = async () => {
             try {
                 const response = await axios.get('/api/animal/SlctReg_code');
@@ -68,6 +87,7 @@ const AnimalInfo = () => {
 
         fetchRegionList();
     }, []);
+
     const handleAnalysis = async (desertionNo, imageUrl) => {
         try {
             setAnalysisloading(true);
@@ -86,7 +106,6 @@ const AnimalInfo = () => {
         const selectedRegion = event.target.value;
         setSelectedRegion(selectedRegion);
         setUprCd(selectedRegion);
-        console.log(uprCd);
         try {
             const response = await axios.get(`/api/animal/SlctDist_code?reg_name=${selectedRegion}`);
             setDistrictList(response.data);
@@ -120,7 +139,6 @@ const AnimalInfo = () => {
                 console.error("Error adding favorite: ", error);
             });
     };
-
 
     const handleDetailAnimal = (animalInfo) => {
         const state = {
@@ -185,7 +203,7 @@ const AnimalInfo = () => {
                                         style={{color: 'rgb(138, 139, 142)', fontFamily: "'Nanum Barun Gothic'"}}>공고 시작일, 종료일, 종료, 지역(도/특별시), (시/군)으로 옵션을 선택하여 검색하실 수 있습니다.</span></span>
                                     </div>
                                     <div><span className="fsize13"><span
-                                        style={{color: 'rgb(138, 139, 142)', fontFamily: "'Nanum Barun Gothic'"}}>(사진 위에 마우스를 올리면, 더 자세한 정보를 보실 수 있습니다.)<br/><br/></span></span>
+                                        style={{color: 'rgb(138, 139, 142)', fontFamily: "'Nanum Barun Gothic'"}}>-사진 위에 마우스를 올리면, 더 자세한 정보를 보실 수 있습니다.<br/>-사진을 클릴하시면, 향후 성장시 특성&보호소 등 더 자세한 정보를 보실 수 있습니다.<br/><br/><br/></span></span>
                                     </div>
                                     <hr className="fr-hr"
                                         style={{borderBottom: '2px solid #d6d7d8', width: '35px', margin: '0 auto'}}
@@ -201,10 +219,12 @@ const AnimalInfo = () => {
                             <div className="contentContainer">
                                 <label>공고 시작일: </label>
                                 <input type="text" value={startDate} onChange={(e) => setStartDate(e.target.value)}/>
+                                (ex. 20240216)
                             </div>
                             <div className="contentContainer">
                                 <label>공고 종료일: </label>
                                 <input type="text" value={endDate} onChange={(e) => setEndDate(e.target.value)}/>
+                                (ex. 20240216)
                             </div>
                             <div className="contentContainer">
                                 <label>품종: </label>
@@ -234,36 +254,33 @@ const AnimalInfo = () => {
                         {animalInfos.length === 0 && !loading && !error && <div>No data available</div>}
                         <div className="grid-container">
                             {animalInfos.map((animalInfo, index) => (
-                                <div className="card" key={index} onClick={() => handleDetailAnimal(animalInfo)}>
+                                <div className="card" key={index}>
                                     <div className="card-image">
                                         <img src={animalInfo.popfile} alt="Animal"/>
                                     </div>
                                     <div className="card-content">
                                     </div>
-                                    {analysisResults.map((analysisresult, index) => (
-                                        <div key={index}
-                                             className={analysisresult.desertionNo === animalInfo.desertionNo ? "analysis-info" : ""}>
-                                            {analysisresult.desertionNo === animalInfo.desertionNo && (
-                                                <div>
-                                                    <p>[ 품종 비율 1순위
-                                                        ]<br/>{analysisresult.className1} ({analysisresult.probability1.toFixed(2)}%)
-                                                    </p>
-                                                    <p>[ 품종 비율 2순위
-                                                        ]<br/>{analysisresult.className2} ({analysisresult.probability2.toFixed(2)}%)
-                                                    </p>
-                                                    <p>[ 품종 비율 3순위
-                                                        ]<br/>{analysisresult.className3} ({analysisresult.probability3.toFixed(2)}%)
-                                                    </p>
-                                                </div>
-                                            )}
-                                        </div>
-                                    ))}
+                                    {analysisloading ? (
+                                        <div>Analysis Loading...</div>
+                                    ) : (
+                                        analysisResults.map((analysisresult, index) => (
+                                            <div key={index}
+                                                 className={analysisresult.desertionNo === animalInfo.desertionNo ? "analysis-info" : ""}>
+                                                {analysisresult.desertionNo === animalInfo.desertionNo && (
+                                                    <div>
+                                                        <p>[ 품종 비율 1순위 ]<br/>{analysisresult.className1} ({analysisresult.probability1.toFixed(2)}%)</p>
+                                                        <p>[ 품종 비율 2순위 ]<br/>{analysisresult.className2} ({analysisresult.probability2.toFixed(2)}%)</p>
+                                                        <p>[ 품종 비율 3순위 ]<br/>{analysisresult.className3} ({analysisresult.probability3.toFixed(2)}%)</p>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        ))
+                                    )}
                                     <button onClick={() => addFavorite(animalInfo.desertionNo)}
                                             style={{width: '100%'}}>찜 추가
                                     </button>
-                                    <div className="analysis-results">
+                                    <div className="analysis-results" onClick={() => handleDetailAnimal(animalInfo)}>
                                         <br/>
-                                        {/* 확인용 <p>유기 번호: {animalInfos[match.desertionNo].desertionNo}</p>*/}
                                         <p>발견 날짜: {formatDate(animalInfo.happenDt)}</p>
                                         <p>발견 장소: {animalInfo.happenPlace}</p>
                                         <p>나이: {animalInfo.age}</p>
