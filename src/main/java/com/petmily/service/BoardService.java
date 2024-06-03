@@ -12,7 +12,7 @@ public interface BoardService {
     public boolean writeBoard(BoardDTO boardDTO) throws Exception;
 
     // 글 목록 조회
-    public List<BoardDTO> listBoard(PagingCriteria p_Cri) throws Exception;
+    public List<BoardDTO> listBoard() throws Exception;
 
     // 글 내용 조회
     public BoardDTO readBoard(int idx) throws Exception;

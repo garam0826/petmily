@@ -30,19 +30,19 @@ public class BoardDAOImple implements BoardDAO{
     }
 
     // 글 목록 조회
-    /*@Override
+    @Override
     public List<BoardDTO> listBoard() throws Exception{
         List<BoardDTO> b_List = sqlSession.selectList(namespace+ ".listBoard");
 
         return b_List;
-    }*/
+    }
 
-    @Override
+    /*@Override
     public List<BoardDTO> listBoard(PagingCriteria p_Cri) throws Exception{
         List<BoardDTO> b_List = sqlSession.selectList(namespace+ ".listBoard", p_Cri);
 
         return b_List;
-    }
+    }*/
 
     // 글 내용 조회
     @Override

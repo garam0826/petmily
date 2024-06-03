@@ -66,29 +66,28 @@ public class BoardController {
 
     // 글 목록 조회
     @GetMapping("/List")
-    public ResponseEntity<Map<String, Object>> listBoard(PagingCriteria p_Cri){
+    public ResponseEntity<Map<String, Object>> listBoard(){
         logger.info("/List GetMapping");
-        logger.info("Page : " +p_Cri);
 
         try{
             Map<String, Object> resultMap = new HashMap<>();
 
             // 글 목록 조회
-            List<BoardDTO> b_List = boardService.listBoard(p_Cri);
+            List<BoardDTO> b_List = boardService.listBoard();
             // 글 갯수 조회
             int b_Cnt = boardService.countBoard();
             // Paging 처리
-            PagingMaker pagingMaker = new PagingMaker();
+            //PagingMaker pagingMaker = new PagingMaker();
 
-            pagingMaker.setP_Cri(p_Cri);
-            pagingMaker.setTotalCnt(b_Cnt);
-            logger.info("pageMaker : " +pagingMaker);
+            //pagingMaker.setP_Cri(p_Cri);
+            //pagingMaker.setTotalCnt(b_Cnt);
+            //logger.info("pageMaker : " +pagingMaker);
 
             resultMap.put("b_List", b_List);
             resultMap.put("b_Cnt", b_Cnt);
-            resultMap.put("pagingMaker", pagingMaker);
+            //resultMap.put("pagingMaker", pagingMaker);
 
-            resultMap.put("test", pagingMaker.makeQuery(pagingMaker.getP_Cri().getPage()));
+            //resultMap.put("test", pagingMaker.makeQuery(pagingMaker.getP_Cri().getPage()));
 
             return new ResponseEntity<>(resultMap, HttpStatus.OK);
         }catch(Exception e){

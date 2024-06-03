@@ -45,8 +45,8 @@ public class BoardServiceImple implements BoardService{
 
     // 글 목록 조회
     @Override
-    public List<BoardDTO> listBoard(PagingCriteria p_Cri) throws Exception{
-        List<BoardDTO> b_List = boardDAO.listBoard(p_Cri);
+    public List<BoardDTO> listBoard() throws Exception{
+        List<BoardDTO> b_List = boardDAO.listBoard();
         logger.info("글 목록 조회 Service 완료");
 
         return b_List;
