@@ -25,6 +25,7 @@ const MyPage= lazy(() => import("../src/member/MyPage"))
 const MyEdit = lazy(() => import("../src/member/MyEdit"))
 
 const Animalinfo= lazy(() => import("../src/animal/AnimalInfo"))
+const Animaldetail= lazy(() => import("../src/animal/AnimalDetail"))
 
 const Recommend  = lazy(() => import("../src/recommend/Recommend"))
 const Qustion = lazy(() => import("../src/recommend/QuestionRecommend"))
@@ -79,7 +80,11 @@ const root = createBrowserRouter([
     {
         path: "/animal",
         element: <Suspense fallback ={Loading}><Animalinfo/></Suspense>
-    } ,
+    },
+    {
+        path: "/animal/detail",
+        element: <Suspense fallback ={Loading}><Animaldetail/></Suspense>
+    },
     {
         path: "/member/mypage",
         element: <Suspense fallback ={Loading}><MyPage/></Suspense>
