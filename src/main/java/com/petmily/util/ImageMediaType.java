@@ -19,4 +19,9 @@ public class ImageMediaType{
     public static MediaType getMediaType(String type){
         return imgMediaMap.get(type.toUpperCase());
     }
+
+    // paging 처리
+    // 썸네일 보기, 삭제
+    // 강아지 정보(animail info) 페이지 댓글 -> 글 idx, des_number, 내용, 글쓴이, 작성 날짜
+    //
 }

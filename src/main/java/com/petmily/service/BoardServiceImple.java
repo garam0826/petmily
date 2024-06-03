@@ -5,6 +5,8 @@ import com.petmily.dto.ReplyDTO;
 
 import com.petmily.dao.BoardDAO;
 
+import com.petmily.util.PagingCriteria;
+
 import org.springframework.stereotype.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +45,8 @@ public class BoardServiceImple implements BoardService{
 
     // 글 목록 조회
     @Override
-    public List<BoardDTO> listBoard() throws Exception{
-        List<BoardDTO> b_List = boardDAO.listBoard();
+    public List<BoardDTO> listBoard(PagingCriteria p_Cri) throws Exception{
+        List<BoardDTO> b_List = boardDAO.listBoard(p_Cri);
         logger.info("글 목록 조회 Service 완료");
 
         return b_List;
