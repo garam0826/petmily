@@ -18,12 +18,14 @@ const MainPage = lazy(() => import("../src/Mainpage"))
 const Login = lazy(() => import("../src/member/Login"))
 const SignUp = lazy(() => import("../src/member/SignUp"))
 const Findid = lazy(() => import("../src/member/Findid"))
+const Findpw = lazy(() => import("../src/member/FindPW"))
 
 const MyInfo  = lazy(() => import("../src/member/MyInfo"))
 const MyPage= lazy(() => import("../src/member/MyPage"))
 const MyEdit = lazy(() => import("../src/member/MyEdit"))
 
 const Animalinfo= lazy(() => import("../src/animal/AnimalInfo"))
+const Animaldetail= lazy(() => import("../src/animal/AnimalDetail"))
 
 const Recommend  = lazy(() => import("../src/recommend/Recommend"))
 const Qustion = lazy(() => import("../src/recommend/QuestionRecommend"))
@@ -72,9 +74,17 @@ const root = createBrowserRouter([
         element: <Suspense fallback ={Loading}><Findid/></Suspense>
     },
     {
+        path: "/member/searchpw",
+        element: <Suspense fallback ={Loading}><Findpw/></Suspense>
+    },
+    {
         path: "/animal",
         element: <Suspense fallback ={Loading}><Animalinfo/></Suspense>
-    } ,
+    },
+    {
+        path: "/animal/detail",
+        element: <Suspense fallback ={Loading}><Animaldetail/></Suspense>
+    },
     {
         path: "/member/mypage",
         element: <Suspense fallback ={Loading}><MyPage/></Suspense>

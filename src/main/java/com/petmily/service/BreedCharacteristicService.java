@@ -180,7 +180,7 @@ public class BreedCharacteristicService {
                 ") AS mse " +
                 "FROM DogCharacteristics " +
                 "ORDER BY mse ASC " +
-                "LIMIT 5";
+                "LIMIT 15";
 
         return jdbcTemplate.query(
                 sql,

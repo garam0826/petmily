@@ -43,7 +43,7 @@ public class AutomaticDataProcessor {
 
 
 
-    @Scheduled(cron = "0 15 23 * * ?")
+    @Scheduled(cron = "0 37 15 * * ?")
     public void updateImageAnalysisTable() {
         // AnimalInfo 테이블에서 ImageAnalysisResult 테이블에 없는 desertionNo 찾기
         List<String> unprocessedDesertionNos = animalInfoDAO.findUnprocessedDesertionNos();

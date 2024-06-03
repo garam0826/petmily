@@ -1,11 +1,11 @@
-.container {
+.container_result {
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.grid-container {
+.grid-container_result {
     display: grid;
     gap: 10px;
     justify-content: center;
@@ -13,25 +13,25 @@
     grid-template-rows: auto auto;
 }
 
-.grid-container > .card {
+.grid-container_result > .card {
     background-color: lightyellow;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 1px 20px 20px 20px;
     text-align: center;
     position: relative;
     width: 250px;
-    height: 600px;
+    height: 680px;
 }
 
-.grid-container > .card img {
+.grid-container_result > .card img {
     width: 100%;
     height: 350px;
     border-radius: 10px;
 }
 
-.grid-container > .card:nth-child(4),
-.grid-container > .card:nth-child(5) {
+.grid-container_result > .card:nth-child(4),
+.grid-container_result > .card:nth-child(5) {
     grid-column: span 1;
     justify-self: center;
     align-self: center;
@@ -42,7 +42,7 @@
     position: absolute;
     bottom: 20px;
     left: 50%;
-    transform: translateX(-50%) translateY(-70%);
+    transform: translateX(-50%) translateY(-69%);
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -51,7 +51,7 @@
     height: 355px;
 }
 
-.grid-container > .card:hover .analysis-results {
+.grid-container_result > .card:hover .analysis-results {
     display: block;
 }
 
@@ -60,17 +60,32 @@
     font-weight: bold;
 }
 
-.analysis-results button {
-    margin: 5px 0;
+.more_button {
+    margin: 10px;
     font-weight: bold;
-    background-color: #ff9a9e;
+    background-color: #c9e2b3;
     display: block;
-    width: 250px;
-    height: 40px;
+    width: 150px;
+    height: 30px;
     padding: 5px 0;
     text-align: center;
     border-radius: 5px;
     font-size: 15px;
-    color: #FFFFFF;
+    color: #000000;
     align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.more_button:hover {
+    background-color: #7aba7b;
+    color: #FFFFFF;
+}
+
+.h3_result {
+    font-size: 20px;
+    border: 3px solid #c9e2b3;
+    border-radius: 10px;
+    padding: 6px 0;
+    width: 100%;
+    text-align: center;
 }
