@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import {useNavigate} from "react-router-dom";
 import axios from 'axios';
 import store from "../member/Store";
 import "../css/recommend.css";
 import '../css/menu.css';
-import '../css/result.css';
+import '../css/favorite.css';
 
 const Favorite_Result = ({ matches, loading, error, removeFavorite, getMemberDesertionNo }) => {
+    const navigate = useNavigate();
     const state = store.getState();
     const userId = state.isLoggedIn ? state.userData.mem_id : null;
 
@@ -73,6 +75,14 @@ const Favorite_Result = ({ matches, loading, error, removeFavorite, getMemberDes
         return `${year}년 ${parseInt(month, 10)}월 ${parseInt(day, 10)}일`;
     };
 
+    const handleDetailAnimal = (DesertionNo) => {
+        navigate('/animal/detail', {
+            state: {
+                desertionNo: DesertionNo,
+            },
+        });
+    };
+
     return (
         <div>
             <main className="container">
@@ -117,8 +127,7 @@ const Favorite_Result = ({ matches, loading, error, removeFavorite, getMemberDes
                                     {animalInfos[desertionNo] && (
                                         <div>
                                             <img src={animalInfos[desertionNo]?.popfile} alt="Animal"/>
-                                            <div className="analysis-results">
-                                                <br/>
+                                            <div className="analysis" onClick={()=>handleDetailAnimal(desertionNo)}>
                                                 {/*<p>유기 번호: {desertionNo}</p>*/}
                                                 <p>발견 날짜: {formatDate(animalInfos[desertionNo]?.happenDt)}</p>
                                                 <p>발견 장소: {animalInfos[desertionNo]?.happenPlace}</p>
@@ -128,9 +137,9 @@ const Favorite_Result = ({ matches, loading, error, removeFavorite, getMemberDes
                                                 <p>공고 종료 날짜: {formatDate(animalInfos[desertionNo]?.noticeEdt)}</p>
                                                 <p>성별: {animalInfos[desertionNo]?.sexCd}</p>
                                                 <p>중성화 여부: {animalInfos[desertionNo]?.neuterYn}</p>
-                                                <button onClick={() => removeFavorite(desertionNo)}>찜 제거</button>
-                                                <button onClick={() => getMemberDesertionNo(desertionNo)}>찜한 사용자 보기</button>
                                             </div>
+                                            <button className="button" onClick={() => removeFavorite(desertionNo)}>찜 제거</button>
+                                            <button className="button" onClick={() => getMemberDesertionNo(desertionNo)}>찜한 사용자 보기</button>
                                         </div>
                                     )}
                                 </div>

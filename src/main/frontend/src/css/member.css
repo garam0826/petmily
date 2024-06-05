@@ -11,7 +11,6 @@
     color: #FFFFFF;
     font-weight: bold;
     align-items: center;
-    margin-top: 20px;
 }
 
 .custom-button:hover {
@@ -19,7 +18,8 @@
     color: #E3E3E3;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
-h1 {
+
+.h1 {
     font-size: 25px;
     border: 3px solid #00a0fe;
     border-radius: 20px;
@@ -28,10 +28,81 @@ h1 {
     width: 300px;
     text-align: center;
 }
-h2 {
+.h2 {
     font-size: 20px;
     border-radius: 20px;
-    padding: 6px 0;
-    margin: 20px auto;
+
     text-align: center;
+}
+
+.form_member {
+    background-color: #bbf1ef;
+    border: 1.5px none #493e2c;
+    border-radius: 10px;
+    margin: 20px 20px 1px 20px;
+    width: 800px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    /*가운데 정렬*/
+    display: flex;
+    flex-direction: column; /*세로 정렬*/
+    align-items: center;
+}
+
+.div_member {
+
+    display: flex;
+    width: 90%;
+    max-width: 1000px;
+    border-radius: 20px;
+    margin: 0 auto;
+}
+
+.form {
+    background-color: #bbf1ef;
+    border: 3px none #493e2c;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    margin: 50px auto;
+    width: 800px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    /*가운데 정렬*/
+    display: flex;
+    flex-direction: column; /*세로 정렬*/
+    align-items: center;
+
+}
+
+.wrapper {
+    margin: 10px auto;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid grey;
+    border-radius: 16px;
+    text-align: center;
+    width: 75%;
+    align-items:center;
+}
+
+.contentContainer {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: colum;
+    justifyContent: center;
+    text-align: center;
+}
+
+.contentContainer_info {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: colum;
+    justifyContent: center;
+    text-align: center;
+}
+
+.input {
+    margin-left: 20px; /* label과 input의 오른쪽 간격 */
 }
