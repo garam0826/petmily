@@ -38,6 +38,8 @@ const WriteContent = lazy(() => import("../src/board/WriteContent"))
 const Favorite = lazy(() => import("../src/member/Favorite"))
 const Keyword = lazy(() => import("../src/recommend/Keyword"))
 const KeywordResult = lazy(() => import("../src/recommend/KeywordResult"))
+const ImageUpload = lazy(() => import("../src/member/ImageUpload"))
+const MyContent = lazy(() => import("../src/member/MyContent"))
 
 const root = createBrowserRouter([
     {
@@ -123,6 +125,14 @@ const root = createBrowserRouter([
     {
         path: "/recommend/keyword/result",
         element: <Suspense fallback ={Loading}><KeywordResult/></Suspense>
+    },
+    {
+        path: "/member/mypage/imgUpload",
+        element: <Suspense fallback ={Loading}><ImageUpload/></Suspense>
+    },
+    {
+        path: "/member/mypage/mycontent",
+        element: <Suspense fallback ={Loading}><MyContent/></Suspense>
     }
 ])
 

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import './board.css';
 import {useSelector} from "react-redux";
+import Menu from "../Menu";
 
 function EditContent() {
     const navigate = useNavigate();
@@ -40,6 +41,7 @@ function EditContent() {
 
     return (
         <div>
+            <Menu/>
             <div className="form-container">
                 <h2>게시글 수정</h2>
                 <div>

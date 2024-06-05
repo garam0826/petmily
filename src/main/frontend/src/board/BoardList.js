@@ -41,7 +41,7 @@ function BoardList() {
                 </button>
             </div>
             <div className="board-cont">
-                <span>글 번호</span>
+                <span>No.</span>
                 <span>제목</span>
                 <span>글쓴이</span>
                 <span>작성시간</span>

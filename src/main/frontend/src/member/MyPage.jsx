@@ -61,6 +61,11 @@ function MyPage() {
                             <button onClick={() => navigate("/member/mypage/myedit")}>edit</button>
                         </div>
                         <hr/>
+                        {/*<div>
+                            <h2>이미지 업로드하기</h2>
+                            <button onClick={() => navigate("/member/mypage/imgUpload")}>이미지 업로드</button>
+                        </div>
+                        <hr/>*/}
                         <div>
                             <h2>회원정보 탈퇴하기</h2>
                             <button onClick={handleResign}>resign</button>
