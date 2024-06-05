@@ -5,6 +5,8 @@ import com.petmily.dto.ReplyDTO;
 
 import com.petmily.dao.BoardDAO;
 
+import com.petmily.util.PagingCriteria;
+
 import org.springframework.stereotype.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;

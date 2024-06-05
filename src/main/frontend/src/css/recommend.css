@@ -185,22 +185,16 @@
 }
 
 .outer-div {
-    /* 기본 배경색 */
-    background-color: rgba(84,113,201,0.6); /* 예시 배경색 */
-    transition: background-color 0.3s ease; /* 부드러운 색상 전환을 위한 transition 설정 */
+    background-color: rgba(84,113,201,0.6);
+    transition: background-color 0.3s ease;
     width: 100%;
     border: 1px solid #FFFFFF;
 }
 
 .outer-div:hover {
-    /* 마우스를 올렸을 때의 배경색 */
-    background-color: #46629E; /* 변경할 배경색 */
+    background-color: #46629E;
 }
 .content-block {
     display: flex;
     justify-content: center;
-
-
-
-    /* 추가적인 스타일링을 원하면 여기에 추가하세요 */
 }

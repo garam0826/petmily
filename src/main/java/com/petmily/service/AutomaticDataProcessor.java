@@ -29,7 +29,7 @@ public class AutomaticDataProcessor {
 
 
     //매일 14시 50분에 실행되게 하는 스케쥴링 메서드 (테스트/수정예정)
-    @Scheduled(cron = "0 40 01 * * ?")
+    @Scheduled(cron = "0 12 23 * * ?")
     public void processImageAnalysisResults() {
         // 이미지 분석 결과를 조회하여 아직 특성이 계산되지 않은 결과를 가져오기
         List<ImageAnalysisResult> unprocessedResults = imageAnalysisDAO.findAllUnprocessed();
@@ -43,7 +43,7 @@ public class AutomaticDataProcessor {
 
 
 
-    @Scheduled(cron = "0 40 01 * * ?")
+    @Scheduled(cron = "0 37 15 * * ?")
     public void updateImageAnalysisTable() {
         // AnimalInfo 테이블에서 ImageAnalysisResult 테이블에 없는 desertionNo 찾기
         List<String> unprocessedDesertionNos = animalInfoDAO.findUnprocessedDesertionNos();

@@ -1,17 +1,17 @@
 
-.container {
+.container_question {
     background-color: #c9e2b3;
     padding: 20px;
     border-radius: 10px;
     width: 1410px;
-    margin: 20px;
+    margin: 20px 20px 30px 20px;
 }
-.contentContainer{
+.contentContainer_question{
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
-button {
+.button {
     background-color: #ECACB5;
     display: block;
     height: 40px;
@@ -26,12 +26,13 @@ button {
     margin-top: 20px;
     width: 300px;
 }
-button:hover {
+.button:hover {
     background-color: #f17a8d;
     color: #E3E3E3;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
-label{
+
+.label{
     font-size: 20px;
 
 }

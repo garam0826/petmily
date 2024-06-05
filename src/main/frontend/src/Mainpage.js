@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Link } from "react-router-dom"
 import {useNavigate} from "react-router-dom";
 import store from "./member/Store";
+import "./css/menu.css"
 import './App.css';
 import {logout} from "./member/Reducer";
 import { useDispatch } from 'react-redux';

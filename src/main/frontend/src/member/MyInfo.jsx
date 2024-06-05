@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import store from './Store';
 import Menu from "../Menu";
-import styles from '../css/base.css'
+import "../css/recommend.css"
+import "../css/member.css"
+
 
 function MyInfo() {
     const [memberInfo, setMemberInfo] = useState(null);
@@ -51,20 +53,44 @@ function MyInfo() {
                 <Menu />
             </header>
             <main>
-                <h1>사용자 정보</h1>
-                {memberInfo ? (
-                    <form>
-                        <p style={styles.contentContainer}>ID: {memberInfo.mem_id}</p>
-                        <p style={styles.contentContainer}>PW: {memberInfo.mem_pw}</p>
-                        <p style={styles.contentContainer}>Name: {memberInfo.nickname}</p>
-                        <p style={styles.contentContainer}>도/특별시: {memberInfo.region}</p>
-                        <p style={styles.contentContainer}>시/군: {memberInfo.county_district}</p>
-                    </form>
-                ) : (
-                    <p>Please log in to view your information</p>
-                )}
-                <hr/>
-                <button type="button" onClick={() => navigate("/member/mypage")}>마이페이지 화면으로</button>
+                <div>
+                    <div data-case="text79" className="userEL15637124">
+                        <div className="container_result">
+                            <div className="row" data-matrix-loop="true" data-matrix-column="1">
+                                <div className="col-xs-12 col-sm-12 col-md-12 item">
+                                    <div className="cl_caption" data-edit="true" data-selector=".cl_caption">
+                                        <hr className="fr-hr"
+                                            style={{borderBottom: '2px solid #d6d7d8', width: '35px', margin: '0 auto'}}
+                                            align="center"/>
+                                        <br/><br/>
+                                        <div><span
+                                            style={{
+                                                fontFamily: "'Seoul Namsan'",
+                                                fontSize: '30px'
+                                            }}> 회원 정보 </span>
+                                        </div>
+                                        <br/><br/>
+                                        <hr className="fr-hr"
+                                            style={{borderBottom: '2px solid #d6d7d8', width: '35px', margin: '0 auto'}}
+                                            align="center"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {memberInfo ? (
+                        <form className="form">
+                            <p className="contentContainer">ID: {memberInfo.mem_id}</p><br/>
+                            <p className="contentContainer">PW: {memberInfo.mem_pw}</p><br/>
+                            <p className="contentContainer">Name: {memberInfo.nickname}</p><br/>
+                            <p className="contentContainer">도/특별시: {memberInfo.region}</p><br/>
+                            <p className="contentContainer">시/군: {memberInfo.county_district}</p>
+                        </form>
+                    ) : (
+                        <p>Please log in to view your information</p>
+                    )}
+                    <button className="custom-button" type="button" onClick={() => navigate("/member/mypage")}>마이페이지 화면으로 →</button>
+                </div>
             </main>
         </React.Fragment>
     );

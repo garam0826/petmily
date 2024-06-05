@@ -107,13 +107,11 @@ public class ImageUploadServiceImple implements ImageUploadService{
 
         FileCopyUtils.copy(fileData, target);
 
-        String formatName = originalName.substring(originalName.lastIndexOf(".") +1);
-
+        String formatName = originalName.substring(originalName.lastIndexOf(".") + 1);
 
         if(ImageMediaType.getMediaType(formatName) != null){
             logger.info("image 저장");
         }
-
 
         return uploadedFileName;
     }

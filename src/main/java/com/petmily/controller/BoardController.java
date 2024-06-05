@@ -5,6 +5,9 @@ import com.petmily.dto.ReplyDTO;
 
 import com.petmily.service.BoardService;
 
+import com.petmily.util.PagingCriteria;
+
+import com.petmily.util.PagingMaker;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,15 +66,30 @@ public class BoardController {
 
     // 글 목록 조회
     @GetMapping("/List")
-    public ResponseEntity<List<BoardDTO>> listBoard(){
+    public ResponseEntity<Map<String, Object>> listBoard(){
         logger.info("/List GetMapping");
-        // paging 글 갯수 추가
 
         try{
-            List<BoardDTO> b_List = boardService.listBoard();
-            int count = boardService.countBoard();
+            Map<String, Object> resultMap = new HashMap<>();
 
-            return new ResponseEntity<>(b_List, HttpStatus.OK);
+            // 글 목록 조회
+            List<BoardDTO> b_List = boardService.listBoard();
+            // 글 갯수 조회
+            int b_Cnt = boardService.countBoard();
+            // Paging 처리
+            //PagingMaker pagingMaker = new PagingMaker();
+
+            //pagingMaker.setP_Cri(p_Cri);
+            //pagingMaker.setTotalCnt(b_Cnt);
+            //logger.info("pageMaker : " +pagingMaker);
+
+            resultMap.put("b_List", b_List);
+            resultMap.put("b_Cnt", b_Cnt);
+            //resultMap.put("pagingMaker", pagingMaker);
+
+            //resultMap.put("test", pagingMaker.makeQuery(pagingMaker.getP_Cri().getPage()));
+
+            return new ResponseEntity<>(resultMap, HttpStatus.OK);
         }catch(Exception e){
             e.printStackTrace();
 
@@ -89,12 +107,14 @@ public class BoardController {
 
             // 글 내용 조회
             BoardDTO boardDTO = boardService.readBoard(idx);
-
             // 글의 댓글 조회
             List<ReplyDTO> r_List = boardService.listReplyBoard(idx);
+            // 글의 댓글 갯수 조회
+            int r_Cnt = boardService.countReplyBoard(idx);
 
             resultMap.put("boardDTO", boardDTO);
             resultMap.put("r_List", r_List);
+            resultMap.put("r_Cnt", r_Cnt);
 
             return new ResponseEntity<>(resultMap, HttpStatus.OK);
         }catch(Exception e){

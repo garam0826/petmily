@@ -271,7 +271,7 @@ public class MemberController {
 
     // 회원별 강아지 Image Upload
     @PostMapping("/PetImg")
-    public ResponseEntity<Boolean> uploadPetImg(@RequestParam("") MultipartFile images, @RequestParam String mem_id){
+    public ResponseEntity<Boolean> uploadPetImg(@RequestParam("image") MultipartFile images, @RequestParam String mem_id){
         logger.info("/PetImg PostMapping");
         boolean result = false;
 

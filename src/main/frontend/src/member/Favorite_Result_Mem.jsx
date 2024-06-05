@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import {useNavigate} from "react-router-dom";
 import axios from 'axios';
 import store from "../member/Store";
 import "../css/recommend.css";
 import '../css/menu.css';
-import '../css/result.css';
+import '../css/favorite.css';
 
 const Favorite_Result_Mem = ({ matches, loading, error }) => {
+    const navigate = useNavigate();
     const state = store.getState();
     const userId = state.isLoggedIn ? state.userData.mem_id : null;
 
@@ -73,6 +75,14 @@ const Favorite_Result_Mem = ({ matches, loading, error }) => {
         return `${year}년 ${parseInt(month, 10)}월 ${parseInt(day, 10)}일`;
     };
 
+    const handleDetailAnimal = (DesertionNo) => {
+        navigate('/animal/detail', {
+            state: {
+                desertionNo: DesertionNo,
+            },
+        });
+    };
+
     return (
         <div>
             <main className="container">
@@ -113,11 +123,11 @@ const Favorite_Result_Mem = ({ matches, loading, error }) => {
                         {matches.map((match) => {
                             const desertionNo = match.desertionNo || match; // match가 객체라면 desertionNo 속성을 사용
                             return (
-                                <div className="card" key={desertionNo}>
+                                <div style={{height: '350px'}} className="card" key={desertionNo}>
                                     {animalInfos[desertionNo] && (
                                         <div>
                                             <img src={animalInfos[desertionNo]?.popfile} alt="Animal"/>
-                                            <div className="analysis-results">
+                                            <div style={{transform: 'translateX(-50%) translateY(0.5%)'}} className="analysis" onClick={() => handleDetailAnimal(desertionNo)}>
                                                 <br/>
                                                 {/*<p>유기 번호: {desertionNo}</p>*/}
                                                 <p>발견 날짜: {formatDate(animalInfos[desertionNo]?.happenDt)}</p>

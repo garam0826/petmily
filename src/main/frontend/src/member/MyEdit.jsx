@@ -3,7 +3,8 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import store from "./Store";
 import Menu from "../Menu";
-import styles from "../css/base.css"
+import "../css/recommend.css"
+import "../css/member.css"
 
 function MyEdit() {
     const [error, setError] = useState(null);
@@ -103,65 +104,93 @@ function MyEdit() {
 
     return (
         <React.Fragment>
-            <Menu />
-            <h1>정보 수정</h1>
-            <form>
-                <h2>회원 정보 수정</h2>
-                <div style={styles.wrapper}>
-                    <label style={styles.contentContainer}>
-                        PW:
-                        <input type="text" placeholder="새 비번" name="mem_pw" value={newMemberInfo.mem_pw}
-                               onChange={handleInputChange}/>
-                    </label>
+            <header>
+                <Menu />
+            </header>
+            <main>
+
+                <div data-case="text79" className="userEL15637124">
+                    <div className="container_result">
+                        <div className="row" data-matrix-loop="true" data-matrix-column="1">
+                            <div className="col-xs-12 col-sm-12 col-md-12 item">
+                                <div className="cl_caption" data-edit="true" data-selector=".cl_caption">
+                                    <hr className="fr-hr"
+                                        style={{borderBottom: '2px solid #d6d7d8', width: '35px', margin: '0 auto'}}
+                                        align="center"/>
+                                    <br/><br/>
+                                    <div><span
+                                        style={{
+                                            fontFamily: "'Seoul Namsan'",
+                                            fontSize: '30px'
+                                        }}> 정보 수정 </span>
+                                    </div>
+                                    <br/><br/>
+                                    <hr className="fr-hr"
+                                        style={{borderBottom: '2px solid #d6d7d8', width: '35px', margin: '0 auto'}}
+                                        align="center"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div style={styles.wrapper}>
-                    <label style={styles.contentContainer}>
-                        Nick Name:
-                        <input type="text" placeholder="새 닉네임" name="nickname" value={newMemberInfo.nickname}
-                               onChange={handleInputChange}/>
-                    </label>
-                </div>
-                <div style={styles.wrapper}>
-                    <label style={styles.contentContainer}>
-                        Email:
-                        <input type="text" placeholder="새 이메일" name="email" value={newMemberInfo.email}
-                               onChange={handleInputChange}/>
-                    </label>
-                </div>
-                <div style={styles.wrapper}>
-                    <label htmlFor="region">Region:</label>
-                    <select id="region" onChange={handleRegionChange}>
-                        <option value="">{newMemberInfo.region}</option>
-                        {regionList.map((region) => (
-                            <option key={select_region} value={region}>{region}</option>
-                        ))}
-                    </select>
-                </div>
-                <div style={styles.wrapper}>
-                    <label htmlFor="district">District:</label>
-                    <select id="district" onChange={handleDistrictChange}>
-                        <option value="">{newMemberInfo.county_district}</option>
-                        {districtList.map((district) => (
-                            <option key={country_district}
-                                    value={district.dist_name}>{district.dist_name}</option>
-                        ))}
-                    </select>
-                </div>
-            </form>
-            <form>
-                <h2> 이미지 올리는 부분 - 버튼 누르면 파일 탐색기 </h2>
-                <button>파일 탐색기 열기</button>
-                {message && <p>{message}</p>}
-                {error && <p>{error}</p>}
-            </form>
-            <form>
-                <h2> 질문 점수 수정하기</h2>
-                <button>점수 수정</button>
-            </form>
-            <button onClick={handleUpdateMember}>수정 완료하기</button>
-            {updateMessage && <p>{updateMessage}</p>}
-            <hr/>
-            <button type="button" onClick={() => navigate("/member/mypage")}>mypage로</button>
+                <form className="form">
+                    <h2>회원 정보 수정</h2>
+                    <div className="wrapper">
+                        <label className="contentContainer">
+                            PW:
+                            <input className="input" type="text" placeholder="새 비번" name="mem_pw" value={newMemberInfo.mem_pw}
+                                   onChange={handleInputChange}/>
+                        </label>
+                    </div>
+                    <div className="wrapper">
+                        <label className="contentContainer">
+                            Nick Name:
+                            <input className="input" type="text" placeholder="새 닉네임" name="nickname" value={newMemberInfo.nickname}
+                                   onChange={handleInputChange}/>
+                        </label>
+                    </div>
+                    <div className="wrapper">
+                        <label className="contentContainer">
+                            Email:
+                            <input className="input" type="text" placeholder="새 이메일" name="email" value={newMemberInfo.email}
+                                   onChange={handleInputChange}/>
+                        </label>
+                    </div>
+                    <div className="wrapper">
+                        <label className="contentContainer" htmlFor="region">Region:
+                            <select className="input" id="region" onChange={handleRegionChange}>
+                                <option value="">{newMemberInfo.region}</option>
+                                {regionList.map((region) => (
+                                    <option key={region.reg_code} value={region.reg_name}>{region.reg_name}</option>
+                                ))}
+                            </select>
+                        </label>
+                    </div>
+                    <div className="wrapper">
+                        <label className="contentContainer"  htmlFor="district">District:
+                            <select className="input" id="district" onChange={handleDistrictChange}>
+                                <option value="">{newMemberInfo.county_district}</option>
+                                {districtList.map((district) => (
+                                    <option key={district.dist_code}
+                                            value={district.dist_name}>{district.dist_name}</option>
+                                ))}
+                            </select>
+                        </label>
+                    </div>
+
+                    <button style={{marginTop: '20px'}} className="custom-button" onClick={handleUpdateMember}>수정 완료하기</button>
+                </form>
+                <form className="form">
+                    <h2> 이미지 올리는 부분 - 버튼 누르면 파일 탐색기 </h2>
+                    <button style={{marginTop: '20px'}} className="custom-button">파일 탐색기 열기</button>
+                    {message && <p>{message}</p>}
+                    {error && <p>{error}</p>}
+                </form>
+                {updateMessage && <p>{updateMessage}</p>}
+                <button className="custom-button" type="button" onClick={() => navigate("/member/mypage")}>마이페이지 화면으로 →</button>
+            </main>
+
+
         </React.Fragment>
     );
 }

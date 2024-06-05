@@ -3,6 +3,7 @@ package com.petmily.dao;
 import com.petmily.dto.BoardDTO;
 import com.petmily.dto.ReplyDTO;
 
+import com.petmily.util.PagingCriteria;
 import org.apache.ibatis.session.SqlSession;
 
 import org.springframework.stereotype.Repository;
@@ -35,6 +36,13 @@ public class BoardDAOImple implements BoardDAO{
 
         return b_List;
     }
+
+    /*@Override
+    public List<BoardDTO> listBoard(PagingCriteria p_Cri) throws Exception{
+        List<BoardDTO> b_List = sqlSession.selectList(namespace+ ".listBoard", p_Cri);
+
+        return b_List;
+    }*/
 
     // 글 내용 조회
     @Override

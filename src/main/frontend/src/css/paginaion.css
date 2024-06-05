@@ -1,0 +1,36 @@
+.Nav_pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin: 16px;
+}
+
+.Button_pagination {
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 0;
+    background: darkgrey;
+    color: white;
+    font-size: 1rem;
+}
+
+.Button_pagination:hover {
+    background: #FF2A6A;
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+
+.Button_pagination[disabled] {
+    background: dimgrey;
+    cursor: revert;
+    transform: revert;
+}
+
+.Button_pagination[aria-current] {
+    background: lightpink;
+    font-weight: bold;
+    cursor: revert;
+    transform: revert;
+}
