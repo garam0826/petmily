@@ -4,17 +4,23 @@ import {Link, useNavigate} from "react-router-dom";
 import './board.css';
 import Menu from "../Menu";
 import {useSelector} from "react-redux";
+import Pagination from '../animal/Pagination';
 
 function BoardList() {
     const [boards, setBoards] = useState([]);
     const navigate = useNavigate();
     const userData = useSelector(state => state.userData); // 현재 로그인한 사용자 정보
 
+    const [page, setPage] = useState(1);
+    const [limit, setLimit] = useState(10);
+    const offset = (page - 1) * limit;
+
     useEffect(() => {
         // API 호출
         axios.get('/board/List')
             .then(response => {
-
+                /*const { b_List } = response.data;
+                setBoards(b_List);*/
                 setBoards(response.data);
             })
             .catch(error => {
@@ -56,6 +62,14 @@ function BoardList() {
                     </li>
                 ))}
             </ul>
+            {/*<footer>
+                <Pagination
+                    total={boards.length}
+                    limit={limit}
+                    page={page}
+                    setPage={setPage}
+                />
+            </footer>*/}
         </div>
     );
 }
