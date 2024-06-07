@@ -165,7 +165,7 @@ const Recommend_Result = ({ matches, loading, error, title }) => {
                 ) : (
                     <div className="grid-container_result">
                         {matches.slice(0, visibleCount).map((desertionNo, index) => (
-                            <div className="card" key={desertionNo} onClick={() => handleDetailAnimal(desertionNo)}>
+                            <div className="card_result" key={desertionNo} onClick={() => handleDetailAnimal(desertionNo)}>
                                 {animalInfos && (
                                     <div>
                                         <h3 className="h3_result">{index+1}</h3>

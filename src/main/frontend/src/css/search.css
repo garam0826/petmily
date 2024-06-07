@@ -1,4 +1,4 @@
-button {
+.button {
     background-color: #ECACB5;
     display: block;
     height: 40px;
@@ -10,17 +10,16 @@ button {
     color: #FFFFFF;
     font-weight: bold;
     align-items: center;
-    margin-top: 20px;
 }
-button:hover {
+.button:hover {
     background-color: #f17a8d;
     color: #E3E3E3;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
-.container {
+.container_search {
     background-color: lightgrey;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 8px;
     width: 800px;
     margin: 0 auto;
 }
@@ -30,6 +29,8 @@ button:hover {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px; /* 각 div 사이의 간격 조절 */
+    margin-top: 10px;
 }
 .grid-container {
     display: grid;
@@ -49,7 +50,9 @@ button:hover {
     text-align: center;
     position: relative;
     width: 300px;
-    height: 600px;
+    height: 580px;
+    margin-bottom: 10px; /* 각 div 사이의 간격 조절 */
+    margin-top: 10px;
 }
 
 .grid-container > .card img {
@@ -58,7 +61,7 @@ button:hover {
     border-radius: 10px;
 }
 
-.analysis-results {
+.analysis {
     display: none;
     position: absolute;
     bottom: 20px;
@@ -72,19 +75,42 @@ button:hover {
     height: 355px;
 }
 
-.grid-container > .card:hover .analysis-results {
+.grid-container > .card:hover .analysis {
     display: block;
 }
 
-.analysis-results p {
+.analysis p {
     margin: 5px 0;
     font-weight: bold;
 }
-div {
+
+.div {
     margin-bottom: 10px; /* 각 div 사이의 간격 조절 */
     margin-top: 10px;
 }
-label {
+.label {
     margin-left: 20px; /* label과 input의 왼쪽 간격 */
     margin-right: 20px; /* label과 input의 오른쪽 간격 */
+}
+
+.custom-button {
+    background-color: #ECACB5;
+    display: block;
+    width: 300px;
+    height: 40px;
+    margin: 0 auto;
+    padding: 5px 0;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #FFFFFF;
+    font-weight: bold;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.custom-button:hover {
+    background-color: #f17a8d;
+    color: #E3E3E3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
