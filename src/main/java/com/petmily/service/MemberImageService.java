@@ -64,4 +64,33 @@ public class MemberImageService {
 
         return output.toString();
     }
+
+    public String userImageUrl(String mem_id) throws Exception {
+
+        // 중괄호 제거
+        mem_id = mem_id.replace("{", "").replace("}", "");
+
+        log.info("Received member ID: {}", mem_id); // 로그로 멤버 ID 확인
+        Path memberFolderPath = Paths.get(imageBaseDir, mem_id);
+        log.info("Constructed path: {}", memberFolderPath); // 로그로 경로 확인
+
+        if (!Files.exists(memberFolderPath)) {
+            log.error("Directory not found: {}", memberFolderPath);
+            throw new Exception("Directory not found: " + memberFolderPath);
+        }
+
+        Optional<Path> firstImagePath = Files.list(memberFolderPath)
+                .filter(Files::isRegularFile)
+                .findFirst();
+
+        if (!firstImagePath.isPresent()) {
+            log.error("No images found in directory for member ID: {}", mem_id);
+            throw new Exception("No images found in directory for member ID: " + mem_id);
+        }
+
+        String imagePath = firstImagePath.get().toString();
+        log.info("Analyzing image at path: {}", imagePath);
+
+        return imagePath;
+    }
 }
