@@ -61,7 +61,8 @@ function Favorite() {
     const getMemberDesertionNo = (desertionNo) => {
         axios.get(`/favorites/members/${desertionNo}`)
             .then(response => {
-                setMembers(response.data);
+                const otherMembers = response.data.filter(member => member !== userId);
+                setMembers(otherMembers);
                 setSelectedDesertionNo(desertionNo);
             })
             .catch(error => {

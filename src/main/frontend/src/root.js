@@ -41,6 +41,7 @@ const Keyword = lazy(() => import("../src/recommend/Keyword"))
 const KeywordResult = lazy(() => import("../src/recommend/KeywordResult"))
 const ImageUpload = lazy(() => import("../src/member/ImageUpload"))
 const MyContent = lazy(() => import("../src/member/MyContent"))
+const ImageAnalyze = lazy(() => import("../src/member/ImageAnalyze"))
 
 const root = createBrowserRouter([
     {
@@ -138,6 +139,10 @@ const root = createBrowserRouter([
     {
         path: "/member/mypage/mycontent",
         element: <Suspense fallback ={Loading}><MyContent/></Suspense>
+    },
+    {
+        path: "/member/images/analyze",
+        element: <Suspense fallback ={Loading}><ImageAnalyze/></Suspense>
     }
 ])
 
