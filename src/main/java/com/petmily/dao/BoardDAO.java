@@ -3,6 +3,8 @@ package com.petmily.dao;
 import com.petmily.dto.BoardDTO;
 import com.petmily.dto.ReplyDTO;
 
+import com.petmily.util.PagingCriteria;
+
 import java.util.List;
 
 public interface BoardDAO {

@@ -214,6 +214,7 @@ const QuestionRecommend = () => {
                             flex: '1 1 calc(20% - 20px)',
                             boxSizing: 'border-box'
                         }}
+                        className="button"
                     >
                         {option.text}
                     </button>
@@ -239,6 +240,7 @@ const QuestionRecommend = () => {
                                     <div><span className="fsize13"><span
                                         style={{color: 'rgb(138, 139, 142)', fontFamily: "'Nanum Barun Gothic'"}}><br/></span></span>
                                     </div>
+                                    <br/>
                                     <div><span
                                         style={{fontFamily: "'Seoul Namsan'", fontSize: '30px'}}>질문에 따른 취향 고르기</span>
                                     </div>
@@ -247,78 +249,74 @@ const QuestionRecommend = () => {
                                         fontFamily: "'Nanum Barun Gothic'"
                                     }}>​</span></span><br/></div>
                                     <div><span className="fsize13"><span
-                                        style={{color: 'rgb(138, 139, 142)', fontFamily: "'Nanum Barun Gothic'"}}>각 질문(특성)당 선택하신 답을 기반으로 취향에 맞는 유기견을 추천해드립니다.</span></span>
-                                    </div>
-                                    <div><span className="fsize13"><span
-                                        style={{color: 'rgb(138, 139, 142)', fontFamily: "'Nanum Barun Gothic'"}}><br/></span></span>
+                                        style={{color: 'rgb(138, 139, 142)', fontFamily: "'Nanum Barun Gothic'"}}><br/>각 질문(특성)당 선택하신 답을 기반으로 취향에 맞는 유기견을 추천해드립니다.<br/><br/><br/></span></span>
                                     </div>
                                     <hr className="fr-hr"
                                         style={{borderBottom: '2px solid #d6d7d8', width: '35px', margin: '0 auto'}}
                                         align="center"/>
-                                    <div><br/></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <form>
-                    <div className="container">
-                        <label>Q1. 반려견의 가족에게 어느 정도의 애정을 보여주면 좋을 것 같다고 생각하시나요?</label>
+                    <div className="container_question">
+                        <label className="label">Q1. 반려견의 가족에게 어느 정도의 애정을 보여주면 좋을 것 같다고 생각하시나요?</label>
                         {renderButtons("affectionateWithFamily")}
                     </div>
-                    <div className="container">
-                        <label>Q2. 어린 아이들과의 상호작용에서 당신이 기대하는 반려견의 특성은 무엇입니까? 혹은 미래의 자녀 계획을 고려하고 계십니까?</label>
+                    <div className="container_question">
+                        <label className="label">Q2. 어린 아이들과의 상호작용에서 당신이 기대하는 반려견의 특성은 무엇입니까? 혹은 미래의 자녀 계획을 고려하고 계십니까?</label>
                         {renderButtons("goodWithYoungChildren")}
                     </div>
-                    <div className="container">
-                        <label>Q3. 다른 강아지들과의 사회성 수준이 어느정도 되었으면 좋겠나요?</label>
+                    <div className="container_question">
+                        <label className="label">Q3. 다른 강아지들과의 사회성 수준이 어느정도 되었으면 좋겠나요?</label>
                         {renderButtons("goodWithOtherDogs")}
                     </div>
-                    <div className="container">
-                        <label>Q4. 반려견의 털이 집안 곳곳에 묻는 것에 대한 당신의 용인 수준은 어느 정도인가요?</label>
+                    <div className="container_question">
+                        <label className="label">Q4. 반려견의 털이 집안 곳곳에 묻는 것에 대한 당신의 용인 수준은 어느 정도인가요?</label>
                         {renderButtons("sheddingLevel")}
                     </div>
-                    <div className="container">
-                        <label>Q5. 반려견의 털을 얼마나 자주 관리해주실 수 있나요?</label>
+                    <div className="container_question">
+                        <label className="label">Q5. 반려견의 털을 얼마나 자주 관리해주실 수 있나요?</label>
                         {renderButtons("coatGroomingFrequency")}
                     </div>
-                    <div className="container">
-                        <label>Q6. 반려견의 침 흘림 정도를 어느 수준까지 용인할 수 있나요?</label>
+                    <div className="container_question">
+                        <label className="label">Q6. 반려견의 침 흘림 정도를 어느 수준까지 용인할 수 있나요?</label>
                         {renderButtons("droolingLevel")}
                     </div>
-                    <div className="container">
-                        <label>Q7. 당신의 반려견이 낯선 사람들에게 얼마나 개방적이었으면 좋겠습니까? 주거 환경도 고려해 주세요</label>
+                    <div className="container_question">
+                        <label className="label">Q7. 당신의 반려견이 낯선 사람들에게 얼마나 개방적이었으면 좋겠습니까? 주거 환경도 고려해 주세요</label>
                         {renderButtons("opennessToStrangers")}
                     </div>
-                    <div className="container">
-                        <label>Q8. 경계나 보호 본능이 강한 반려견을 선호하시나요?</label>
+                    <div className="container_question">
+                        <label className="label">Q8. 경계나 보호 본능이 강한 반려견을 선호하시나요?</label>
                         {renderButtons("watchdogProtectiveNature")}
                     </div>
-                    <div className="container">
-                        <label>Q9. 반려견의 장난기 수준은 어느 정도가 이상적인가요?</label>
+                    <div className="container_question">
+                        <label className="label">Q9. 반려견의 장난기 수준은 어느 정도가 이상적인가요?</label>
                         {renderButtons("playfulnessLevel")}
                     </div>
-                    <div className="container">
-                        <label>Q10. 집의 변화나 거주지의 이동과 같은 낯선 상황에 대하여, 반려견의 적응력 수준은 어떠해야 한다고 생각하십니까?</label>
+                    <div className="container_question">
+                        <label className="label">Q10. 집의 변화나 거주지의 이동과 같은 낯선 상황에 대하여, 반려견의 적응력 수준은 어떠해야 한다고 생각하십니까?</label>
                         {renderButtons("adaptabilityLevel")}
                     </div>
-                    <div className="container">
-                        <label>Q11. 훈련 시간에 비해, 훈련이 잘 안되어도 어느 정도까지 용인이 가능한가요?</label>
+                    <div className="container_question">
+                        <label className="label">Q11. 훈련 시간에 비해, 훈련이 잘 안되어도 어느 정도까지 용인이 가능한가요?</label>
                         {renderButtons("trainabilityLevel")}
                     </div>
-                    <div className="container">
-                        <label>Q12. 반려견의 짖는 행동을 어느 정도까지 용인할 수 있나요? 자신의 주거환경도 고려하여 답변해주세요.</label>
+                    <div className="container_question">
+                        <label className="label">Q12. 반려견의 짖는 행동을 어느 정도까지 용인할 수 있나요? 자신의 주거환경도 고려하여 답변해주세요.</label>
                         {renderButtons("barkingLevel")}
                     </div>
-                    <div className="container">
-                        <label>Q13. 반려견의 활동량은 어느 정도가 이상적인가요?</label>
+                    <div className="container_question">
+                        <label className="label">Q13. 반려견의 활동량은 어느 정도가 이상적인가요?</label>
                         {renderButtons("energyLevel")}
                     </div>
-                    <div className="container">
-                        <label>Q14. 만약 반려견이 있다면, 얼마나 많은 주기로 새로운 경험을 시켜줄 수 있습니까?</label>
+                    <div className="container_question">
+                        <label className="label">Q14. 만약 반려견이 있다면, 얼마나 많은 주기로 새로운 경험을 시켜줄 수 있습니까?</label>
                         {renderButtons("mentalStimulationNeeds")}
                     </div>
-                    <button onClick={handleSave}>Save</button>
+                    <button className="button" onClick={handleSave}>Save</button>
                 </form>
             </main>
         </div>

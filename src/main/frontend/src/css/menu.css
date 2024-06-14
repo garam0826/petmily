@@ -24,13 +24,13 @@
     color: white;
     text-align: center;
     padding: 14px 16px;
-    background-color: black;
+    background-color: #1F91BE;
     border: none;
     cursor: pointer;
 }
 
 .login:hover {
-    background-color: white;
+    background-color: #CAE7F2;
     color: black;
 }
 

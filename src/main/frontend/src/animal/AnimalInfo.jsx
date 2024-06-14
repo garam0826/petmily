@@ -198,6 +198,7 @@ const AnimalInfo = () => {
                                     <div><span className="fsize13"><span
                                         style={{color: 'rgb(138, 139, 142)', fontFamily: "'Nanum Barun Gothic'"}}><br/></span></span>
                                     </div>
+                                    <br/>
                                     <div><span
                                         style={{fontFamily: "'Seoul Namsan'", fontSize: '30px'}}>유기견 검색</span>
                                     </div>
@@ -206,10 +207,10 @@ const AnimalInfo = () => {
                                         fontFamily: "'Nanum Barun Gothic'"
                                     }}>​</span></span></div>
                                     <div><span className="fsize13"><span
-                                        style={{color: 'rgb(138, 139, 142)', fontFamily: "'Nanum Barun Gothic'"}}>공고 시작일, 종료일, 종료, 지역(도/특별시), (시/군)으로 옵션을 선택하여 검색하실 수 있습니다.</span></span>
+                                        style={{color: 'rgb(138, 139, 142)', fontFamily: "'Nanum Barun Gothic'"}}><br/>공고 시작일, 종료일, 종료, 지역(도/특별시), (시/군)으로 옵션을 선택하여 검색하실 수 있습니다.</span></span>
                                     </div>
                                     <div><span className="fsize13"><span
-                                        style={{color: 'rgb(138, 139, 142)', fontFamily: "'Nanum Barun Gothic'"}}>-사진 위에 마우스를 올리면, 더 자세한 정보를 보실 수 있습니다.<br/>-사진을 클릴하시면, 향후 성장시 특성&보호소 등 더 자세한 정보를 보실 수 있습니다.<br/><br/><br/></span></span>
+                                        style={{color: 'rgb(138, 139, 142)', fontFamily: "'Nanum Barun Gothic'"}}><br/>-사진 위에 마우스를 올리면, 더 자세한 정보를 보실 수 있습니다.<br/>-사진을 클릴하시면, 향후 성장시 특성&보호소 등 더 자세한 정보를 보실 수 있습니다.<br/><br/><br/></span></span>
                                     </div>
                                     <hr className="fr-hr"
                                         style={{borderBottom: '2px solid #d6d7d8', width: '35px', margin: '0 auto'}}
@@ -221,23 +222,23 @@ const AnimalInfo = () => {
                 </div>
                 {state.isLoggedIn ? (
                     <div>
-                        <div className="container">
+                        <div className="container_search">
                             <div className="contentContainer">
-                                <label>공고 시작일: </label>
+                                <label className="label">공고 시작일: </label>
                                 <input type="text" value={startDate} onChange={(e) => setStartDate(e.target.value)}/>
                                 (ex. 20240216)
                             </div>
                             <div className="contentContainer">
-                                <label>공고 종료일: </label>
+                                <label className="label">공고 종료일: </label>
                                 <input type="text" value={endDate} onChange={(e) => setEndDate(e.target.value)}/>
                                 (ex. 20240216)
                             </div>
                             <div className="contentContainer">
-                                <label>품종: </label>
+                                <label className="label">품종: </label>
                                 <input type="text" value={kind} onChange={(e) => setKind(e.target.value)}/>
                             </div>
                             <div className="contentContainer">
-                                <label htmlFor="region">지역(도/특별시):</label>
+                                <label className="label" htmlFor="region">지역(도/특별시):</label>
                                 <select id="region" onChange={handleRegionChange}>
                                     <option value="">지역(도/특별시)</option>
                                     {regionList.map((region) => (
@@ -245,8 +246,8 @@ const AnimalInfo = () => {
                                     ))}
                                 </select>
                             </div>
-                            <div className="contentContainer">
-                                <label htmlFor="district">지역(시/군):</label>
+                            <div  style={{marginBottom: '20px'}} className="contentContainer">
+                                <label className="label" htmlFor="district">지역(시/군):</label>
                                 <select id="district" onChange={handleDistrictChange}>
                                     <option value="">지역(시/군)</option>
                                     {districtList.map((district) => (
@@ -255,7 +256,7 @@ const AnimalInfo = () => {
                                     ))}
                                 </select>
                             </div>
-                            <button onClick={fetchData} style={{width: '350px'}}>Fetch Animal Info</button>
+                            <button className="button" onClick={fetchData} style={{width: '350px'}}>검색하기</button>
                         </div>
                         {animalInfos.length === 0 && !loading && !error && <div>No data available</div>}
                         <div className="grid-container">
@@ -288,10 +289,10 @@ const AnimalInfo = () => {
                                             </div>
                                         ))
                                     )}
-                                    <button onClick={() => addFavorite(animalInfo.desertionNo)}
+                                    <button className="button" onClick={() => addFavorite(animalInfo.desertionNo)}
                                             style={{width: '100%'}}>찜 추가
                                     </button>
-                                    <div className="analysis-results" onClick={() => handleDetailAnimal(animalInfo)}>
+                                    <div className="analysis" onClick={() => handleDetailAnimal(animalInfo)}>
                                         <br/>
                                         <p>발견 날짜: {formatDate(animalInfo.happenDt)}</p>
                                         <p>발견 장소: {animalInfo.happenPlace}</p>
@@ -318,11 +319,11 @@ const AnimalInfo = () => {
                     </div>
                 ) : (
                     <div>
-                        <h2>(현재 찜 기능으로 인해) 해당 화면은 로그인이 필요한 화면입니다.</h2>
+                        <h2 className="h2">(현재 찜 기능으로 인해) 해당 화면은 로그인이 필요한 화면입니다.</h2>
                         <div style={{display: 'flex', justifyContent: 'center'}}>
-                            <button className="signup custom-button" onClick={() => navigate("/member/SignUp")}>회원가입 >
+                            <button className="custom-button" onClick={() => navigate("/member/SignUp")}>회원가입 >
                             </button>
-                            <button className="login custom-button" onClick={() => navigate("/member/login")}>로그인 >
+                            <button className="custom-button" onClick={() => navigate("/member/login")}>로그인 >
                             </button>
                         </div>
                     </div>
