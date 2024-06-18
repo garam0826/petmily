@@ -276,13 +276,13 @@ const AnimalInfo = () => {
                                                 {analysisresult.desertionNo === animalInfo.desertionNo && (
                                                     <div>
                                                         <p>[ 품종 비율 1순위
-                                                            ]<br/>{analysisresult.className1} ({analysisresult.probability1.toFixed(2)}%)
+                                                            ]<br/>{analysisresult.className1} ({(analysisresult.probability1 * 100).toFixed(2)}%)
                                                         </p>
                                                         <p>[ 품종 비율 2순위
-                                                            ]<br/>{analysisresult.className2} ({analysisresult.probability2.toFixed(2)}%)
+                                                            ]<br/>{analysisresult.className2} ({(analysisresult.probability2 * 100).toFixed(2)}%)
                                                         </p>
                                                         <p>[ 품종 비율 3순위
-                                                            ]<br/>{analysisresult.className3} ({analysisresult.probability3.toFixed(2)}%)
+                                                            ]<br/>{analysisresult.className3} ({(analysisresult.probability3 * 100).toFixed(2)}%)
                                                         </p>
                                                     </div>
                                                 )}

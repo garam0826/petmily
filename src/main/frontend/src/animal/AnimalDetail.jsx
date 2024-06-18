@@ -153,15 +153,15 @@ function AnimalDetail() {
                             <div className="content">
                                 <div className="box">
                                     <h3 className="h3_detail"> [ 1위 ] </h3>
-                                    {analysisResults.className1} ({analysisResults.probability1 ? analysisResults.probability1.toFixed(2) : 'N/A'}%)
+                                    {analysisResults.className1} ({analysisResults.probability1 ? (analysisResults.probability1 * 100).toFixed(2) : 'N/A'}%)
                                 </div>
                                 <div className="box">
                                     <h3 className="h3_detail"> [ 2위 ] </h3>
-                                    {analysisResults.className2} ({analysisResults.probability2 ? analysisResults.probability2.toFixed(2) : 'N/A'}%)
+                                    {analysisResults.className2} ({analysisResults.probability2 ? (analysisResults.probability2 * 100).toFixed(2) : 'N/A'}%)
                                 </div>
                                 <div className="box">
                                     <h3 className="h3_detail"> [ 3위 ] </h3>
-                                    {analysisResults.className3} ({analysisResults.probability3 ? analysisResults.probability3.toFixed(2) : 'N/A'}%)
+                                    {analysisResults.className3} ({analysisResults.probability3 ? (analysisResults.probability3 * 100).toFixed(2) : 'N/A'}%)
                                 </div>
                             </div>
                         )}

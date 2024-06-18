@@ -61,3 +61,54 @@
 .dropdown-content a:hover {
     background-color: lightgrey;
 }
+
+.banner-content {
+    padding: 20px;
+}
+
+.info-header {
+    text-align: center;
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+
+.info-header h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.info-header p {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    color: #666;
+}
+
+.main_animal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.main_animal h1{
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.more-button {
+    background-color: #282c34;
+    color: #fff;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.more-button:hover {
+    background-color: #333333;
+}

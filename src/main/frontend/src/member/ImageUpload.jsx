@@ -10,7 +10,7 @@ function ImageUpload() {
 
     const [selectedFile, setSelectedFile] = useState(null);
     const [preview, setPreview] = useState(null);
-    const [uploadedImagePath, setUploadedImagePath] = useState('');
+    //const [uploadedImagePath, setUploadedImagePath] = useState('');
 
     // 스토어에서 사용자 데이터 가져오기
     const userData = useSelector(state => state.userData);
@@ -54,11 +54,17 @@ function ImageUpload() {
                 console.log(response.data);
                 if (response.data) {
                     alert('이미지 업로드 성공');
-                    // 이미지 경로 추정 (여기서는 예시로 경로를 만듦)
-                    const uploadedImageName = selectedFile.name;
-                    const uploadedImagePath = `/uploads/${userId}/${uploadedImageName}`;
-                    setUploadedImagePath(uploadedImagePath);
-                    navigate("/member/images/analyze", { state: { imageUrl: uploadedImagePath } });
+                    // 업로드가 성공하면 분석 결과를 가져오는 API 호출
+                    axios.get(`/member/images/analyze/${userId}`)
+                        .then(analyzeResponse => {
+                            const analysisResult = analyzeResponse.data;
+                            console.log("analyzed result: ", analysisResult);
+                            navigate("/member/images/analyze", { state: { image: preview, result: analysisResult } });
+                        })
+                        .catch(error => {
+                            console.error('이미지 분석 중 오류 발생:', error);
+                            alert('이미지 분석 중 오류 발생');
+                        });
                 } else {
                     alert('이미지 업로드 실패');
                 }
@@ -75,7 +81,7 @@ function ImageUpload() {
             <div className="upload-container">
                 <h2>이미지 업로드</h2>
                 <input type="file" onChange={imgSelectHandler}/>
-                {preview && <img src={preview} alt="미리보기" style={{width: '750px', height: '750px'}}/>}
+                {preview && <img src={preview} alt="미리보기" style={{width: '700px', height: '700px'}}/>}
                 <button onClick={imgUploadHandler}>업로드</button>
             </div>
         </div>
