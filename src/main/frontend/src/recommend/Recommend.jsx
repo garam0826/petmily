@@ -9,6 +9,7 @@ function Recommend() {
         <React.Fragment>
             <Menu />
             <main>
+                <br/>
                 <div data-case="text79" className="userEL15637124">
                     <div className="container">
                         <div className="row" data-matrix-loop="true" data-matrix-column="1">
@@ -36,7 +37,8 @@ function Recommend() {
                                     <hr className="fr-hr"
                                         style={{borderBottom: '2px solid #d6d7d8', width: '35px', margin: '0 auto'}}
                                         align="center"/>
-                                    <div><br/></div>
+                                    <div><br/>
+                                        <br/></div>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +54,7 @@ function Recommend() {
                                 <div className="con multi-columns-row clearfix" data-clone-loop="true"
                                      data-clone-min="3" data-clone-max="4">
 
-                                    <div className="content-block" >
+                                    <div className="content-block">
                                         <div className="outer-div">
                                             <div className="col-xs-12 col-sm-6 col-md-6 clearfix item">
                                                 <div className="text-box">
@@ -85,7 +87,8 @@ function Recommend() {
                                                         <div><br/></div>
                                                         <div><span style={{color: 'rgb(255, 255, 255)'}}><span
                                                             style={{fontFamily: "'Nanum Barun Gothic'"}}><span
-                                                            className="fsize13"><a onClick={()=>navigate("/recommend/question")}><u>더보기</u></a></span></span></span>
+                                                            className="fsize13"><a
+                                                            onClick={() => navigate("/recommend/question")}><u>더보기</u></a></span></span></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -132,7 +135,7 @@ function Recommend() {
                                                                 <span
                                                                     style={{fontFamily: 'Nanum Barun Gothic'}}
                                                                     className="fsize13">
-                                                                    <a onClick={()=>navigate("/recommend/keyword")}><u>더보기</u></a>
+                                                                    <a onClick={() => navigate("/recommend/keyword")}><u>더보기</u></a>
                                                                 </span>
                                                             </span>
                                                         </div>
