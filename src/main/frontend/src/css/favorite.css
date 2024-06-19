@@ -1,11 +1,11 @@
-.container {
+.container_favorite {
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.grid-container {
+.grid-container_favorite {
     display: grid;
     gap: 10px;
     justify-content: center;
@@ -13,8 +13,8 @@
     grid-template-rows: auto auto;
 }
 
-.grid-container > .card {
-    background-color: #D1F1CC;
+.grid-container_favorite > .card_favorite {
+    background-color: #FFD5DA;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -24,20 +24,20 @@
     height: 475px;
 }
 
-.grid-container > .card img {
+.grid-container_favorite > .card_favorite img {
     width: 100%;
     height: 350px;
     border-radius: 10px;
 }
 
-.grid-container > .card:nth-child(4),
-.grid-container > .card:nth-child(5) {
+.grid-container_favorite > .card_favorite:nth-child(4),
+.grid-container_favorite > .card_favorite:nth-child(5) {
     grid-column: span 1;
     justify-self: center;
     align-self: center;
 }
 
-.analysis {
+.analysis_favorite {
     display: none;
     position: absolute;
     bottom: 20px;
@@ -51,18 +51,26 @@
     height: 355px;
 }
 
-.grid-container > .card:hover .analysis {
+.analysis_info_favorite{
+    display: flex; /* Flexbox 사용 */
+    flex-direction: column; /* 내용이 가로로 정렬되도록 변경 */
+    justify-content: center; /* 수직 가운데 정렬 */
+    align-items: center; /* 수평 가운데 정렬 */
+    margin: 45px 0px;
+}
+
+.grid-container_favorite > .card_favorite:hover .analysis_favorite {
     display: block;
 }
 
-.analysis p {
+.analysis_favorite p {
     margin: 5px 0;
     font-weight: bold;
 }
 
 
-.button {
-    background-color: #ECACB5;
+.button_favorite {
+    background-color: lightgrey;
     display: block;
     width: 100%;
     height: 40px;
@@ -77,8 +85,8 @@
     margin-top: 20px;
 }
 
-.button:hover {
+.button_favorite:hover {
     background-color: #f17a8d;
-    color: #E3E3E3;
+    color: #FFFFFF;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
