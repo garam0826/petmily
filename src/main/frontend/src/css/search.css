@@ -31,6 +31,7 @@
     align-items: center;
     margin-bottom: 10px; /* 각 div 사이의 간격 조절 */
     margin-top: 10px;
+    padding-top: 10px;
 }
 .grid-container {
     display: grid;
