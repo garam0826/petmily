@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Menu from "../Menu";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../css/search.css";
-import buttonsytle from "../css/member.css";
 import "../css/menu.css"
-import styles from "../css/recommend.css" //멘트
 import store from "../member/Store";
-import Pagination from "../animal/Pagination"
+import "../css/main.css"
 
 const formatDate = (dateString) => {
     if (!dateString) return '';
@@ -184,13 +180,11 @@ const MainAnimal = () => {
             <main>
                 <div>
                     {animalInfos.length === 0 && !loading && !error && <div>No data available</div>}
-                    <div className="grid-container">
+                    <div className="grid-container_main">
                         {animalInfos.slice(0, limit).map((animalInfo, index) => (
-                            <div className="card" key={index}>
-                                <div className="card-image">
+                            <div className="card_main" key={index}>
+                                <div className="card_main-image">
                                     <img src={animalInfo.popfile} alt="Animal"/>
-                                </div>
-                                <div className="card-content">
                                 </div>
                                 {analysisloading ? (
                                     <div>Analysis Loading...</div>
@@ -214,16 +208,18 @@ const MainAnimal = () => {
                                         </div>
                                     ))
                                 )}
-                                <div className="analysis" onClick={() => handleDetailAnimal(animalInfo)}>
-                                    <br/>
-                                    <p>발견 날짜: {formatDate(animalInfo.happenDt)}</p>
-                                    <p>발견 장소: {animalInfo.happenPlace}</p>
-                                    <p>나이: {animalInfo.age}</p>
-                                    <p>무게: {animalInfo.weight}</p>
-                                    <p>공고 시작 날짜: {formatDate(animalInfo.noticeSdt)}</p>
-                                    <p>공고 종료 날짜: {formatDate(animalInfo.noticeEdt)}</p>
-                                    <p>성별: {getSexCdText(animalInfo.sexCd)}</p>
-                                    <p>중성화 여부: {getNeuterYnText(animalInfo.neuterYn)}</p>
+                                <div className="analysis-main" onClick={() => handleDetailAnimal(animalInfo)}>
+                                    <div className="analysis_info-main">
+                                        <br/>
+                                        <p>발견 날짜: {formatDate(animalInfo.happenDt)}</p>
+                                        <p>발견 장소: {animalInfo.happenPlace}</p>
+                                        <p>나이: {animalInfo.age}</p>
+                                        <p>무게: {animalInfo.weight}</p>
+                                        <p>공고 시작 날짜: {formatDate(animalInfo.noticeSdt)}</p>
+                                        <p>공고 종료 날짜: {formatDate(animalInfo.noticeEdt)}</p>
+                                        <p>성별: {getSexCdText(animalInfo.sexCd)}</p>
+                                        <p>중성화 여부: {getNeuterYnText(animalInfo.neuterYn)}</p>
+                                    </div>
                                 </div>
                             </div>
                         ))}
