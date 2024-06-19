@@ -33,6 +33,7 @@ function Memu() {
                         <Link to="/member/mypage">정보 확인 및 수정</Link>
                         <Link to="/member/mypage/mycart">찜 목록</Link>
                         <Link to="/member/mypage">내가 작성한 글과 댓글</Link>
+                        <Link to="/member/mypage/imgUpload">이미지 업로드</Link>
                     </div>
                 </li>
             </ul>
