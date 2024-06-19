@@ -187,6 +187,7 @@ const AnimalInfo = () => {
                 <Menu/>
             </header>
             <main>
+                <br/>
                 <div data-case="text79" className="userEL15637124">
                     <div style={styles.container}>
                         <div className="row" data-matrix-loop="true" data-matrix-column="1">
@@ -246,7 +247,7 @@ const AnimalInfo = () => {
                                     ))}
                                 </select>
                             </div>
-                            <div  style={{marginBottom: '20px'}} className="contentContainer">
+                            <div style={{marginBottom: '20px'}} className="contentContainer">
                                 <label className="label" htmlFor="district">지역(시/군):</label>
                                 <select id="district" onChange={handleDistrictChange}>
                                     <option value="">지역(시/군)</option>
@@ -293,15 +294,17 @@ const AnimalInfo = () => {
                                             style={{width: '100%'}}>찜 추가
                                     </button>
                                     <div className="analysis" onClick={() => handleDetailAnimal(animalInfo)}>
-                                        <br/>
-                                        <p>발견 날짜: {formatDate(animalInfo.happenDt)}</p>
-                                        <p>발견 장소: {animalInfo.happenPlace}</p>
-                                        <p>나이: {animalInfo.age}</p>
-                                        <p>무게: {animalInfo.weight}</p>
-                                        <p>공고 시작 날짜: {formatDate(animalInfo.noticeSdt)}</p>
-                                        <p>공고 종료 날짜: {formatDate(animalInfo.noticeEdt)}</p>
-                                        <p>성별: {getSexCdText(animalInfo.sexCd)}</p>
-                                        <p>중성화 여부: {getNeuterYnText(animalInfo.neuterYn)}</p>
+                                        <div className="analysis_info">
+                                            <br/>
+                                            <p>발견 날짜: {formatDate(animalInfo.happenDt)}</p>
+                                            <p>발견 장소: {animalInfo.happenPlace}</p>
+                                            <p>나이: {animalInfo.age}</p>
+                                            <p>무게: {animalInfo.weight}</p>
+                                            <p>공고 시작 날짜: {formatDate(animalInfo.noticeSdt)}</p>
+                                            <p>공고 종료 날짜: {formatDate(animalInfo.noticeEdt)}</p>
+                                            <p>성별: {getSexCdText(animalInfo.sexCd)}</p>
+                                            <p>중성화 여부: {getNeuterYnText(animalInfo.neuterYn)}</p>
+                                        </div>
                                     </div>
                                 </div>
                             ))}

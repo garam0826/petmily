@@ -167,7 +167,7 @@ const Recommend_Result = ({ matches, loading, error, title }) => {
                         {matches.slice(0, visibleCount).map((desertionNo, index) => (
                             <div className="card_result" key={desertionNo} onClick={() => handleDetailAnimal(desertionNo)}>
                                 {animalInfos && (
-                                    <div>
+                                    <div className="result">
                                         <h3 className="h3_result">{index+1}</h3>
                                         <img src={animalInfos[desertionNo]?.popfile} alt="Animal"/>
                                         {analysisResults[desertionNo] && (
@@ -179,15 +179,17 @@ const Recommend_Result = ({ matches, loading, error, title }) => {
                                             </div>
                                         )}
                                         <div className="analysis-results">
-                                            <br/>
-                                            <p>발견 날짜: {formatDate(animalInfos[desertionNo]?.happenDt)}</p>
-                                            <p>발견 장소: {animalInfos[desertionNo]?.happenPlace}</p>
-                                            <p>나이: {animalInfos[desertionNo]?.age}</p>
-                                            <p>무게: {animalInfos[desertionNo]?.weight}</p>
-                                            <p>공고 시작 날짜: {animalInfos[desertionNo]?.noticeSdt}</p>
-                                            <p>공고 종료 날짜: {animalInfos[desertionNo]?.noticeEdt}</p>
-                                            <p>성별: {getSexCdText(animalInfos[desertionNo]?.sexCd)}</p>
-                                            <p>중성화 여부: {getNeuterYnText(animalInfos[desertionNo]?.neuterYn)}</p>
+                                            <div className="analysis_info-result">
+                                                <br/>
+                                                <p>발견 날짜: {formatDate(animalInfos[desertionNo]?.happenDt)}</p>
+                                                <p>발견 장소: {animalInfos[desertionNo]?.happenPlace}</p>
+                                                <p>나이: {animalInfos[desertionNo]?.age}</p>
+                                                <p>무게: {animalInfos[desertionNo]?.weight}</p>
+                                                <p>공고 시작 날짜: {animalInfos[desertionNo]?.noticeSdt}</p>
+                                                <p>공고 종료 날짜: {animalInfos[desertionNo]?.noticeEdt}</p>
+                                                <p>성별: {getSexCdText(animalInfos[desertionNo]?.sexCd)}</p>
+                                                <p>중성화 여부: {getNeuterYnText(animalInfos[desertionNo]?.neuterYn)}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 )}
