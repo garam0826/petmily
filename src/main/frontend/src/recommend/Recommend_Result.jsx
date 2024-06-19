@@ -173,9 +173,9 @@ const Recommend_Result = ({ matches, loading, error, title }) => {
                                         {analysisResults[desertionNo] && (
                                             <div>
                                                 <hr/>
-                                                <p>[ 품종 비율 1순위 ]<br/>{analysisResults[desertionNo].className1}<br/>({analysisResults[desertionNo].probability1.toFixed(2)}%)</p>
-                                                <p>[ 품종 비율 2순위 ]<br/>{analysisResults[desertionNo].className2}<br/>({analysisResults[desertionNo].probability2.toFixed(2)}%)</p>
-                                                <p>[ 품종 비율 3순위 ]<br/>{analysisResults[desertionNo].className3}<br/>({analysisResults[desertionNo].probability3.toFixed(2)}%)</p>
+                                                <p>[ 품종 비율 1순위 ]<br/>{analysisResults[desertionNo].className1}<br/>({(analysisResults[desertionNo].probability1 * 100).toFixed(2)}%)</p>
+                                                <p>[ 품종 비율 2순위 ]<br/>{analysisResults[desertionNo].className2}<br/>({(analysisResults[desertionNo].probability2 * 100).toFixed(2)}%)</p>
+                                                <p>[ 품종 비율 3순위 ]<br/>{analysisResults[desertionNo].className3}<br/>({(analysisResults[desertionNo].probability3 * 100).toFixed(2)}%)</p>
                                             </div>
                                         )}
                                         <div className="analysis-results">
