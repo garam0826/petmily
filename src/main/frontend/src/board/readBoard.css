@@ -1,8 +1,3 @@
-.container {
-    width: 1000px;
-    margin: 0 auto;
-}
-
 .content-container {
     background-color: #f8f9fa;
     padding: 20px;
@@ -45,6 +40,7 @@
 
 .comment-item {
     margin-bottom: 10px;
+    padding-left: 20px;
 }
 
 .comment-item .comment-content {
@@ -55,6 +51,26 @@
 .comment-item .comment-info {
     font-size: 14px;
     color: #6c757d;
+}
+
+.comment-item .reply-indent {
+    margin-left: 10px;
+}
+
+.comment-item button {
+    background-color: white;
+    border: 1px solid white;
+    color: black;
+    padding: 5px 5px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.comment-item button:hover {
+    background-color: #f0f0f0;
+    border-color: black;
 }
 
 .comment-input {
@@ -82,4 +98,40 @@
 
 .comment-input button:hover {
     background-color: #0056b3;
+}
+
+.reply-input {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.reply-input textarea {
+    width: calc(100% - 100px);
+    height: 50px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.reply-input button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reply-input button:hover {
+    background-color: #218838;
+}
+
+.reply-input button.cancel {
+    background-color: #dc3545;
+}
+
+.reply-input button.cancel:hover {
+    background-color: #c82333;
 }
