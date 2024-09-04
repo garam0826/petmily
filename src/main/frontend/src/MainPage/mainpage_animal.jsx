@@ -181,7 +181,7 @@ const MainAnimal = () => {
                     {animalInfos.length === 0 && !loading && !error && <div>No data available</div>}
                     <div className="grid-container">
                         {animalInfos.slice(0, limit).map((animalInfo, index) => (
-                            <div className="card" key={index}>
+                            <div className="card" style={{height: '520px'}} key={index}>
                                 <div className="card-image">
                                     <img src={animalInfo.popfile} alt="Animal"/>
                                 </div>
@@ -209,8 +209,9 @@ const MainAnimal = () => {
                                         </div>
                                     ))
                                 )}
-                                <div className="analysis" onClick={() => handleDetailAnimal(animalInfo)}>
-                                    <br/>
+                                <div className="analysis" style={{transform: 'translateX(-50%) translateY(-50%)'}}
+                                     onClick={() => handleDetailAnimal(animalInfo)}>
+                                    <br/> <br/> <br/>
                                     <p>발견 날짜: {formatDate(animalInfo.happenDt)}</p>
                                     <p>발견 장소: {animalInfo.happenPlace}</p>
                                     <p>나이: {animalInfo.age}</p>

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Menu from "../Menu";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../css/recommend.css";
-import style from "../css/detail.css"
+import "../css/detail.css"
 import axios from "axios";
 
 function AnimalDetail() {
