@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Menu from "../Menu";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../css/search.css";
-import buttonsytle from "../css/member.css";
 import "../css/menu.css"
-import styles from "../css/recommend.css" //멘트
 import store from "../member/Store";
-import Pagination from "../animal/Pagination"
 
 const formatDate = (dateString) => {
     if (!dateString) return '';

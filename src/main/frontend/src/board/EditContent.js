@@ -24,10 +24,6 @@ function EditContent() {
 
     const handleEdit = async () => {
         try {
-            /*if (board.reg_name !== reg_name) {
-                alert("본인의 글만 수정할 수 있습니다.");
-                return;
-            }*/
             await axios.put(`/board/UpdateBoard`, board)
                 .then(response => {
                     console.log('게시글 수정 성공:', response.data);
