@@ -61,7 +61,8 @@ function Favorite() {
     const getMemberDesertionNo = (desertionNo) => {
         axios.get(`/favorites/members/${desertionNo}`)
             .then(response => {
-                setMembers(response.data);
+                const otherMembers = response.data.filter(member => member !== userId);
+                setMembers(otherMembers);
                 setSelectedDesertionNo(desertionNo);
             })
             .catch(error => {
@@ -95,8 +96,10 @@ function Favorite() {
         axios.delete(`/favorites/remove?memId=${userId}&desertionNo=${desertionNo}`)
             .then(response => {
                 console.log("Favorite removed successfully");
+                alert('찜 삭제되었습니다!');
                 // 찜 제거 후 찜 목록 다시 불러오기
                 getFavorites(userId);
+                window.location.reload();
             })
             .catch(error => {
                 console.error("Error removing favorite: ", error);
@@ -152,4 +155,3 @@ function Favorite() {
 }
 
 export default Favorite;
-

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import './board.css';
 import {useSelector} from "react-redux";
+import Menu from "../Menu";
 
 function EditContent() {
     const navigate = useNavigate();
@@ -13,7 +14,8 @@ function EditContent() {
     useEffect(() => {
         axios.get(`/board/Content?idx=${idx}`)
             .then(response => {
-                setBoard(response.data);
+                const data = response.data;
+                setBoard(data.boardDTO);
             })
             .catch(error => {
                 console.error("There was an error retrieving the board: ", error);
@@ -22,10 +24,6 @@ function EditContent() {
 
     const handleEdit = async () => {
         try {
-            /*if (board.reg_name !== reg_name) {
-                alert("본인의 글만 수정할 수 있습니다.");
-                return;
-            }*/
             await axios.put(`/board/UpdateBoard`, board)
                 .then(response => {
                     console.log('게시글 수정 성공:', response.data);
@@ -39,6 +37,7 @@ function EditContent() {
 
     return (
         <div>
+            <Menu/>
             <div className="form-container">
                 <h2>게시글 수정</h2>
                 <div>

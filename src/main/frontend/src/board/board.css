@@ -13,20 +13,22 @@
 }
 
 .board-index {
-    font-size: 30px;
+    width: 10%;
     font-weight: bold;
     color: #333;
-    margin-right: 10px;
+    text-align: center;
 }
 
 .board-title {
-    font-size: 50px;
+    width: 100%;
     color: black;
     font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .board-meta {
-    font-size: 30px;
+    font-size: 14px;
     color: #666;
 }
 
@@ -45,66 +47,78 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    border-bottom: 5px solid #d3d3d3;
-    border-radius: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    border-bottom: 1px solid #d3d3d3;
+    margin: 10px 0;
     font-size: 20px;
-    color: #000000;
+    color: #000;
     text-decoration: none;
 }
 
-.board-item span {
+.board-item span,
+.board-item .board-link {
     display: inline-block;
     margin-right: 10px;
 }
 
-.board-item .board-link {
+.board-link {
     flex-grow: 1;
+    text-decoration: none;
+    color: #000;
 }
-/*
-.board-item .board-info {
-    margin-left: 10px;
-}*/
 
-.board-info {
-    font-size: 15px;
-    color: #000000;
-    display: inline-block;
-    align-items: center;
-    justify-content: space-between;
-    margin-inline-end: 180px;
-    margin-right: 185px;
+.board-author {
+    width: 15%;
+    text-align: center;
 }
-/*
-margin-inline-end: 180px;
-.board-info2 {
-    font-size: 14px;
-    color: #000000;
-    align-items: flex-end;
-}*/
+
+.board-date {
+    width: 20%;
+    text-align: center;
+}
+
+.board-header-no,
+.board-header-title,
+.board-header-author,
+.board-header-date {
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 0;
+}
+
+.board-header-no {
+    width: 10%;
+    text-align: center;
+}
+
+.board-header-title {
+    width: 55%;
+    text-align: left;
+    padding-left: 15px;
+}
+
+.board-header-author {
+    width: 15%;
+    text-align: center;
+}
+
+.board-header-date {
+    width: 20%;
+    text-align: center;
+}
 
 .board-cont {
-    background-color: #f9f9f9;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
     align-items: center;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 16px;
+    border-bottom: 2px solid #d3d3d3;
+    padding: 10px 0;
 }
 
 .board-cont span {
     display: inline-block;
     margin-right: 10px;
-}
-
-.container {
-    width: 1000px;
-    margin: 0 auto;
 }
 
 .form-container {
@@ -157,4 +171,3 @@ margin-inline-end: 180px;
 .button-container button:hover {
     background-color: #0056b3;
 }
-

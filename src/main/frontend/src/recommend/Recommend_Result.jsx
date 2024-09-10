@@ -118,6 +118,22 @@ const Recommend_Result = ({ matches, loading, error, title }) => {
         setVisibleCount(prevCount => prevCount + 5); // 보여줄 강아지 수를 5마리씩 늘림
     };
 
+    const currentTime = new Date().toISOString();
+    const addFavorite = (desertionNo) => {
+        axios.post(`/favorites/add?memId=${userId}&desertionNo=${desertionNo}`, {
+            mem_id: userId,
+            desertionNo: desertionNo,
+            created_at: currentTime,
+        })
+            .then(response => {
+                console.log("Favorite added successfully");
+                alert("찜 목록에 담겼습니다!");
+            })
+            .catch(error => {
+                console.error("Error adding favorite: ", error);
+            });
+    };
+
     return (
         <div>
             <main className="container_result">
@@ -165,29 +181,40 @@ const Recommend_Result = ({ matches, loading, error, title }) => {
                 ) : (
                     <div className="grid-container_result">
                         {matches.slice(0, visibleCount).map((desertionNo, index) => (
-                            <div className="card_result" key={desertionNo} onClick={() => handleDetailAnimal(desertionNo)}>
+                            <div className="card_result" key={desertionNo} style={{height: '730px'}} onClick={() => handleDetailAnimal(desertionNo)}>
                                 {animalInfos && (
-                                    <div>
-                                        <h3 className="h3_result">{index+1}</h3>
+                                    <div className="result">
+                                        <h3 className="h3_result">{index + 1}</h3>
                                         <img src={animalInfos[desertionNo]?.popfile} alt="Animal"/>
                                         {analysisResults[desertionNo] && (
                                             <div>
                                                 <hr/>
-                                                <p>[ 품종 비율 1순위 ]<br/>{analysisResults[desertionNo].className1}<br/>({analysisResults[desertionNo].probability1.toFixed(2)}%)</p>
-                                                <p>[ 품종 비율 2순위 ]<br/>{analysisResults[desertionNo].className2}<br/>({analysisResults[desertionNo].probability2.toFixed(2)}%)</p>
-                                                <p>[ 품종 비율 3순위 ]<br/>{analysisResults[desertionNo].className3}<br/>({analysisResults[desertionNo].probability3.toFixed(2)}%)</p>
+                                                <p>[ 품종 비율 1순위
+                                                    ]<br/>{analysisResults[desertionNo].className1}<br/>({(analysisResults[desertionNo].probability1 * 100).toFixed(2)}%)
+                                                </p>
+                                                <p>[ 품종 비율 2순위
+                                                    ]<br/>{analysisResults[desertionNo].className2}<br/>({(analysisResults[desertionNo].probability2 * 100).toFixed(2)}%)
+                                                </p>
+                                                <p>[ 품종 비율 3순위
+                                                    ]<br/>{analysisResults[desertionNo].className3}<br/>({(analysisResults[desertionNo].probability3 * 100).toFixed(2)}%)
+                                                </p>
                                             </div>
                                         )}
+                                        <button className="like_button" onClick={() => addFavorite(desertionNo)}
+                                                style={{width: '100%'}}>찜 추가
+                                        </button>
                                         <div className="analysis-results">
-                                            <br/>
-                                            <p>발견 날짜: {formatDate(animalInfos[desertionNo]?.happenDt)}</p>
-                                            <p>발견 장소: {animalInfos[desertionNo]?.happenPlace}</p>
-                                            <p>나이: {animalInfos[desertionNo]?.age}</p>
-                                            <p>무게: {animalInfos[desertionNo]?.weight}</p>
-                                            <p>공고 시작 날짜: {animalInfos[desertionNo]?.noticeSdt}</p>
-                                            <p>공고 종료 날짜: {animalInfos[desertionNo]?.noticeEdt}</p>
-                                            <p>성별: {getSexCdText(animalInfos[desertionNo]?.sexCd)}</p>
-                                            <p>중성화 여부: {getNeuterYnText(animalInfos[desertionNo]?.neuterYn)}</p>
+                                            <div className="analysis_info-result">
+                                                <br/>
+                                                <p>발견 날짜: {formatDate(animalInfos[desertionNo]?.happenDt)}</p>
+                                                <p>발견 장소: {animalInfos[desertionNo]?.happenPlace}</p>
+                                                <p>나이: {animalInfos[desertionNo]?.age}</p>
+                                                <p>무게: {animalInfos[desertionNo]?.weight}</p>
+                                                <p>공고 시작 날짜: {animalInfos[desertionNo]?.noticeSdt}</p>
+                                                <p>공고 종료 날짜: {animalInfos[desertionNo]?.noticeEdt}</p>
+                                                <p>성별: {getSexCdText(animalInfos[desertionNo]?.sexCd)}</p>
+                                                <p>중성화 여부: {getNeuterYnText(animalInfos[desertionNo]?.neuterYn)}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 )}

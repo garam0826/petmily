@@ -4,7 +4,7 @@
     padding: 20px;
     border-radius: 10px;
     width: 1410px;
-    margin: 20px 20px 30px 20px;
+    margin: 20px auto 30px auto;
 }
 .contentContainer_question{
     display: flex;

@@ -31,6 +31,7 @@
     align-items: center;
     margin-bottom: 10px; /* 각 div 사이의 간격 조절 */
     margin-top: 10px;
+    padding-top: 10px;
 }
 .grid-container {
     display: grid;
@@ -73,6 +74,14 @@
     z-index: 10;
     width: 305px;
     height: 355px;
+}
+
+.analysis_info{
+    display: flex; /* Flexbox 사용 */
+    flex-direction: column; /* 내용이 가로로 정렬되도록 변경 */
+    justify-content: center; /* 수직 가운데 정렬 */
+    align-items: center; /* 수평 가운데 정렬 */
+    margin: 25px 0px;
 }
 
 .grid-container > .card:hover .analysis {

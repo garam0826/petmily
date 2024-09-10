@@ -22,4 +22,15 @@ public class MemberImageController {
             return ResponseEntity.internalServerError().body("Error analyzing image: " + e.getMessage());
         }
     }
+
+    @GetMapping("/{mem_id}")
+    public ResponseEntity<?> userImageUrl(@PathVariable String mem_id) {
+        try {
+            String url = memberImageService.userImageUrl(mem_id);
+            return ResponseEntity.ok(url);
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Error analyzing image: " + e.getMessage());
+        }
+    }
+
 }

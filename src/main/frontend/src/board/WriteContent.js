@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import './board.css';
+import Menu from "../Menu";
 
 function WriteContent() {
     const navigate = useNavigate();
@@ -45,46 +46,48 @@ function WriteContent() {
     }
 
     return (
-        <div className="form-container">
-            <h2>게시글 작성</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>제목</label>
-                    <input
-                        name="title"
-                        type="text"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label>작성자</label>
-                    <input
-                        name="reg_name"
-                        type="text"
-                        value={userData ? userData.mem_id : ''}
-                        readOnly
-                    />
-                </div>
-                <div className="form-group">
-                    <label>내용</label>
-                    <textarea
-                        name="content"
-                        cols="30"
-                        rows="10"
-                        value={content}
-                        onChange={(e) => setContent(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="button-container">
-                    <button type="submit">저장</button>
-                </div>
-            </form>
+        <div>
+            <Menu/>
+            <div className="form-container">
+                <h2>게시글 작성</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label>제목</label>
+                        <input
+                            name="title"
+                            type="text"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>작성자</label>
+                        <input
+                            name="reg_name"
+                            type="text"
+                            value={userData ? userData.mem_id : ''}
+                            readOnly
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>내용</label>
+                        <textarea
+                            name="content"
+                            cols="30"
+                            rows="10"
+                            value={content}
+                            onChange={(e) => setContent(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="button-container">
+                        <button type="submit">저장</button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }
 
 export default WriteContent;
-

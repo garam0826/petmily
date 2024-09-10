@@ -89,8 +89,8 @@ const QuestionRecommend = () => {
                     { value: 1, text: '사교성이 부족함' },
                     { value: 2, text: '소극적인' },
                     { value: 3, text: '보통' },
-                    { value: 4, text: '적당히 친근한 정도' },
-                    { value: 5, text: '친화력이 매우 좋음' }
+                    { value: 4, text: '좋음' },
+                    { value: 5, text: '매우 좋음' }
                 ];
                 break;
             case "sheddingLevel":
@@ -186,10 +186,10 @@ const QuestionRecommend = () => {
             case "mentalStimulationNeeds":
                 options = [
                     { value: 1, text: '거의 시켜주지 못함' },
-                    { value: 2, text: '가끔 새로운 경험 제공' },
-                    { value: 3, text: '정기적으로 새로운 경험 제공' },
-                    { value: 4, text: '자주 새로운 경험 제공' },
-                    { value: 5, text: '매우 자주 새로운 경험 제공' }
+                    { value: 2, text: '월 1-2회 정도' },
+                    { value: 3, text: '주 1회 정도' },
+                    { value: 4, text: '주 3-4회 정도' },
+                    { value: 5, text: '매일' }
                 ];
                 break;
             default:
@@ -273,7 +273,7 @@ const QuestionRecommend = () => {
                         {renderButtons("goodWithOtherDogs")}
                     </div>
                     <div className="container_question">
-                        <label className="label">Q4. 반려견의 털이 집안 곳곳에 묻는 것에 대한 당신의 용인 수준은 어느 정도인가요?</label>
+                        <label className="label">Q4. 털 빠짐 정도는 어느 정도까지 보고 계신가요?</label>
                         {renderButtons("sheddingLevel")}
                     </div>
                     <div className="container_question">
@@ -309,7 +309,7 @@ const QuestionRecommend = () => {
                         {renderButtons("barkingLevel")}
                     </div>
                     <div className="container_question">
-                        <label className="label">Q13. 반려견의 활동량은 어느 정도가 이상적인가요?</label>
+                        <label className="label">Q13. 반려견 산책 정도는 어느 정도가 괜찮은가요?</label>
                         {renderButtons("energyLevel")}
                     </div>
                     <div className="container_question">

@@ -21,7 +21,7 @@
     text-align: center;
     position: relative;
     width: 250px;
-    height: 685px;
+    height: 730px;
     margin-bottom: 15px;
 }
 
@@ -43,13 +43,21 @@
     position: absolute;
     bottom: 20px;
     left: 50%;
-    transform: translateX(-50%) translateY(-70.5%);
+    transform: translateX(-50%) translateY(-83%);
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 10;
     width: 255px;
     height: 355px;
+}
+
+.analysis_info-result{
+    display: flex; /* Flexbox 사용 */
+    flex-direction: column; /* 내용이 가로로 정렬되도록 변경 */
+    justify-content: center; /* 수직 가운데 정렬 */
+    align-items: center; /* 수평 가운데 정렬 */
+    margin: 25px 0px;
 }
 
 .grid-container_result > .card_result:hover .analysis-results {
@@ -89,4 +97,27 @@
     padding: 6px 0;
     width: 100%;
     text-align: center;
+}
+
+.result {
+    ;
+}
+
+.like_button {
+    background-color: #ECACB5;
+    display: block;
+    height: 35px;
+    margin: 0 auto;
+    padding: 5px 0;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #FFFFFF;
+    font-weight: bold;
+    align-items: center;
+}
+.like_button:hover {
+    background-color: #f17a8d;
+    color: #E3E3E3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }

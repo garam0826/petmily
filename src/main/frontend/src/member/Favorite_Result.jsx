@@ -86,6 +86,7 @@ const Favorite_Result = ({ matches, loading, error, removeFavorite, getMemberDes
     return (
         <div>
             <main className="container">
+                <br/>
                 <div data-case="text79" className="userEL15637124">
                     <div className="container">
                         <div className="row" data-matrix-loop="true" data-matrix-column="1">
@@ -119,27 +120,35 @@ const Favorite_Result = ({ matches, loading, error, removeFavorite, getMemberDes
                 {matches.length === 0 ? (
                     <div>No matches found</div>
                 ) : (
-                    <div className="grid-container">
+                    <div className="grid-container_favorite">
                         {matches.map((match) => {
                             const desertionNo = match.desertionNo || match; // match가 객체라면 desertionNo 속성을 사용
                             return (
-                                <div className="card" key={desertionNo}>
+                                <div className="card_favorite" key={desertionNo}>
                                     {animalInfos[desertionNo] && (
                                         <div>
                                             <img src={animalInfos[desertionNo]?.popfile} alt="Animal"/>
-                                            <div className="analysis" onClick={()=>handleDetailAnimal(desertionNo)}>
-                                                {/*<p>유기 번호: {desertionNo}</p>*/}
-                                                <p>발견 날짜: {formatDate(animalInfos[desertionNo]?.happenDt)}</p>
-                                                <p>발견 장소: {animalInfos[desertionNo]?.happenPlace}</p>
-                                                <p>나이: {animalInfos[desertionNo]?.age}</p>
-                                                <p>무게: {animalInfos[desertionNo]?.weight}</p>
-                                                <p>공고 시작 날짜: {formatDate(animalInfos[desertionNo]?.noticeSdt)}</p>
-                                                <p>공고 종료 날짜: {formatDate(animalInfos[desertionNo]?.noticeEdt)}</p>
-                                                <p>성별: {animalInfos[desertionNo]?.sexCd}</p>
-                                                <p>중성화 여부: {animalInfos[desertionNo]?.neuterYn}</p>
+                                            <div className="analysis_favorite"
+                                                 onClick={() => handleDetailAnimal(desertionNo)}>
+                                                <div className="analysis_info_favorite">
+                                                    {/*<p>유기 번호: {desertionNo}</p>*/}
+                                                    <p>발견 날짜: {formatDate(animalInfos[desertionNo]?.happenDt)}</p>
+                                                    <p>발견 장소: {animalInfos[desertionNo]?.happenPlace}</p>
+                                                    <p>나이: {animalInfos[desertionNo]?.age}</p>
+                                                    <p>무게: {animalInfos[desertionNo]?.weight}</p>
+                                                    <p>공고 시작 날짜: {formatDate(animalInfos[desertionNo]?.noticeSdt)}</p>
+                                                    <p>공고 종료 날짜: {formatDate(animalInfos[desertionNo]?.noticeEdt)}</p>
+                                                    <p>성별: {animalInfos[desertionNo]?.sexCd}</p>
+                                                    <p>중성화 여부: {animalInfos[desertionNo]?.neuterYn}</p>
+                                                </div>
                                             </div>
-                                            <button className="button" onClick={() => removeFavorite(desertionNo)}>찜 제거</button>
-                                            <button className="button" onClick={() => getMemberDesertionNo(desertionNo)}>찜한 사용자 보기</button>
+                                            <button className="button_favorite"
+                                                    onClick={() => removeFavorite(desertionNo)}>찜
+                                                제거
+                                            </button>
+                                            <button className="button_favorite"
+                                                    onClick={() => getMemberDesertionNo(desertionNo)}>찜한 사용자 보기
+                                            </button>
                                         </div>
                                     )}
                                 </div>

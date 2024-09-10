@@ -26,13 +26,13 @@ function Memu() {
                 <li onClick={() => navigate("/animal")}>보호 중인 동물</li>
                 <li onClick={() => navigate("/recommend")}>반려견 추천</li>
                 <li onClick={() => navigate("/board/list")}>게시판</li>
-                <li onClick={() => navigate("/")}>유기견 입양 과정</li>
                 <li className="dropdown">
                     <span>회원 정보</span>
                     <div className="dropdown-content">
                         <Link to="/member/mypage">정보 확인 및 수정</Link>
                         <Link to="/member/mypage/mycart">찜 목록</Link>
-                        <Link to="/member/mypage">내가 작성한 글과 댓글</Link>
+                        <Link to="/member/mypage/mycontent">내가 작성한 글과 댓글</Link>
+                        <Link to="/member/mypage/imgUpload">이미지 업로드</Link>
                     </div>
                 </li>
             </ul>

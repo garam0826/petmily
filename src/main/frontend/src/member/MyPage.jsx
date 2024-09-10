@@ -44,6 +44,7 @@ function MyPage() {
                 <Menu />
             </header>
             <main>
+                <br/>
                 <div data-case="text79" className="userEL15637124">
                     <div className="container_result">
                         <div className="row" data-matrix-loop="true" data-matrix-column="1">
@@ -51,7 +52,8 @@ function MyPage() {
                                 <div className="cl_caption" data-edit="true" data-selector=".cl_caption">
                                     <hr className="fr-hr"
                                         style={{borderBottom: '2px solid #d6d7d8', width: '35px', margin: '0 auto'}}
-                                        align="center"/><br/><br/>
+                                        align="center"/>
+                                    <br/><br/>
                                     <div><span
                                         style={{
                                             fontFamily: "'Seoul Namsan'",
@@ -88,7 +90,8 @@ function MyPage() {
                         <div className="div_member">
                             <div className="form_member">
                                 <h2 className="h2">내 정보 확인하기</h2>
-                                <button style={{marginTop: '5px'}} className="custom-button" onClick={() => navigate("/member/mypage/myinfo")}>정보 확인 →
+                                <button style={{marginTop: '5px'}} className="custom-button"
+                                        onClick={() => navigate("/member/mypage/myinfo")}>정보 확인 →
                                 </button>
                             </div>
                             <div className="form_member">
