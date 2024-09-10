@@ -181,7 +181,7 @@ const Recommend_Result = ({ matches, loading, error, title }) => {
                 ) : (
                     <div className="grid-container_result">
                         {matches.slice(0, visibleCount).map((desertionNo, index) => (
-                            <div className="card_result" key={desertionNo} style={{height: '730px'}} onClick={() => handleDetailAnimal(desertionNo)}>
+                            <div className="card_result" key={desertionNo} style={{height: '730px'}}>
                                 {animalInfos && (
                                     <div className="result">
                                         <h3 className="h3_result">{index + 1}</h3>
@@ -203,7 +203,7 @@ const Recommend_Result = ({ matches, loading, error, title }) => {
                                         <button className="like_button" onClick={() => addFavorite(desertionNo)}
                                                 style={{width: '100%'}}>찜 추가
                                         </button>
-                                        <div className="analysis-results">
+                                        <div className="analysis-results"  onClick={() => handleDetailAnimal(desertionNo)}>
                                             <div className="analysis_info-result">
                                                 <br/>
                                                 <p>발견 날짜: {formatDate(animalInfos[desertionNo]?.happenDt)}</p>

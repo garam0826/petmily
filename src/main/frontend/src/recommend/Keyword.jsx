@@ -93,7 +93,7 @@ function Keyword() {
                                 ))}
                             </div>
                         </div>
-                        <button onClick={handleSubmit} className="submit-button">Submit</button>
+                        <button onClick={handleSubmit} className="submit-button">추천 결과 보기</button>
                     </div>
                 </menu>
             </header>

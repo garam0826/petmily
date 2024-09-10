@@ -69,7 +69,7 @@ function Login() {
                 </div>
                 <form style={{marginTop: '10px', marginBottom: '10px'}} className="form" onSubmit={handleSubmit}>
                     <label className="label">
-                        Username:
+                        Id:
                         <input className="input" type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
                     </label>
                     <br/>

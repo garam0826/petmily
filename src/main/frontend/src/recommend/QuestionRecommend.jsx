@@ -316,7 +316,7 @@ const QuestionRecommend = () => {
                         <label className="label">Q14. 만약 반려견이 있다면, 얼마나 많은 주기로 새로운 경험을 시켜줄 수 있습니까?</label>
                         {renderButtons("mentalStimulationNeeds")}
                     </div>
-                    <button className="button" onClick={handleSave}>Save</button>
+                    <button className="button" onClick={handleSave}>추천 결과 보기</button>
                 </form>
             </main>
         </div>
