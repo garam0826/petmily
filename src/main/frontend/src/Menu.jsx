@@ -4,6 +4,9 @@ import {useDispatch} from "react-redux";
 import store from "./member/Store";
 import {logout} from "./member/Reducer";
 import menustyle from "./css/menu.css"
+
+import logo from "./logo/simple.png"; //logo
+import Button from '@mui/material/Button';
 function Memu() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -22,7 +25,10 @@ function Memu() {
             )}
 
             <ul>
-                <li onClick={() => navigate("/main")}>홈</li>
+                {/* <li onClick={() => navigate("/main")}>홈</li> */}
+                <li onClick={() => navigate("/main")}>
+                    <img src={logo} style={{width: '150px', height: 'auto', marginTop: '-20px', marginLeft: '10px'}}/>
+                </li>
                 <li onClick={() => navigate("/animal")}>보호 중인 동물</li>
                 <li onClick={() => navigate("/recommend")}>반려견 추천</li>
                 <li onClick={() => navigate("/board/list")}>게시판</li>
