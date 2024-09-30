@@ -52,6 +52,11 @@
         select mem_id, mem_pw, email from member where mem_id = #{mem_id} and email = #{email}
     </select>
 
+    <!-- 임시 회원 비밀번호 수정 -->
+    <update id="updateTempMem_PW" parameterType="HashMap">
+        update member set mem_pw = #{tempmem_pw} where mem_id = #{mem_id}
+    </update>
+
     <!-- 광역 주소 code 목록 조회 -->
     <select id="slctReg_code" resultType="RegionDTO">
         select reg_code, reg_name from region
