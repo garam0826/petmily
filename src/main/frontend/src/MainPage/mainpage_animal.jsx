@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import "../css/search.css";
 import "../css/menu.css"
 import store from "../member/Store";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 const formatDate = (dateString) => {
     if (!dateString) return '';
@@ -188,7 +190,9 @@ const MainAnimal = () => {
                                 <div className="card-content">
                                 </div>
                                 {analysisloading ? (
-                                    <div>Analysis Loading...</div>
+                                    <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '70px'}}>
+                                        <CircularProgress />
+                                    </Box>
                                 ) : (
                                     analysisResults.map((analysisresult, index) => (
                                         <div key={index}
