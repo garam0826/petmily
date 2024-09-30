@@ -4,7 +4,8 @@ import {useNavigate} from "react-router-dom";
 import Menu from "../Menu";
 import "../css/base.css";
 import "../css/recommend.css"
-
+import TextField from '@mui/material/TextField';
+import Button from "@mui/material/Button";
 function FindId() {
     const [nickname, setNickname] = useState('');
     const [email, setEmail] = useState('');
@@ -61,23 +62,14 @@ function FindId() {
                     </div>
                 </div>
                 <form className="form">
-                    <label className="contentContainer">
-                        닉네임:
-                        <input className="input" type="text" placeholder="Nickname" value={nickname}
-                               onChange={(e) => setNickname(e.target.value)}/>
-                    </label>
-                    <br/>
-                    <label className="contentContainer">
-                        이메일:
-                        <input className="input" type="text" placeholder="e-mail" value={email}
-                               onChange={(e) => setEmail(e.target.value)}/>
-                    </label>
-                    <button className="button" onClick={handleFindId}>조회</button>
+                    <TextField id="standard-basic" label="닉네임" variant="standard" value={nickname} style={{width: '250px', height: 'auto'}} onChange={(e) => setNickname(e.target.value)}/> <br/>
+                    <TextField id="standard-basic" label="이메일" variant="standard" value={email} style={{width: '250px', height: 'auto'}} onChange={(e) => setEmail(e.target.value)}/>
+                    <Button variant="contained" style={{marginTop: '20px', width: '300px', marginBottom: '10px'}} onClick={handleFindId}>조회</Button>
                     {searchResult ? (
                         <div>
-                            <hr/>
+                            <hr/><br/>
                             <p>찾은 아이디: {searchResult}</p>
-                            <button className="button" onClick={() => navigate("/member/login")}> 로그인 화면 >></button>
+                            <Button variant="contained" style={{marginTop: '20px', width: '300px'}} onClick={() => navigate("/member/login")}>로그인 화면 >></Button>
                         </div>
                     ) : (
                         <div>

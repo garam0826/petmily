@@ -5,6 +5,10 @@ import store from "../member/Store";
 import Menu from "../Menu";
 import "../css/Q_recommend.css"
 import styles from "../css/recommend.css"
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
 const QuestionRecommend = () => {
     const state = store.getState();
@@ -63,7 +67,7 @@ const QuestionRecommend = () => {
         }
     };
 
-    const renderButtons = (name) => {
+    const renderToggleButtons = (name, value) => {
         let options = [];
         switch (name) {
             case "affectionateWithFamily":
@@ -198,28 +202,33 @@ const QuestionRecommend = () => {
         }
 
         return (
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '20px' }}>
+            <ToggleButtonGroup
+                color="primary"
+                value={formData[name]}
+                exclusive
+                onChange={(e, newValue) => handleClick(name, newValue)}
+                aria-label={name}
+                style={{marginTop: '10px'}}
+            >
                 {options.map((option) => (
-                    <button
-                        key={option.value}
-                        type="button"
-                        onClick={() => handleClick(name, option.value)}
-                        style={{
-                            backgroundColor: formData[name] === option.value ? 'darkolivegreen' : 'gray',
-                            color: 'white',
-                            margin: '3px',
-                            border: '1px solid #493e2c',
-                            borderRadius: '5px',
-                            cursor: 'pointer',
-                            flex: '1 1 calc(20% - 20px)',
-                            boxSizing: 'border-box'
-                        }}
-                        className="button"
-                    >
+                    <ToggleButton key={option.value} value={option.value}
+                                  style={{width: '280px', height: '40px'}}
+                                  sx={{
+                                      backgroundColor: formData[name] === option.value ? 'rgba(85, 107, 47, 0.5)' : '',
+                                      color: formData[name] === option.value ? 'white' : 'black',
+                                      '&.Mui-selected': {
+                                          backgroundColor: 'rgba(85, 117, 47, 0.7)',
+                                          color: 'white',
+                                      },
+                                      '&:hover': {
+                                          backgroundColor: formData[name] === option.value ? 'darkolivegreen' : 'rgba(250, 256, 250, 0.6)',
+                                          color: 'black',
+                                      }
+                                  }}>
                         {option.text}
-                    </button>
+                    </ToggleButton>
                 ))}
-            </div>
+            </ToggleButtonGroup>
         );
     };
 
@@ -262,61 +271,63 @@ const QuestionRecommend = () => {
                 <form>
                     <div className="container_question">
                         <label className="label">Q1. 반려견의 가족에게 어느 정도의 애정을 보여주면 좋을 것 같다고 생각하시나요?</label>
-                        {renderButtons("affectionateWithFamily")}
+                        {renderToggleButtons("affectionateWithFamily")}
                     </div>
                     <div className="container_question">
                         <label className="label">Q2. 어린 아이들과의 상호작용에서 당신이 기대하는 반려견의 특성은 무엇입니까? 혹은 미래의 자녀 계획을 고려하고 계십니까?</label>
-                        {renderButtons("goodWithYoungChildren")}
+                        {renderToggleButtons("goodWithYoungChildren")}
                     </div>
                     <div className="container_question">
                         <label className="label">Q3. 다른 강아지들과의 사회성 수준이 어느정도 되었으면 좋겠나요?</label>
-                        {renderButtons("goodWithOtherDogs")}
+                        {renderToggleButtons("goodWithOtherDogs")}
                     </div>
                     <div className="container_question">
                         <label className="label">Q4. 털 빠짐 정도는 어느 정도까지 보고 계신가요?</label>
-                        {renderButtons("sheddingLevel")}
+                        {renderToggleButtons("sheddingLevel")}
                     </div>
                     <div className="container_question">
                         <label className="label">Q5. 반려견의 털을 얼마나 자주 관리해주실 수 있나요?</label>
-                        {renderButtons("coatGroomingFrequency")}
+                        {renderToggleButtons("coatGroomingFrequency")}
                     </div>
                     <div className="container_question">
                         <label className="label">Q6. 반려견의 침 흘림 정도를 어느 수준까지 용인할 수 있나요?</label>
-                        {renderButtons("droolingLevel")}
+                        {renderToggleButtons("droolingLevel")}
                     </div>
                     <div className="container_question">
                         <label className="label">Q7. 당신의 반려견이 낯선 사람들에게 얼마나 개방적이었으면 좋겠습니까? 주거 환경도 고려해 주세요</label>
-                        {renderButtons("opennessToStrangers")}
+                        {renderToggleButtons("opennessToStrangers")}
                     </div>
                     <div className="container_question">
                         <label className="label">Q8. 경계나 보호 본능이 강한 반려견을 선호하시나요?</label>
-                        {renderButtons("watchdogProtectiveNature")}
+                        {renderToggleButtons("watchdogProtectiveNature")}
                     </div>
                     <div className="container_question">
                         <label className="label">Q9. 반려견의 장난기 수준은 어느 정도가 이상적인가요?</label>
-                        {renderButtons("playfulnessLevel")}
+                        {renderToggleButtons("playfulnessLevel")}
                     </div>
                     <div className="container_question">
                         <label className="label">Q10. 집의 변화나 거주지의 이동과 같은 낯선 상황에 대하여, 반려견의 적응력 수준은 어떠해야 한다고 생각하십니까?</label>
-                        {renderButtons("adaptabilityLevel")}
+                        {renderToggleButtons("adaptabilityLevel")}
                     </div>
                     <div className="container_question">
                         <label className="label">Q11. 훈련 시간에 비해, 훈련이 잘 안되어도 어느 정도까지 용인이 가능한가요?</label>
-                        {renderButtons("trainabilityLevel")}
+                        {renderToggleButtons("trainabilityLevel")}
                     </div>
                     <div className="container_question">
                         <label className="label">Q12. 반려견의 짖는 행동을 어느 정도까지 용인할 수 있나요? 자신의 주거환경도 고려하여 답변해주세요.</label>
-                        {renderButtons("barkingLevel")}
+                        {renderToggleButtons("barkingLevel")}
                     </div>
                     <div className="container_question">
                         <label className="label">Q13. 반려견 산책 정도는 어느 정도가 괜찮은가요?</label>
-                        {renderButtons("energyLevel")}
+                        {renderToggleButtons("energyLevel")}
                     </div>
                     <div className="container_question">
                         <label className="label">Q14. 만약 반려견이 있다면, 얼마나 많은 주기로 새로운 경험을 시켜줄 수 있습니까?</label>
-                        {renderButtons("mentalStimulationNeeds")}
+                        {renderToggleButtons("mentalStimulationNeeds")}
                     </div>
-                    <button className="button" onClick={handleSave}>추천 결과 보기</button>
+                    <Box style={{ display: 'flex', justifyContent: 'center' }}>
+                        <Button variant="contained" style={{marginTop: '-5px', marginBottom: '20px', width: '300px'}} onClick={handleSave}>추천 결과 보기</Button>
+                    </Box>
                 </form>
             </main>
         </div>

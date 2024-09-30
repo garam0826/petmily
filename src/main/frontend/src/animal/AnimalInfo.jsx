@@ -10,6 +10,16 @@ import "../css/menu.css"
 import styles from "../css/recommend.css" //멘트
 import store from "../member/Store";
 import Pagination from "../animal/Pagination"
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+
+import TextField from '@mui/material/TextField';
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+
+import CircularProgress from '@mui/material/CircularProgress';
 
 const formatDate = (dateString) => {
     if (!dateString) return '';
@@ -225,39 +235,76 @@ const AnimalInfo = () => {
                     <div>
                         <div className="container_search">
                             <div className="contentContainer">
-                                <label className="label">공고 시작일: </label>
-                                <input type="text" value={startDate} onChange={(e) => setStartDate(e.target.value)}/>
-                                (ex. 20240216)
+                                <TextField
+                                    id="kind-input"
+                                    label="공고 시작일"
+                                    placeholder="ex. 20240216"
+                                    value={startDate}
+                                    onChange={(e) => setStartDate(e.target.value)}
+                                    variant="standard"
+                                    fullWidth
+                                    style={{width: '300px'}}
+                                />
                             </div>
                             <div className="contentContainer">
-                                <label className="label">공고 종료일: </label>
-                                <input type="text" value={endDate} onChange={(e) => setEndDate(e.target.value)}/>
-                                (ex. 20240216)
+                                <TextField
+                                    id="kind-input"
+                                    label="공고 종료일"
+                                    placeholder="ex. 20240216"
+                                    value={endDate}
+                                    onChange={(e) => setEndDate(e.target.value)}
+                                    variant="standard"
+                                    fullWidth
+                                    style={{width: '300px'}}
+                                />
                             </div>
                             <div className="contentContainer">
-                                <label className="label">품종: </label>
-                                <input type="text" value={kind} onChange={(e) => setKind(e.target.value)}/>
+                               <TextField
+                                    id="kind-input"
+                                    label="품종"
+                                    placeholder="ex. 포메라니안"
+                                    value={kind}
+                                    onChange={(e) => setKind(e.target.value)}
+                                    variant="standard"
+                                    fullWidth
+                                    style={{width: '300px'}}
+                                />
                             </div>
                             <div className="contentContainer">
-                                <label className="label" htmlFor="region">지역(도/특별시):</label>
-                                <select id="region" onChange={handleRegionChange}>
-                                    <option value="">지역(도/특별시)</option>
-                                    {regionList.map((region) => (
-                                        <option key={region.reg_code} value={region.reg_name}>{region.reg_name}</option>
-                                    ))}
-                                </select>
+                                <FormControl variant="standard" style={{width: '300px', height: 'auto'}}>
+                                    <InputLabel id="demo-simple-select-standard-label">지역(도/특별시)</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-standard-label"
+                                        id="demo-simple-select-standard"
+                                        onChange={handleRegionChange}
+                                        label="region"
+                                    >
+                                        {regionList.map((region) => (
+                                            <MenuItem key={region.reg_code} value={region.reg_name}>{region.reg_name}</MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
                             </div>
                             <div style={{marginBottom: '20px'}} className="contentContainer">
-                                <label className="label" htmlFor="district">지역(시/군):</label>
-                                <select id="district" onChange={handleDistrictChange}>
-                                    <option value="">지역(시/군)</option>
-                                    {districtList.map((district) => (
-                                        <option key={district.dist_code}
-                                                value={district.dist_name}>{district.dist_name}</option>
-                                    ))}
-                                </select>
+                                <FormControl variant="standard" style={{width: '300px', height: 'auto'}}>
+                                    <InputLabel id="demo-simple-select-standard-label">지역(시/군)</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-standard-label"
+                                        id="district"
+                                        onChange={handleDistrictChange}
+                                        label="district"
+                                    >
+                                        <MenuItem value="">지역(시/군)</MenuItem>
+                                        {districtList.map((district) => (
+                                            <MenuItem key={district.dist_code}
+                                                    value={district.dist_name}>{district.dist_name}</MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
                             </div>
-                            <button className="button" onClick={fetchData} style={{width: '350px'}}>검색하기</button>
+                            <Box style={{ display: 'flex', justifyContent: 'center' }}>
+                                <Button variant="outlined" onClick={fetchData} style={{width: '350px'}}>검색하기</Button>
+                            </Box>
                         </div>
                         {animalInfos.length === 0 && !loading && !error && <div>No data available</div>}
                         <div className="grid-container">
@@ -269,7 +316,9 @@ const AnimalInfo = () => {
                                     <div className="card-content">
                                     </div>
                                     {analysisloading ? (
-                                        <div>Analysis Loading...</div>
+                                            <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px', marginBottom: '20px' }}>
+                                                <CircularProgress />
+                                            </Box>
                                     ) : (
                                         analysisResults.map((analysisresult, index) => (
                                             <div key={index}
@@ -290,9 +339,17 @@ const AnimalInfo = () => {
                                             </div>
                                         ))
                                     )}
-                                    <button className="button" onClick={() => addFavorite(animalInfo.desertionNo)}
-                                            style={{width: '100%'}}>찜 추가
-                                    </button>
+                                    <Button variant="contained" onClick={() => addFavorite(animalInfo.desertionNo)}
+                                            sx={{
+                                                width: '100%',
+                                                height: '38px',
+                                                fontWeight: 'bold',
+                                                marginTop: '5px',
+                                                backgroundColor: 'rgba(236, 172, 181, 0.65)', // 기본 색상
+                                                '&:hover': {
+                                                    backgroundColor: 'rgba(236, 172, 181, 1)' // 마우스 올렸을 때 색상
+                                                }
+                                            }}>찜 추가</Button>
                                     <div className="analysis" onClick={() => handleDetailAnimal(animalInfo)}>
                                         <div className="analysis_info">
                                             <br/>
@@ -309,7 +366,11 @@ const AnimalInfo = () => {
                                 </div>
                             ))}
                         </div>
-                        {loading && <div>Loading...</div>}
+                        {loading &&
+                            <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '10px', marginBottom: '40px'}}>
+                                <CircularProgress />
+                            </Box>
+                        }
                         {error && <div>Error: {error.message}</div>}
                         <footer>
                             <Pagination
@@ -324,10 +385,8 @@ const AnimalInfo = () => {
                     <div>
                         <h2 className="h2">(현재 찜 기능으로 인해) 해당 화면은 로그인이 필요한 화면입니다.</h2>
                         <div style={{display: 'flex', justifyContent: 'center'}}>
-                            <button className="custom-button" onClick={() => navigate("/member/SignUp")}>회원가입 >
-                            </button>
-                            <button className="custom-button" onClick={() => navigate("/member/login")}>로그인 >
-                            </button>
+                            <Button variant="contained" style={{marginTop: '20px', width: '300px', marginRight: '20px'}}  onClick={() => navigate("/member/SignUp")}>회원가입 ></Button>
+                            <Button variant="contained" style={{marginTop: '20px', width: '300px', marginLeft: '20px'}} onClick={() => navigate("/member/login")}>로그인 ></Button>
                         </div>
                     </div>
                 )}

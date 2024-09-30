@@ -5,6 +5,7 @@ import store from "../member/Store";
 import "../css/recommend.css";
 import '../css/menu.css';
 import '../css/favorite.css';
+import Button from "@mui/material/Button";
 
 const Favorite_Result = ({ matches, loading, error, removeFavorite, getMemberDesertionNo }) => {
     const navigate = useNavigate();
@@ -142,13 +143,28 @@ const Favorite_Result = ({ matches, loading, error, removeFavorite, getMemberDes
                                                     <p>중성화 여부: {animalInfos[desertionNo]?.neuterYn}</p>
                                                 </div>
                                             </div>
-                                            <button className="button_favorite"
-                                                    onClick={() => removeFavorite(desertionNo)}>찜
-                                                제거
-                                            </button>
-                                            <button className="button_favorite"
-                                                    onClick={() => getMemberDesertionNo(desertionNo)}>찜한 사용자 보기
-                                            </button>
+                                            <Button variant="contained" onClick={() => removeFavorite(desertionNo)}
+                                                    sx={{
+                                                        width: '100%',
+                                                        marginTop: '20px',
+                                                        borderRadius: '5px',
+                                                        backgroundColor: 'lightgrey', // 기본 색상
+                                                        fontWeight: 'bold',
+                                                        '&:hover': {
+                                                            backgroundColor: '#f17a8d', // 마우스 올렸을 때 색상
+                                                        }
+                                                    }}>찜 제거</Button>
+                                            <Button variant="contained" onClick={() => getMemberDesertionNo(desertionNo)}
+                                                    sx={{
+                                                        width: '100%',
+                                                        marginTop: '20px',
+                                                        borderRadius: '5px',
+                                                        backgroundColor: 'lightgrey', // 기본 색상
+                                                        fontWeight: 'bold',
+                                                        '&:hover': {
+                                                            backgroundColor: '#f17a8d', // 마우스 올렸을 때 색상
+                                                        }
+                                                    }}>찜한 사용자 보기</Button>
                                         </div>
                                     )}
                                 </div>

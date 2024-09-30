@@ -7,6 +7,8 @@ import "../css/recommend.css"
 import '../css/menu.css';
 import '../css/result.css';
 import {useNavigate} from "react-router-dom";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
 const Recommend_Result = ({ matches, loading, error, title }) => {
     const navigate = useNavigate();
@@ -200,9 +202,16 @@ const Recommend_Result = ({ matches, loading, error, title }) => {
                                                 </p>
                                             </div>
                                         )}
-                                        <button className="like_button" onClick={() => addFavorite(desertionNo)}
-                                                style={{width: '100%'}}>찜 추가
-                                        </button>
+                                        <Button variant="contained" onClick={() => addFavorite(desertionNo)}
+                                                sx={{
+                                                    width: '100%',
+                                                    fontWeight: 'bold',
+                                                    backgroundColor: 'rgba(236, 172, 181, 0.65)', // 기본 색상
+                                                    '&:hover': {
+                                                        backgroundColor: 'rgba(236, 172, 181, 1)' // 마우스 올렸을 때 색상
+                                                    }
+                                                }}>찜 추가</Button>
+
                                         <div className="analysis-results"  onClick={() => handleDetailAnimal(desertionNo)}>
                                             <div className="analysis_info-result">
                                                 <br/>
@@ -223,7 +232,9 @@ const Recommend_Result = ({ matches, loading, error, title }) => {
                     </div>
                 )}
                 {visibleCount < matches.length && (
-                    <button onClick={loadMore} className="more_button">더보기</button>
+                    <Box style={{ display: 'flex', justifyContent: 'center' }}>
+                        <Button variant="contained" style={{marginTop: '5px', width: '300px'}} onClick={loadMore}>더보기</Button>
+                    </Box>
                 )}
             </main>
         </div>

@@ -6,8 +6,11 @@ import store from './Store';
 import axios from "axios";
 import Menu from "../Menu";
 
-import style from "../css/member.css";
+import "../css/member.css";
 import "../css/recommend.css"
+import MyEdit from "./MyEdit";
+import Button from '@mui/material/Button';
+import Box from "@mui/material/Box";
 
 function MyPage() {
     const dispatch = useDispatch();
@@ -87,7 +90,7 @@ function MyPage() {
                 </div>
                 {state.isLoggedIn ? (
                     <div>
-                        <div className="div_member">
+                        {/* <div className="div_member">
                             <div className="form_member">
                                 <h2 className="h2">내 정보 확인하기</h2>
                                 <button style={{marginTop: '5px'}} className="custom-button"
@@ -114,16 +117,21 @@ function MyPage() {
                                         onClick={handleLogout}> 로그아웃
                                 </button>
                             </div>
-                        </div>
+                        </div> */}
+                        <MyEdit/>
+                        <Box style={{ display: 'flex', justifyContent: 'center' }}>
+                            <Button variant="contained" style={{marginTop: '-25px', width: '300px'}} onClick={handleLogout}>로그아웃</Button>
+                        </Box>
+                        <Box style={{ display: 'flex', justifyContent: 'center' }}>
+                            <Button variant="contained" style={{marginTop: '15px', marginBottom: '20px', width: '300px'}} onClick={handleResign}>회원정보 탈퇴하기</Button>
+                        </Box>
                     </div>
                 ) : (
                     <div>
                         <h2 className="h2">해당 화면은 로그인이 필요한 화면입니다.</h2>
                         <div style={{display: 'flex', justifyContent: 'center'}}>
-                            <button className="custom-button" onClick={() => navigate("/member/SignUp")}>회원가입 >
-                            </button>
-                            <button className="custom-button" onClick={() => navigate("/member/login")}>로그인 >
-                            </button>
+                            <Button variant="contained" style={{marginTop: '20px', width: '300px', marginRight: '20px'}}  onClick={() => navigate("/member/SignUp")}>회원가입 ></Button>
+                            <Button variant="contained" style={{marginTop: '20px', width: '300px', marginLeft: '20px'}} onClick={() => navigate("/member/login")}>로그인 ></Button>
                         </div>
                     </div>
                 )}

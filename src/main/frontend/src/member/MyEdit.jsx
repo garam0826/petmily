@@ -5,6 +5,14 @@ import store from "./Store";
 import Menu from "../Menu";
 import "../css/recommend.css"
 import "../css/member.css"
+import TextField from "@mui/material/TextField";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+
+import NativeSelect from '@mui/material/NativeSelect';
+import Button from '@mui/material/Button';
 
 function MyEdit() {
     const [error, setError] = useState(null);
@@ -104,11 +112,11 @@ function MyEdit() {
 
     return (
         <React.Fragment>
-            <header>
+            {/* <header>
                 <Menu />
-            </header>
+            </header> */}
             <main>
-
+                {/*
                 <div data-case="text79" className="userEL15637124">
                     <div className="container_result">
                         <div className="row" data-matrix-loop="true" data-matrix-column="1">
@@ -133,61 +141,53 @@ function MyEdit() {
                         </div>
                     </div>
                 </div>
-                <form className="form">
-                    <h2>회원 정보 수정</h2>
-                    <div className="wrapper">
-                        <label className="contentContainer">
-                            PW:
-                            <input className="input" type="text" placeholder="새 비번" name="mem_pw" value={newMemberInfo.mem_pw}
-                                   onChange={handleInputChange}/>
-                        </label>
-                    </div>
-                    <div className="wrapper">
-                        <label className="contentContainer">
-                            Nick Name:
-                            <input className="input" type="text" placeholder="새 닉네임" name="nickname" value={newMemberInfo.nickname}
-                                   onChange={handleInputChange}/>
-                        </label>
-                    </div>
-                    <div className="wrapper">
-                        <label className="contentContainer">
-                            Email:
-                            <input className="input" type="text" placeholder="새 이메일" name="email" value={newMemberInfo.email}
-                                   onChange={handleInputChange}/>
-                        </label>
-                    </div>
-                    <div className="wrapper">
-                        <label className="contentContainer" htmlFor="region">Region:
-                            <select className="input" id="region" onChange={handleRegionChange}>
-                                <option value="">{newMemberInfo.region}</option>
-                                {regionList.map((region) => (
-                                    <option key={region.reg_code} value={region.reg_name}>{region.reg_name}</option>
-                                ))}
-                            </select>
-                        </label>
-                    </div>
-                    <div className="wrapper">
-                        <label className="contentContainer"  htmlFor="district">District:
-                            <select className="input" id="district" onChange={handleDistrictChange}>
-                                <option value="">{newMemberInfo.county_district}</option>
-                                {districtList.map((district) => (
-                                    <option key={district.dist_code}
-                                            value={district.dist_name}>{district.dist_name}</option>
-                                ))}
-                            </select>
-                        </label>
-                    </div>
-
-                    <button style={{marginTop: '20px'}} className="custom-button" onClick={handleUpdateMember}>수정 완료하기</button>
-                </form>
-                <form className="form">
-                    <h2> 이미지 올리는 부분 - 버튼 누르면 파일 탐색기 </h2>
-                    <button style={{marginTop: '20px'}} className="custom-button">파일 탐색기 열기</button>
-                    {message && <p>{message}</p>}
-                    {error && <p>{error}</p>}
+                */}
+                <form className="form" style={{marginTop: '-15px'}}>
+                    <h2>회원 정보 확인 및 수정</h2>
+                    <TextField id="standard-basic" label="비밀번호" variant="standard" name="mem_pw"
+                               value={newMemberInfo.mem_pw} style={{marginTop: '20px', width: '300px', height: 'auto'}}
+                               onChange={handleInputChange}/>
+                    <TextField id="standard-basic" label="닉네임" variant="standard" name="nickname"
+                               value={newMemberInfo.nickname}
+                               style={{marginTop: '20px', width: '300px', height: 'auto'}}
+                               onChange={handleInputChange}/>
+                    <TextField id="standard-basic" label="이메일" variant="standard" name="email"
+                               value={newMemberInfo.email} style={{marginTop: '20px', width: '300px', height: 'auto'}}
+                               onChange={handleInputChange}/>
+                    <FormControl fullWidth style={{marginTop: '20px', width: '300px', height: 'auto'}}>
+                        <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                            지역(도/특별시)
+                        </InputLabel>
+                        <NativeSelect
+                            defaultValue={100}
+                            onChange={handleRegionChange}
+                        >
+                            <option value={100}>{newMemberInfo.region}</option>
+                            {regionList.map((region) => (
+                                <option key={region.reg_code} value={region.reg_name}>{region.reg_name}</option>
+                            ))}
+                        </NativeSelect>
+                    </FormControl>
+                    <FormControl fullWidth style={{marginTop: '20px', width: '300px', height: 'auto'}}>
+                        <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                            지역(시/군)
+                        </InputLabel>
+                        <NativeSelect
+                            defaultValue={100}
+                            onChange={handleDistrictChange}
+                        >
+                            <option value={100}>{newMemberInfo.county_district}</option>
+                            {districtList.map((district) => (
+                                <option key={district.dist_code}
+                                        value={district.dist_name}>{district.dist_name}</option>
+                            ))}
+                        </NativeSelect>
+                    </FormControl>
+                    <Button variant="outlined" style={{marginTop: '20px', width: '300px'}} onClick={handleUpdateMember}>수정
+                        완료하기</Button>
                 </form>
                 {updateMessage && <p>{updateMessage}</p>}
-                <button className="custom-button" type="button" onClick={() => navigate("/member/mypage")}>마이페이지 화면으로 →</button>
+
             </main>
 
 

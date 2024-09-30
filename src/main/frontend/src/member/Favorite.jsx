@@ -7,6 +7,8 @@ import '../css/result.css';
 import '../css/member.css';
 import Favorite_Result from "./Favorite_Result";
 import Favorite_Result_Mem from "./Favorite_Result_Mem";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
 function Favorite() {
     const userData = useSelector(state => state.userData); // 사용자 데이터를 스토어에서 가져옴.
@@ -128,9 +130,20 @@ function Favorite() {
                             <div key={member}>
                                 <div>
                                     <span>{member}</span>
-                                    <button className="signup custom-button" onClick={() => handleFavList(member)}>
-                                        이 사용자의 찜 목록 보기
-                                    </button>
+                                    <Box style={{ display: 'flex', justifyContent: 'center' }}>
+                                        <Button variant="contained"
+                                                sx={{
+                                                    width: '300px',
+                                                    fontWeight: 'bold',
+                                                    borderRadius: '5px',
+                                                    backgroundColor: 'rgba(236, 172, 181, 1)', // 기본 색상
+                                                    '&:hover': {
+                                                        backgroundColor: '#f17a8d' // 마우스 올렸을 때 색상
+                                                    }
+                                                }}
+                                                onClick={() => handleFavList(member)}>
+                                            이 사용자의 찜 목록 보기</Button>
+                                    </Box>
                                 </div>
                                 {selectedUserId === member && (
                                     <div>

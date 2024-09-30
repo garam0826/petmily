@@ -4,6 +4,14 @@ import { useNavigate } from "react-router-dom";
 import "../css/base.css";
 import Menu from "../Menu";
 import "../css/recommend.css"
+import TextField from "@mui/material/TextField";
+import InputLabel from "@mui/material/InputLabel";
+import NativeSelect from "@mui/material/NativeSelect";
+import FormControl from "@mui/material/FormControl";
+import MenuItem from '@mui/material/MenuItem';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
 function Signup() {
     const [id, setId] = useState('');
@@ -108,53 +116,50 @@ function Signup() {
                     </div>
                 </div>
                 <form style={{marginTop: '10px'}} className="form">
-                    <div style={{width: '75%'}} className="wrapper">
-                        <label className="contentContainer_signup">
-                            Id:
-                            <input className="input" type="text" value={id} onChange={(e) => setId(e.target.value)}/>
-                        </label>
-                    </div>
-                    <div style={{width: '75%'}} className="wrapper">
-                        <label className="contentContainer_signup">
-                            Password:
-                            <input className="input" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                        </label>
-                    </div>
-                    <div style={{width: '75%'}} className="wrapper">
-                        <label className="contentContainer_signup">
-                            nickname:
-                            <input className="input" type="text" value={name} onChange={(e) => setName(e.target.value)}/>
-                        </label>
-                    </div>
-                    <div style={{width: '75%'}} className="wrapper">
-                        <label className="contentContainer_signup">
-                            email:
-                            <input className="input" type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                        </label>
-                    </div>
-                    <div style={{width: '75%'}} className="wrapper">
-                        <label className="contentContainer_signup" htmlFor="region">Region:
-                            <select className="input" id="region" onChange={handleRegionChange}>
-                                <option value="">Select Region</option>
-                                {regionList.map((region) => (
-                                    <option key={region.reg_code} value={region.reg_name}>{region.reg_name}</option>
-                                ))}
-                            </select>
-                        </label>
-                    </div>
-                    <div style={{width: '75%'}} className="wrapper">
-                        <label className="contentContainer_signup" htmlFor="district">District:
-                            <select className="input" id="district" onChange={handleDistrictChange}>
-                                <option value="">Select District</option>
-                                {districtList.map((district) => (
-                                    <option key={district.dist_code}
-                                            value={district.dist_name}>{district.dist_name}</option>
-                                ))}
-                            </select>
-                        </label>
-                    </div>
+                    <TextField id="standard-basic" label="ID" variant="standard" value={id} onChange={(e) => setId(e.target.value)} style={{marginTop: '20px', width: '350px', height: 'auto'}}
+                    />
+                    <TextField id="standard-basic" label="Password" variant="standard" type="password" value={password} onChange={(e) => setPassword(e.target.value)}
+                               style={{marginTop: '20px', width: '350px', height: 'auto'}}
+                    />
+                    <TextField id="standard-basic" label="닉네임" variant="standard" value={name} onChange={(e) => setName(e.target.value)}
+                                   style={{marginTop: '20px', width: '350px', height: 'auto'}}
+                    />
+                    <TextField id="standard-basic" label="이메일" variant="standard" value={email} onChange={(e) => setEmail(e.target.value)}
+                                   style={{marginTop: '20px', width: '350px', height: 'auto'}}
+                    />
+                    <FormControl variant="standard" style={{marginTop: '20px', width: '350px', height: 'auto'}}>
+                        <InputLabel id="demo-simple-select-standard-label">지역(도/특별시)</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-standard-label"
+                            id="demo-simple-select-standard"
+                            onChange={handleRegionChange}
+                            label="region"
+                        >
+                            {regionList.map((region) => (
+                                <MenuItem key={region.reg_code} value={region.reg_name}>{region.reg_name}</MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
+                    <FormControl variant="standard" style={{marginTop: '20px', width: '350px', height: 'auto'}}>
+                        <InputLabel id="demo-simple-select-standard-label">지역(시/군)</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-standard-label"
+                            id="demo-simple-select-standard"
+                            onChange={handleDistrictChange}
+                            label="district"
+                        >
+                            {districtList.map((district) => (
+                                <MenuItem key={district.dist_code}
+                                        value={district.dist_name}>{district.dist_name}</MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
+
+
                 </form>
-                <button className="button" onClick={handleSignUp}>Signup</button>
+                <Box style={{ display: 'flex', justifyContent: 'center' }}>
+                    <Button variant="contained" style={{marginTop: '-20px', marginBottom: '20px', width: '300px'}} onClick={handleSignUp}>회원가입하기</Button>
+                </Box>
             </main>
         </React.Fragment>
     );
