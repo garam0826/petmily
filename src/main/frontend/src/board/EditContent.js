@@ -40,32 +40,33 @@ function EditContent() {
             <Menu/>
             <div className="form-container">
                 <h2>게시글 수정</h2>
-                <div>
-                    <span>제목</span>
+                <div className="form-group">
+                    <label>제목</label>
                     <input
                         name="title"
                         type="text"
                         value={board.title || ''}
                         onChange={(e) => setBoard({...board, title: e.target.value})}
+                        placeholder="제목"
                         required
                     />
                 </div>
-            </div>
-            <br/>
-            <div className="form-group">
-                <span>내용</span>
-                <textarea
-                    name="content"
-                    cols="30"
-                    rows="20"
-                    value={board.content || ''}
-                    onChange={(e) => setBoard({...board, content: e.target.value})}
-                ></textarea>
-            </div>
-            <br/>
-            <div className="button-container">
-                <button onClick={handleEdit}>수정 완료</button>
-                <button onClick={() => navigate('/board/list')}>취소</button>
+                <div className="form-group">
+                    <label>내용</label>
+                    <textarea
+                        name="content"
+                        cols="30"
+                        rows="10"
+                        value={board.content || ''}
+                        onChange={(e) => setBoard({...board, content: e.target.value})}
+                        placeholder="내용을 입력하세요"
+                        required
+                    ></textarea>
+                </div>
+                <div className="button-container">
+                    <button onClick={handleEdit}>수정 완료</button>
+                    <button onClick={() => navigate('/board/list')}>취소</button>
+                </div>
             </div>
         </div>
     );

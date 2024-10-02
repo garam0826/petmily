@@ -1,5 +1,5 @@
 .board-container {
-    width: 1000px;
+    width: 1500px;
     margin: 0 auto;
 }
 
@@ -19,12 +19,28 @@
     text-align: center;
 }
 
-.board-title {
-    width: 100%;
-    color: black;
-    font-weight: bold;
+.board-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
-    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+}
+
+@font-face {
+    font-family: "Tenada";
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Tenada.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.board-title {
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 45px;
+    font-family: "Tenada";
+    margin-left: 35px;
 }
 
 .board-meta {
@@ -32,14 +48,42 @@
     color: #666;
 }
 
-.board-write button {
+@font-face {
+    font-family: "Paperlogy-8ExtraBold";
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+}
+
+.board-write {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
-    border: 5px solid white;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    float: right;
+    margin-bottom: 15px;
+    font-size: 19px;
+    margin-right: 35px;
+    font-family: "Paperlogy-8ExtraBold";
+}
+
+.fix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.board-write:hover {
+    background-color: #0056b3;
+}
+
+.board-divider {
+    border: none;
+    border-top: 2px solid black;
+    margin: 0;
 }
 
 .board-item {
@@ -80,9 +124,10 @@
 .board-header-title,
 .board-header-author,
 .board-header-date {
+    font-family: "Paperlogy-8ExtraBold";
     font-weight: bold;
-    font-size: 16px;
-    padding: 10px 0;
+    font-size: 22px;
+    padding: 5px 0;
 }
 
 .board-header-no {
@@ -114,6 +159,7 @@
     font-size: 16px;
     border-bottom: 2px solid #d3d3d3;
     padding: 10px 0;
+    background-color: lightgrey;
 }
 
 .board-cont span {
@@ -122,15 +168,21 @@
 }
 
 .form-container {
-    background-color: #f2f2f2;
-    padding: 20px;
+    max-width: 1450px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 5px 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .form-container h2 {
+    font-size: 30px;
+    font-weight: bold;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    color: #333;
+    font-family: "Paperlogy-8ExtraBold";
 }
 
 .form-group {
@@ -138,20 +190,37 @@
 }
 
 .form-group label {
+    display: block;
     font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
 }
 
 .form-group input[type="text"],
 .form-group textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
     box-sizing: border-box;
+    transition: border-color 0.3s;
+    font-size: 19px;
+    font-family: "Paperlogy-8ExtraBold";
+}
+
+.form-group input[type="text"] {
+    background-color: azure;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    border-color: #007bff;
+    outline: none;
 }
 
 .form-group textarea {
-    height: 150px;
+    height: 300px;
+    resize: vertical;
 }
 
 .button-container {
@@ -159,13 +228,21 @@
 }
 
 .button-container button {
-    padding: 10px 20px;
+    padding: 10px 25px;
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 18px;
+    font-family: "Paperlogy-8ExtraBold";
+    margin-bottom: 15px;
+    margin-right: 10px;
+}
+
+.button-container button:last-child {
+    margin-right: 0;
 }
 
 .button-container button:hover {

@@ -48,12 +48,11 @@ function BoardList() {
         <div>
             <Menu />
             <div>
-                <h2 className="board-title">게시판</h2>
-                <div className={"board-write"}>
-                    <button onClick={handleWrite}>
-                        글 작성하기
-                    </button>
+                <h2 className="board-title">자유게시판</h2>
+                <div className="fix">
+                    <button className="board-write" onClick={handleWrite}>글 작성하기</button>
                 </div>
+                <hr className="board-divider"/>
                 <div className="board-cont">
                     <span className="board-header-no">No.</span>
                     <span className="board-header-title">제목</span>

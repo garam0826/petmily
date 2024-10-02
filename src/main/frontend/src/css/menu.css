@@ -66,10 +66,18 @@
     padding: 20px;
 }
 
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
 .info-header {
     text-align: center;
     margin-top: 70px;
     margin-bottom: 20px;
+    font-family: 'TheJamsil5Bold';
 }
 
 .info-header h1 {
@@ -79,9 +87,10 @@
 }
 
 .info-header p {
-    font-family: 'Arial', sans-serif;
+    /*font-family: 'Arial', sans-serif;*/
     font-size: 18px;
     color: #666;
+    font-family: 'TheJamsil5Bold';
 }
 
 .main_animal {
@@ -89,6 +98,7 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
+    font-family: 'TheJamsil5Bold';
 }
 
 .main_animal h1{
@@ -107,6 +117,7 @@
     transition: background-color 0.3s ease;
     margin-top: 20px;
     font-size: 20px;
+    font-family: 'TheJamsil5Bold';
 }
 
 .more-button:hover {

@@ -1,14 +1,28 @@
 .content-container {
-    background-color: #f8f9fa;
-    padding: 20px;
+    max-width: 1850px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'TheJamsil5Bold';
+}
+
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
 }
 
 .title {
     font-size: 35px;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    text-align: center;
 }
 
 .meta-info {
@@ -18,19 +32,30 @@
 }
 
 .content {
-    font-size: 25px;
-    line-height: 3.5;
-    margin-bottom: 5px;
+    font-size: 20px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
 }
 
-.content button {
+.content-buttons button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: green;
     color: #fff;
-    border: 5px solid white;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-right: 6px;
+    font-family: 'TheJamsil5Bold';
+    margin-bottom: 10px;
+}
+
+.content-buttons button:hover {
+    background-color: darkgreen;
 }
 
 .comment-list {
@@ -39,47 +64,57 @@
 }
 
 .comment-item {
-    margin-bottom: 10px;
-    padding-left: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f1f3f5;
+    border-radius: 5px;
+    border: 1px solid #dee2e6;
 }
 
 .comment-item .comment-content {
     font-size: 16px;
     margin-bottom: 5px;
+    color: #343a40;
 }
 
 .comment-item .comment-info {
     font-size: 14px;
     color: #6c757d;
+    margin-top: 5px;
 }
 
 .comment-item .reply-indent {
-    margin-left: 10px;
+    margin-left: 15px;
+    color: #495057;
 }
 
 .comment-item button {
     background-color: white;
     border: 1px solid white;
     color: black;
-    padding: 5px 5px;
+    padding: 5px 10px;
     cursor: pointer;
     font-size: 14px;
     border-radius: 5px;
     transition: background-color 0.3s ease, border-color 0.3s ease;
+    margin-right: 7px;
+    font-family: 'TheJamsil5Bold';
+    margin-top: 5px;
 }
 
 .comment-item button:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0;;
     border-color: black;
 }
 
 .comment-input {
     margin-top: 20px;
+    align-items: center;
 }
 
 .comment-input textarea {
-    width: calc(100% - 100px);
-    height: 50px;
+    width: calc(100% - 120px);
+    height: 60px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -88,16 +123,18 @@
 
 .comment-input button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: green;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 7px;
+    font-family: 'TheJamsil5Bold';
 }
 
 .comment-input button:hover {
-    background-color: #0056b3;
+    background-color: darkgreen;
 }
 
 .reply-input {
@@ -106,8 +143,8 @@
 }
 
 .reply-input textarea {
-    width: calc(100% - 100px);
-    height: 50px;
+    width: calc(100% - 120px);
+    height: 60px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
