@@ -3,12 +3,19 @@ package com.petmily.service;
 import com.petmily.dto.MemberDTO;
 import com.petmily.dto.RegionDTO;
 import com.petmily.dto.DistrictDTO;
+import com.petmily.dto.MailDTO;
 
 import com.petmily.dao.MemberDAO;
 
+import jakarta.mail.internet.MimeMessage;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +31,10 @@ public class MemberServiceImple implements MemberService{
 
     // Logging
     private static final Logger logger = LoggerFactory.getLogger(MemberServiceImple.class);
+
+    // Java Mail 설정
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     // 회원가입
     @Override
@@ -194,8 +205,37 @@ public class MemberServiceImple implements MemberService{
         // SQL 결과값과 비교
         // 불일치 -> null값 return
         // 일치 -> ID값 return
+        // 새 비밀번호 생성
+        // 입력된 email 주소로 새 비밀번호 발송
         if(db_ID.equals(hashMap.get("mem_id")) && db_email.equals(hashMap.get("email"))){
             logger.info("일치");
+            /*
+            // 임시 비밀번호 설정
+            String tempMem_PW = setTempMem_PW();
+            logger.info("임시 비밀번호 생성 : " +tempMem_PW);
+
+            // 임시 비밀번호로 회원 비밀번호 수정
+            memberDTO.setMem_pw(tempMem_PW);
+
+            HashMap<String, String> tempMap = new HashMap<>();
+
+            tempMap.put("mem_id", memberDTO.getMem_id());
+            tempMap.put("tempmem_pw", tempMem_PW);
+
+            memberDAO.updateTempMem_PW(tempMap);
+            logger.info("DB 수정 후 : " +memberDTO.getMem_pw());
+
+            // 회원 email로 임시 비밀번호 발송
+            //MailDTO mailDTO = new MailDTO();
+            MimeMessage message = javaMailSender.createMimeMessage();
+            MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+
+            messageHelper.setTo(memberDTO.getEmail());
+            messageHelper.setSubject("Petmily 임시 비밀번호 안내 Email입니다.");
+            messageHelper.setText("안녕하세요~ Petmily 임시 비밀번호 안내입니다.\n" +memberDTO.getMem_id()+ "님의 임시 비밀번호 : " +tempMem_PW+ " 입니다.\n 다시 Login 후 비밀번호를 변경해주세요!");
+
+            javaMailSender.send(message);
+*/
             resultPW = memberDTO.getMem_pw();
 
             return resultPW;
@@ -204,6 +244,23 @@ public class MemberServiceImple implements MemberService{
 
             return resultPW;
         }
+    }
+
+    // 임시 회원 비밀번호 생성
+    public String setTempMem_PW() throws Exception{
+        char[] charSet = new char[]{
+                '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+                'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+                'U', 'V', 'W', 'X', 'Y', 'Z'};
+        StringBuilder tempPW = new StringBuilder();
+
+        for(int i = 0; i < 10; i++){
+            int idx = (int) (charSet.length * Math.random());
+            tempPW.append(charSet[idx]);
+        }
+
+        return tempPW.toString();
     }
 
     // 광역 주소 code 목록 조회

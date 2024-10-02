@@ -7,6 +7,8 @@ import "../css/recommend.css"
 import '../css/menu.css';
 import '../css/result.css';
 import {useNavigate} from "react-router-dom";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
 const Recommend_Result = ({ matches, loading, error, title }) => {
     const navigate = useNavigate();
@@ -118,6 +120,22 @@ const Recommend_Result = ({ matches, loading, error, title }) => {
         setVisibleCount(prevCount => prevCount + 5); // 보여줄 강아지 수를 5마리씩 늘림
     };
 
+    const currentTime = new Date().toISOString();
+    const addFavorite = (desertionNo) => {
+        axios.post(`/favorites/add?memId=${userId}&desertionNo=${desertionNo}`, {
+            mem_id: userId,
+            desertionNo: desertionNo,
+            created_at: currentTime,
+        })
+            .then(response => {
+                console.log("Favorite added successfully");
+                alert("찜 목록에 담겼습니다!");
+            })
+            .catch(error => {
+                console.error("Error adding favorite: ", error);
+            });
+    };
+
     return (
         <div>
             <main className="container_result">
@@ -165,20 +183,36 @@ const Recommend_Result = ({ matches, loading, error, title }) => {
                 ) : (
                     <div className="grid-container_result">
                         {matches.slice(0, visibleCount).map((desertionNo, index) => (
-                            <div className="card_result" key={desertionNo} onClick={() => handleDetailAnimal(desertionNo)}>
+                            <div className="card_result" key={desertionNo} style={{height: '730px'}}>
                                 {animalInfos && (
                                     <div className="result">
-                                        <h3 className="h3_result">{index+1}</h3>
+                                        <h3 className="h3_result">{index + 1}</h3>
                                         <img src={animalInfos[desertionNo]?.popfile} alt="Animal"/>
                                         {analysisResults[desertionNo] && (
                                             <div>
                                                 <hr/>
-                                                <p>[ 품종 비율 1순위 ]<br/>{analysisResults[desertionNo].className1}<br/>({(analysisResults[desertionNo].probability1 * 100).toFixed(2)}%)</p>
-                                                <p>[ 품종 비율 2순위 ]<br/>{analysisResults[desertionNo].className2}<br/>({(analysisResults[desertionNo].probability2 * 100).toFixed(2)}%)</p>
-                                                <p>[ 품종 비율 3순위 ]<br/>{analysisResults[desertionNo].className3}<br/>({(analysisResults[desertionNo].probability3 * 100).toFixed(2)}%)</p>
+                                                <p>[ 품종 비율 1순위
+                                                    ]<br/>{analysisResults[desertionNo].className1}<br/>({(analysisResults[desertionNo].probability1 * 100).toFixed(2)}%)
+                                                </p>
+                                                <p>[ 품종 비율 2순위
+                                                    ]<br/>{analysisResults[desertionNo].className2}<br/>({(analysisResults[desertionNo].probability2 * 100).toFixed(2)}%)
+                                                </p>
+                                                <p>[ 품종 비율 3순위
+                                                    ]<br/>{analysisResults[desertionNo].className3}<br/>({(analysisResults[desertionNo].probability3 * 100).toFixed(2)}%)
+                                                </p>
                                             </div>
                                         )}
-                                        <div className="analysis-results">
+                                        <Button variant="contained" onClick={() => addFavorite(desertionNo)}
+                                                sx={{
+                                                    width: '100%',
+                                                    fontWeight: 'bold',
+                                                    backgroundColor: 'rgba(236, 172, 181, 0.65)', // 기본 색상
+                                                    '&:hover': {
+                                                        backgroundColor: 'rgba(236, 172, 181, 1)' // 마우스 올렸을 때 색상
+                                                    }
+                                                }}>찜 추가</Button>
+
+                                        <div className="analysis-results"  onClick={() => handleDetailAnimal(desertionNo)}>
                                             <div className="analysis_info-result">
                                                 <br/>
                                                 <p>발견 날짜: {formatDate(animalInfos[desertionNo]?.happenDt)}</p>
@@ -198,7 +232,9 @@ const Recommend_Result = ({ matches, loading, error, title }) => {
                     </div>
                 )}
                 {visibleCount < matches.length && (
-                    <button onClick={loadMore} className="more_button">더보기</button>
+                    <Box style={{ display: 'flex', justifyContent: 'center' }}>
+                        <Button variant="contained" style={{marginTop: '5px', width: '300px'}} onClick={loadMore}>더보기</Button>
+                    </Box>
                 )}
             </main>
         </div>

@@ -1,6 +1,8 @@
 import { Suspense, lazy } from "react";
 
 import { createBrowserRouter } from "react-router-dom";
+import Box from "@mui/material/Box";
+import CircularProgress from '@mui/material/CircularProgress';
 //import Mainpage from "./Mainpage";
 //const Loading = <div>Loading...</div>
 
@@ -12,7 +14,12 @@ import ReadContent from "./board/ReadContent";
 import MyEdit from "./member/MyEdit";
 */
 
-const Loading = <div>Loading...</div>
+const Loading = (
+    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh'}}>
+        <CircularProgress />
+    </Box>
+);
+
 const MainPage = lazy(() => import("../src/Mainpage"))
 
 const Login = lazy(() => import("../src/member/Login"))

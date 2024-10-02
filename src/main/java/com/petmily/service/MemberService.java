@@ -44,6 +44,9 @@ public interface MemberService {
     // PW 찾기 입력된 email, mem_id과 회원정보 2개 일치 확인
     public String searchMem_PW(HashMap<String, String> hashMap) throws Exception;
 
+    // 임시 회원 비밀번호 생성
+    public String setTempMem_PW() throws Exception;
+
     // 광역 주소 code 목록 조회
     public List<RegionDTO> slctReg_code() throws Exception;
 

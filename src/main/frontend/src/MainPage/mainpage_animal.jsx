@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import "../css/search.css";
 import "../css/menu.css"
 import store from "../member/Store";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 const formatDate = (dateString) => {
     if (!dateString) return '';
@@ -181,14 +183,16 @@ const MainAnimal = () => {
                     {animalInfos.length === 0 && !loading && !error && <div>No data available</div>}
                     <div className="grid-container">
                         {animalInfos.slice(0, limit).map((animalInfo, index) => (
-                            <div className="card" key={index}>
+                            <div className="card" style={{height: '520px'}} key={index}>
                                 <div className="card-image">
                                     <img src={animalInfo.popfile} alt="Animal"/>
                                 </div>
                                 <div className="card-content">
                                 </div>
                                 {analysisloading ? (
-                                    <div>Analysis Loading...</div>
+                                    <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '70px'}}>
+                                        <CircularProgress />
+                                    </Box>
                                 ) : (
                                     analysisResults.map((analysisresult, index) => (
                                         <div key={index}
@@ -209,8 +213,9 @@ const MainAnimal = () => {
                                         </div>
                                     ))
                                 )}
-                                <div className="analysis" onClick={() => handleDetailAnimal(animalInfo)}>
-                                    <br/>
+                                <div className="analysis" style={{transform: 'translateX(-50%) translateY(-50%)'}}
+                                     onClick={() => handleDetailAnimal(animalInfo)}>
+                                    <br/> <br/> <br/>
                                     <p>발견 날짜: {formatDate(animalInfo.happenDt)}</p>
                                     <p>발견 장소: {animalInfo.happenPlace}</p>
                                     <p>나이: {animalInfo.age}</p>

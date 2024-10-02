@@ -101,6 +101,14 @@ public class MemberDAOImple implements MemberDAO {
         return memberDTO;
     }
 
+    // 임시 회원 비밀번호 수정
+    @Override
+    public int updateTempMem_PW(HashMap<String, String> hashMap) throws Exception{
+        int result = sqlSession.update(namespace+ ".updateTempMem_PW", hashMap);
+
+        return result;
+    }
+
     // 광역 주소 code 목록 조회
     @Override
     public List<RegionDTO> slctReg_code() throws Exception{

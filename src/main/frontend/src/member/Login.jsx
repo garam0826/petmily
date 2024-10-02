@@ -8,6 +8,10 @@ import Menu from "../Menu";
 import "../css/recommend.css"
 import "../css/base.css"
 
+import TextField from '@mui/material/TextField';
+import Button from "@mui/material/Button";
+import Box from '@mui/material/Box';
+
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -68,25 +72,18 @@ function Login() {
                     </div>
                 </div>
                 <form style={{marginTop: '10px', marginBottom: '10px'}} className="form" onSubmit={handleSubmit}>
-                    <label className="label">
-                        Username:
-                        <input className="input" type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
-                    </label>
+                    <TextField id="standard-basic" label="ID" variant="standard" value={username} style={{width: '260px', height: 'auto'}} onChange={(e) => setUsername(e.target.value)}/>
                     <br/>
-                    <label className="label">
-                        Password:
-                        <input className="input" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                    </label>
-                    <button className="button_login" type="submit">Login</button>
+                    <TextField id="standard-basic" type="password" label="Password" variant="standard" value={password} style={{width: '260px', height: 'auto'}} onChange={(e) => setPassword(e.target.value)}/>
+                    <Button variant="contained" style={{marginTop: '20px', width: '300px'}} type="submit">Login</Button>
                 </form>
                 <div style={{display: 'flex', justifyContent: 'center', gap: '0.1px'}}>
-                    <button className="button_login" style={{marginRight: '15px'}}
-                            onClick={() => navigate("/member/searchid")}> 아이디 찾기 >>
-                    </button>
-                    <button className="button_login" style={{marginLeft: '15px'}} onClick={() => navigate("/member/searchpw")}> 비밀번호 찾기 >>
-                    </button>
+                    <Button variant="contained" style={{marginTop: '20px', width: '300px', marginRight: '20px'}} onClick={() => navigate("/member/searchid")}>아이디 찾기 >></Button>
+                    <Button variant="contained" style={{marginTop: '20px', width: '300px', marginLeft: '20px'}} onClick={() => navigate("/member/searchpw")}> 비밀번호 찾기 >></Button>
                 </div>
-                <button className="button_login" onClick={() => navigate("/member/signup")}> 회원 가입 >></button>
+                <Box style={{ display: 'flex', justifyContent: 'center' }}>
+                    <Button variant="contained" style={{marginTop: '20px', marginBottom: '30px',width: '300px'}} onClick={() => navigate("/member/signup")}> 회원 가입 >></Button>
+                </Box>
             </main>
         </React.Fragment>
     );
