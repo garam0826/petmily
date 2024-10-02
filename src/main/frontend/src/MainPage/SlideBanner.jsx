@@ -44,7 +44,7 @@ const SlideBanner = () => {
 
     const recommendations = [
         {
-            image: 'https://cdn.vectorstock.com/i/2000v/61/88/group-of-dog-breeds-vector-20466188.avif',
+            image: 'https://cdn.vectorstock.com/i/2000v/11/89/dog-collection-vector-33971189.avif',
             title: '개인 선호도 프로필을 통한 추천 기능',
             description: '질문을 통해 사용자에게 추천해 드립니다.',
             link: "/recommend/question", // 추천 페이지로의 링크
@@ -56,7 +56,7 @@ const SlideBanner = () => {
             link: "/recommend/keyword", // 추천 페이지로의 링크
         },
         {
-            image: 'https://cdn.vectorstock.com/i/2000v/88/14/cat-or-dog-paw-pet-foot-trail-print-vector-27948814.avif',
+            image: 'https://cdn.vectorstock.com/i/2000v/16/54/silhouettes-of-prints-dog-paw-vector-53371654.avif',
             title: '보호 중인 동물 탐색',
             description: '현재 보호 중인 유기견들을 보실 수 있습니다.',
             link: "/animal",

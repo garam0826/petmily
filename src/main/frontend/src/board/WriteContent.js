@@ -74,6 +74,7 @@ function WriteContent() {
                     </div>
                     <div className="button-container">
                         <button type="submit">저장</button>
+                        <button onClick={() => navigate('/board/list')}>취소</button>
                     </div>
                 </form>
             </div>

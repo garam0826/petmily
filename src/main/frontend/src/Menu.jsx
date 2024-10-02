@@ -31,7 +31,7 @@ function Memu() {
                 </li>
                 <li onClick={() => navigate("/animal")}>보호 중인 동물</li>
                 <li onClick={() => navigate("/recommend")}>반려견 추천</li>
-                <li onClick={() => navigate("/board/list")}>게시판</li>
+                <li onClick={() => navigate("/board/list")}>자유게시판</li>
                 <li className="dropdown">
                     <span>회원 정보</span>
                     <div className="dropdown-content">
