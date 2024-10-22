@@ -44,7 +44,7 @@ const SlideBanner = () => {
 
     const recommendations = [
         {
-            image: 'https://cdn.vectorstock.com/i/2000v/11/89/dog-collection-vector-33971189.avif',
+            image: 'https://cdn.vectorstock.com/i/2000v/69/22/dog-icons-vector-1186922.avif',
             title: '개인 선호도 프로필을 통한 추천 기능',
             description: '질문을 통해 사용자에게 추천해 드립니다.',
             link: "/recommend/question", // 추천 페이지로의 링크
